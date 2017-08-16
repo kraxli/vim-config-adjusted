@@ -16,6 +16,13 @@ Best with Neovim or Vim 8 with +python3 extensions enabled.
 * [ ] go back and go to definition
 * [ ] !chanage the key bindings in the wiki page
 
+## Set up
+in config/neovim.vim set your python paths:
+'''
+" python executables 
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+'''
 
 ## Features
 
