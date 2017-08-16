@@ -1,8 +1,21 @@
-# Rafael Bodill's Neo/vim Config
+# Rafael Bodill's Neo/vim Config - adjusted
 
 Lean mean Neo/vim machine, 30-45ms startup time.
 
 Best with Neovim or Vim 8 with +python3 extensions enabled.
+
+## Adjustments
+* [ ] set up terminal
+* [ ] (load neoterm)
+* [ ] load my vimwiki
+* [ ] fix the up-key in the command window
+* [ ] set wrap
+* [ ] set leader to ,
+* [ ] set completion to ctrl-space
+* [ ] tab and window switch ...
+* [ ] go back and go to definition
+* [ ] !chanage the key bindings in the wiki page
+
 
 ## Features
 
