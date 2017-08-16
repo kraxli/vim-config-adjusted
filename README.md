@@ -23,6 +23,12 @@ in ```config/neovim.vim``` set your python paths:
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 ```
+Set you leader key in ```config/init.vim```
+```
+let g:mapleader=','
+let g:maplocalleader=';'
+```
+
 
 ## Features
 
