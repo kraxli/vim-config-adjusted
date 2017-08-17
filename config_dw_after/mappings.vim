@@ -121,12 +121,18 @@ nmap <silent> <c-Right> :tabnext<cr>
 " very useful for figuring out what to change as far as syntax highlighting goes.
 "nmap <silent> ,qq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+" http://www.google.com asdf asd fsdfadsfdsf
 
 " Browse old files
 noremap <leader>bof :browse oldfiles
 
 " open files, url, ... (default map is F6)
-nnoremap <leader>o yiW:Open <cr>
+if has('nvim')
+  nnoremap <leader>o yiW:visual <cr>
+else
+  nnoremap <leader>o yiW:Open <cr>
+endif
+" nnoremap <leader>o :OpenBrowser <cr>
 
 " remap gF
 nnoremap <leader>gf gF

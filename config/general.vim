@@ -82,7 +82,7 @@ endif
 " }}}
 " Tabs and Indents {{{
 " ----------------
-set textwidth=80    " Text width maximum chars before wrapping
+set textwidth=125    " Text width maximum chars before wrapping
 set noexpandtab     " Don't expand tabs to spaces.
 set tabstop=2       " The number of spaces a tab is
 set softtabstop=2   " While performing editing operations
@@ -124,11 +124,11 @@ set cpoptions-=m    " showmatch will wait 0.5s or until a char is typed
 " }}}
 " Behavior {{{
 " --------
-set nowrap                      " No wrap by default
+" set nowrap                      " No wrap by default
 set linebreak                   " Break long lines at 'breakat'
 set breakat=\ \	;:,!?           " Long lines break chars
 set nostartofline               " Cursor in same column for few commands
-set whichwrap+=h,l,<,>,[,],~    " Move to following line on certain keys
+" set whichwrap+=h,l,<,>,[,],~    " Move to following line on certain keys
 set splitbelow splitright       " Splits open bottom right
 set switchbuf=useopen,usetab    " Jump to the first open window in any tab
 set switchbuf+=vsplit           " Switch buffer behavior to vsplit

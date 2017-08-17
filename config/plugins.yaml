@@ -15,7 +15,6 @@
 - repo: christoomey/vim-tmux-navigator
 - repo: junegunn/vim-peekaboo
 - repo: tpope/vim-sleuth
-- repo: kassio/neoterm # dway: vim-config-adjusted
 - repo: itchyny/vim-gitbranch
 - repo: itchyny/vim-parenmatch
 - repo: itchyny/vim-cursorword
@@ -23,6 +22,15 @@
     autocmd MyAutoCmd FileType denite,qf,nerdtree let b:cursorword=0
     autocmd MyAutoCmd InsertEnter * let b:cursorword=0
     autocmd MyAutoCmd InsertLeave * let b:cursorword=1
+
+# dway: vim-config-adjusted
+- repo: kraxli/vimwiki-task
+- repo: vim-pandoc/vim-pandoc
+- repo: vim-pandoc/vim-pandoc-syntax
+- repo: vim-pandoc/vim-pandoc-after
+# - repo: vim-pandoc/....
+# - repo: kassio/neoterm # dway: vim-config-adjusted
+
 
 # Lazy Loading
 # ==========================================
@@ -278,13 +286,6 @@
   #   \     'syntax': 'markdown',
   #   \     'ext': '.md' }
   #   \ ]
-
-# dway: vim-config-adjusted
-- repo: kraxli/vimwiki-task
-- repo: vim-pandoc/vim-pandoc
-- repo: vim-pandoc/vim-pandoc-syntax
-- repo: vim-pandoc/vim-pandoc-after
-# - repo: vim-pandoc/....
 
 # ==========================================
 # Completion
