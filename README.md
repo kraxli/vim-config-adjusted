@@ -1,8 +1,24 @@
-# Rafael Bodill's Neo/vim Config
+# Rafael Bodill's Neo/vim Config (adjusted by me)
 
-Lean mean Neo/vim machine, 30-45ms startup time.
+Lean mean Neo/vim machine, 30-45ms startup time (I didn't measure after the adjustments).
 
 Best with Neovim or Vim 8 with +python3 extensions enabled.
+
+## Adjustments
+
+- [ ] additonal plugins:
+  - pandoc
+  - pandoc-after
+  - pandoc-syntax
+  - vimwiki-tasks
+  - vimfiler (replace nerdtree)
+  - deoplete-d
+  - dutyl
+  - bufkill
+  - (neoterm)
+- [ ] put python_hosts into init.vim
+- [ ] additional and adjusted mappings
+- [ ] adjusted settings
 
 ## Features
 
