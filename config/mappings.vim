@@ -10,16 +10,16 @@ nnoremap  [Window]   <Nop>
 nmap      s [Window]
 
 " Fix keybind name for Ctrl+Spacebar
-map <Nul> <C-Space>
-map! <Nul> <C-Space>
+" map <Nul> <C-Space>
+" map! <Nul> <C-Space>
 
-" Disable arrow movement, resize splits instead.
-if get(g:, 'elite_mode')
-	nnoremap <Up>    :resize +2<CR>
-	nnoremap <Down>  :resize -2<CR>
-	nnoremap <Left>  :vertical resize +2<CR>
-	nnoremap <Right> :vertical resize -2<CR>
-endif
+" " Disable arrow movement, resize splits instead.
+" if get(g:, 'elite_mode')
+" 	nnoremap <Up>    :resize +2<CR>
+" 	nnoremap <Down>  :resize -2<CR>
+" 	nnoremap <Left>  :vertical resize +2<CR>
+" 	nnoremap <Right> :vertical resize -2<CR>
+" endif
 
 " Double leader key for toggling visual-line mode
 nmap <silent> <Leader><Leader> V
@@ -116,8 +116,9 @@ cnoremap <C-d> <C-w>
 " Switch history search pairs, matching my bash shell
 cnoremap <C-p>  <Up>
 cnoremap <C-n>  <Down>
-cnoremap <Up>   <C-p>
-cnoremap <Down> <C-n>
+" dway: vim-config-adjusted (commented out)
+" cnoremap <Up>   <C-p>
+" cnoremap <Down> <C-n>
 
 " }}}
 " File operations {{{

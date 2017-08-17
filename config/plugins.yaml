@@ -5,15 +5,17 @@
 # Startup
 # -------
 - repo: Shougo/dein.vim
-- repo: Shougo/unite.vim
-- repo: Shougo/vimfiler.vim
-- repo: qpkorr/vim-bufkill
+- repo: Shougo/unite.vim # dway vim-config-adjusted
+- repo: Shougo/vimfiler.vim # dway vim-config-adjusted
+- repo: qpkorr/vim-bufkill # dway vim-config-adjusted
+- repo: idanarye/vim-dutyl # dway: vim-config-adjusted
 - repo: rafi/awesome-vim-colorschemes
 - repo: rafi/vim-badge
 - repo: thinca/vim-localrc
 - repo: christoomey/vim-tmux-navigator
 - repo: junegunn/vim-peekaboo
 - repo: tpope/vim-sleuth
+- repo: kassio/neoterm # dway: vim-config-adjusted
 - repo: itchyny/vim-gitbranch
 - repo: itchyny/vim-parenmatch
 - repo: itchyny/vim-cursorword
@@ -129,12 +131,13 @@
 # ==========================================
 # Commands
 # --------
-- repo: scrooloose/nerdtree
-  depends: nerdtree-git-plugin
-  on_map: { n: <Plug> }
-  hook_post_source: source $VIMPATH/config/plugins/nerdtree.vim
+## dway vim-config-adjusted (commented out)
+# - repo: scrooloose/nerdtree
+#   depends: nerdtree-git-plugin
+#   on_map: { n: <Plug> }
+#   hook_post_source: source $VIMPATH/config/plugins/nerdtree.vim
 
-- { repo: Xuyuanp/nerdtree-git-plugin, on_source: nerdtree }
+# - { repo: Xuyuanp/nerdtree-git-plugin, on_source: nerdtree }
 - { repo: tpope/vim-commentary, on_map: <Plug>Commentary }
 - { repo: t9md/vim-choosewin, on_map: { n: <Plug> }}
 - { repo: Shougo/vinarise.vim, on_cmd: Vinarise }
@@ -357,6 +360,13 @@
     let g:jedi#use_splits_not_buffers = 'right'
 
 # Only NeoVim ------------------------------
+
+# dway: vim-config-adjusted
+- repo: landaire/deoplete-d
+  if: has('nvim')
+  on_ft: d
+  on_i: 1
+
 - repo: zchee/deoplete-go
   if: has('nvim') && empty($VIM_MINIMAL)
   on_ft: go

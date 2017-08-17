@@ -17,7 +17,7 @@ function! dway#misc#ToogleColorScheme(scheme1, scheme2)
    " let currentScheme = colorscheme
    " echo currentScheme 
    if a:scheme1 == ''
-    let scheme1='mustang'
+    let scheme1='gruvbox'
    else 
      let scheme1=a:scheme1
    end
@@ -37,5 +37,18 @@ function! dway#misc#ToogleColorScheme(scheme1, scheme2)
    syntax on
 
 endfunction
- 
-"vim:foldmethod="marker"
+
+function! dway#misc#OpenExplorer(path)
+  let path = expand(a:path)
+
+  if has('unix')
+    execute "!nautilus ".path
+  else
+    " ???
+    execute "!explorer ".path
+  endif
+
+endfunction
+
+
+" vim: foldmethod="marker"

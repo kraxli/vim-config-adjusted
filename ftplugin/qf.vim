@@ -28,7 +28,12 @@ nnoremap <buffer> st   <C-w><CR><C-w>T
 nnoremap <silent><buffer> p  :call <SID>preview_file()<CR>
 nnoremap <silent><buffer> q  :pclose!<CR>:quit<CR>
 nnoremap <buffer> o    <CR><C-w>p
-nnoremap <buffer> o    <CR><C-w>p
+
+" kraxli: vim-config-adjusted
+nnoremap <buffer> <c-j> :lnext
+nnoremap <buffer> <c-k> :lprevious
+nnoremap <buffer> <c-j> :cnext
+nnoremap <buffer> <c-k> :cprevious
 
 let b:qf_isLoc = ! empty(getloclist(0))
 if b:qf_isLoc == 1
