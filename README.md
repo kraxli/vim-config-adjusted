@@ -409,8 +409,7 @@ Key   | Mode | Action
 ----- |:----:| ------------------
 `,` | _All_ | **Leader**
 `;` | _All_ | **Local Leader**
-~~Arrows~~ | ~~Normal~~ | ~~Resize splits (* Enable `g:elite_mode` in
-`.vault.vim`)~~
+~~Arrows~~ | ~~Normal~~ | ~~Resize splits (* Enable `g:elite_mode` in `.vault.vim`)~~
 `Backspace` | Normal | Match bracket (%)
 `K` | Normal | Open Zeal or Dash on some file types (except Python+Vim script)
 `Y` | Normal | Yank to the end of line (y$)

@@ -269,13 +269,22 @@
     \   { 'diary_header': 'Diary',
     \     'diary_link_fmt': '%Y-%m/%d',
     \     'auto_toc': 1,
-    \     'path': '~/docs/wiki/',
-    \     'syntax': 'markdown',
-    \     'ext': '.md' },
+    \     'path': '~/Dropbox/VimWiki/',
+    \     'path_html': '~/Dropbox/VimWiki/vimwiki_html/',
+    \     'template_path': '~/Dropbox/VimWiki/templates',
+    \     'template_default': 'default',
+    \     'template_ext': '.html'},
     \   { 'path': '~/docs/blog/',
     \     'syntax': 'markdown',
     \     'ext': '.md' }
     \ ]
+
+# dway: vim-config-adjusted
+- repo: kraxli/vimwiki-task
+- repo: vim-pandoc/vim-pandoc
+- repo: vim-pandoc/vim-pandoc-syntax
+- repo: vim-pandoc/vim-pandoc-after
+# - repo: vim-pandoc/....
 
 # ==========================================
 # Completion

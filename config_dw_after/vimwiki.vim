@@ -14,6 +14,9 @@ let g:vimwiki_list = [{'path': '~/Dropbox/VimWiki/',
                       " \ 'path_html': '~/Dropbox/VimWiki/vimwiki_html/'}]
 
 " 'expr' " 'list'
+
+map <Leader>ww <Plug>VimwikiIndex
+
 let g:vimwiki_folding = 'custom'
 
 "
