@@ -1,0 +1,3 @@
+config/vimrc:let s:plugins_path = expand('$VIMPATH/config/plugins.yaml')
+config/vimrc:   call dein#begin(s:path, [expand('<sfile>'), s:plugins_path])
+config/vimrc:           call s:dein_load_yaml(s:plugins_path)

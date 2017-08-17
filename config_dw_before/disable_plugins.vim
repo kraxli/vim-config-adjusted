@@ -1,0 +1,3 @@
+
+dein#disable('nerdtree')
+

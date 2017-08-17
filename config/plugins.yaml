@@ -5,6 +5,9 @@
 # Startup
 # -------
 - repo: Shougo/dein.vim
+- repo: Shougo/unite.vim
+- repo: Shougo/vimfiler.vim
+- repo: qpkorr/vim-bufkill
 - repo: rafi/awesome-vim-colorschemes
 - repo: rafi/vim-badge
 - repo: thinca/vim-localrc

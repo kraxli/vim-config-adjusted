@@ -1,34 +1,8 @@
-# Rafael Bodill's Neo/vim Config - adjusted
+# Rafael Bodill's Neo/vim Config
 
 Lean mean Neo/vim machine, 30-45ms startup time.
 
 Best with Neovim or Vim 8 with +python3 extensions enabled.
-
-## Adjustments
-* [ ] set up terminal
-* [ ] (load neoterm)
-* [ ] load my vimwiki
-* [ ] fix the up-key in the command window
-* [ ] set wrap
-* [ ] set leader to ,
-* [ ] set completion to ctrl-space
-* [ ] tab and window switch ...
-* [ ] go back and go to definition
-* [ ] !chanage the key bindings in the wiki page
-
-## Set up
-in ```config/neovim.vim``` set your python paths:
-```
-" python executables 
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
-```
-Set you leader key in ```config/init.vim```
-```
-let g:mapleader=','
-let g:maplocalleader=';'
-```
-
 
 ## Features
 
