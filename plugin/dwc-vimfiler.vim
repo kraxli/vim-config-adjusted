@@ -92,8 +92,8 @@ endf
 " dway adjustements
 command! -nargs=? Ex :VimFilerExplorer <args> -winminwidth=25 -winwidth=30
 command! Eb :VimFilerBufferDir -explorer -winminwidth=25 -winwidth=30 
-command! -nargs=?  -bar -complete=customlist,vimfiler#complete E :call VimFilerDway(<q-args>)
-" command! Etab :tabnew|Explore %:p:h
+" command! -nargs=?  -bar -complete=customlist,vimfiler#complete E :call VimFilerDway(<q-args>)
+command! -nargs=?  -bar -complete=file E :call VimFilerDway(<q-args>)
 " command! Ev :25Vex %:p:h " |vertical resize 25   
 
 function! VimFilerDway(...)    

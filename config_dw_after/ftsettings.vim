@@ -2,6 +2,7 @@
 augroup filetypeSettings
    autocmd!
    autocmd BufRead,BufNewFile,BufEnter filetype vim setlocal foldmethod=marker
+	 autocmd  BufRead,BufNewFile,BufEnter *.md setlocal filetype=markdown
 
 augroup END
 

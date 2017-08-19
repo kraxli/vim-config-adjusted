@@ -16,6 +16,7 @@ Best with Neovim or Vim 8 with +python3 extensions enabled.
   - dutyl
   - bufkill
   - (neoterm)
+  - [ ] taskworrier
 - [ ] put python_hosts into init.vim
 - [ ] additional and adjusted mappings
 - [ ] adjusted settings

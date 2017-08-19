@@ -3,6 +3,10 @@ let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 
 " set runtimepath+=~/Dropbox/VimWiki
+" TODO:
+" let g:dwc_dcd_bin_dir
+      " let g:deoplete#sources#d#dcd_client_binary = g:dwc_dcd_bin_dir.'dcd-client'
+      " call dutyl#register#tool('dcd-client', g:dwc_dcd_bin_dir.'dcd-client')
 
 " {{{ === Path === 
 
@@ -29,4 +33,4 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/load_dw.vim'
 execute 'source '."~/Dropbox/ActiveHome/.settings/quickfiles.vim"
 
 
-"vim:foldmethod=marker
+" vim: foldmethod=marker

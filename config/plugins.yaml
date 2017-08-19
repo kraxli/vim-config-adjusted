@@ -9,6 +9,8 @@
 - repo: Shougo/vimfiler.vim # dway vim-config-adjusted
 - repo: qpkorr/vim-bufkill # dway vim-config-adjusted
 - repo: idanarye/vim-dutyl # dway: vim-config-adjusted
+- repo: xolox/vim-shell # dway: vim-config-adjusted
+- repo: xolox/vim-misc  # dway: vim-config-adjusted
 - repo: rafi/awesome-vim-colorschemes
 - repo: rafi/vim-badge
 - repo: thinca/vim-localrc
@@ -286,6 +288,10 @@
   #   \     'syntax': 'markdown',
   #   \     'ext': '.md' }
   #   \ ]
+
+# dway: vim-config-adjusted
+# - repo: xolox/vim-notes
+#   on_cmd: Note
 
 # ==========================================
 # Completion

@@ -126,12 +126,8 @@ nmap <silent> <c-Right> :tabnext<cr>
 " Browse old files
 noremap <leader>bof :browse oldfiles
 
-" open files, url, ... (default map is F6)
-if has('nvim')
-  nnoremap <leader>o yiW:visual <cr>
-else
-  nnoremap <leader>o yiW:Open <cr>
-endif
+" open files, url, ... (default map in vim-shell is F6)
+nnoremap <leader>o yiW:Open <cr>
 " nnoremap <leader>o :OpenBrowser <cr>
 
 " remap gF
@@ -160,8 +156,8 @@ vnoremap <leader>pt :call dway#table#table()<cr>
 vnoremap <leader>ptt :call dway#table#table()<cr> gv  :!pandoc -f markdown -t rst<cr>
 inoremap <silent> <Bar>   <Bar><Esc>:call dway#table#align()<CR>a
 
-" open system file explorer
-nnoremap <F6> :call dway#misc#OpenExplorer('%:p:h')
+" open system file explorer (not need: handeled by vim-shell)
+" nnoremap <F6> :call dway#misc#OpenExplorer('%:p:h')
 
 " }}} key mappings
 

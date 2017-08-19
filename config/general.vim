@@ -170,7 +170,7 @@ set cmdwinheight=5      " Command-line lines
 set noequalalways       " Don't resize windows on split or close
 set laststatus=2        " Always show a status line
 set colorcolumn=80      " Highlight the 80th character limit
-set display=lastline
+" set display=lastline
 
 " Do not display completion messages
 " Patch: https://groups.google.com/forum/#!topic/vim_dev/WeBBjkXE8H8
@@ -228,12 +228,15 @@ function! FoldText()
 
 	let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
 	let foldSize = 1 + v:foldend - v:foldstart
-	let foldSizeStr = ' ' . foldSize . ' lines '
-	let foldLevelStr = repeat('+--', v:foldlevel)
+	let foldSizeStr = '[' . foldSize . ' lines]'
+	" let foldSizeStr = ' ' . foldSize . ' lines '
+	let foldLevelStr =  repeat('+--', v:foldlevel)
 	let lineCount = line('$')
 	let foldPercentage = printf('[%.1f', (foldSize*1.0)/lineCount*100) . '%] '
 	let expansionString = repeat('.', w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
-	return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
+	" dway: vim-config-adjusted
+	" return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
+	return line . "   " . foldSizeStr . foldPercentage . foldLevelStr
 endfunction
 
 " }}}

@@ -2,39 +2,30 @@
 "  d-lang / d-utyls / deoplete-d "
 """"""""""""""""""""""""""""""""""""""""""""
 
-if g:dlang_layer
-   let g:deoplete#sources#d#dub_binary = '/usr/bin/dub'
-   let g:deoplete#sources#d#dcd_server_autostart = 1
- 
-   if exists('g:dwc_dcd_bin_dir')
-      let g:deoplete#sources#d#dcd_server_binary = g:dwc_dcd_bin_dir.'dcd-server'
-      let g:deoplete#sources#d#dcd_client_binary = g:dwc_dcd_bin_dir.'dcd-client'
-      call dutyl#register#tool('dcd-client', g:dwc_dcd_bin_dir.'dcd-client')
-      call dutyl#register#tool('dcd-server', g:dwc_dcd_bin_dir.'dcd-server')
-   endif
+" == path settings ==
+let g:dwc_dcd_bin_dir='/home/dave/.dutils/DCD/bin/'
+let g:deoplete#sources#d#dub_binary = '/usr/bin/dub'
+" let $PATH=+'~/.dutils/D-Scanner/bin;~/.dutils/dfmt/bin'
 
-endif
-
-
-""""""""""""""""""""""""""""""""""
-"  dlang / d-util / deopleted-d  "
-""""""""""""""""""""""""""""""""""
-" let g:deoplete#sources#d#dcd_server_autostart = 1
-" let g:deoplete#sources#d#dcd_client_binary = '/home/dave/.dutils/DCD/bin/dcd-client'
-" let g:deoplete#sources#d#dcd_server_binary = '/home/dave/.dutils/DCD/bin/dcd-server'
-
-" Dutyl will assume that tools are in the system's PATH. If they are not, you'll have to supply the path for them using dutyl#register#tool like so:
-" call dutyl#register#tool('dcd-client','/usr/bin/dcd-client')
-" call dutyl#register#tool('dcd-server','/usr/bin/dcd-server')
-
-" or make symbolic link from the .dcd/DCD/bin directoires to the usr/bin dir
-
+" == further settings ==
+let g:deoplete#sources#d#dcd_server_autostart = 1
 let g:dutyl_neverAddClosingParen=1
 " let g:dutyl_tagsFileName='newnamefortagsfile'
 
+" == set path to import folders == 
 " the following path seems to work:
 " let g:dutyl_stdImportPaths=['/usr/include/dmd', '/usr/include/dmd/phobos']
-let g:dutyl_stdImportPaths=['/usr/include/dmd', '/usr/include/dmd/phobos', '/usr/include/dmd/druntime/import', '/home/dave/.dub/packages/ggplotd-1.1.1/ggplotd/source', "/home/dave/.dub/packages/dstats-1.0.3/source", "/home/dave/.dub/packages/vibe-d-0.7.25/source/", "~/.dub/packages/consoled-1.0.4/source/", '/home/dave/.dub/packages/mir-0.22.0/mir/source', '/home/dave/.dub/packages/mir-0.22.0/mir/source/mir', '/home/dave/Dropbox/A_Coding/D/libdsmisc/source']
+let g:dutyl_stdImportPaths=['/usr/include/dmd', '/usr/include/dmd/phobos', '/usr/include/phobos', '/usr/include/dmd/druntime/import', '/home/dave/.dub/packages/ggplotd-1.1.1/ggplotd/source', "/home/dave/.dub/packages/dstats-1.0.3/source", "/home/dave/.dub/packages/vibe-d-0.7.25/source/", "~/.dub/packages/consoled-1.0.4/source/", '/home/dave/.dub/packages/mir-0.22.0/mir/source', '/home/dave/.dub/packages/mir-0.22.0/mir/source/mir', '/home/dave/Dropbox/A_Coding/D/libdsmisc/source']
+
+
+let g:deoplete#sources#d#dcd_server_binary = g:dwc_dcd_bin_dir.'dcd-server'
+let g:deoplete#sources#d#dcd_client_binary = g:dwc_dcd_bin_dir.'dcd-client'
+call dutyl#register#tool('dcd-client', g:dwc_dcd_bin_dir.'dcd-client')
+call dutyl#register#tool('dcd-server', g:dwc_dcd_bin_dir.'dcd-server')
+" or make symbolic link from the .dcd/DCD/bin directoires to the usr/bin dir
+
+call deoplete#custom#set('d',          'mark', '⌁')
+call deoplete#custom#set('d',          'rank', 640)
 
 
 " STOP a client / server:
@@ -48,8 +39,16 @@ let g:dutyl_stdImportPaths=['/usr/include/dmd', '/usr/include/dmd/phobos', '/usr
 
 " --- dfmt ---
 "  for options see: https://github.com/Hackerpilot/dfmt
-"  example:   dfmt --inplace --space_after_cast=false --max_line_length=80 \
-"             --soft_max_line_length=70 --brace_style=otbs file.d
+command! -nargs=* Dfmt :!dfmt <args>
+command! Dformat :!dfmt --inplace --space_after_cast=false --max_line_length=120
+	\ --soft_max_line_length=110 --brace_style=otbs %:p<cr>
+
+" == makers == 
+let g:neomake_d_dscanner_maker = {
+    \ 'args': ['--verbose'],
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
+let g:neomake_d_enabled_makers = ['dscanner']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""
