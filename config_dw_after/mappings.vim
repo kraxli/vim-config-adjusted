@@ -24,10 +24,10 @@ if has('gui')
 endif
 
 " jump to quickfix or location list/window
-nnoremap <space> :copen<cr>
+nnoremap <space>c :copen<cr>
 " nnoremap <leader><space> :cclose<cr>
 
-map <space>l :lopen<cr>
+nnoremap <space>l :lopen<cr>
 
  " open and colose (new) tab
 map <leader>nt :tabnew<cr>

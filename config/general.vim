@@ -82,7 +82,7 @@ endif
 " }}}
 " Tabs and Indents {{{
 " ----------------
-set textwidth=125    " Text width maximum chars before wrapping
+set textwidth=125    " Text width maximum chars before wrapping)
 set noexpandtab     " Don't expand tabs to spaces.
 set tabstop=2       " The number of spaces a tab is
 set softtabstop=2   " While performing editing operations
@@ -128,7 +128,7 @@ set cpoptions-=m    " showmatch will wait 0.5s or until a char is typed
 set linebreak                   " Break long lines at 'breakat'
 set breakat=\ \	;:,!?           " Long lines break chars
 set nostartofline               " Cursor in same column for few commands
-" set whichwrap+=h,l,<,>,[,],~    " Move to following line on certain keys
+set whichwrap+=h,l,<,>,[,],~    " Move to following line on certain keys
 set splitbelow splitright       " Splits open bottom right
 set switchbuf=useopen,usetab    " Jump to the first open window in any tab
 set switchbuf+=vsplit           " Switch buffer behavior to vsplit
@@ -169,7 +169,7 @@ set cmdheight=2         " Height of the command line
 set cmdwinheight=5      " Command-line lines
 set noequalalways       " Don't resize windows on split or close
 set laststatus=2        " Always show a status line
-set colorcolumn=80      " Highlight the 80th character limit
+set colorcolumn=125      " Highlight the 80th character limit
 " set display=lastline
 
 " Do not display completion messages
