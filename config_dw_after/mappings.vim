@@ -77,9 +77,9 @@ noremap <F3> :set hlsearch! hlsearch?<CR>:echo<CR>
 
 " }}} search highligh
 
-" simplify indenting (redundant due to vim-config)
-" noremap > >>$
-" noremap < <<$
+" simplify indenting (redundant due to vim-config) / also but differently set in config/mappings.vim
+nnoremap > >>$
+nnoremap < <<$
 
 "" Make shift-insert work like in Xterm
 map <S-Insert> <MiddleMouse>
@@ -158,6 +158,8 @@ inoremap <silent> <Bar>   <Bar><Esc>:call dway#table#align()<CR>a
 
 " open system file explorer (not need: handeled by vim-shell)
 " nnoremap <F6> :call dway#misc#OpenExplorer('%:p:h')
+
+
 
 " }}} key mappings
 

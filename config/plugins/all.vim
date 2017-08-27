@@ -115,7 +115,14 @@ if dein#tap('accelerated-jk')
 	nmap <silent>k <Plug>(accelerated_jk_gk)
 endif
 
-if dein#tap('vim-indent-guides')
+" if dein#tap('vim-indent-guides')
+" 	nmap <silent><Leader>ti :<C-u>IndentGuidesToggle<CR>
+" endif
+
+" kraxli: vim-config-adjusted
+if dein#tap('indentLine')
+	nmap <silent><Leader>ti :<C-u>IndentLinesToggle<CR>
+elseif dein#tap('vim-indent-guides')
 	nmap <silent><Leader>ti :<C-u>IndentGuidesToggle<CR>
 endif
 

@@ -20,6 +20,7 @@ setlocal nolinebreak
 setlocal nolist
 setlocal cursorline
 setlocal nobuflisted
+" setlocal wrapmargin=9999
 
 wincmd J
 
@@ -28,20 +29,21 @@ nnoremap <buffer> sv   <C-w><CR>
 nnoremap <buffer> sg   <C-w><Enter><C-w>L
 nnoremap <buffer> st   <C-w><CR><C-w>T
 nnoremap <silent><buffer> p  :call <SID>preview_file()<CR>
-nnoremap <silent><buffer> q  :pclose!<CR>:quit<CR>
+" nnoremap <silent><buffer> q  :pclose!<CR>:quit<CR>
 nnoremap <buffer> o    <CR><C-w>p
 
+nnoremap <space> :copen<cr>
 
 let b:qf_isLoc = ! empty(getloclist(0))
 if b:qf_isLoc == 1
-	nnoremap <buffer> Q <CR>:lclose<CR>
+	nnoremap <buffer> 00 <CR>:lclose<CR>
 
 	" kraxli: vim-config-adjusted
 	nnoremap <buffer> <c-j> :lnext<cr>
 	nnoremap <buffer> <c-k> :lprevious<cr>
-	nnoremap <space> :copen<cr>
+	nnoremap <space> :lopen<cr>
 else
-	nnoremap <buffer> Q <CR>:cclose<CR>
+	nnoremap <buffer> 00 <CR>:cclose<CR>
 
 	" kraxli: vim-config-adjusted
 	nnoremap <buffer> <c-j> :cnext<cr>

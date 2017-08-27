@@ -43,13 +43,6 @@ command! -nargs=* Dfmt :!dfmt <args>
 command! Dformat :!dfmt --inplace --space_after_cast=false --max_line_length=120
 	\ --soft_max_line_length=110 --brace_style=otbs %:p<cr>
 
-" == makers == 
-let g:neomake_d_dscanner_maker = {
-    \ 'args': ['--verbose'],
-    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-    \ }
-let g:neomake_d_enabled_makers = ['dscanner']
-
 
 """""""""""""""""""""""""""""""""""""""""""""""
 "  vim-dlang-extra-highlight (extends vim.d)  "

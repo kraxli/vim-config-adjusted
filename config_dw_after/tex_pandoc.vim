@@ -29,7 +29,9 @@ augroup TexPandoc
    autocmd BufNewFile,BufRead *.md,*.pdc :command! Pandoc2LatexA4 :Pandoc latex -s -N --toc --latex-engine=xelatex --variable=geometry:a4paper --filter pandoc-eqnos --filter pandoc-tablenos --filter pandoc-fignos
    autocmd BufNewFile,BufRead *.md,*.pdc :command! Pandoc2Latex :Pandoc latex -s -N --toc --latex-engine=xelatex --filter pandoc-eqnos --filter pandoc-tablenos --filter pandoc-fignos
 
-   autocmd BufNewFile,BufRead *.md,*.pdc :command! PandocEx :tabnew U:\_Software\Pandoc\pandoc_example.pdc
+
    autocmd BufNewFile,BufRead *.md,*.pdc set tabstop=2 softtabstop=2 shiftwidth=2 expandtab  autoindent
  
 augroup END
+
+command! PandocEx :tabnew /home/dave/Dropbox/Work_Content/SCOR/VIM/pandoc_example.pdc
