@@ -50,10 +50,6 @@ function! REPLSend(lines)
 endfunction
 
 
-" function! REPLSendIPy()
-"    call jobsend(g:last_terminal_job_id, add(["\%paste"], ''))
-" endfunction
-
 command! REPLSendLine call REPLSend([getline('.')])
  " The above would send the current line, but you can extend it to send visual selection.
 command! -range=% REPLSendFile silent call REPLSend(getline(<line1>,<line2>))
@@ -67,7 +63,6 @@ vnoremap <silent> <f5>  :REPLSendSelection<cr>
 nnoremap <silent> f<f5> :REPLSendFile<cr>
 
 
-" TODO: same as bellow for whole file but jump back to position
 augroup terminalPython
    au!
    autocmd Filetype python nnoremap <silent> <f5> "+yy :call REPLSend(["\%paste"])<cr>
@@ -75,8 +70,6 @@ augroup terminalPython
    autocmd Filetype python nnoremap <silent> f<f5> :%y+<cr> :call REPLSend(["\%paste"])<cr>
 
 augroup END
-" TODO: execute file in ipython terminal
-" TODO: stay in file after above execution
 
 
 endif " end has('nvim')
