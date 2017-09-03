@@ -70,6 +70,7 @@ call deoplete#custom#set('omni',          'mark', '⌾')
 call deoplete#custom#set('ternjs',        'mark', '⌁')
 call deoplete#custom#set('jedi',          'mark', '⌁')
 call deoplete#custom#set('vim',           'mark', '⌁')
+call deoplete#custom#set('ultisnips',     'mark', 'ϛ') " dway: vim-config-adjusted
 call deoplete#custom#set('neosnippet',    'mark', '⌘')
 call deoplete#custom#set('tag',           'mark', '⌦')
 call deoplete#custom#set('around',        'mark', '↻')
@@ -82,6 +83,7 @@ call deoplete#custom#set('ternjs',        'rank', 620)
 call deoplete#custom#set('jedi',          'rank', 610)
 call deoplete#custom#set('omni',          'rank', 600)
 call deoplete#custom#set('neosnippet',    'rank', 510)
+call deoplete#custom#set('ultisnips',     'rank', 490)  " dway: vim-config-adjusted
 call deoplete#custom#set('member',        'rank', 500)
 call deoplete#custom#set('file_include',  'rank', 420)
 call deoplete#custom#set('file',          'rank', 410)
@@ -99,6 +101,9 @@ call deoplete#custom#set('syntax',        'rank', 200)
 " Default sorters: ['sorter_rank']
 " Default matchers: ['matcher_length', 'matcher_fuzzy']
 
+" dway:
+call deoplete#custom#set('ultisnips', 'min_pattern_length', 1)
+
 call deoplete#custom#set('_', 'converters', [
 	\ 'converter_remove_paren',
 	\ 'converter_remove_overlap',
@@ -106,6 +111,8 @@ call deoplete#custom#set('_', 'converters', [
 	\ 'converter_truncate_menu',
 	\ 'converter_auto_delimiter',
 	\ ])
+
+
 
 " }}}
 " Key-mappings and Events " {{{
@@ -129,6 +136,30 @@ inoremap <expr><C-g> deoplete#undo_completion()
 " Redraw candidates
 inoremap <expr><C-l> deoplete#refresh()
 
+" if dein#tap('ultisnips')
+" 	" <CR>: If popup menu visible, expand snippet or close popup with selection,
+" 	"       Otherwise, check if within empty pair and use delimitMate.
+" 	inoremap <silent><expr><CR> pumvisible() ?
+" 		\ (neosnippet#expandable() ? neosnippet#mappings#expand_impl() : deoplete#close_popup())
+" 			\ : (delimitMate#WithinEmptyPair() ? "\<C-R>=delimitMate#ExpandReturn()\<CR>" : "\<CR>")
+" 
+" 	" <Tab> completion:
+" 	" 1. If popup menu is visible, select and insert next item
+" 	" 2. Otherwise, if within a snippet, jump to next input
+" 	" 3. Otherwise, if preceding chars are whitespace, insert tab char
+" 	" 4. Otherwise, start manual autocomplete
+" 	imap <silent><expr><Tab> pumvisible() ? "\<Down>"
+" 		\ : (neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)"
+" 		\ : (<SID>is_whitespace() ? "\<Tab>"
+" 		\ : deoplete#manual_complete()))
+" 
+" 	smap <silent><expr><Tab> pumvisible() ? "\<Down>"
+" 		\ : (neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)"
+" 		\ : (<SID>is_whitespace() ? "\<Tab>"
+" 		\ : deoplete#manual_complete()))
+" endif
+
+
 " <CR>: If popup menu visible, expand snippet or close popup with selection,
 "       Otherwise, check if within empty pair and use delimitMate.
 inoremap <silent><expr><CR> pumvisible() ?
@@ -150,6 +181,7 @@ smap <silent><expr><Tab> pumvisible() ? "\<Down>"
 	\ : (<SID>is_whitespace() ? "\<Tab>"
 	\ : deoplete#manual_complete()))
 
+
 inoremap <expr><S-Tab>  pumvisible() ? "\<Up>" : "\<C-h>"
 
 function! s:is_whitespace() "{{{
@@ -158,4 +190,4 @@ function! s:is_whitespace() "{{{
 endfunction "}}}
 " }}}
 
-" vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
+" vim: set foldmethod=marker ts=2 sw=2 tw=80 noet filetype=vim :

@@ -20,7 +20,9 @@ if has('nvim')
    " nnoremap <A-k> <C-w>k
    " nnoremap <A-l> <C-w>l
 
-   augroup TerminalGroup
+   augroup Terminal
+      au!
+      au TermOpen * let g:last_terminal_job_id = b:terminal_job_id
       au TermOpen * nmap <buffer> gf :call dway#term#term_gf()<cr>
       au TermOpen * nmap <buffer> <cr> :call dway#term#term_gf()<cr>
 
@@ -39,26 +41,40 @@ if has('nvim')
 
    " Neovim terminal buffers always have an associated job id, so one way is to use the job control API to send the text. Add this to your vimrc:
 
- augroup Terminal
-   au!
-   au TermOpen * let g:last_terminal_job_id = b:terminal_job_id
- augroup END
 
    " Which will save the the job id of the last created terminal into the g:last_terminal_job_id variable. Then you can create some functions/commands/mappings that will send the data using the jobsend function, here's an example:
 
- function! REPLSend(lines)
+function! REPLSend(lines)
+   " type(a:lines) == 3	  => list
    call jobsend(g:last_terminal_job_id, add(a:lines, ''))
- endfunction
+endfunction
 
- command! REPLSendLine call REPLSend([getline('.')])
+
+" function! REPLSendIPy()
+"    call jobsend(g:last_terminal_job_id, add(["\%paste"], ''))
+" endfunction
+
+command! REPLSendLine call REPLSend([getline('.')])
  " The above would send the current line, but you can extend it to send visual selection.
- "
 command! -range=% REPLSendFile silent call REPLSend(getline(<line1>,<line2>))
 command! -range REPLSendSelection silent call REPLSend(getline(<line1>,<line2>))
 
+command! -range REPLSendIPy silent call REPLSend(["\%paste"])
+
+
 nnoremap <silent> <f5> :REPLSendLine<cr>
+vnoremap <silent> <f5>  :REPLSendSelection<cr>
 nnoremap <silent> f<f5> :REPLSendFile<cr>
-vnoremap <silent> <f5> :REPLSendSelection<cr>
+
+
+" TODO: same as bellow for whole file but jump back to position
+augroup terminalPython
+   au!
+   autocmd Filetype python nnoremap <silent> <f5> "+yy :call REPLSend(["\%paste"])<cr>
+   autocmd Filetype python vnoremap <silent> <f5> "+y :call REPLSend(["\%paste"])<cr>
+   autocmd Filetype python nnoremap <silent> f<f5> :%y+<cr> :call REPLSend(["\%paste"])<cr>
+
+augroup END
 " TODO: execute file in ipython terminal
 " TODO: stay in file after above execution
 

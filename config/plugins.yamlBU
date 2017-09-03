@@ -8,6 +8,7 @@
 - repo: Shougo/unite.vim # dway vim-config-adjusted
 - repo: Shougo/vimfiler.vim # dway vim-config-adjusted
 - repo: qpkorr/vim-bufkill # dway vim-config-adjusted
+- repo: idanarye/vim-dutyl # dway: vim-config-adjusted
 - repo: xolox/vim-shell # dway: vim-config-adjusted
 - repo: xolox/vim-misc  # dway: vim-config-adjusted
 - repo: rafi/awesome-vim-colorschemes
@@ -32,10 +33,15 @@
 # - repo: vim-pandoc/....
 # - repo: kassio/neoterm # dway: vim-config-adjusted
 
-- repo: idanarye/vim-dutyl # dway: vim-config-adjusted
-  on_ft: d
-  hook_post_source: |
-    autocmd MyAutoCmd BufRead,BufEnter *.d DUDCDrestartServer
+- repo: hkupty/iron.nvim
+  on_map: {n: <Plug>}
+  hook_add: |
+    augroup ironmapping
+      autocmd!
+      autocmd Filetype python nmap <buffer> <localleader>t <Plug>(iron-send-motion)
+      autocmd Filetype python vmap <buffer> <localleader>t <Plug>(iron-send-motion)
+      autocmd Filetype python nmap <buffer> <localleader>p <Plug>(iron-repeat-cmd)
+    augroup END
 
 
 # Lazy Loading
@@ -206,9 +212,9 @@
 - repo: Yggdroot/indentLine
   hook_add: |
     let g:indentLine_char =  '▏'
-    set list lcs=tab:\|\
+    set list lcs=tab:\|\ 
 
-# set list lcs=tab:\▏\
+# set list lcs=tab:\▏\ 
 
 # - repo: nathanaelkane/vim-indent-guides
 #   on_cmd: [ IndentGuidesEnable, IndentGuidesDisable, IndentGuidesToggle ]
@@ -278,26 +284,16 @@
 
 - repo: vimwiki/vimwiki
   if: empty($VIM_MINIMAL)
-  on_map: { n: <Plug> }
-  on_cmd: [Vimwiki, VimwikiTabIndex]
+  on_cmd: Vimwiki
+  on_cmd: VimwikiTabIndex
   hook_add: |
     let g:vimwiki_use_calendar = 1
     let g:vimwiki_hl_headers = 1
     let g:vimwiki_hl_cb_checked = 1
     let g:vimwiki_autowriteall = 0
-  hook_post_source: |
-    nunmap <m-Left>
-    nunmap <m-Right>
-    nmap <silent> <m-Left> :wincmd h<CR>
-    nmap <silent> <m-Right> :wincmd l<CR>
+    unmap <m-left>
 
-# hook_source: |
-#   autocmd BufEnter,BufRead *.wiki nunmap <m-Left>
-#   autocmd BufEnter,BufRead *.wiki map <silent> <m-Left> :wincmd h<CR>
-#   autocmd BufEnter,BufRead *.wiki map <silent> <m-Right> :wincmd l<CR>
-
-
-
+		# nnoreamp <c-s-left> @<Plug>VimwikiTableMoveColumnLeft
   # hook_source: |
   #   let g:vimwiki_list = [
   #   \   { 'diary_header': 'Diary',
@@ -336,46 +332,17 @@
     let g:neocomplete#enable_at_startup = 1
   hook_source: source $VIMPATH/config/plugins/neocomplete.vim
 
-# dway: vim-config-adjusted (see also bellow for g:neosnippet#data_directory)
-- repo: honza/vim-snippets
-- repo: kiith-sa/DSnips
-
-- repo: SirVer/ultisnips
-  depends: [ vim-snippets, DSnips ]
-  hook_add: |
-    let g:UltiSnipsSnippetsDir=['UltiSnips',
-      \ $VARPATH. '/dein/repos/github.com' . '/honza/vim-snippets/UltiSnips',
-      \ $VARPATH . '/dein/repos/github.com' . "/kiith-sa/DSnips"]
-    let g:UltiSnipsUsePythonVersion = 3
-    let g:UltiSnipsEditSplit="vertical"
-
-#   on_event: InsertCharPre
-#   on_ft: snippets
-#   hook_add: |
-#     let g:UltiSnipsUsePythonVersion = 3
-#     let g:UltiSnipsListSnippets="<c-ll>"
-#     let g:UltiSnipsExpandTrigger="<c-ll>"
-#     let g:UltiSnipsJumpForwardTrigger="<c-o>"
-#     let g:UltiSnipsJumpBackwardTrigger="<c-s-o>"
-#     let g:UltiSnipsEditSplit="vertical"
-
-
 - repo: Shougo/neosnippet.vim
-  depends: [ neosnippet-snippets, vim-snippets, context_filetype.vim ]
+  depends: [ neosnippet-snippets, context_filetype.vim ]
   if: empty($VIM_MINIMAL)
   on_event: InsertCharPre
   on_ft: snippet
-  hook_add: |
-    let g:neosnippet#data_directory = $VARPATH. '/dein/repos/github.com' . '/honza/vim-snippets/snippets'
-    let g:neosnippet#snippets_directory = [
-            \ $VARPATH . '/dein/repos/github.com' . '/honza/vim-snippets/snippets',
-            \ '~/.config/nvim/snippets']
+  hook_add: let g:neosnippet#data_directory = $VARPATH.'/snippets'
   hook_source: |
     let g:neosnippet#enable_snipmate_compatibility = 1
     let g:neosnippet#enable_completed_snippet = 1
     let g:neosnippet#expand_word_boundary = 1
     autocmd MyAutoCmd InsertLeave * NeoSnippetClearMarkers
-# let g:neosnippet#data_directory = $VARPATH.'/snippets'
 
 - repo: ludovicchabant/vim-gutentags
   if: executable('ctags') && empty($VIM_MINIMAL)

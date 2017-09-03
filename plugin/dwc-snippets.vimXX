@@ -1,0 +1,35 @@
+" let g:root_path = expand('<sfile>:p:h:h')
+let g:root_path = '~/.config/nvim/plugged'
+let s:folderSnippets = g:root_path.'/snippets'
+
+
+let g:neosnippet#snippets_directory = get(g:,'neosnippet#snippets_directory', '')
+      
+if empty(g:neosnippet#snippets_directory)
+  let g:neosnippet#snippets_directory = [s:folderSnippets]
+  
+else
+    if type(g:neosnippet#snippets_directory) == 1
+      let g:neosnippet#snippets_directory = g:neosnippet#snippets_directory.','.s:folderSnippets
+    elseif  type(g:neosnippet#snippets_directory) == 3
+      let g:neosnippet#snippets_directory = add(g:neosnippet#snippets_directory, s:folderSnippets)
+    endif
+endif
+
+
+let g:neosnippet#enable_snipmate_compatibility =
+      \ get(g:, 'neosnippet#enable_snipmate_compatibility', 1)
+let g:neosnippet#enable_complete_done =
+      \ get(g:, 'neosnippet#enable_complete_done', 1)
+  
+
+" if !exists('g:neosnippet#completed_pairs')
+"   let g:neosnippet#completed_pairs = {}
+" endif
+" let g:neosnippet#completed_pairs.java = {'(' : ')'}
+" if g:neosnippet#enable_complete_done
+"   let g:neopairs#enable = 0
+" endif
+
+
+" vim:set et sw=2 cc=80:

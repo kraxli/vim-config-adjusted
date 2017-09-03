@@ -24,8 +24,11 @@ call dutyl#register#tool('dcd-client', g:dwc_dcd_bin_dir.'dcd-client')
 call dutyl#register#tool('dcd-server', g:dwc_dcd_bin_dir.'dcd-server')
 " or make symbolic link from the .dcd/DCD/bin directoires to the usr/bin dir
 
-call deoplete#custom#set('d',          'mark', '⌁')
-call deoplete#custom#set('d',          'rank', 640)
+" call deoplete#custom#set('d',          'mark', '⌁')
+" call deoplete#custom#set('d',          'rank', 640)
+
+
+" let g:deoplete#sources.d = ['buffer', 'tag', 'ultisnips']
 
 
 " STOP a client / server:
@@ -50,3 +53,4 @@ command! Dformat :!dfmt --inplace --space_after_cast=false --max_line_length=120
 let g:d_class_scope_highlight = 1
 let c_no_curly_error=1
  
+" vim: set filetype=vim :

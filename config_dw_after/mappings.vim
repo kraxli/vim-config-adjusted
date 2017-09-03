@@ -110,6 +110,8 @@ nmap <silent> <m-Up> :wincmd k<CR>
 nmap <silent> <m-Down> :wincmd j<CR>
 nmap <silent> <m-Left> :wincmd h<CR>
 nmap <silent> <m-Right> :wincmd l<CR>
+nmap <silent> <s-m-Left> :wincmd h<CR>
+nmap <silent> <s-m-Right> :wincmd l<CR>
 " nmap <silent> <A-Up> :wincmd k<CR>
 
 nmap <silent> <c-Left> :tabprevious<cr>
@@ -158,6 +160,19 @@ inoremap <silent> <Bar>   <Bar><Esc>:call dway#table#align()<CR>a
 
 " open system file explorer (not need: handeled by vim-shell)
 " nnoremap <F6> :call dway#misc#OpenExplorer('%:p:h')
+
+if dein#tap('vimwiki')
+	 " nnoremap <silent> <Leader>W :<C-u>VimwikiIndex<CR>
+	 nnoremap <silent> <Leader>WT :<C-u>VimwikiTabIndex<cr>
+	 nunmap <m-left>
+
+	 nnoremap <c-s-left> @<Plug>VimwikiTableColumnLeft
+	 nmap <silent> <m-Up> :wincmd k<CR>
+	 nmap <silent> <m-Down> :wincmd j<CR>
+	 nmap <silent> <m-Left> :wincmd h<CR>
+	 nmap <silent> <m-Right> :wincmd l<CR>
+
+endif
 
 
 
