@@ -49,27 +49,30 @@ function! REPLSend(lines)
    call jobsend(g:last_terminal_job_id, add(a:lines, ''))
 endfunction
 
-
 command! REPLSendLine call REPLSend([getline('.')])
- " The above would send the current line, but you can extend it to send visual selection.
 command! -range=% REPLSendFile silent call REPLSend(getline(<line1>,<line2>))
 command! -range REPLSendSelection silent call REPLSend(getline(<line1>,<line2>))
-
+" send visual selection to ipython terminal:
 command! -range REPLSendIPy silent call REPLSend(["\%paste"])
 
 
-nnoremap <silent> <f5> :REPLSendLine<cr>
-vnoremap <silent> <f5>  :REPLSendSelection<cr>
-nnoremap <silent> f<f5> :REPLSendFile<cr>
+if g:dwc_terminal_keys
+   nnoremap <silent> <f5> :REPLSendLine<cr>
+   vnoremap <silent> <f5>  :REPLSendSelection<cr>
+   nnoremap <silent> f<f5> :REPLSendFile<cr>
+endif
 
 
-augroup terminalPython
-   au!
-   autocmd Filetype python nnoremap <silent> <f5> "+yy :call REPLSend(["\%paste"])<cr>
-   autocmd Filetype python vnoremap <silent> <f5> "+y :call REPLSend(["\%paste"])<cr>
-   autocmd Filetype python nnoremap <silent> f<f5> :%y+<cr> :call REPLSend(["\%paste"])<cr>
-
-augroup END
+if g:dwc_ipython_terminal
+   augroup terminalPython
+      au!
+      autocmd Filetype python nnoremap <silent> <f5> "+yy :call REPLSend(["\%paste"])<cr>
+      autocmd Filetype python vnoremap <silent> <f5> "+y :call REPLSend(["\%paste"])<cr>
+      autocmd Filetype python nnoremap <silent> f<f5> :%y+<cr> :call REPLSend(["\%paste"])<cr>
+      autocmd BufRead,BufEnter,BufNewFile *.py,*.python :command! IPython2 :vsp term://ipython
+      autocmd BufRead,BufEnter,BufNewFile *.py,*.python :command! IPython3 :vsp term://ipython3
+   augroup END
+endif
 
 
 endif " end has('nvim')

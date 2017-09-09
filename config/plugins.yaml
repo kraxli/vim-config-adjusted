@@ -477,6 +477,12 @@
   hook_post_source: |
     autocmd MyAutoCmd FileType javascript setlocal omnifunc=tern#Complete
 
+
+# dwc: config-adjusted
+- repo: bfredl/nvim-ipy
+  if: !g:dwc_ipython_terminal
+  on_ft: py
+
 # ==========================================
 # Denite
 # ------

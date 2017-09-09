@@ -13,6 +13,7 @@ command! W :w
 cnoreabbrev W w
 
 command! ShowPath :echo expand('%:p')
+command! CopyBufferPath :let @+ = expand("%:p")
 
 " a little hack since vim-easygit has no general git command:
 command! -nargs=* Git :!git <args>
@@ -23,6 +24,8 @@ command! DeinUpdate :call dein#update() " update and install
 command! DeinRecash :call dein#recache_runtimepath()
 command! DeinInstall :call dein#install()
 command! DeinReinstall :call dein#reinstall()
+
+
 
 " vim: foldmethod=marker:
 

@@ -18,19 +18,19 @@ endif
 
 " }}} Path
 
-
-" execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config_dw_before/disable_plugins.vim'
+" {{{ === Settings ===
+" use dwc functions to send code lines to (ipython-)terminal. Alternative is bfredl/nvim-ipy
+let g:dwc_ipython_terminal = 1
+let g:dwc_terminal_keys = 0
+" }}}
 
 " original from vim-config:
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/vimrc'
 
 " execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config_dw_after/terminal_nvim.vim'
-
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/load_dw.vim'
-
 
 " load some mappings to quickly access as some files
 execute 'source '."~/Dropbox/ActiveHome/.settings/quickfiles.vim"
 
-
-" vim: foldmethod=marker
+" vim: set foldmethod=marker
