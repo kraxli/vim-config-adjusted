@@ -44,9 +44,10 @@ if has('nvim')
 
    " Which will save the the job id of the last created terminal into the g:last_terminal_job_id variable. Then you can create some functions/commands/mappings that will send the data using the jobsend function, here's an example:
 
-function! REPLSend(lines)
+function! REPLSend(lines, ...)
    " type(a:lines) == 3	  => list
-   call jobsend(g:last_terminal_job_id, add(a:lines, ''))
+   let l:terminal_id = a:0 > 0 ? a:1 : g:last_terminal_job_id
+   call jobsend(l:terminal_id, add(a:lines, ''))
 endfunction
 
 command! REPLSendLine call REPLSend([getline('.')])
@@ -66,11 +67,11 @@ endif
 if g:dwc_ipython_terminal
    augroup terminalPython
       au!
-      autocmd Filetype python nnoremap <silent> <f5> "+yy :call REPLSend(["\%paste"])<cr>
-      autocmd Filetype python vnoremap <silent> <f5> "+y :call REPLSend(["\%paste"])<cr>
+      autocmd Filetype python nnoremap <silent> <m-s> "+yy :call REPLSend(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+      autocmd Filetype python vnoremap <silent> <m-s> "+y :call REPLSend(["\%paste"], g:last_ipy_terminal_job_id)<cr>
       autocmd Filetype python nnoremap <silent> f<f5> :%y+<cr> :call REPLSend(["\%paste"])<cr>
-      autocmd BufRead,BufEnter,BufNewFile *.py,*.python :command! IPython2 :vsp term://ipython
-      autocmd BufRead,BufEnter,BufNewFile *.py,*.python :command! IPython3 :vsp term://ipython3
+      autocmd BufRead,BufEnter,BufNewFile *.py,*.python :command! IPython2 :vsp term://ipython | let g:last_ipy_terminal_job_id = b:terminal_job_id
+      autocmd BufRead,BufEnter,BufNewFile *.py,*.python :command! IPython3 :vsp term://ipython3 | let g:last_ipy_terminal_job_id = b:terminal_job_id
    augroup END
 endif
 

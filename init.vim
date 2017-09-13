@@ -21,7 +21,7 @@ endif
 " {{{ === Settings ===
 " use dwc functions to send code lines to (ipython-)terminal. Alternative is bfredl/nvim-ipy
 let g:dwc_ipython_terminal = 1
-let g:dwc_terminal_keys = 0
+let g:dwc_terminal_keys = 1
 " }}}
 
 " original from vim-config:
