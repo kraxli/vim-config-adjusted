@@ -58,9 +58,9 @@ command! -range REPLSendIPy silent call REPLSend(["\%paste"])
 
 
 if g:dwc_terminal_keys
-   nnoremap <silent> <f5> :REPLSendLine<cr>
-   vnoremap <silent> <f5>  :REPLSendSelection<cr>
-   nnoremap <silent> f<f5> :REPLSendFile<cr>
+   nnoremap <silent> <f9> :REPLSendLine<cr>
+   vnoremap <silent> <f9>  :REPLSendSelection<cr>
+   nnoremap <silent> f<f9> :REPLSendFile<cr>
 endif
 
 

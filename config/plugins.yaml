@@ -549,16 +549,15 @@
 - repo: alfredodeza/pytest.vim
   on_ft: py
 
-# - repo: gotcha/vimpdb
-
-- repo: gotcha/ipdb
-  on_ft: py
+- repo: idanarye/vim-vebugger
+  on_ft: [py]
 
 - repo: dbgx/lldb.nvim
-
-- repo: idanarye/vim-vebugger
   on_ft: [d, cpp, hpp, c, h]
 
 # - repo: sbdchd/neoformat
+
+# - repo: gotcha/vimpdb
+  # on_ft: py
 
 #  vim: set ts=2 sw=2 tw=80 et :

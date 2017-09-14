@@ -8,12 +8,15 @@ command! Cd :cd %:p:h
 " Split windows vertically and open empty buffer
 command! Vspl :vsp l
 
+command! VTerm :vsp +term " or :vsp|terminal
+
 " save and quit
 command! W :w
 cnoreabbrev W w
 
 command! ShowPath :echo expand('%:p')
 command! CopyBufferPath :let @+ = expand("%:p")
+command! CopyBufferName :let @+ = expand("%:r")
 
 " a little hack since vim-easygit has no general git command:
 command! -nargs=* Git :!git <args>
@@ -25,6 +28,9 @@ command! DeinRecash :call dein#recache_runtimepath()
 command! DeinInstall :call dein#install()
 command! DeinReinstall :call dein#reinstall()
 
+
+" div
+command! ShaDaFix :NeomakeSh! rm ~/.local/share/nvim/shada/*
 
 
 " vim: foldmethod=marker:
