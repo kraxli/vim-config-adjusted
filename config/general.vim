@@ -75,7 +75,10 @@ if has('nvim')
 	"   s - Maximum size of an item contents in KiB
 	"   h - Disable the effect of 'hlsearch' when loading the shada
 	set shada='300,<10,@50,s100,h
+	" dwc: vim-config-adjusted:
+	set viminfo=
 else
+	" dwc: vim-config-adjusted:
 	set viminfo='300,<10,@50,h,n$VARPATH/viminfo
 endif
 
