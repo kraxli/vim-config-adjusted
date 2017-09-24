@@ -78,8 +78,7 @@ if has('nvim')
 	" dwc: vim-config-adjusted:
 	set viminfo=
 else
-	" dwc: vim-config-adjusted:
-	set viminfo='300,<10,@50,h,n$VARPATH/viminfo
+	" set viminfo='300,<10,@50,h,n$VARPATH/viminfo
 endif
 
 " }}}

@@ -16,7 +16,6 @@ endfunction
 function! s:get_proc_cwd()
     let procid = matchstr(bufname(""), '\(://.*/\)\@<=\(\d\+\)')
     let proc_cwd = resolve('/proc/'.procid.'/cwd')
-
     return proc_cwd
 endfunction
 

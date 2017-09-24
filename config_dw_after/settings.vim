@@ -20,5 +20,8 @@ endif
 set undodir=~/.config/nvim/undodir
 set undofile
 
+" full path in statusline 
+set statusline=%F
+
 " do not set readonly
 " set noro

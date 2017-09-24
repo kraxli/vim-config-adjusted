@@ -24,6 +24,9 @@ let g:dwc_ipython_terminal = 1
 let g:dwc_terminal_keys = 1
 let g:dwc_key_maps = 1
 
+let g:path_tex_executables = 'C:\Program Files\MiKTeX 2.9\miktex\bin\x64\'
+
+
 " }}}
 
 " original from vim-config:
@@ -34,5 +37,11 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/load_dw.vim'
 
 " load some mappings to quickly access as some files
 execute 'source '."~/Dropbox/ActiveHome/.settings/quickfiles.vim"
+
+augroup IndividualCommands
+
+      command! PandocEx :tabnew ~/Dropbox/Work_Content/SCOR/VIM/pandoc_example.pdc
+
+augroup END
 
 " vim: set foldmethod=marker

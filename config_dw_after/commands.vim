@@ -30,7 +30,10 @@ command! DeinReinstall :call dein#reinstall()
 
 
 " div
-command! ShaDaFix :NeomakeSh! rm ~/.local/share/nvim/shada/*
+if has('unix')
+   " command! -bar ShaDaFix NeomakeSh! rm ~/.local/share/nvim/shada/* | NeomakeSh! touch ~/.local/share/nvim/shada/main.shada
+   command! ShaDaFix wshada!
+endif
 
 
 " vim: foldmethod=marker:

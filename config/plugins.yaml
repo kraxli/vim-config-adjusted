@@ -550,7 +550,7 @@
   on_ft: py
 
 - repo: idanarye/vim-vebugger
-  on_ft: [py]
+  on_ft: py
 
 - repo: dbgx/lldb.nvim
   on_ft: [d, cpp, hpp, c, h]
