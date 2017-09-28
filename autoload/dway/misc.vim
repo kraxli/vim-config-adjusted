@@ -1,4 +1,34 @@
 
+" general approach to toggle stuff:
+function! dway#misc#ToggleQuickFix()
+  if exists("g:qwindow")
+    cclose
+    unlet g:qwindow
+  else
+    try
+      copen "10
+      let g:qwindow = 1
+    catch
+      echo "No Errors found!"
+    endtry
+  endif
+endfunction
+" nmap <script> <silent> <F2> :call dway#misc#ToggleQuickFix()<CR>
+"
+function! dway#misc#ToggleLocationList()
+  if exists("g:qwindow")
+    lclose
+    unlet g:qwindow
+  else
+    try
+      lopen "10
+      let g:qwindow = 1
+    catch
+      echo "No Errors found!"
+    endtry
+  endif
+endfunction
+
 
 " !! put to plug folder or better auto ... in dway-vim-config
 " relative line numbers: https://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
@@ -10,21 +40,21 @@ function! dway#misc#NumberToggle()
     set relativenumber
   endif
 endfunc
- 
 
 
-function! dway#misc#ToogleColorScheme(scheme1, scheme2)
+
+function! dway#misc#ToggleColorScheme(scheme1, scheme2)
    " let currentScheme = colorscheme
-   " echo currentScheme 
+   " echo currentScheme
    if a:scheme1 == ''
     let scheme1='gruvbox'
-   else 
+   else
      let scheme1=a:scheme1
    end
 
    if a:scheme2 == ''
     let scheme2='solarized'
-   else 
+   else
      let scheme2=a:scheme2
    end
 
@@ -38,6 +68,13 @@ function! dway#misc#ToogleColorScheme(scheme1, scheme2)
 
 endfunction
 
+
+function! dway#misc#ToggleBgCs(scheme1, scheme2)
+  " toggle background and colorscheme
+  call dway#misc#ToggleColorScheme(a:scheme1, a:scheme2)
+	execute 'set background='.(&background ==# 'dark' ? 'light' : 'dark')
+endfunction
+
 function! dway#misc#OpenExplorer(path)
   let path = expand(a:path)
 
@@ -49,6 +86,7 @@ function! dway#misc#OpenExplorer(path)
   endif
 
 endfunction
+
 
 function! dway#misc#OpenBrowser()
   let s:url = matchstr(getline("."), '[a-z]*:\/\/[^ >,;]*')
@@ -81,4 +119,4 @@ function! dway#misc#get_visual_selection()
     return join(lines, "\n")
 endfunction
 
-" vim: foldmethod="marker"
+" vim: foldmethod=marker

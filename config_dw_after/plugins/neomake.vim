@@ -34,12 +34,36 @@ let g:neomake_pdc_pdcHtml_maker = {
     \           '-N', '--toc', '--filter', 'pandoc-eqnos', '--filter', 'pandoc-tablenos', '--filter', 'pandoc-fignos']
     \ }
 
+    " works with Async python %:p
+    " :set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]
+
+let g:neomake_python_py3_maker = {
+    \ 'exe': 'python3',
+    \ 'errorformat': '\ %#File\ \"%f\"\\,\ line\ %l\\,\ %m,' .
+    \ '\@File\:\ %f'
+    \ }
 
 " DEFAULTS:
-" default d maker
+
+" Default d maker:
 let g:neomake_d_enabled_makers = ['dmd']
+
+" Default tex maker:
 let g:neomake_tex_enabled_makers = ['xelatex']
 " let g:neomake_pdc_enabled_makers = ['pdcHtml']
+
+" Python Makers:
+" python default makers: ['python', 'frosted', 'pylama']
+" let g:neomake_python_enabled_makers = ['python', 'frosted', 'pylama', 'vulture']
+" ['pep8', 'pylint', 'flake8']
+
+
+" CUSTOMIZE OPTIONS:
+" let b:neomake_python_pylama_args
+let g:neomake_python_pylama_args = ['--ignore', 'F403,F405,E261,W291,W293,E303,W391,E512']
+let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=100', '--ignore=E115,E266'], }
+" let g:neomake_python_pylint_maker = {'args': ['--disable=C0103'], }
+" --max-line-length='.g:python_syntax_max_line_length
 
 
 " OPTIONS:
@@ -66,6 +90,10 @@ augroup agNeomake
 augroup END
 
 
-
+" Notes / Sources:
+" https://pythonadventures.wordpress.com/tag/neomake/
+" http://vim.wikia.com/wiki/Errorformats
+" https://www.gregjs.com/vim/2015/linting-code-with-neomake-and-neovim/
+" jump to next error/waring: :ll /:ln (:lopen)
 
 

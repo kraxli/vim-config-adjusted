@@ -2,6 +2,9 @@
 " TODO: broken
 " command!  OpenBrowser :call dway#misc#OpenBrowser()
 
+command! Ln :lne
+command! Cn :cn
+
 " change directory to current file one
 command! Cd :cd %:p:h
 

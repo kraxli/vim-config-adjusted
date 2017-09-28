@@ -24,10 +24,13 @@ if has('gui')
 endif
 
 " jump to quickfix or location list/window
-nnoremap <space>c :copen<cr>
-" nnoremap <leader><space> :cclose<cr>
-
-nnoremap <space>l :lopen<cr>
+nmap <script> <silent> <leader>qq :call dway#misc#ToggleQuickFix()<CR>
+nmap <script> <silent> <leader>ll :call dway#misc#ToggleLocationList()<CR>
+nnoremap <leader>c :cnext
+nnoremap <leader>l :lnext
+" nnoremap <space>c :copen<cr>
+" " nnoremap <leader><space> :cclose<cr>
+" nnoremap <space>l :lopen<cr>
 
  " open and colose (new) tab
 map <leader>nt :tabnew<cr>
@@ -158,7 +161,7 @@ vnoremap <leader>pt :call dway#table#table()<cr>
 vnoremap <leader>ptt :call dway#table#table()<cr> gv  :!pandoc -f markdown -t rst<cr>
 inoremap <silent> <Bar>   <Bar><Esc>:call dway#table#align()<CR>a
 
-" open system file explorer (not need: handeled by vim-shell)
+"%\\@=%m open system file explorer (not need: handeled by vim-shell)
 " nnoremap <F6> :call dway#misc#OpenExplorer('%:p:h')
 
 if dein#tap('vimwiki')
@@ -173,7 +176,6 @@ if dein#tap('vimwiki')
 	 nmap <silent> <m-Right> :wincmd l<CR>
 
 endif
-
 
 
 " }}} key mappings

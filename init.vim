@@ -8,7 +8,7 @@ let g:python3_host_prog = '/usr/bin/python3'
       " let g:deoplete#sources#d#dcd_client_binary = g:dwc_dcd_bin_dir.'dcd-client'
       " call dutyl#register#tool('dcd-client', g:dwc_dcd_bin_dir.'dcd-client')
 
-" {{{ === Path === 
+" {{{ === Path ===
 
 if has('unix')
 	 let $PATH=$PATH.';'.'~/.dutils/Dscanner/bin;~/.dutils/DCD/bin'
@@ -38,10 +38,25 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/load_dw.vim'
 " load some mappings to quickly access as some files
 execute 'source '."~/Dropbox/ActiveHome/.settings/quickfiles.vim"
 
+" {{{ === Individual settings / commands - unallocated stuff ===
 augroup IndividualCommands
-
-      command! PandocEx :tabnew ~/Dropbox/Work_Content/SCOR/VIM/pandoc_example.pdc
-
+      autocmd!
 augroup END
+
+command! PandocEx :tabnew ~/Dropbox/Work_Content/SCOR/VIM/pandoc_example.pdc
+
+colorscheme gruvbox " hybrid
+set background=light
+
+let color_scheme1 = 'hybrid'
+let color_scheme2 = 'gruvbox'
+
+nmap <leader>cs :call dway#misc#ToggleColorScheme(color_scheme1, color_scheme2)<cr>
+noremap <leader>b :call dway#misc#ToggleBgCs(color_scheme1, color_scheme2)<cr>
+nmap gb <c-o> " <c-;>
+
+set statusline+=%F
+
+" }}} end individual settings / commands
 
 " vim: set foldmethod=marker
