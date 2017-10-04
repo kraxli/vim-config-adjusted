@@ -31,6 +31,7 @@
 - repo: vim-pandoc/vim-pandoc-after
 # - repo: vim-pandoc/....
 # - repo: kassio/neoterm # dway: vim-config-adjusted
+- repo: kraxli/nvimipdb
 
 - repo: idanarye/vim-dutyl # dway: vim-config-adjusted
   on_ft: d
@@ -243,7 +244,7 @@
   on_path: COMMIT_EDITMSG
   hook_source: let g:committia_min_window_width = 70
 
-- repo: benekastah/neomake
+- repo: neomake/neomake
   if: has('nvim') && empty($VIM_MINIMAL)
   on_cmd: Neomake
   hook_source: source $VIMPATH/config/plugins/neomake.vim
@@ -563,6 +564,9 @@
 #     let g:run_split = 'down'
 #     let g:run_auto_close = 0
 
+- repo: junegunn/fzf.vim
+
+# delete asyncrun as soon neomakesh works for python
 - repo: skywind3000/asyncrun.vim
 
 # https://8thlight.com/blog/chris-jordan/2016/06/13/running-tests-in-vim.html

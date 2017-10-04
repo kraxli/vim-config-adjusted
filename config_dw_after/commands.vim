@@ -2,6 +2,7 @@
 " TODO: broken
 " command!  OpenBrowser :call dway#misc#OpenBrowser()
 
+
 command! Ln :lne
 command! Cn :cn
 
@@ -16,10 +17,12 @@ command! VTerm :vsp +term " or :vsp|terminal
 " save and quit
 command! W :w
 cnoreabbrev W w
+command! Q :q
 
 command! ShowPath :echo expand('%:p')
-command! CopyBufferPath :let @+ = expand("%:p")
-command! CopyBufferName :let @+ = expand("%:r")
+command! CopyBufferPath :let @+ = expand("%:p:h")
+" command! CopyBufferName :let @+ = expand("%:r")
+command! CopyBufferName :let @+ = expand("%:p")
 
 " a little hack since vim-easygit has no general git command:
 command! -nargs=* Git :!git <args>
@@ -34,7 +37,7 @@ command! DeinReinstall :call dein#reinstall()
 
 " div
 if has('unix')
-   " command! -bar ShaDaFix NeomakeSh! rm ~/.local/share/nvim/shada/* | NeomakeSh! touch ~/.local/share/nvim/shada/main.shada
+   command! -bar ShaDaDelete NeomakeSh! rm ~/.local/share/nvim/shada/* | NeomakeSh! touch ~/.local/share/nvim/shada/main.shada
    command! ShaDaFix wshada!
 endif
 

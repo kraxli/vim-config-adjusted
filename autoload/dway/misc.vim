@@ -119,4 +119,19 @@ function! dway#misc#get_visual_selection()
     return join(lines, "\n")
 endfunction
 
+" Lower / Upper Case, Inital Upper Case And Toggle Case: Http://Stackoverflow.Com/Questions/17440659/Capitalize-First-Letter-Of-Each-Word-In-A-Selection-Using-Vim
+function! dway#misc#TwiddleCase(str)
+  if a:str ==# toupper(a:str)
+    let result = tolower(a:str)
+  elseif a:str ==# tolower(a:str)
+    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+  else
+    let result = toupper(a:str)
+  endif
+  return result
+  " vnoremap <F7> u :s/\<./\u&/g<cr><Space> " :nohlsearch<Bar>:echo<CR>
+  " vnoremap <F7> u :s/\<./\u&/g<cr> :nohlsearch<Bar>:echo<CR>
+endfunction
+
+
 " vim: foldmethod=marker

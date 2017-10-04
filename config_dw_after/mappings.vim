@@ -153,8 +153,8 @@ nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 nnoremap c<F12> :call dway#misc#ToogleColorScheme('gruvbox', 'Tomorrow')<cr>
 
-" Toggle background
-nnoremap b<F12>  :let &background = ( &background == "dark"? "light" : "dark" )\|syntax on<CR>
+" " Toggle background (see <leader>b)
+" nnoremap b<F12>  :let &background = ( &background == "dark"? "light" : "dark" )\|syntax on<CR>
 
 " tables / tabular
 vnoremap <leader>pt :call dway#table#table()<cr>
@@ -176,6 +176,9 @@ if dein#tap('vimwiki')
 	 nmap <silent> <m-Right> :wincmd l<CR>
 
 endif
+
+" Lower / Upper Case, Inital Upper Case And Toggle Case:
+vnoremap ~ y:call setreg('', dway#misc#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
 
 " }}} key mappings

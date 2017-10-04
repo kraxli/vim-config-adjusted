@@ -58,20 +58,20 @@ command! -range REPLSendIPy silent call REPLSend(["\%paste"])
 
 
 if g:dwc_terminal_keys
-   nnoremap <silent> <f9> :REPLSendLine<cr>
-   vnoremap <silent> <f9>  :REPLSendSelection<cr>
-   nnoremap <silent> f<f9> :REPLSendFile<cr>
+   " nnoremap <silent> <f9> :REPLSendLine<cr>
+   " vnoremap <silent> <f9>  :REPLSendSelection<cr>
+   " nnoremap <silent> f<f9> :REPLSendFile<cr>
 endif
 
 
 if g:dwc_ipython_terminal
    augroup terminalPython
       au!
-      autocmd Filetype python nnoremap <silent> <m-s> "+yy :call REPLSend(["\%paste"], g:last_ipy_terminal_job_id)<cr>
-      autocmd Filetype python vnoremap <silent> <m-s> "+y :call REPLSend(["\%paste"], g:last_ipy_terminal_job_id)<cr>
-      autocmd Filetype python nnoremap <silent> f<f5> :%y+<cr> :call REPLSend(["\%paste"])<cr>
-      autocmd BufRead,BufEnter,BufNewFile *.py,*.python :command! IPython2 :vsp term://ipython | let g:last_ipy_terminal_job_id = b:terminal_job_id
-      autocmd BufRead,BufEnter,BufNewFile *.py,*.python :command! IPython3 :vsp term://ipython3 | let g:last_ipy_terminal_job_id = b:terminal_job_id
+      " autocmd Filetype python nnoremap <silent> <m-s> "+yy :call REPLSend(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+      " autocmd Filetype python vnoremap <silent> <m-s> "+y :call REPLSend(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+      " autocmd Filetype python nnoremap <silent> f<f5> :%y+<cr> :call REPLSend(["\%paste"])<cr>
+      " autocmd BufRead,BufEnter,BufNewFile *.py,*.python :command! IPython2 :vsp term://ipython | let g:last_ipy_terminal_job_id = b:terminal_job_id
+      " autocmd BufRead,BufEnter,BufNewFile *.py,*.python :command! IPython3 :vsp term://ipython3 | let g:last_ipy_terminal_job_id = b:terminal_job_id
    augroup END
 endif
 
