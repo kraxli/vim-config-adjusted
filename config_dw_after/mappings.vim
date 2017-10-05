@@ -107,19 +107,6 @@ if has("unix")
   nmap <leader>x :w<cr>:!chmod 755 %<cr>:e<cr>
 endif
 
-" move between split windows
-" unmap <m-Right>
-nmap <silent> <m-Up> :wincmd k<CR>
-nmap <silent> <m-Down> :wincmd j<CR>
-nmap <silent> <m-Left> :wincmd h<CR>
-nmap <silent> <m-Right> :wincmd l<CR>
-nmap <silent> <s-m-Left> :wincmd h<CR>
-nmap <silent> <s-m-Right> :wincmd l<CR>
-" nmap <silent> <A-Up> :wincmd k<CR>
-
-nmap <silent> <c-Left> :tabprevious<cr>
-nmap <silent> <c-Right> :tabnext<cr>
-
 "" put the vim directives for my file editing settings in
 "nmap <silent> ,vi ovim:set ts=2 sts=2 sw=2:<CR>vim600:fdm=marker fdl=1 fdc=0:<ESC>
 
@@ -151,8 +138,7 @@ inoremap <F4> <C-R>=strftime("%Y-%m-%d")<CR>
 " replace word under cursor in whole file
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 
-nnoremap c<F12> :call dway#misc#ToogleColorScheme('gruvbox', 'Tomorrow')<cr>
-
+nnoremap c<F12> :call dway#misc#ToggleColorScheme('gruvbox', 'Tomorrow')<cr>
 " " Toggle background (see <leader>b)
 " nnoremap b<F12>  :let &background = ( &background == "dark"? "light" : "dark" )\|syntax on<CR>
 
@@ -165,17 +151,25 @@ inoremap <silent> <Bar>   <Bar><Esc>:call dway#table#align()<CR>a
 " nnoremap <F6> :call dway#misc#OpenExplorer('%:p:h')
 
 if dein#tap('vimwiki')
-	 " nnoremap <silent> <Leader>W :<C-u>VimwikiIndex<CR>
-	 nnoremap <silent> <Leader>WT :<C-u>VimwikiTabIndex<cr>
-	 nunmap <m-left>
-
-	 nnoremap <c-s-left> @<Plug>VimwikiTableColumnLeft
-	 nmap <silent> <m-Up> :wincmd k<CR>
-	 nmap <silent> <m-Down> :wincmd j<CR>
-	 nmap <silent> <m-Left> :wincmd h<CR>
-	 nmap <silent> <m-Right> :wincmd l<CR>
-
+	" nnoremap <silent> <Leader>W :<C-u>VimwikiIndex<CR>
+	nnoremap <silent> <Leader>WT :<C-u>VimwikiTabIndex<cr>
+	nnoremap <c-s-left> @<Plug>VimwikiTableColumnLeft
+	" nunmap <m-left>
+	" unmap <m-Right>
 endif
+
+" move between split windows
+noremap <s-m-Right> <esc><c-w>r
+map <silent> <s-m-Left> <esc><c-w>r
+map <silent> <m-Up> :wincmd k<CR>
+map <silent> <m-Down> :wincmd j<CR>
+map <silent> <m-Left> :wincmd h<CR>
+map <silent> <m-Right> :wincmd l<CR>
+
+nmap <silent> <c-Left> :tabprevious<cr>
+nmap <silent> <c-Right> :tabnext<cr>
+
+
 
 " Lower / Upper Case, Inital Upper Case And Toggle Case:
 vnoremap ~ y:call setreg('', dway#misc#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
