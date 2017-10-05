@@ -26,12 +26,23 @@
 
 # dway: vim-config-adjusted
 - repo: kraxli/vimwiki-task
+  on_ft: [vimwiki, pandoc, pdc]
+
 - repo: vim-pandoc/vim-pandoc
+  on_ft: [pandoc, pdc]
+
 - repo: vim-pandoc/vim-pandoc-syntax
+  on_ft: [pandoc, pdc]
+
 - repo: vim-pandoc/vim-pandoc-after
-# - repo: vim-pandoc/....
+  on_ft: [pandoc, pdc]
+  
 # - repo: kassio/neoterm # dway: vim-config-adjusted
+
 - repo: kraxli/nvimipdb
+  on_ft: [py, python]
+  hook_add:
+    let g:nvimipdb_default_keys = 1
 
 - repo: idanarye/vim-dutyl # dway: vim-config-adjusted
   on_ft: d

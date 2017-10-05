@@ -34,6 +34,11 @@ Best with Neovim or Vim 8 with +python3 extensions enabled.
 - Premium color-schemes
 - Central location for tags
 
+## Key bindings (also standard vim ones which I tend to forget)
+- To rotate in a 'column' or 'row' of split windows:  C-w r (C-wC-r)
+- equalize windows split windwo size: C-w =
+- Close every window in the current tabview but the current one: Ctrl+W o
+
 ## Screenshot
 
 ![Vim screenshot](http://rafi.io/static/img/project/vim-config/features.png)

@@ -180,6 +180,9 @@ endif
 " Lower / Upper Case, Inital Upper Case And Toggle Case:
 vnoremap ~ y:call setreg('', dway#misc#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
+" toggle tagbar
+nnoremap <leader>t :TagbarToggle
+
 
 " }}} key mappings
 
