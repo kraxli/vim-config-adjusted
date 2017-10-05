@@ -2,7 +2,6 @@
 " TODO: broken
 " command!  OpenBrowser :call dway#misc#OpenBrowser()
 
-
 command! Ln :lne
 command! Cn :cn
 

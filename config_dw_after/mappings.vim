@@ -25,9 +25,10 @@ endif
 
 " jump to quickfix or location list/window
 nmap <script> <silent> <leader>qq :call dway#misc#ToggleQuickFix()<CR>
+nmap <script> <silent> <leader>cc :call dway#misc#ToggleQuickFix()<CR>
 nmap <script> <silent> <leader>ll :call dway#misc#ToggleLocationList()<CR>
-nnoremap <leader>c :cnext
-nnoremap <leader>l :lnext
+nnoremap <leader>c :cnext<cr>
+nnoremap <leader>l :lnext<cr>
 " nnoremap <space>c :copen<cr>
 " " nnoremap <leader><space> :cclose<cr>
 " nnoremap <space>l :lopen<cr>
