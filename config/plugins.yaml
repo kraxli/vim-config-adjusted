@@ -235,7 +235,8 @@
     command! -nargs=+ Git :NeomakeSh git <args>
     command! GaddAll :Gadd --all
     command! -nargs=+ GcommitAll :NeomakeSh git commit -m <args> -a
-    command! -nargs=+ GcommitThis :NeomakeSh git add %:p|git commit -m <args> %:p
+    command! -nargs=+ GcommitThis :NeomakeSh git add %:p|
+      \:NeomakeSh git commit -m <args> %:p
 
   # see also denite-git bellow for log and status
 
@@ -557,12 +558,12 @@
   hook_post_source: source $VIMPATH/config/menus.vim
 
 - { repo: chemzqm/unite-location, on_source: denite.nvim }
-- { repo: chemzqm/denite-git, on_source: denite.nvim }
 - { repo: rafi/vim-denite-z, on_source: denite.nvim }
+- { repo: rafi/vim-denite-session, on_source: denite.nvim }
 
-- repo: rafi/vim-denite-session 
+- repo: chemzqm/denite-git
   on_source: denite.nvim
-  hook_sourec: |
+  hook_source: |
     command! Glog :Denite gitlog
     command! Gstatus2 :Denite gitstatus
     command! Gchanged :Denite gitchanged
