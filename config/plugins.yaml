@@ -235,11 +235,12 @@
     command! -nargs=+ Git :NeomakeSh git <args>
     command! GaddAll :Gadd --all
     command! -nargs=+ GcommitAll :NeomakeSh git commit -m <args> -a
-    # command! -nargs=+ GcommitThis :NeomakeSh git add %:p|
-    #   \:NeomakeSh git commit -m <args> %:p
+
+# command! -nargs=+ GcommitThis :NeomakeSh git add %:p|
+#   \:NeomakeSh git commit -m <args> %:p
 
   # see also denite-git bellow for log and status
-  
+
 
 # - repo: tpope/vim-fugitive
 #   on_cmd: [Gedit, Gsplit, Gvsplit, Gtabedit, Gdiff, Ggrep, Gbrowse, Git, Glog, Gread, Gwrite, Gmove, Gdelete, Gbrowse, Gstatus, Ggrep]
