@@ -2,6 +2,10 @@
 # PLUGINS
 # ==========================================
 
+# Notes:
+#   hook_add: load at Neovim startup
+#   hook_source: load when plugin is started/sourced
+
 # Startup
 # -------
 - repo: Shougo/dein.vim
@@ -221,10 +225,16 @@
     let g:EasyMotion_use_smartsign_us = 1
 
 - repo: chemzqm/vim-easygit
-  on_cmd: [Gcd, Glcd, Gblame, GcommitCurrent, GdiffThis, Gcommit, Gedit, Gdiff, Gremove, Grename, Gmove, Gcheckout, Gpush, Gpull, Gfetch, Gadd, Gstatus, Ggrep, Gmerg]
+  on_cmd: [
+    \ Gcd, Glcd, Gblame, GcommitCurrent, GdiffThis,
+    \ Gcommit, Gedit, Gdiff, Gremove, Grename, Gmove,
+    \ Gcheckout, Gpush, Gpull, Gfetch, Gadd, Gstatus, Ggrep, Gmerg]
   hook_source: |
     let g:easygit_enable_command = 1
+  hook_add: |
     command! -nargs=+ Git :NeomakeSh git <args>
+    command! GaddAll :Gadd --all
+    command! -nargs=+ GcommitAll :Neomake git commit -m <args> -a
 
 # - repo: tpope/vim-fugitive
 #   on_cmd: [Gedit, Gsplit, Gvsplit, Gtabedit, Gdiff, Ggrep, Gbrowse, Git, Glog, Gread, Gwrite, Gmove, Gdelete, Gbrowse, Gstatus, Ggrep]
