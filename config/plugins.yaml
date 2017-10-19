@@ -27,19 +27,35 @@
 # dway: vim-config-adjusted
 - repo: kraxli/vimwiki-task
   on_ft: [vimwiki, pandoc, pdc]
+  hook_add: |
+    set spell spelllang=en,de
 
 - repo: vim-pandoc/vim-pandoc
   on_ft: [pandoc, pdc]
+  hook_add: |
+    set spell spelllang=en,de
 
 - repo: vim-pandoc/vim-pandoc-syntax
+  depends: vim-pandoc
   on_ft: [pandoc, pdc]
 
 - repo: vim-pandoc/vim-pandoc-after
+  depends: vim-pandoc
   on_ft: [pandoc, pdc]
-  
-# - repo: kassio/neoterm # dway: vim-config-adjusted
 
-- repo: kraxli/nvimipdb
+# - repo: kassio/neoterm # dway: vim-config-adjusted
+# .../iron-nvim
+
+# - repo: janko-m/vim-test
+#   on_ft: [py, python]
+#   hook_add: |
+#     let test#strategy = "neovim"
+#     let test#python#runner = "pytest"
+
+# # Runners available are 'pytest', 'nose', 'nose2', 'djangotest', 'djangonose' and Python's built-in 'unittest'
+# # or let test#strategy = 'neomake'
+
+- repo: kraxli/nvim-py-minimal
   on_ft: [py, python]
   hook_add:
     let g:nvimipdb_default_keys = 1
@@ -48,6 +64,24 @@
   on_ft: d
   hook_post_source: |
     autocmd MyAutoCmd BufRead,BufEnter *.d DUDCDrestartServer
+
+- repo: python-rope/ropevim
+  on_ft: py
+
+# - repo: nvie/vim-pyunit
+  # on_ft: py
+
+
+- repo: alfredodeza/pytest.vim
+  on_ft: [py, python]
+  on_cmd: [Pytest]
+
+- repo: jalvesaq/Nvim-R
+  on_ft: r
+  hook_add: |
+    let R_rconsole_width = 57
+    let R_min_editor_width = 18
+    autocmd! MyAutoCmd VimResized * let R_rconsole_width = winwidth(0) / 2
 
 # dway: vim-config-adjusted
 
@@ -187,8 +221,13 @@
     let g:EasyMotion_use_smartsign_us = 1
 
 - repo: chemzqm/vim-easygit
-  on_cmd: [ Gcd, Glcd, Gcommit, Gblame, Gstatus, Gdiff, Gbrowse, Gstatus, Gpush ]
-  hook_source: let g:easygit_enable_command = 1
+  on_cmd: [Gcd, Glcd, Gblame, GcommitCurrent, GdiffThis, Gcommit, Gedit, Gdiff, Gremove, Grename, Gmove, Gcheckout, Gpush, Gpull, Gfetch, Gadd, Gstatus, Ggrep, Gmerg]
+  hook_source: |
+    let g:easygit_enable_command = 1
+    command! -nargs=+ Git :NeomakeSh git <args>
+
+# - repo: tpope/vim-fugitive
+#   on_cmd: [Gedit, Gsplit, Gvsplit, Gtabedit, Gdiff, Ggrep, Gbrowse, Git, Glog, Gread, Gwrite, Gmove, Gdelete, Gbrowse, Gstatus, Ggrep]
 
 - repo: majutsushi/tagbar
   if: empty($VIM_MINIMAL)
