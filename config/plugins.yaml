@@ -234,7 +234,7 @@
   hook_add: |
     command! -nargs=+ Git :NeomakeSh git <args>
     command! GaddAll :Gadd --all
-    command! -nargs=+ GcommitAll :Neomake git commit -m <args> -a
+    command! -nargs=+ GcommitAll :NeomakeSh git commit -m <args> -a
 
 # - repo: tpope/vim-fugitive
 #   on_cmd: [Gedit, Gsplit, Gvsplit, Gtabedit, Gdiff, Ggrep, Gbrowse, Git, Glog, Gread, Gwrite, Gmove, Gdelete, Gbrowse, Gstatus, Ggrep]
