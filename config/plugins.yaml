@@ -235,6 +235,9 @@
     command! -nargs=+ Git :NeomakeSh git <args>
     command! GaddAll :Gadd --all
     command! -nargs=+ GcommitAll :NeomakeSh git commit -m <args> -a
+    command! -nargs=+ GcommitThis :NeomakeSh git add %:p|git commit -m <args> %:p
+
+  # see also denite-git bellow for log and status
 
 # - repo: tpope/vim-fugitive
 #   on_cmd: [Gedit, Gsplit, Gvsplit, Gtabedit, Gdiff, Ggrep, Gbrowse, Git, Glog, Gread, Gwrite, Gmove, Gdelete, Gbrowse, Gstatus, Ggrep]
@@ -556,7 +559,13 @@
 - { repo: chemzqm/unite-location, on_source: denite.nvim }
 - { repo: chemzqm/denite-git, on_source: denite.nvim }
 - { repo: rafi/vim-denite-z, on_source: denite.nvim }
-- { repo: rafi/vim-denite-session, on_source: denite.nvim }
+
+- repo: rafi/vim-denite-session 
+  on_source: denite.nvim
+  hook_sourec: |
+    command! Glog :Denite gitlog
+    command! Gstatus2 :Denite gitstatus
+    command! Gchanged :Denite gitchanged
 
 - repo: rafi/vim-denite-mpc
   if: executable('mpc') && empty($VIM_MINIMAL)
