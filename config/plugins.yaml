@@ -240,8 +240,8 @@
     command! -nargs=+ Git :AsyncRun git <args>
     command! GaddAll :Gadd --all
     command! -nargs=+ GcommitAll :AsyncRun git commit -m <q-args> -a
-    # command! -nargs=+ GcommitAll execute 'AsyncRun git commit -m "'.string(<args>).'" -a'
 
+# command! -nargs=+ GcommitAll execute 'AsyncRun git commit -m "'.string(<args>).'" -a'
 # command! -nargs=+ Git :NeomakeSh git <args>
 # command! GaddAll :Gadd --all
 # command! -nargs=+ GcommitAll :NeomakeSh git commit -m <args> -a
