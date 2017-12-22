@@ -152,5 +152,25 @@ let g:tagbar_type_d = {
     \ 'ctagsargs' : ['--ctags']
     \ }
 
+" let g:tagbar_type_pdc
+
+
+" {{{ pandoc
+" https://unix.stackexchange.com/questions/285325/how-to-match-markdown-setext-headers-in-in-exuberant-ctags
+" https://github.com/vim-scripts/Tagbar/blob/master/doc/tagbar.txt
+
+let g:tagbar_type_pandoc = {
+    \ 'ctagstype' : 'pandoc',
+    \ 'kinds'     : [
+        \ 'h:headers',
+        \ 'g:graphics:0:0',
+        \ 'l:labels',
+        \ 'r:refs:1:0',
+        \ 'p:pagerefs:1:0'
+    \ ],
+    \ 'sort'    : 0,
+     \ }
+""" pandoc
+
 " }}} Tags
 
