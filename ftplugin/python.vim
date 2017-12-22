@@ -6,4 +6,3 @@ setlocal expandtab
 setlocal smarttab
 setlocal nosmartindent
 setlocal foldmethod=indent
-

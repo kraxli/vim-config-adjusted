@@ -23,11 +23,12 @@ if has('nvim')
    augroup Terminal
       au!
       au TermOpen * let g:last_terminal_job_id = b:terminal_job_id
-      au TermOpen * nmap <buffer> gf :call dway#term#term_gf()<cr>
+      " au TermOpen * nmap <buffer> gf :call dway#term#term_gf()<cr>
       au TermOpen * nmap <buffer> <cr> :call dway#term#term_gf()<cr>
 
-      au TermOpen * nmap <buffer> gF :call dway#term#term_gf_tabnew()<cr>
-      au TermOpen * nmap <buffer> <s-cr> :call dway#term#term_gf_tabnew()<cr>
+      " au TermOpen * tnoremap <buffer> gt :call dway#term#term_gf_tabnew()<cr>
+      au TermOpen * nmap <buffer> gt :call dway#term#term_gf_tabnew()<cr>
+      au TermOpen * nmap <buffer> <c-cr> :call dway#term#term_gf_tabnew()<cr>
    augroup END
 
    " Window split settings

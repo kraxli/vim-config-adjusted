@@ -176,7 +176,7 @@ nmap <silent> <c-Right> :tabnext<cr>
 vnoremap ~ y:call setreg('', dway#misc#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
 " toggle tagbar
-nnoremap <leader>t :TagbarToggle
+nnoremap <leader>t :TagbarToggle<cr>
 
 
 " }}} key mappings

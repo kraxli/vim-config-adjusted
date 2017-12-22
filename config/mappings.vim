@@ -6,8 +6,9 @@
 " ------------
 if dwc_key_maps
 
-	" lldb.nvim
+	" lldb.nvim (dlang)
 	nmap <M-b> <Plug>LLBreakSwitch
+	" nmap <c-b> <Plug>LLBreakSwitch
   vmap <F2> <Plug>LLStdInSelected
   nnoremap <F4> :LLstdin<CR>
   nnoremap <F5> :LLmode debug<CR>
@@ -157,7 +158,7 @@ if dwc_key_maps
 	" ---------
 
 	" I like to :quit with 'q', shrug.
-	nnoremap <silent> q :<C-u>:quit<CR>
+	" nnoremap <silent> q :<C-u>:quit<CR>
 	nnoremap gQ <Nop>
 
 	" Macros

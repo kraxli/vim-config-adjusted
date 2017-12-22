@@ -12,6 +12,8 @@
 - repo: Shougo/unite.vim # dway vim-config-adjusted
 - repo: Shougo/vimfiler.vim # dway vim-config-adjusted
 - repo: qpkorr/vim-bufkill # dway vim-config-adjusted
+  hook_add: |
+    command! B :BD
 - repo: xolox/vim-shell # dway: vim-config-adjusted
 - repo: xolox/vim-misc  # dway: vim-config-adjusted
 - repo: rafi/awesome-vim-colorschemes
@@ -30,7 +32,7 @@
 
 # dway: vim-config-adjusted
 - repo: kraxli/vimwiki-task
-  on_ft: [vimwiki, pandoc, pdc]
+  on_ft: [vimwiki, wiki]
   hook_add: |
     set spell spelllang=en,de
 
@@ -38,14 +40,19 @@
   on_ft: [pandoc, pdc]
   hook_add: |
     set spell spelllang=en,de
+  hook_post_source: |
+    setlocal foldlevel=0
+#  hook_source: |
+#  au MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc setlocal filetype=pandoc
 
 - repo: vim-pandoc/vim-pandoc-syntax
-  depends: vim-pandoc
   on_ft: [pandoc, pdc]
+#  depends: vim-pandoc
 
 - repo: vim-pandoc/vim-pandoc-after
-  depends: vim-pandoc
   on_ft: [pandoc, pdc]
+#  hook_add: |
+#    au MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc set filetype=pandoc
 
 # - repo: kassio/neoterm # dway: vim-config-adjusted
 # .../iron-nvim
@@ -75,10 +82,8 @@
 # - repo: nvie/vim-pyunit
   # on_ft: py
 
-
 - repo: alfredodeza/pytest.vim
   on_ft: [py, python]
-  on_cmd: [Pytest]
 
 - repo: jalvesaq/Nvim-R
   on_ft: r
@@ -232,9 +237,13 @@
   hook_source: |
     let g:easygit_enable_command = 1
   hook_add: |
-    command! -nargs=+ Git :NeomakeSh git <args>
+    command! -nargs=+ Git :AsyncRun git <args>
     command! GaddAll :Gadd --all
-    command! -nargs=+ GcommitAll :NeomakeSh git commit -m <args> -a
+    command! -nargs=+ GcommitAll :AsyncRun git commit -m <args> -a
+
+# command! -nargs=+ Git :NeomakeSh git <args>
+# command! GaddAll :Gadd --all
+# command! -nargs=+ GcommitAll :NeomakeSh git commit -m <args> -a
 
 # command! -nargs=+ GcommitThis :NeomakeSh git add %:p|
 #   \:NeomakeSh git commit -m <args> %:p
@@ -346,6 +355,7 @@
 
 - repo: vimwiki/vimwiki
   if: empty($VIM_MINIMAL)
+  on_ft: [vimwiki, wiki]
   on_map: { n: <Plug> }
   on_cmd: [Vimwiki, VimwikiTabIndex]
   hook_add: |
@@ -621,14 +631,24 @@
 # ==========================================
 # Experimental
 # ------------
-- repo: alfredodeza/pytest.vim
+
+# https://www.abidibo.net/blog/2016/04/06/django-debug-vim-and-vdebug/
+- repo: joonty/vdebug
   on_ft: py
 
-- repo: idanarye/vim-vebugger
-  on_ft: py
+# - repo: idanarye/vim-vebugger
+#   on_ft: py
 
 - repo: dbgx/lldb.nvim
   on_ft: [d, cpp, hpp, c, h]
+  hook_add: |
+    set hidden
+    command! DDebug :AsyncRun dmd -g %:p
+
+# command! DDebug :NeomakeSh dmd -g %:p
+
+# I addend hidden with the hope that lldb.nvim will run more stable
+# -gc --build=debug
 
 # - repo: sbdchd/vim-run
 #   on_ft: py
@@ -637,10 +657,24 @@
 #     let g:run_split = 'down'
 #     let g:run_auto_close = 0
 
+# or fzy
+# - repo: junegunn/fzf { 'dir': '~/.fzf', 'do': './install --all' }
 - repo: junegunn/fzf.vim
+  hook_source: set rtp+=~/.fzf
+
+# https://github.com/ggreer/the_silver_searcher
+- repo: mileszs/ack.vim
+  hook_add: let g:ackprg = 'ag --nogroup --nocolor --column'
+
+# let g:ackprg = 'ag --vimgrep'
+# http://betterthanack.com/
+# http://www.wezm.net/technical/2016/09/ripgrep-with-vim/
+# https://github.com/jhawthorn/fzy
 
 # delete asyncrun as soon neomakesh works for python
 - repo: skywind3000/asyncrun.vim
+
+# - repo: w0rp/ale
 
 # https://8thlight.com/blog/chris-jordan/2016/06/13/running-tests-in-vim.html
 # pytest config of blueyed: https://github.com/neomake/neomake/issues/1138
@@ -650,5 +684,64 @@
 
 # - repo: gotcha/vimpdb
   # on_ft: py
+
+# https://fortes.com/2017/language-server-neovim/
+# - repo: autozimu/LanguageClient-neovim
+#   hook_source: |
+#     let g:LanguageClient_autoStart = 1
+#     let g:LanguageClient_serverCommands = {}
+#     let g:LanguageClient_serverCommands.python = ['pyls']
+#     nnoremap  <leader>ld :call LanguageClient_textDocument_definition()<cr>
+#     nnoremap  <leader>lh :call LanguageClient_textDocument_hover()<cr>
+#     nnoremap  <leader>lr :call LanguageClient_textDocument_rename()<cr>
+#   hook_add: |
+#     set hidden
+
+
+# let g:LanguageClient_serverCommands.python = ['pyls']
+# <leader>ld to go to definition
+# <leader>lh for type info under cursor
+# <leader>lr to rename variable under cursor
+
+# for completion: roxma/nvim-completion-manager
+#
+
+# autoformat
+
+# text editing
+- repo: vim-scripts/utl.vim
+  hook_add: |
+    let g:utl_cfg_hdl_mt_text_directory='VIM'
+    let g:utl_cfg_hdl_scm_http_system = "silent !firefox -remote 'ping()' &&
+                                         \ firefox -remote 'openURL( %u )' ||
+                                         \ firefox '%u#%f' &"
+- repo: lervag/vimtex
+- repo: wbthomason/buildit.nvim
+- repo: msprev/unite-bibtex
+
+# focus plugins
+- repo: junegunn/goyo.vim
+- repo: junegunn/limelight.vim
+
+# Editing Plugins
+- repo: rhysd/vim-grammarous
+- repo: dbmrq/vim-ditto
+- repo: reedes/vim-wordy
+# see more on its git-directory for more writing plugin suggestions
+
+
+# http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
+- repo: tpope/vim-repeat
+- repo: tpope/vim-speeddating
+- repo: mattn/calendar-vim
+- repo: vim-scripts/SyntaxRange
+
+# - repo: inkarkat/vim-SyntaxRange
+# - repo: PeterRincker/vim-narrow
+
+# PLUGINS OBSERVED
+# https://github.com/kassio/neoterm
+# https://github.com/vimlab/split-term.vim
+# - repo: jceb/vim-orgmode
 
 #  vim: set ts=2 sw=2 tw=80 et :

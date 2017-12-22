@@ -11,7 +11,12 @@ command! Cd :cd %:p:h
 " Split windows vertically and open empty buffer
 command! Vspl :vsp l
 
-command! VTerm :vsp +term " or :vsp|terminal
+command! VTermCwd :vsp +term " or :vsp|terminal
+command! TTermCwd :tabnew +term " or :tabnew|terminal
+command! TermCwd :terminal
+command! VTerm :call dway#term#openterm('vsp')
+command! TTerm :call dway#term#openterm('tabnew')
+
 
 " save and quit
 command! W :w
