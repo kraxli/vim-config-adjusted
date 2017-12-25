@@ -74,9 +74,8 @@ augroup PandocGroup
   autocmd!
 
   " same command for .tex files in tex.vim
-  autocmd BufNewFile,BufRead *.pdc nnoremap <leader>op :!evince %:p:r.pdf & <cr><cr>
-
-  autocmd BufNewFile,BufRead *.md,*.pdc set tabstop=2 softtabstop=2 shiftwidth=2 expandtab  autoindent
+  nmap <leader>op :!evince %:p:r.pdf & <cr><cr>
+  set tabstop=2 softtabstop=2 shiftwidth=2 expandtab  autoindent
 
 augroup END
 
