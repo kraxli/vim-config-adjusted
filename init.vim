@@ -43,7 +43,7 @@ execute 'source '."~/Dropbox/ActiveHome/.settings/quickfiles.vim"
 
 
 au MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc setlocal filetype=pandoc
-
+au MyAutoCmd FileType pandoc setlocal foldmethod=expr
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 " set guicursor=
@@ -58,7 +58,8 @@ augroup IndividualCommands
       au FileType tex,latex,pandoc,pdc,txt,vimwiki,wiki setlocal spell spelllang=en,de
 augroup END
 
-command! PandocEx :tabnew ~/Dropbox/Work_Content/SCOR/VIM/pandoc_example.pdc
+command! PandocEx :tabnew ~/Dropbox/aCoding/Vim/Markdown/pandoc_example.pdc
+
 
 colorscheme hybrid " gruvbox  hybrid
 set background=dark
