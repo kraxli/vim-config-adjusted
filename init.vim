@@ -43,6 +43,7 @@ execute 'source '."~/Dropbox/ActiveHome/.settings/quickfiles.vim"
 
 
 au MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc setlocal filetype=pandoc
+au MyAutoCmd BufEnter,BufRead *.md,*.markdown setlocal filetype=pandoc
 au MyAutoCmd FileType pandoc setlocal foldmethod=expr
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
@@ -52,7 +53,6 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 " {{{ === Individual settings / commands - unallocated stuff ===
 augroup IndividualCommands
       autocmd!
-      au FileType tex,latex nnoremap F12 !xelatex %:p
       " autocmd Filetype tex,latex inoremap ½ \frac{1}{2}
       " autocmd BufNewFile,BufRead *.latex inoremap ½ \frac{1}{2}
       au FileType tex,latex,pandoc,pdc,txt,vimwiki,wiki setlocal spell spelllang=en,de
@@ -74,8 +74,14 @@ nmap gb <c-o> " <c-;>
 set statusline+=%F
 
 
-" ORG-MODE:
-let g:orgmode_directory="/home/dave/Dropbox/orgmode"
+" THINGS DO MOVE ELSEWHERE
+"
+" PANDOC
+let g:pkd_directory="/home/dave/Dropbox/PKD/"
+
+nnoremap <leader>gq :%!pandoc -f html -t markdown<CR>
+vnoremap <leader>gq :!pandoc -f html -t markdown<CR>
+
 
 " Note the easiest to use is \V (capital):	the following chars in the pattern are "very nomagic" (only \ is magic)
 hi hiOrgLink cterm=italic ctermfg=66 gui=italic guifg=#427b58

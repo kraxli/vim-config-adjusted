@@ -7,6 +7,7 @@ command! Cn :cn
 
 " change directory to current file one
 command! Cd :cd %:p:h
+command! Lcd :lcd %:p:h
 
 " Split windows vertically and open empty buffer
 command! Vspl :vsp l

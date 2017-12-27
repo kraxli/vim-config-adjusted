@@ -6,6 +6,9 @@ inoremap kj <esc>
 inoremap jj <Esc>
 imap jj <esc>
 
+" kill buffer from buff kill plugin
+nmap <localleader>k :BK<cr>
+
 " expand file name root
 "imap ,fn <c-r>=expand('%:t:r')<cr>
 
@@ -38,7 +41,8 @@ map <leader>nt :tabnew<cr>
 map <leader>ct :tabclose<cr>
 
 " change directory to the one of the current file
-map <leader>cd :cd %:p:h<cr>
+map <leader>cd :lcd %:p:h<cr>
+map <leader>gcd :cd %:p:h<cr>
 
 " toggle spelling (<leader>se)
 nnoremap <F2> :set spell! spelllang=en,de <cr>

@@ -6,6 +6,9 @@
 " ------------
 if dwc_key_maps
 
+  nmap <leader>tb :TagbarToggle<CR>
+  nmap <leader>t :TagbarToggle<CR>
+
 	" lldb.nvim (dlang)
 	nmap <M-b> <Plug>LLBreakSwitch
 	" nmap <c-b> <Plug>LLBreakSwitch
