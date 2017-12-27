@@ -5,6 +5,7 @@
 " https://github.com/jgm/pandoc/wiki/Pandoc-Extras
 " https://pandoc.org/MANUAL.html
 
+" !pandoc %:p -s -o %:p:r.html 
 command! Pandoc2HTML :Pandoc  html
   \ -s
   \ --mathjax='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
@@ -73,9 +74,12 @@ command! Pandoc2LatexA4 :Pandoc latex
 augroup PandocGroup
   autocmd!
 
+  " hf is more in line with hb
+  nmap <localleader>hf <localleader>hn
   " same command for .tex files in tex.vim
   nmap <leader>op :!evince %:p:r.pdf & <cr><cr>
   set tabstop=2 softtabstop=2 shiftwidth=2 expandtab  autoindent
+
 
 augroup END
 
