@@ -37,20 +37,32 @@
     set spell spelllang=en,de
 
 - repo: vim-pandoc/vim-pandoc
-  on_ft: [pandoc, pdc]
+  on_ft: [pandoc, pdc, markdown, md]
   hook_add: |
     set spell spelllang=en,de
+    setlocal foldlevel=0
   hook_post_source: |
     setlocal foldlevel=0
+    let g:pandoc#folding#level=0
+
+# nunmap <m-Left>
+# nunmap <m-Right>
+# nmap <silent> <m-Left> :wincmd h<CR>
+# nmap <silent> <m-Left> :wincmd h<CR>
+# nmap <silent> <m-Right> :wincmd l<CR>
+# nmap <m-Right> <c-w>l
+# nmap <m-Left> <c-w>h
+# source $HOME/.config/nvim/config/mappings.vim
 #  hook_source: |
 #  au MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc setlocal filetype=pandoc
+# nmap <leader>tb :TagbarToggle<CR>
 
 - repo: vim-pandoc/vim-pandoc-syntax
-  on_ft: [pandoc, pdc]
+  on_ft: [pandoc, pdc, markdown, md]
 #  depends: vim-pandoc
 
 - repo: vim-pandoc/vim-pandoc-after
-  on_ft: [pandoc, pdc]
+  on_ft: [pandoc, pdc, markdown, md]
 #  hook_add: |
 #    au MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc set filetype=pandoc
 
@@ -117,28 +129,28 @@
     let g:html5_microdata_attributes_complete = 0
     let g:html5_aria_attributes_complete = 0
 
-- repo: plasticboy/vim-markdown
-  on_ft: markdown
-  hook_add: |
-    let g:vim_markdown_override_foldtext = 0
-    let g:vim_markdown_initial_foldlevel = 999
-    let g:vim_markdown_new_list_item_indent = 2
-    let g:vim_markdown_frontmatter = 1
-    let g:vim_markdown_conceal = 0
-    let g:vim_markdown_fenced_languages = [
-      \ 'c++=cpp',
-      \ 'viml=vim',
-      \ 'bash=sh',
-      \ 'ini=dosini'
-      \ ]
+# - repo: plasticboy/vim-markdown
+#   on_ft: markdown
+#   hook_add: |
+#     let g:vim_markdown_override_foldtext = 0
+#     let g:vim_markdown_initial_foldlevel = 999
+#     let g:vim_markdown_new_list_item_indent = 2
+#     let g:vim_markdown_frontmatter = 1
+#     let g:vim_markdown_conceal = 0
+#     let g:vim_markdown_fenced_languages = [
+#       \ 'c++=cpp',
+#       \ 'viml=vim',
+#       \ 'bash=sh',
+#       \ 'ini=dosini'
+#       \ ]
 
-- repo: rhysd/vim-gfm-syntax
-  depends: vim-markdown
-  on_ft: markdown
-  hook_source: |
-    let g:gfm_syntax_enable_always = 0
-    let g:gfm_syntax_highlight_emoji = 0
-    let g:gfm_syntax_enable_filetypes = ['markdown']
+# - repo: rhysd/vim-gfm-syntax
+#   depends: vim-markdown
+#   on_ft: markdown
+#   hook_source: |
+#     let g:gfm_syntax_enable_always = 0
+#     let g:gfm_syntax_highlight_emoji = 0
+#     let g:gfm_syntax_enable_filetypes = ['markdown']
 
 - repo: pangloss/vim-javascript
   on_ft: [ javascript, jsx, javascript.jsx ]
@@ -364,11 +376,13 @@
     let g:vimwiki_hl_headers = 1
     let g:vimwiki_hl_cb_checked = 1
     let g:vimwiki_autowriteall = 0
-  hook_post_source: |
-    nunmap <m-Left>
-    nunmap <m-Right>
-    nmap <silent> <m-Left> :wincmd h<CR>
-    nmap <silent> <m-Right> :wincmd l<CR>
+
+# hook_post_source: |
+#   nunmap <m-Left>
+#   nunmap <m-Right>
+#   nmap <silent> <m-Left> :wincmd h<CR>
+#   nmap <silent> <m-Right> :wincmd l<CR>
+
 
 # hook_source: |
 #   autocmd BufEnter,BufRead *.wiki nunmap <m-Left>
@@ -419,6 +433,7 @@
 - repo: honza/vim-snippets
 - repo: kiith-sa/DSnips
 
+# https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
 - repo: SirVer/ultisnips
   depends: [ vim-snippets, DSnips ]
   hook_add: |
@@ -709,6 +724,9 @@
 
 # autoformat
 
+# Replace text with the contents of a register (copy/paste) 
+# - repo: vim-scripts/ReplaceWithRegister
+
 # text editing
 - repo: vim-scripts/utl.vim
   hook_add: |
@@ -744,5 +762,7 @@
 # https://github.com/kassio/neoterm
 # https://github.com/vimlab/split-term.vim
 # - repo: jceb/vim-orgmode
+
+# rhysd/clever-f.vim
 
 #  vim: set ts=2 sw=2 tw=80 et :
