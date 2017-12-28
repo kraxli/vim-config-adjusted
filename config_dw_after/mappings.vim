@@ -12,9 +12,6 @@ nmap <localleader>k :BK<cr>
 " expand file name root
 "imap ,fn <c-r>=expand('%:t:r')<cr>
 
-" undo
-map <C-z> :u<cr>
-
 " map <C-m> ]c
 
 " go back (to last position)
@@ -49,7 +46,7 @@ nnoremap <F2> :set spell! spelllang=en,de <cr>
 
 " {{{ == Folding ==
 " toggle folds (or <F8> instead of zt)
-inoremap zt <C-O>za
+inoremap <c-z> <C-O>za
 nnoremap zt za
 onoremap zt <C-C>za
 
