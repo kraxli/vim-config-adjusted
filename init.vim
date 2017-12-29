@@ -32,6 +32,9 @@ let g:path_tex_executables = 'C:\Program Files\MiKTeX 2.9\miktex\bin\x64\'
 
 " }}}
 
+" Initialize plugin manager 'plug.vim':
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config_dw_after/plugged.vim'
+
 " original from vim-config:
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/vimrc'
 
@@ -90,6 +93,16 @@ hi link OrgLink hiOrgLink
 
 " }}} end individual settings / commands
 
+" {{{ commands
 
+nnoremap <c-1>  <c-w>+ 
+
+" nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+" nnoremap <silent> <Leader>+ :exe "resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <c-w>2 :vertical exe "resize 10"<CR>
+" nnoremap <silent> <c-w>0 10<c-w><
+nnoremap <silent> <c-w>0 :vertical exe "resize -10"<CR>
+
+" }}}
 
 " vim: set foldmethod=marker
