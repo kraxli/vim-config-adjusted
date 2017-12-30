@@ -41,8 +41,7 @@
   hook_add: |
     set spell spelllang=en,de
     setlocal foldlevel=0
-  hook_post_source: |
-    setlocal foldlevel=0
+    let g:pandoc#formatting#extra_equalprg = "--reference-links --atx-headers"
     let g:pandoc#folding#level=0
 
 # nunmap <m-Left>
@@ -734,13 +733,11 @@
     let g:utl_cfg_hdl_scm_http_system = "silent !firefox -remote 'ping()' &&
                                          \ firefox -remote 'openURL( %u )' ||
                                          \ firefox '%u#%f' &"
+
 - repo: lervag/vimtex
 - repo: wbthomason/buildit.nvim
 - repo: msprev/unite-bibtex
 
-# focus plugins
-- repo: junegunn/goyo.vim
-- repo: junegunn/limelight.vim
 
 # Editing Plugins
 - repo: rhysd/vim-grammarous
@@ -752,7 +749,6 @@
 # http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
 - repo: tpope/vim-repeat
 - repo: tpope/vim-speeddating
-- repo: mattn/calendar-vim
 - repo: vim-scripts/SyntaxRange
 
 # - repo: inkarkat/vim-SyntaxRange
