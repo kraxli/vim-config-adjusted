@@ -22,6 +22,9 @@ endif
 " }}} Path
 
 " {{{ === Settings ===
+
+set readonly!
+
 " use dwc functions to send code lines to (ipython-)terminal. Alternative is bfredl/nvim-ipy
 let g:dwc_ipython_terminal = 1
 let g:dwc_terminal_keys = 1
@@ -29,6 +32,10 @@ let g:dwc_key_maps = 1
 
 let g:path_tex_executables = 'C:\Program Files\MiKTeX 2.9\miktex\bin\x64\'
 
+" autocmd BufRead,BufNewFile plugins.yaml setlocal nospell
+if expand('%:t') != 'plugins.yaml'
+  setlocal nospell
+endif
 
 " }}}
 
@@ -102,6 +109,9 @@ nnoremap <c-1>  <c-w>+
 nnoremap <silent> <c-w>2 :vertical exe "resize 10"<CR>
 " nnoremap <silent> <c-w>0 10<c-w><
 nnoremap <silent> <c-w>0 :vertical exe "resize -10"<CR>
+
+" Toggle Limelight
+au FileType pandoc,markdown,tex,vimwiki,txt nnoremap <buffer> F5 :Limelight!!
 
 " }}}
 
