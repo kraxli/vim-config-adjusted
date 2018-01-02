@@ -115,4 +115,9 @@ au FileType pandoc,markdown,tex,vimwiki,txt nnoremap <buffer> F5 :Limelight!!
 
 " }}}
 
+" {{{ final settings
+set readonly!
+set noreadonly
+" }}}
+
 " vim: set foldmethod=marker
