@@ -6,28 +6,41 @@
 " https://pandoc.org/MANUAL.html
 
 " !pandoc %:p -s -o %:p:r.html 
-command! Pandoc2HTML :Pandoc  html
+" command! Pandoc2HTML :Pandoc  html
+command!  Pandoc2HTML :!pandoc %:p
   \ -s
-  \ --mathjax='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
-  \ --include-in-header='~/.config/nvim/templates/pandoc_html.pdc'
   \ -N
+  \ -o %:p:r.html
   \ --toc
+  \ --mathjax='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+  \ --variable linkcolor=blue
+  \ --variable citecolor=blue
+  \ --variable urlcolor=blue
+  \ --variable toccolor=blue
+  \ --number-sections
   \ --filter pandoc-eqnos
   \ --filter pandoc-tablenos
   \ --filter pandoc-fignos
+  " \ --include-in-header='~/.config/nvim/templates/pandoc_html.pdc'
   " \ -V toc-title:"Table of Contents"
 
-
-command!  Pandoc2Pdf :Pandoc  pdf
+" !pandoc %:p -s --variable urlcolor=cyan -o %:p:r.pdf
+" command!  Pandoc2Pdf :Pandoc  pdf
+command!  Pandoc2Pdf :!pandoc %:p
   \ -s
   \ -N
+  \ -o %:p:r.pdf
   \ --toc
   \ --latex-engine=xelatex
+  \ --variable geometry=a4paper
+  \ --variable linkcolor=blue
+  \ --variable citecolor=blue
+  \ --variable urlcolor=blue
+  \ --number-sections
   \ --filter pandoc-eqnos
   \ --filter pandoc-tablenos
   \ --filter pandoc-fignos
-  \ --number-sections
-  \ --variable=geometry:a4paper,linkcolor:blue
+  " \ --variable toccolor=blue
 
 
 " command! Pandoc2Doc :NeomakeSh pandoc docx
