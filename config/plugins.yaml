@@ -37,7 +37,7 @@
     set spell spelllang=en,de
 
 - repo: vim-pandoc/vim-pandoc
-  on_ft: [pandoc, pdc, markdown, md]
+  on_ft: [pandoc, pdc]
   hook_add: |
     set spell spelllang=en,de
     setlocal foldlevel=0
@@ -57,11 +57,11 @@
 # nmap <leader>tb :TagbarToggle<CR>
 
 - repo: vim-pandoc/vim-pandoc-syntax
-  on_ft: [pandoc, pdc, markdown, md]
+  on_ft: [pandoc, pdc]
 #  depends: vim-pandoc
 
 - repo: vim-pandoc/vim-pandoc-after
-  on_ft: [pandoc, pdc, markdown, md]
+  on_ft: [pandoc, pdc]
 #  hook_add: |
 #    au MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc set filetype=pandoc
 
