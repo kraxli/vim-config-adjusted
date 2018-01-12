@@ -118,6 +118,11 @@ au FileType pandoc,markdown,tex,vimwiki,txt nnoremap <buffer> F5 :Limelight!!
 " {{{ final settings
 set readonly!
 set noreadonly
+
+set conceallevel=2 concealcursor=nv
+au FileType pandoc,markdown,tex,vimwiki,txt, setl conceallevel=2 concealcursor=nv
+" au BufNewFile,BufEnter,BufRead,BufReadPost,BufReadPre *.pandoc,*.pdc,*.markdown,*.md,*.tex,*.vimwiki,*.wiki,*.txt, setl conceallevel=2 concealcursor=nv
+
 " }}}
 
 " vim: set foldmethod=marker
