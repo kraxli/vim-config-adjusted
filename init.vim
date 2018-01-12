@@ -113,6 +113,8 @@ nnoremap <silent> <c-w>0 :vertical exe "resize -10"<CR>
 " Toggle Limelight
 au FileType pandoc,markdown,tex,vimwiki,txt nnoremap <buffer> F5 :Limelight!!
 
+command! PathClean :s/\([ :,?+]\+\)/_/g
+
 " }}}
 
 " {{{ final settings
