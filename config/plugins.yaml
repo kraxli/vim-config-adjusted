@@ -16,6 +16,7 @@
     command! B :BD
 - repo: xolox/vim-shell # dway: vim-config-adjusted
 - repo: xolox/vim-misc  # dway: vim-config-adjusted
+- repo: rafi/vim-denite-task  # dway: vim-config-adjusted
 - repo: rafi/awesome-vim-colorschemes
 - repo: rafi/vim-badge
 - repo: thinca/vim-localrc
