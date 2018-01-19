@@ -7,7 +7,7 @@
 
 " !pandoc %:p -s -o %:p:r.html 
 " command! Pandoc2HTML :Pandoc  html
-command!  Pandoc2HTML :!pandoc %:p
+command!  Pandoc2HTML :NeomakeSh pandoc %:p
   \ -s
   \ -N
   \ -o %:p:r.html
@@ -26,7 +26,7 @@ command!  Pandoc2HTML :!pandoc %:p
 
 " !pandoc %:p -s --variable urlcolor=cyan -o %:p:r.pdf
 " command!  Pandoc2Pdf :Pandoc  pdf
-command!  Pandoc2Pdf :!pandoc %:p
+command!  Pandoc2Pdf :NeomakeSh pandoc %:p
   \ -s
   \ -N
   \ -o %:p:r.pdf
@@ -42,27 +42,44 @@ command!  Pandoc2Pdf :!pandoc %:p
   \ --filter pandoc-fignos
   " \ --variable toccolor=blue
 
-
-" command! Pandoc2Doc :NeomakeSh pandoc docx
-command! Pandoc2Doc :Pandoc docx
+command! Pandoc2Md :!pandoc %:p
   \ -s
   \ -N
+  \ -o %:p:r.md
+  \ --toc
+  \ --variable geometry=a4paper
+  \ --variable linkcolor=blue
+  \ --variable citecolor=blue
+  \ --variable urlcolor=blue
+  \ --number-sections
+  \ --filter pandoc-eqnos
+  \ --filter pandoc-tablenos
+  \ --filter pandoc-fignos
+  " \ --variable toccolor=blue
+
+
+" command! Pandoc2Doc :NeomakeSh pandoc docx
+command! Pandoc2Doc :NeomakeSh pandoc %:p
+  \ -s
+  \ -N
+  \ -o %:p:r.docx
   \ --toc
   \ --filter pandoc-eqnos
   \ --filter pandoc-tablenos
   \ --filter pandoc-fignos
 
 
-command! -nargs=1 PandocLib :Pandoc
+command! -nargs=1 PandocLib :NeomakeSh pandoc %:p
   \ +inline_notes
   \ --filter pandoc-citeproc
   \ <f-args>
   " see:  http://johnmacfarlane.net/pandoc/demos.html
 
 
-command!  Pandoc2Epub :Pandoc  epub
+command!  Pandoc2Epub :NeomakeSh pandoc %:p
   \ -s
   \ -N
+  \ -o %:p:r.epub
   \ --toc
   \ --latex-engine=xelatex
   \ --filter pandoc-eqnos
@@ -72,9 +89,10 @@ command!  Pandoc2Epub :Pandoc  epub
   \ --variable=linkcolor:blue
 
 
-command! Pandoc2LatexA4 :Pandoc latex
+command! Pandoc2LatexA4 :NeomakeSh pandoc %:p
   \ -s
   \ -N
+  \ -o %:p:r.latex
   \ --toc
   \ --latex-engine=xelatex
   \ --variable=geometry:a4paper
@@ -82,7 +100,13 @@ command! Pandoc2LatexA4 :Pandoc latex
   \ --filter pandoc-tablenos
   \ --filter pandoc-fignos
 
-
+" command! PandocPublish :Pandoc2HTML <bar> :Pandoc2Pdf
+" command! PandocPublish :execute "Pandoc2HTML\|Pandoc2Pdf"
+function! PandocPublish()
+     :Pandoc2HTML
+     :Pandoc2Pdf
+endfunction
+command! PandocPublish :call PandocPublish()
 
 augroup PandocGroup
   autocmd!
