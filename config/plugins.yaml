@@ -38,12 +38,21 @@
     set spell spelllang=en,de
 
 - repo: vim-pandoc/vim-pandoc
-  on_ft: [pandoc, pdc]
+  on_ft: [pandoc, pdc, md]
   hook_add: |
     set spell spelllang=en,de
     setlocal foldlevel=0
-    let g:pandoc#formatting#extra_equalprg = "--reference-links --atx-headers"
+    au BufRead,BufNewFile *.md set filetype=pandoc
+    let g:pandoc#formatting#extra_equalprg = "--reference-links --atx-headers --wrap=none"
     let g:pandoc#folding#level=0
+
+# let g:pandoc#formatting#mode = "hA"
+# let g:pandoc#formatting#smart_autoformat_on_cursormoved = 1
+# let g:pandoc#folding#level = 2
+# let g:pandoc#folding#mode = "relative"
+# let g:pandoc#after#modules#enabled = ["nrrwrgn", "tablemode"]
+# let g:pandoc#completion#bib#mode = 'citeproc'
+# let g:pandoc#syntax#colorcolumn = 1
 
 # nunmap <m-Left>
 # nunmap <m-Right>
@@ -106,6 +115,7 @@
 
 # dway: vim-config-adjusted
 
+# ==========================================
 # Lazy Loading
 # ==========================================
 
@@ -129,28 +139,28 @@
     let g:html5_microdata_attributes_complete = 0
     let g:html5_aria_attributes_complete = 0
 
-- repo: plasticboy/vim-markdown
-  on_ft: markdown
-  hook_add: |
-    let g:vim_markdown_override_foldtext = 0
-    let g:vim_markdown_initial_foldlevel = 999
-    let g:vim_markdown_new_list_item_indent = 2
-    let g:vim_markdown_frontmatter = 1
-    let g:vim_markdown_conceal = 0
-    let g:vim_markdown_fenced_languages = [
-      \ 'c++=cpp',
-      \ 'viml=vim',
-      \ 'bash=sh',
-      \ 'ini=dosini'
-      \ ]
+# - repo: plasticboy/vim-markdown
+#   on_ft: markdown
+#   hook_add: |
+#     let g:vim_markdown_override_foldtext = 0
+#     let g:vim_markdown_initial_foldlevel = 999
+#     let g:vim_markdown_new_list_item_indent = 2
+#     let g:vim_markdown_frontmatter = 1
+#     let g:vim_markdown_conceal = 0
+#     let g:vim_markdown_fenced_languages = [
+#       \ 'c++=cpp',
+#       \ 'viml=vim',
+#       \ 'bash=sh',
+#       \ 'ini=dosini'
+#       \ ]
 
-- repo: rhysd/vim-gfm-syntax
-  depends: vim-markdown
-  on_ft: markdown
-  hook_source: |
-    let g:gfm_syntax_enable_always = 0
-    let g:gfm_syntax_highlight_emoji = 0
-    let g:gfm_syntax_enable_filetypes = ['markdown']
+# - repo: rhysd/vim-gfm-syntax
+#   depends: vim-markdown
+#   on_ft: markdown
+#   hook_source: |
+#     let g:gfm_syntax_enable_always = 0
+#     let g:gfm_syntax_highlight_emoji = 0
+#     let g:gfm_syntax_enable_filetypes = ['markdown']
 
 - repo: pangloss/vim-javascript
   on_ft: [ javascript, jsx, javascript.jsx ]
@@ -389,22 +399,20 @@
 #   autocmd BufEnter,BufRead *.wiki map <silent> <m-Left> :wincmd h<CR>
 #   autocmd BufEnter,BufRead *.wiki map <silent> <m-Right> :wincmd l<CR>
 
-
-
-  # hook_source: |
-  #   let g:vimwiki_list = [
-  #   \   { 'diary_header': 'Diary',
-  #   \     'diary_link_fmt': '%Y-%m/%d',
-  #   \     'auto_toc': 1,
-  #   \     'path': '~/Dropbox/VimWiki/',
-  #   \     'path_html': '~/Dropbox/VimWiki/vimwiki_html/',
-  #   \     'template_path': '~/Dropbox/VimWiki/templates',
-  #   \     'template_default': 'default',
-  #   \     'template_ext': '.html'},
-  #   \   { 'path': '~/docs/blog/',
-  #   \     'syntax': 'markdown',
-  #   \     'ext': '.md' }
-  #   \ ]
+# hook_source: |
+#   let g:vimwiki_list = [
+#   \   { 'diary_header': 'Diary',
+#   \     'diary_link_fmt': '%Y-%m/%d',
+#   \     'auto_toc': 1,
+#   \     'path': '~/Dropbox/VimWiki/',
+#   \     'path_html': '~/Dropbox/VimWiki/vimwiki_html/',
+#   \     'template_path': '~/Dropbox/VimWiki/templates',
+#   \     'template_default': 'default',
+#   \     'template_ext': '.html'},
+#   \   { 'path': '~/docs/blog/',
+#   \     'syntax': 'markdown',
+#   \     'ext': '.md' }
+#   \ ]
 
 # dway: vim-config-adjusted
 # - repo: xolox/vim-notes
