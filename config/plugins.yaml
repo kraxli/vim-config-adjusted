@@ -153,6 +153,8 @@
 #       \ 'bash=sh',
 #       \ 'ini=dosini'
 #       \ ]
+#   hook_post_source: |
+#     au BufNewFile,BufRead,BufEnter *.md set filetype=pandoc
 
 # - repo: rhysd/vim-gfm-syntax
 #   depends: vim-markdown
@@ -281,7 +283,7 @@
   if: empty($VIM_MINIMAL)
   on_cmd: TagbarToggle
   hook_source: |
-    let g:tagbar_width = 40
+    let g:tagbar_width = 25
     if executable('jsctags')
       let g:tagbar_type_javascript = { 'ctagsbin': 'jsctags' }
     endif
@@ -386,6 +388,8 @@
     let g:vimwiki_hl_headers = 1
     let g:vimwiki_hl_cb_checked = 1
     let g:vimwiki_autowriteall = 0
+    au FileType pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=nv
+    
 
 # hook_post_source: |
 #   nunmap <m-Left>

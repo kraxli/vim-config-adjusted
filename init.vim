@@ -32,13 +32,9 @@ let g:dwc_key_maps = 1
 
 let g:path_tex_executables = 'C:\Program Files\MiKTeX 2.9\miktex\bin\x64\'
 
-" autocmd BufRead,BufNewFile plugins.yaml setlocal nospell
-if expand('%:t') != 'plugins.yaml'
-  setlocal nospell
-endif
-
 " }}}
 
+" {{{ === Load Config files ===
 " Initialize plugin manager 'plug.vim':
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config_dw_after/plugged.vim'
 
@@ -51,10 +47,8 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/load_dw.vim'
 " load some mappings to quickly access as some files
 execute 'source '."~/Dropbox/ActiveHome/.settings/quickfiles.vim"
 
+" }}} load config file
 
-au MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc setlocal filetype=pandoc
-au MyAutoCmd BufEnter,BufRead *.md,*.markdown setlocal filetype=pandoc
-au MyAutoCmd FileType pandoc setlocal foldmethod=expr
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 " set guicursor=
@@ -118,12 +112,27 @@ command! PathClean :s/\([ :,?+]\+\)/_/g
 " }}}
 
 " {{{ final settings
+
+au! Filetype vim setl=marker "indent
+
+if expand('%:t') != 'plugins.yaml'
+  setlocal nospell
+endif
+autocmd! BufRead,BufNewFile,BufEnter,BufWrite plugins.yaml setlocal nospell
+
 set readonly!
 set noreadonly
 
 set conceallevel=2 concealcursor=nv
-au FileType pandoc,markdown,tex,vimwiki,txt, setl conceallevel=2 concealcursor=nv
-" au BufNewFile,BufEnter,BufRead,BufReadPost,BufReadPre *.pandoc,*.pdc,*.markdown,*.md,*.tex,*.vimwiki,*.wiki,*.txt, setl conceallevel=2 concealcursor=nv
+
+au! MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc,*.md setlocal filetype=pandoc
+" au BufEnter,BufRead,BufCreate,BufNewFile,BufReadPre *.pdc,*.pandoc,*.md set filetype=pandoc
+au! BufNewFile,BufEnter,BufRead,BufReadPost,BufReadPre *.pandoc,*.pdc,*.markdown,*.md,*.tex,*.vimwiki,*.wiki,*.txt, setl conceallevel=2 concealcursor=nv
+" au MyAutoCmd BufEnter,BufRead *.md,*.markdown setlocal filetype=pandoc
+au MyAutoCmd FileType pandoc setlocal foldmethod=expr
+au FileType pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=nv
+
+
 
 " }}}
 
