@@ -389,7 +389,6 @@
     let g:vimwiki_hl_cb_checked = 1
     let g:vimwiki_autowriteall = 0
     au FileType pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=nv
-    
 
 # hook_post_source: |
 #   nunmap <m-Left>
