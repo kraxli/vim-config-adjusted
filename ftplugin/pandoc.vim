@@ -28,6 +28,8 @@ command!  Pandoc2HTML :NeomakeSh pandoc %:p
 " pandoc ~/Dropbox/PKD/interviews.md -o interviews.html -f markdown --template template.html --css template.css --self-contained --toc --toc-depth=2
 " cd ~/pandoc-bootstrap-adaptive-template/ 
 " pandoc ~/Dropbox/PKD/interviews.md -o interviews.html -f markdown --template standalone.html --css template.css --toc --toc-depth=2
+
+" source: https://github.com/tonyblundell/pandoc-bootstrap-template
 command!  Pandoc2HTML5 :NeomakeSh pandoc %:p
   \ -s
   \ -N
