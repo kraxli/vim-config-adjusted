@@ -58,11 +58,10 @@ command! Pandoc2Md :!pandoc %:p
   " \ --variable toccolor=blue
 
 
-" command! Pandoc2Doc :NeomakeSh pandoc docx
 command! Pandoc2Doc :NeomakeSh pandoc %:p
   \ -s
   \ -N
-  \ -o %:p:r.docx
+  \ -o %:p:r.doc
   \ --toc
   \ --filter pandoc-eqnos
   \ --filter pandoc-tablenos

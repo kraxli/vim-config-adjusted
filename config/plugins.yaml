@@ -752,10 +752,12 @@
 
 
 # Editing Plugins
+# see more on the wordy git-directory for more writing plugin suggestions
 - repo: rhysd/vim-grammarous
 - repo: dbmrq/vim-ditto
 - repo: reedes/vim-wordy
-# see more on its git-directory for more writing plugin suggestions
+# Navigate between wiki-markdown file:
+- repo: mmai/vim-markdown-wiki
 
 
 # http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
