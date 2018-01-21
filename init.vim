@@ -72,7 +72,9 @@ let color_scheme1 = 'hybrid'
 let color_scheme2 = 'gruvbox'
 
 nmap <leader>cs :call dway#misc#ToggleColorScheme(color_scheme1, color_scheme2)<cr>
-noremap <leader>b :call dway#misc#ToggleBgCs(color_scheme1, color_scheme2)<cr>
+" noremap <leader>b :call dway#misc#ToggleBgCs(color_scheme1, color_scheme2)<cr>
+
+" go back:
 nmap gb <c-o> " <c-;>
 
 set statusline+=%F
@@ -96,7 +98,7 @@ hi link OrgLink hiOrgLink
 
 " {{{ commands
 
-nnoremap <c-1>  <c-w>+ 
+nnoremap <c-1>  <c-w>+
 
 " nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 " nnoremap <silent> <Leader>+ :exe "resize " . (winwidth(0) * 3/2)<CR>
@@ -109,11 +111,31 @@ au FileType pandoc,markdown,tex,vimwiki,txt nnoremap <buffer> F5 :Limelight!!
 
 command! PathClean :s/\([ :,?+]\+\)/_/g
 
+command! SpellEn :set spell spelllang=en<cr>
+command! SpellDe :set spell spelllang=de<cr>
+command! SpellEnDe :set spell spelllang=en,de<cr>
+command! NoSpell :set nospell<cr>
+command! NoSpell :set nospell<cr>
+
+command! SetPandocFold :set foldexpr=pandoc#folding#FoldExpr()<cr>
+
+
+" }}}
+
+" {{{ === Key maps ===
+
+nmap ;ll :Limelight!!<cr>
+nmap fx <F6>
+nmap ff <F6>
+
+
+
 " }}}
 
 " {{{ final settings
 
-au! Filetype vim setl=marker "indent
+au! Filetype vim setl="marker"
+"indent
 
 if expand('%:t') != 'plugins.yaml'
   setlocal nospell
