@@ -115,7 +115,6 @@ command! SpellEn :set spell spelllang=en<cr>
 command! SpellDe :set spell spelllang=de<cr>
 command! SpellEnDe :set spell spelllang=en,de<cr>
 command! NoSpell :set nospell<cr>
-command! NoSpell :set nospell<cr>
 
 command! SetPandocFold :set foldexpr=pandoc#folding#FoldExpr()<cr>
 
@@ -128,13 +127,11 @@ nmap ;ll :Limelight!!<cr>
 nmap fx <F6>
 nmap ff <F6>
 
-
-
 " }}}
 
 " {{{ final settings
 
-au! Filetype vim setl="marker"
+au! Filetype vim setl foldmethod=marker
 "indent
 
 if expand('%:t') != 'plugins.yaml'
@@ -153,8 +150,6 @@ au! BufNewFile,BufEnter,BufRead,BufReadPost,BufReadPre *.pandoc,*.pdc,*.markdown
 " au MyAutoCmd BufEnter,BufRead *.md,*.markdown setlocal filetype=pandoc
 au MyAutoCmd FileType pandoc setlocal foldmethod=expr
 au FileType pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=nv
-
-
 
 " }}}
 

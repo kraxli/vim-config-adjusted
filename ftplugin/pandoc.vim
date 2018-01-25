@@ -30,7 +30,7 @@ command!  Pandoc2HTML :NeomakeSh pandoc %:p
 " pandoc ~/Dropbox/PKD/interviews.md -o interviews.html -f markdown --template standalone.html --css template.css --toc --toc-depth=2
 
 " source: https://github.com/tonyblundell/pandoc-bootstrap-template
-command!  Pandoc2HTML5 :NeomakeSh pandoc %:p
+command!  Pandoc2HTMLBS :NeomakeSh pandoc %:p
   \ -s
   \ -N
   \ -o %:p:r.html

@@ -68,10 +68,12 @@
 
 - repo: vim-pandoc/vim-pandoc-syntax
   on_ft: [pandoc, pdc]
+
 #  depends: vim-pandoc
 
 - repo: vim-pandoc/vim-pandoc-after
   on_ft: [pandoc, pdc]
+
 #  hook_add: |
 #    au MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc set filetype=pandoc
 
@@ -480,6 +482,7 @@
     let g:neosnippet#enable_completed_snippet = 1
     let g:neosnippet#expand_word_boundary = 1
     autocmd MyAutoCmd InsertLeave * NeoSnippetClearMarkers
+
 # let g:neosnippet#data_directory = $VARPATH.'/snippets'
 
 - repo: ludovicchabant/vim-gutentags
@@ -735,7 +738,7 @@
 
 # autoformat
 
-# Replace text with the contents of a register (copy/paste) 
+# Replace text with the contents of a register (copy/paste)
 # - repo: vim-scripts/ReplaceWithRegister
 
 # text editing
@@ -750,15 +753,14 @@
 - repo: wbthomason/buildit.nvim
 - repo: msprev/unite-bibtex
 
-
 # Editing Plugins
 # see more on the wordy git-directory for more writing plugin suggestions
 - repo: rhysd/vim-grammarous
 - repo: dbmrq/vim-ditto
 - repo: reedes/vim-wordy
+
 # Navigate between wiki-markdown file:
 - repo: mmai/vim-markdown-wiki
-
 
 # http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
 - repo: tpope/vim-repeat
