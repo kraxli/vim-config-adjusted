@@ -153,4 +153,5 @@ au FileType pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=nv
 
 " }}}
 
+
 " vim: set foldmethod=marker

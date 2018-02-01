@@ -16,7 +16,6 @@
     command! B :BD
 - repo: xolox/vim-shell # dway: vim-config-adjusted
 - repo: xolox/vim-misc  # dway: vim-config-adjusted
-- repo: rafi/vim-denite-task  # dway: vim-config-adjusted
 - repo: rafi/awesome-vim-colorschemes
 - repo: rafi/vim-badge
 - repo: thinca/vim-localrc
@@ -616,6 +615,19 @@
   on_source: denite.nvim
   hook_source: call denite#custom#var('mpc', 'default_view', 'date')
 
+# dway: vim-config-adjusted
+- repo: rafi/vim-denite-task
+  on_source: denite.nvim
+  hook_source: |
+    call denite#custom#var('task', 'taskrc', '~/.taskrc')
+    call denite#custom#var('task', 'data_dir', '~/.task')
+    call denite#custom#var('task', 'date_format', '%y-%m-%d %H:%M')
+    call denite#custom#var('task', 'format', '{id:3.3} | {priority:1.1} | {project:15.15} | {description:40.40} | {entry} | {due}')
+    call denite#custom#var('task', 'label_width', 17)
+    call denite#custom#var('task', 'formats', {
+      \     'format': '{id:3.3} | {priority:1.1} | {project:15.15} | {description}',
+      \ })
+
 # ==========================================
 # Operators
 # ---------
@@ -762,13 +774,15 @@
 # Navigate between wiki-markdown file:
 - repo: mmai/vim-markdown-wiki
 
-# http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
+ # http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
 - repo: tpope/vim-repeat
 - repo: tpope/vim-speeddating
 - repo: vim-scripts/SyntaxRange
 
 # - repo: inkarkat/vim-SyntaxRange
 # - repo: PeterRincker/vim-narrow
+
+
 
 # PLUGINS OBSERVED
 # https://github.com/kassio/neoterm
