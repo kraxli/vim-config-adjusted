@@ -774,7 +774,7 @@
 # Navigate between wiki-markdown file:
 - repo: mmai/vim-markdown-wiki
 
- # http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
+# http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
 - repo: tpope/vim-repeat
 - repo: tpope/vim-speeddating
 - repo: vim-scripts/SyntaxRange
