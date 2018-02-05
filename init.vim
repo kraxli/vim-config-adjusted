@@ -55,15 +55,20 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 
 
 " {{{ === Individual settings / commands - unallocated stuff ===
+
+
+" Commands
 augroup IndividualCommands
-      autocmd!
-      " autocmd Filetype tex,latex inoremap ½ \frac{1}{2}
-      " autocmd BufNewFile,BufRead *.latex inoremap ½ \frac{1}{2}
-      au FileType tex,latex,pandoc,pdc,txt,vimwiki,wiki setlocal spell spelllang=en,de
+    autocmd!
+    " autocmd Filetype tex,latex inoremap ½ \frac{1}{2}
+    " autocmd BufNewFile,BufRead *.latex inoremap ½ \frac{1}{2}
+    command! PandocEx :tabnew ~/Dropbox/aCoding/Vim/Markdown/pandoc_example.pdc
 augroup END
 
-command! PandocEx :tabnew ~/Dropbox/aCoding/Vim/Markdown/pandoc_example.pdc
 
+" Settings
+au FileType tex,latex,pandoc,pdc,txt,vimwiki,wiki setlocal spell spelllang=en,de
+au FileType pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=nv
 
 colorscheme hybrid " gruvbox  hybrid
 set background=dark
