@@ -1,4 +1,3 @@
----
 # PLUGINS
 # ==========================================
 
@@ -102,7 +101,7 @@
   on_ft: py
 
 # - repo: nvie/vim-pyunit
-  # on_ft: py
+# on_ft: py
 
 - repo: alfredodeza/pytest.vim
   on_ft: [py, python]
@@ -274,7 +273,7 @@
 # command! -nargs=+ GcommitThis :NeomakeSh git add %:p|
 #   \:NeomakeSh git commit -m <args> %:p
 
-  # see also denite-git bellow for log and status
+# see also denite-git bellow for log and status
 
 
 # - repo: tpope/vim-fugitive
@@ -584,12 +583,6 @@
   hook_post_source: |
     autocmd MyAutoCmd FileType javascript setlocal omnifunc=tern#Complete
 
-
-# dwc: config-adjusted
-- repo: bfredl/nvim-ipy
-  if: !g:dwc_ipython_terminal
-  on_ft: py
-
 # ==========================================
 # Denite
 # ------
@@ -627,6 +620,8 @@
     call denite#custom#var('task', 'formats', {
       \     'format': '{id:3.3} | {priority:1.1} | {project:15.15} | {description}',
       \ })
+  hook_add:
+    command! -nargs=* Tw :NeomakeSh task <args>
 
 # ==========================================
 # Operators
@@ -725,7 +720,7 @@
 # - repo: sbdchd/neoformat
 
 # - repo: gotcha/vimpdb
-  # on_ft: py
+# on_ft: py
 
 # https://fortes.com/2017/language-server-neovim/
 # - repo: autozimu/LanguageClient-neovim
@@ -782,6 +777,14 @@
 # - repo: inkarkat/vim-SyntaxRange
 # - repo: PeterRincker/vim-narrow
 
+- repo: mmai/vim-markdown-wiki
+  on_ft: [pdc, md, mkd]
+  hook_source: |
+    nnoremap <leader><CR> :MdwiGotoLink
+    nnoremap <Leader><Backspace> :MdwiReturn
+  hook_add:
+    command! GoTo :MdwiGotoLink
+    command! GoBack :MdwiReturn
 
 
 # PLUGINS OBSERVED
@@ -790,5 +793,13 @@
 # - repo: jceb/vim-orgmode
 
 # rhysd/clever-f.vim
+
+
+# dwc: config-adjusted
+# - repo: bfredl/nvim-ipy
+# if: !exists('g:dwc_ipython_terminal')
+# on_ft: py
+
+
 
 #  vim: set ts=2 sw=2 tw=80 et :
