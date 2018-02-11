@@ -9,6 +9,7 @@ command! Cn :cn
 command! Cd :cd %:p:h
 command! Lcd :lcd %:p:h
 command! Ecurrent :lcd %:p:h | :E
+command! Ec :Ecurrent
 
 " Split windows vertically and open empty buffer
 command! Vspl :vsp l
