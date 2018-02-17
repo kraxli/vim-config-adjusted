@@ -136,6 +136,8 @@ nmap ff <F6>
 
 " {{{ final settings
 
+set colorcolumn=100
+
 au! Filetype vim setl foldmethod=marker
 "indent
 
@@ -155,6 +157,11 @@ au! BufNewFile,BufEnter,BufRead,BufReadPost,BufReadPre *.pandoc,*.pdc,*.markdown
 " au MyAutoCmd BufEnter,BufRead *.md,*.markdown setlocal filetype=pandoc
 au MyAutoCmd FileType pandoc setlocal foldmethod=expr
 au FileType pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=nv
+
+" }}}
+
+" {{{
+" to move:
 
 " }}}
 

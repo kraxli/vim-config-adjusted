@@ -49,6 +49,16 @@ command!  Pandoc2HTMLBS :NeomakeSh pandoc %:p
   " \ --filter pandoc-tablenos
   " \ --filter pandoc-fignos
 
+command!  Pandoc2HTMLkiller :NeomakeSh pandoc %:p
+  \ -s
+  \ -N
+  \ -o %:p:r.html
+  \ --toc
+  \ --toc-depth=2
+  \ --mathjax='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+  \ --css ~/.config/nvim/templates/pandoc_killercup.css
+
+
 " !pandoc %:p -s --variable urlcolor=cyan -o %:p:r.pdf
 " command!  Pandoc2Pdf :Pandoc  pdf
 command!  Pandoc2Pdf :NeomakeSh pandoc %:p

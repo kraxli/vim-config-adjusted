@@ -108,7 +108,7 @@
 
 - repo: jalvesaq/Nvim-R
   on_ft: r
-  hook_add: |
+  hook_source: |
     let R_rconsole_width = 57
     let R_min_editor_width = 18
     autocmd! MyAutoCmd VimResized * let R_rconsole_width = winwidth(0) / 2
@@ -795,7 +795,6 @@
 # rhysd/clever-f.vim
 
 
-# dwc: config-adjusted
 # - repo: bfredl/nvim-ipy
 # if: !exists('g:dwc_ipython_terminal')
 # on_ft: py
