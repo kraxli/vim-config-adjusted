@@ -24,8 +24,22 @@ function! s:dein_check_ruby() abort
 	return (v:shell_error == 0) ? 1 : 0
 endfunction
 
+function! s:dein_check_yaml2json()
+	try
+		let result = system('yaml2json', "---\ntest: 1")
+		if v:shell_error != 0
+			return 0
+		endif
+		let result = json_decode(result)
+		return result.test
+	catch
+	endtry
+	return 0
+endfunction
+
 function! s:dein_load_yaml(filename) abort
-	if executable('yaml2json') && exists('*json_decode')
+	if executable('yaml2json') && exists('*json_decode') &&
+				\ s:dein_check_yaml2json()
 		" Decode YAML using the CLI tool yaml2json
 		" See: https://github.com/koraa/large-yaml2json-json2yaml
 		let g:denite_plugins = json_decode(
@@ -92,10 +106,14 @@ endif
 " Initialize dein.vim (package manager)
 let s:path = expand('$VARPATH/dein')
 let s:plugins_path = expand('$VIMPATH/config/plugins.yaml')
+let s:user_plugins_path = expand('$VIMPATH/config/local.plugins.yaml')
 if dein#load_state(s:path)
 	call dein#begin(s:path, [expand('<sfile>'), s:plugins_path])
 	try
 		call s:dein_load_yaml(s:plugins_path)
+		if filereadable(s:user_plugins_path)
+			call s:dein_load_yaml(s:user_plugins_path)
+		endif
 	catch /.*/
 		echoerr v:exception
 		echomsg 'Error loading config/plugins.yaml...'
@@ -131,6 +149,11 @@ call s:source_file('general.vim')
 call s:source_file('filetype.vim')
 call s:source_file('mappings.vim')
 call s:source_file('theme.vim')
+
+" Load user custom local settings
+if filereadable(expand('$VIMPATH/config/local.vim'))
+	call s:source_file('local.vim')
+endif
 set secure
 
 " vim: set ts=2 sw=2 tw=80 noet :

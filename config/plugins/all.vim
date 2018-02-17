@@ -20,6 +20,8 @@ if dein#tap('denite.nvim')
 	nnoremap <silent><expr> <LocalLeader>t &filetype == 'help' ? "g\<C-]>" :
 		\ ":\<C-u>DeniteCursorWord -buffer-name=tag
 		\  tag:include\<CR>"
+	nnoremap <silent><expr> <LocalLeader>p  &filetype == 'help' ?
+		\ ":\<C-u>pop\<CR>" : ":\<C-u>Denite -mode=normal jump\<CR>"
 	nnoremap <silent><LocalLeader>h :<C-u>Denite help<CR>
 	nnoremap <silent><LocalLeader>m :<C-u>Denite mpc -buffer-name=mpc<CR>
 	nnoremap <silent><LocalLeader>/ :<C-u>Denite line<CR>
@@ -30,7 +32,7 @@ if dein#tap('denite.nvim')
 	" chemzqm/denite-git
 	nnoremap <silent> <Leader>gl :<C-u>Denite gitlog:all<CR>
 	nnoremap <silent> <Leader>gs :<C-u>Denite gitstatus<CR>
-	nnoremap <silent> <Leader>gc :<C-u>Denite gitchanged:<CR>
+	nnoremap <silent> <Leader>gc :<C-u>Denite gitbranch<CR>
 
 	" Open Denite with word under cursor or selection
 	nnoremap <silent> <Leader>gf :DeniteCursorWord file_rec<CR>
@@ -125,6 +127,23 @@ if dein#tap('indentLine')
 	nmap <silent><Leader>ti :<C-u>IndentLinesToggle<CR>
 elseif dein#tap('vim-indent-guides')
 	nmap <silent><Leader>ti :<C-u>IndentGuidesToggle<CR>
+endif
+
+if dein#tap('vim-edgemotion')
+	map gj <Plug>(edgemotion-j)
+	map gk <Plug>(edgemotion-k)
+	xmap gj <Plug>(edgemotion-j)
+	xmap gk <Plug>(edgemotion-k)
+endif
+
+if dein#tap('vim-quickhl')
+	nmap <Leader>, <Plug>(quickhl-manual-this)
+	xmap <Leader>, <Plug>(quickhl-manual-this)
+endif
+
+if dein#tap('vim-sidemenu')
+	nmap <Leader>l <Plug>(sidemenu)
+	xmap <Leader>l <Plug>(sidemenu-visual)
 endif
 
 if dein#tap('vim-bookmarks')
@@ -222,6 +241,9 @@ endif
 
 if dein#tap('vimagit')
 	nnoremap <silent> mg :Magit<CR>
+
+	" autocmd MyAutoCmd FileType magit
+	" 	\ nnoremap <silent><buffer> <CR> za
 endif
 
 if dein#tap('vim-easygit')
@@ -285,18 +307,6 @@ endif
 if dein#tap('dsf.vim')
 	nmap dsf <Plug>DsfDelete
 	nmap csf <Plug>DsfChange
-endif
-
-if dein#tap('CamelCaseMotion')
-	nmap <silent> e <Plug>CamelCaseMotion_e
-	xmap <silent> e <Plug>CamelCaseMotion_e
-	omap <silent> e <Plug>CamelCaseMotion_e
-	nmap <silent> w <Plug>CamelCaseMotion_w
-	xmap <silent> w <Plug>CamelCaseMotion_w
-	omap <silent> w <Plug>CamelCaseMotion_w
-	nmap <silent> b <Plug>CamelCaseMotion_b
-	xmap <silent> b <Plug>CamelCaseMotion_b
-	omap <silent> b <Plug>CamelCaseMotion_b
 endif
 
 if dein#tap('vim-commentary')
