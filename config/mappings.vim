@@ -40,10 +40,10 @@ nnoremap <leader>a =ip
 " nnoremap x "_x
 
 " Toggle fold
-nnoremap <CR> za
+" nnoremap <CR> za
 
 " Focus the current fold by closing all others
-nnoremap <S-Return> zMza
+" nnoremap <S-Return> zMza
 
 " Use backspace key for matchit.vim
 nmap <BS> %
@@ -139,9 +139,9 @@ cmap W!! w !sudo tee % >/dev/null
 " Editor UI {{{
 " ---------
 
-" I like to :quit with 'q', shrug.
-nnoremap <silent> q :<C-u>:quit<CR>
-autocmd MyAutoCmd FileType man nnoremap <silent><buffer> q :<C-u>:quit<CR>
+" I like to :quit with 'qq', shrug.
+nnoremap <silent> qq :<C-u>:quit<CR>
+autocmd MyAutoCmd FileType man nnoremap <silent><buffer> qq :<C-u>:quit<CR>
 
 " Macros
 nnoremap Q q

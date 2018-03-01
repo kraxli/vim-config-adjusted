@@ -82,7 +82,7 @@ let g:deoplete#omni#input_patterns.javascript = ''
 " }}}
 " Ranking and Marks " {{{
 " Default rank is 100, higher is better.
-" call deoplete#custom#set('ultisnips',     'mark', 'ϛ') " dway: vim-config-adjusted
+call deoplete#custom#set('ultisnips',     'mark', 'ϛ') " dway: vim-config-adjusted
 " call deoplete#custom#set('ultisnips',     'rank', 490)  " dway: vim-config-adjusted
 call deoplete#custom#source('omni',          'mark', '⌾')
 call deoplete#custom#source('flow',          'mark', '⌁')
@@ -126,6 +126,7 @@ call deoplete#custom#source('syntax',        'rank', 200)
 
 " dway:
 call deoplete#custom#set('ultisnips', 'min_pattern_length', 1)
+call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
 
 " call deoplete#custom#set('_', 'converters', [
 call deoplete#custom#source('_', 'converters', [
@@ -160,29 +161,6 @@ imap     <expr><C-u> pumvisible() ? "\<PageUp>" : "\<C-u>"
 " Redraw candidates
 inoremap <expr><C-g> deoplete#refresh()
 inoremap <expr><C-l> deoplete#complete_common_string()
-
-" if dein#tap('ultisnips')
-" 	" <CR>: If popup menu visible, expand snippet or close popup with selection,
-" 	"       Otherwise, check if within empty pair and use delimitMate.
-" 	inoremap <silent><expr><CR> pumvisible() ?
-" 		\ (neosnippet#expandable() ? neosnippet#mappings#expand_impl() : deoplete#close_popup())
-" 			\ : (delimitMate#WithinEmptyPair() ? "\<C-R>=delimitMate#ExpandReturn()\<CR>" : "\<CR>")
-" 
-" 	" <Tab> completion:
-" 	" 1. If popup menu is visible, select and insert next item
-" 	" 2. Otherwise, if within a snippet, jump to next input
-" 	" 3. Otherwise, if preceding chars are whitespace, insert tab char
-" 	" 4. Otherwise, start manual autocomplete
-" 	imap <silent><expr><Tab> pumvisible() ? "\<Down>"
-" 		\ : (neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)"
-" 		\ : (<SID>is_whitespace() ? "\<Tab>"
-" 		\ : deoplete#manual_complete()))
-" 
-" 	smap <silent><expr><Tab> pumvisible() ? "\<Down>"
-" 		\ : (neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)"
-" 		\ : (<SID>is_whitespace() ? "\<Tab>"
-" 		\ : deoplete#manual_complete()))
-" endif
 
 
 " <CR>: If popup menu visible, expand snippet or close popup with selection,

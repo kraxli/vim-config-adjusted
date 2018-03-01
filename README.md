@@ -446,14 +446,14 @@ Note that,
 
 Key   | Mode | Action
 ----- |:----:| ------------------
-`,` | _All_ | **Leader**
-`;` | _All_ | **Local Leader**
+`space` | _All_ | **Leader**
+`,` | _All_ | **Local Leader**
 ~~Arrows~~ | ~~Normal~~ | ~~Resize splits (* Enable `g:elite_mode` in `.vault.vim`)~~
 `Backspace` | Normal | Match bracket (%)
 `K` | Normal | Open Zeal or Dash on some file types (except Python+Vim script)
 `Y` | Normal | Yank to the end of line (y$)
-`<Return>` | Normal | Toggle fold (za)
-`S`+`<Return>` | Normal | Focus the current fold by closing all others (zMza)
+`Ctrl`+`z` | Normal | Toggle fold (za)
+`S-Ctrl`+`z` | Normal | Focus the current fold by closing all others (zMza)
 `S`+`<Return>` | Insert | Start new line from any cursor position (\<C-o>o)
 `hjkl` | Normal | Smart cursor movements (g/hjkl)
 `Ctrl`+`f` | Normal | Smart page forward (C-f/C-d)
@@ -528,7 +528,7 @@ Key   | Mode | Action
 
 Key   | Mode | Action
 ----- |:----:| ------------------
-`q` | Normal | Quit window (and Vim, if last window)
+`qq` | Normal | Quit window (and Vim, if last window)
 `Tab` | Normal | Next window in tab
 `Shift`+`Tab` | Normal | Previous window in tab
 `Ctrl`+`Tab` | Normal | Next tab
@@ -564,7 +564,7 @@ Key   | Mode | Action
 `;`+`h` | Normal | Help
 `;`+`v` | Normal/Visual | Register
 `;`+`z` | Normal | Z (jump around)
-`;`+`;` | Normal | Command history
+`<localleader>`+`;` | Normal | Command history
 `;`+`/` | Normal | Buffer lines
 `;`+`*` | Normal | Match line
 `<leader>`+`gl` | Normal | Git log (all)

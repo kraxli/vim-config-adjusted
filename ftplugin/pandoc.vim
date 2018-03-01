@@ -57,6 +57,7 @@ command!  Pandoc2HTMLkiller :NeomakeSh pandoc %:p
   \ --toc-depth=2
   \ --mathjax='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
   \ --css ~/.config/nvim/templates/pandoc_killercup.css
+  \ -M date="`date "+%B %e, %Y"`"
 
 
 " !pandoc %:p -s --variable urlcolor=cyan -o %:p:r.pdf

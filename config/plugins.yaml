@@ -800,6 +800,8 @@
     command! GoTo :MdwiGotoLink
     command! GoBack :MdwiReturn
 
+# - repo: vim-scripts/mappingmanager
+# - repo: sunaku/vim-shortcut
 
 # PLUGINS OBSERVED
 # https://github.com/kassio/neoterm
