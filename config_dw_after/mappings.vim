@@ -47,11 +47,10 @@ nnoremap <F2> :set spell! spelllang=en,de <cr>
 " {{{ == Folding ==
 " toggle folds (or <F8> instead of zt)
 inoremap <c-z> <C-O>za
-nnoremap zt za
-onoremap zt <C-C>za
-
+nnoremap <c-z> za
+onoremap <c-z> <C-C>za
 " make fold from visual selection
-vnoremap zt zf
+vnoremap <c-z> zf
 
 " Search for a pattern then press F10 to fold misses.
 nnoremap <F10> :setlocal foldexpr=(getline(v:lnum)!~@/) foldmethod=expr<CR><Bar>zM
