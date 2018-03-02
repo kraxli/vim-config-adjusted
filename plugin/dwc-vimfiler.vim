@@ -89,6 +89,7 @@ function! s:vimfilerinit()
 endf
  
 
+command! -nargs=?  -bar -complete=file E :call VimFilerDway(<q-args>)
 command! -nargs=?  -bar -complete=file V :call VimFilerDway(<q-args>)
 " command! Ev :25Vex %:p:h " |vertical resize 25   
 " dway adjustements
