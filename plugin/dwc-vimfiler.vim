@@ -3,7 +3,7 @@
 " from SpaceVim: https://github.com/SpaceVim/SpaceVim/blob/dev/config/plugins/vimfiler.vim
 "https://github.com/Shougo/vimfiler.vim/issues/344
 scriptencoding utf-8
-let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_as_default_explorer = 0
 
 " let g:vimfiler_as_default_explorer = get(g:, 'vimfiler_as_default_explorer', 1)
 let g:vimfiler_restore_alternate_file = get(g:, 'vimfiler_restore_alternate_file', 1)
@@ -89,12 +89,12 @@ function! s:vimfilerinit()
 endf
  
 
-" dway adjustements
-command! -nargs=? Ex :VimFilerExplorer <args> -winminwidth=25 -winwidth=30
-command! Eb :VimFilerBufferDir -explorer -winminwidth=25 -winwidth=30 
-" command! -nargs=?  -bar -complete=customlist,vimfiler#complete E :call VimFilerDway(<q-args>)
-command! -nargs=?  -bar -complete=file E :call VimFilerDway(<q-args>)
+command! -nargs=?  -bar -complete=file V :call VimFilerDway(<q-args>)
 " command! Ev :25Vex %:p:h " |vertical resize 25   
+" dway adjustements
+command! -nargs=? Vf :VimFilerExplorer <args> -winminwidth=25 -winwidth=30
+command! Vb :VimFilerBufferDir -explorer -winminwidth=25 -winwidth=30 
+" command! -nargs=?  -bar -complete=customlist,vimfiler#complete E :call VimFilerDway(<q-args>)
 
 function! VimFilerDway(...)    
   let num_args = a:0 
