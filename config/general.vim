@@ -78,7 +78,7 @@ if has('nvim')
 	"   h - Disable the effect of 'hlsearch' when loading the shada
 	set shada='300,<50,@100,s10,h
 	" dwc: vim-config-adjusted:
-	set viminfo=
+	" set viminfo=
 else
 	" set viminfo='300,<10,@50,h,n$VARPATH/viminfo
 endif
