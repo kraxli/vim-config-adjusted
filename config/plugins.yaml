@@ -844,12 +844,11 @@
     vmap <Leader>ms :call SwoopMultiSelection()<CR>
 
 # PLUGINS TO INCLUDE:
-- repo: osyo-manga/vim-over
 - repo: vim-scripts/CmdlineComplete
   hook_add: |  
-    cmap <c-y> <Plug>CmdlineCompleteBackward
-    cmap <c-e> <Plug>CmdlineCompleteForward
-#
+    cmap <c-i> <Plug>CmdlineCompleteBackward
+    cmap <c-s-i> <Plug>CmdlineCompleteForward
+
 # PLUGINS TO CHECKOUT
 # tpope/vim-vinegar
 # tpope/vim-sensible
@@ -858,6 +857,7 @@
 # PLUGINS OBSERVED
 # https://github.com/kassio/neoterm
 # https://github.com/vimlab/split-term.vim
+# osyo-manga/vim-over
 
 # rhysd/clever-f.vim
 
