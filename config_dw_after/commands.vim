@@ -20,10 +20,12 @@ command! TermCwd :terminal
 command! VTerm :call dway#term#openterm('vsp')
 command! TTerm :call dway#term#openterm('tabnew')
 
+" over rule the read only option when opening a file
+ cnoreabbrev w w!
+ cnoreabbrev x x!
 
 " save and quit
 command! W :w
-cnoreabbrev W w
 command! Q :q
 
 command! ShowPath :echo expand('%:p')

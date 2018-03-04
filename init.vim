@@ -128,9 +128,6 @@ command! SetPandocFold :set foldexpr=pandoc#folding#FoldExpr()<cr>
 
 " {{{ === Key maps ===
 
-nmap ;ll :Limelight!!<cr>
-nmap fx <F6>
-nmap ff <F6>
 
 " }}}
 
@@ -144,19 +141,18 @@ au! Filetype vim setl foldmethod=marker
 if expand('%:t') != 'plugins.yaml'
   setlocal nospell
 endif
-autocmd! BufRead,BufNewFile,BufEnter,BufWrite plugins.yaml setlocal nospell
+autocmd! BufRead,BufNewFile,BufEnter,BufWrite,BufReadPre,BufWritePre,BufWritePost plugins.yaml setlocal nospell
 
 set readonly!
 set noreadonly
 
 set conceallevel=2 concealcursor=nv
 
-au! MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc,*.md setlocal filetype=pandoc
-" au BufEnter,BufRead,BufCreate,BufNewFile,BufReadPre *.pdc,*.pandoc,*.md set filetype=pandoc
-au! BufNewFile,BufEnter,BufRead,BufReadPost,BufReadPre *.pandoc,*.pdc,*.markdown,*.md,*.tex,*.vimwiki,*.wiki,*.txt, setl conceallevel=2 concealcursor=nv
-" au MyAutoCmd BufEnter,BufRead *.md,*.markdown setlocal filetype=pandoc
-au MyAutoCmd FileType pandoc setlocal foldmethod=expr
-au FileType pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=nv
+au! MyAutoCmd BufNewFile,BufEnter,BufRead,BufCreate,BufReadPre  *.pdc,*.pandoc,*.md set filetype=pandoc
+au! MyAutoCmd BufNewFile,BufEnter,BufRead,BufReadPost,BufReadPre *.pandoc,*.pdc,*.markdown,*.md,*.tex,*.vimwiki,*.wiki,*.txt, setl conceallevel=2 concealcursor=nv
+au! MyAutoCmd FileType pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=nv
+au! MyAutoCmd FileType pandoc setlocal foldmethod=expr
+
 
 " }}}
 

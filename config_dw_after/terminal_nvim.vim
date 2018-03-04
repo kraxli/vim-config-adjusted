@@ -1,34 +1,34 @@
 
 if has('nvim')
-   " To map <Esc> to exit terminal-mode: >
-   tnoremap <Esc> <C-\><C-n>
+   " " To map <Esc> to exit terminal-mode: >
+   " tnoremap <Esc> <C-\><C-n>
 
-   " To simulate |i_CTRL-R| in terminal-mode: >
-   tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+   " " To simulate |i_CTRL-R| in terminal-mode: >
+   " tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
-   " To use `ALT+{h,j,k,l}` to navigate windows from any mode: >
-   tnoremap <c-left> <esc><C-\><C-N><C-w>h
-   tnoremap <c-down> <esc><C-\><C-N><C-w>j
-   tnoremap <c-up> <esc><C-\><C-N><C-w>k
-   tnoremap <c-right> <esc><C-\><C-N><C-w>l
-   " inoremap <A-h> <C-\><C-N><C-w>h
-   " inoremap <A-j> <C-\><C-N><C-w>j
-   " inoremap <A-k> <C-\><C-N><C-w>k
-   " inoremap <A-l> <C-\><C-N><C-w>l
-   " nnoremap <A-h> <C-w>h
-   " nnoremap <A-j> <C-w>j
-   " nnoremap <A-k> <C-w>k
-   " nnoremap <A-l> <C-w>l
+   " " To use `ALT+{h,j,k,l}` to navigate windows from any mode: >
+   " tnoremap <c-left> <esc><C-\><C-N><C-w>h
+   " tnoremap <c-down> <esc><C-\><C-N><C-w>j
+   " tnoremap <c-up> <esc><C-\><C-N><C-w>k
+   " tnoremap <c-right> <esc><C-\><C-N><C-w>l
+   " " inoremap <A-h> <C-\><C-N><C-w>h
+   " " inoremap <A-j> <C-\><C-N><C-w>j
+   " " inoremap <A-k> <C-\><C-N><C-w>k
+   " " inoremap <A-l> <C-\><C-N><C-w>l
+   " " nnoremap <A-h> <C-w>h
+   " " nnoremap <A-j> <C-w>j
+   " " nnoremap <A-k> <C-w>k
+   " " nnoremap <A-l> <C-w>l
 
    augroup Terminal
       au!
       au TermOpen * let g:last_terminal_job_id = b:terminal_job_id
       " au TermOpen * nmap <buffer> gf :call dway#term#term_gf()<cr>
-      au TermOpen * nmap <buffer> <cr> :call dway#term#term_gf()<cr>
+      " au TermOpen * nmap <buffer> <cr> :call dway#term#term_gf()<cr>
 
       " au TermOpen * tnoremap <buffer> gt :call dway#term#term_gf_tabnew()<cr>
-      au TermOpen * nmap <buffer> gt :call dway#term#term_gf_tabnew()<cr>
-      au TermOpen * nmap <buffer> <c-cr> :call dway#term#term_gf_tabnew()<cr>
+      " au TermOpen * nmap <buffer> gt :call dway#term#term_gf_tabnew()<cr>
+      " au TermOpen * nmap <buffer> <c-cr> :call dway#term#term_gf_tabnew()<cr>
    augroup END
 
    " Window split settings

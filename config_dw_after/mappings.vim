@@ -6,9 +6,6 @@ inoremap kj <esc>
 inoremap jj <Esc>
 imap jj <esc>
 
-" kill buffer from buff kill plugin
-nmap <localleader>k :BK<cr>
-
 " expand file name root
 "imap ,fn <c-r>=expand('%:t:r')<cr>
 
@@ -24,10 +21,9 @@ if has('gui')
 endif
 
 " jump to quickfix or location list/window
-nmap <script> <silent> <leader>qq :call dway#misc#ToggleQuickFix()<CR>
 nmap <script> <silent> <leader>cc :call dway#misc#ToggleQuickFix()<CR>
 nmap <script> <silent> <leader>ll :call dway#misc#ToggleLocationList()<CR>
-nnoremap <leader>c :cnext<cr>
+nnoremap <leader>c :cnext<cr> " probably 
 nnoremap <leader>l :lnext<cr>
 " nnoremap <space>c :copen<cr>
 " " nnoremap <leader><space> :cclose<cr>
@@ -98,6 +94,8 @@ nmap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
 
 "" Use the bufkill plugin to eliminate a buffer but keep the window layout
 nmap <leader>bd :BD<cr>
+" kill buffer from buff kill plugin
+nmap <localleader>k :BK<cr>
 
 "" Use CTRL-E to replace the original ',' mapping
 nnoremap <C-E> ,
@@ -119,15 +117,12 @@ endif
 " Browse old files
 noremap <leader>bof :browse oldfiles
 
-" open files, url, ... (default map in vim-shell is F6)
-nnoremap <leader>o yiW:Open <cr>
-" nnoremap <leader>o :OpenBrowser <cr>
-
 " remap gF
-nnoremap <leader>gf gF
+nnoremap <s-f> gF
 
 " open file under cursor in new vim-tab
-nnoremap <leader>gF <c-w>gf
+" nnoremap <leader>g<s-f> <c-w>gf
+nnoremap g<s-f> <c-w>gf
 
 " Include Time Stamps
 nnoremap <F4> "=strftime("%Y-%m-%d")<CR>P
@@ -152,11 +147,11 @@ inoremap <silent> <Bar>   <Bar><Esc>:call dway#table#align()<CR>a
 " nnoremap <F6> :call dway#misc#OpenExplorer('%:p:h')
 
 if dein#tap('vimwiki')
-	" nnoremap <silent> <Leader>W :<C-u>VimwikiIndex<CR>
-	nnoremap <silent> <Leader>WT :<C-u>VimwikiTabIndex<cr>
-	nnoremap <c-s-left> @<Plug>VimwikiTableColumnLeft
-	" nunmap <m-left>
-	" unmap <m-Right>
+  " nnoremap <silent> <Leader>W :<C-u>VimwikiIndex<CR>
+  nnoremap <silent> <Leader>WT :<C-u>VimwikiTabIndex<cr>
+  nnoremap <c-s-left> @<Plug>VimwikiTableColumnLeft
+  " nunmap <m-left>
+  " unmap <m-Right>
 endif
 
 " move between split windows
@@ -171,15 +166,87 @@ nmap <silent> <c-Left> :tabprevious<cr>
 nmap <silent> <c-Right> :tabnext<cr>
 
 
-
 " Lower / Upper Case, Inital Upper Case And Toggle Case:
 vnoremap ~ y:call setreg('', dway#misc#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins specific mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " toggle tagbar
-nnoremap <leader>t :TagbarToggle<cr>
+" nnoremap <leader>t :TagbarToggle<cr>
+nnoremap <leader>tb :TagbarToggle<CR>
 
 " vim-projectroot
-nnoremap <leader>dp :ProjectRootCD<cr>
+nnoremap <silent><leader>pr :ProjectRootCD<cr>
+
+" LimeLight
+nmap ;ll :Limelight!!<cr>
+
+
+" shell-vim
+" open file explorere
+" open files, url, ... (default map in vim-shell is F6)
+nnoremap ge yiW:Open <cr>
+" nnoremap <leader>ob yiW:Open <cr>
+" nnoremap <leader>o :OpenBrowser <cr>
+nmap fe <F6>
+nmap ff <F6>
+" gx from pandoc and netrw does the job for many things
+" a good map candidate would also be <c-enter>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TERMINAL Mappings for Neovim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('nvim')
+   " To map <Esc> to exit terminal-mode: >
+   tnoremap <Esc> <C-\><C-n>
+
+   " To simulate |i_CTRL-R| in terminal-mode: >
+   tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+
+   " To use `ALT+{h,j,k,l}` to navigate windows from any mode: >
+   tnoremap <c-left> <esc><C-\><C-N><C-w>h
+   tnoremap <c-down> <esc><C-\><C-N><C-w>j
+   tnoremap <c-up> <esc><C-\><C-N><C-w>k
+   tnoremap <c-right> <esc><C-\><C-N><C-w>l
+   " inoremap <A-h> <C-\><C-N><C-w>h
+   " inoremap <A-j> <C-\><C-N><C-w>j
+   " inoremap <A-k> <C-\><C-N><C-w>k
+   " inoremap <A-l> <C-\><C-N><C-w>l
+   " nnoremap <A-h> <C-w>h
+   " nnoremap <A-j> <C-w>j
+   " nnoremap <A-k> <C-w>k
+   " nnoremap <A-l> <C-w>l
+
+   augroup Terminal
+      au!
+      " au TermOpen * nmap <buffer> gf :call dway#term#term_gf()<cr>
+      au TermOpen * nmap <buffer> <cr> :call dway#term#term_gf()<cr>
+      " au TermOpen * tnoremap <buffer> gt :call dway#term#term_gf_tabnew()<cr>
+      au TermOpen * nmap <buffer> gt :call dway#term#term_gf_tabnew()<cr>
+      au TermOpen * nmap <buffer> <c-cr> :call dway#term#term_gf_tabnew()<cr>
+   augroup END
+endif
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Mappings for lldb.nvim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if dwc_key_maps
+  " lldb.nvim (dlang)
+  nmap <M-b> <Plug>LLBreakSwitch
+  " nmap <c-b> <Plug>LLBreakSwitch
+  vmap <F2> <Plug>LLStdInSelected
+  nnoremap <F4> :LLstdin<CR>
+  " nnoremap <F5> :LLmode debug<CR>
+  " nnoremap <S-F5> :LLmode code<CR>
+  nnoremap <F8> :LL continue<CR>
+  nnoremap <S-F8> :LL process interrupt<CR>
+  nnoremap <F7> :LL print <C-R>=expand('<cword>')<CR><cr>
+  vnoremap <F7> :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
+endif "dwc_key_maps
 
 " }}} key mappings
 

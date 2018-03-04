@@ -1,9 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =1
 let g:netrw_dirhist_1='/home/dave/.config/nvim'
-let g:netrw_dirhist_2='/home/dave/Dropbox/PKD'
-let g:netrw_dirhist_3='/tmp'
-let g:netrw_dirhist_4='/'
-let g:netrw_dirhist_5='/home/dave/Dropbox/PKD'
-let g:netrw_dirhist_6='/home/dave'
-let g:netrw_dirhist_7='/home/dave/Downloads/SpaceVim-master/autoload/SpaceVim'

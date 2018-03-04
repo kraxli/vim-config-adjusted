@@ -9,14 +9,6 @@
 # Startup
 # -------
 - repo: Shougo/dein.vim
-- repo: Shougo/unite.vim # dway vim-config-adjusted
-- repo: Shougo/vimfiler.vim # dway vim-config-adjusted
-- repo: qpkorr/vim-bufkill # dway vim-config-adjusted
-  hook_add: |
-    command! B :BD
-# or moll / vim-bbye
-- repo: xolox/vim-shell # dway: vim-config-adjusted
-- repo: xolox/vim-misc  # dway: vim-config-adjusted
 - repo: rafi/awesome-vim-colorschemes
 - repo: rafi/vim-badge
 - repo: thinca/vim-localrc
@@ -34,13 +26,14 @@
 # dway: vim-config-adjusted
 - repo: kraxli/vimwiki-task
   on_ft: [vimwiki, wiki]
-  hook_add: |
-    set spell spelllang=en,de
+  hook_source: |
+    setlocal spell spelllang=en,de
 
+# dway: vim-config-adjusted
 - repo: vim-pandoc/vim-pandoc
   on_ft: [pandoc, pdc, md]
-  hook_add: |
-    set spell spelllang=en,de
+  hook_source: |
+    setlocal spell spelllang=en,de
     setlocal foldlevel=0
     au BufRead,BufNewFile *.md set filetype=pandoc
     let g:pandoc#formatting#extra_equalprg = "--reference-links --atx-headers --wrap=none"
@@ -88,6 +81,17 @@
 
 # # Runners available are 'pytest', 'nose', 'nose2', 'djangotest', 'djangonose' and Python's built-in 'unittest'
 # # or let test#strategy = 'neomake'
+
+- repo: Shougo/unite.vim # dway vim-config-adjusted
+- repo: Shougo/vimfiler.vim # dway vim-config-adjusted
+  depends: Shougo/unite.vim
+- repo: qpkorr/vim-bufkill # dway vim-config-adjusted
+  hook_add: |
+    command! B :BD
+# or moll / vim-bbye
+- repo: xolox/vim-shell # dway: vim-config-adjusted
+- repo: xolox/vim-misc  # dway: vim-config-adjusted
+
 
 - repo: kraxli/nvim-py-minimal
   on_ft: [py, python]
@@ -653,6 +657,8 @@
   on_map: { vnx: <Plug> }
 
 - repo: rhysd/vim-operator-surround
+  on_cmd: Csurround
+
   depends: [ vim-operator-user, vim-textobj-multiblock ]
   on_map: { vnx: <Plug> }
 
@@ -772,6 +778,8 @@
 
 - repo: mhinz/vim-startify
   hook_add: |
+    let g:startify_change_to_vcs_root = 0
+    let g:startify_change_to_dir = 0
     let g:startify_update_oldfiles = 1
     let g:startify_session_persistence = 1
 
@@ -815,7 +823,7 @@
 # - repo: sunaku/vim-shortcut
 
 - repo: hecal3/vim-leader-guide
-  hook_add: | 
+  hook_add: |
     nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
     vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
     map <leader>. <Plug>leaderguide-global
@@ -832,8 +840,9 @@
 
 - repo: dbakker/vim-projectroot
 - repo: qpkorr/vim-renamer
+
 - repo: pelodelfuego/vim-swoop
-  on_func: [Swoop, SwoopSelection, SwoopMulti, SwoopMultiSelection, SwoopPattern, SwoopMultiPattern] 
+  on_func: [Swoop, SwoopSelection, SwoopMulti, SwoopMultiSelection, SwoopPattern, SwoopMultiPattern]
   hook_add: |
     let g:swoopUseDefaultKeyMap = 0
     let g:swoopIgnoreCase = 1
@@ -845,7 +854,7 @@
 
 # PLUGINS TO INCLUDE:
 - repo: vim-scripts/CmdlineComplete
-  hook_add: |  
+  hook_add: |
     cmap <c-i> <Plug>CmdlineCompleteBackward
     cmap <c-s-i> <Plug>CmdlineCompleteForward
 

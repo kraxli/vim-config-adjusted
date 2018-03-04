@@ -7,7 +7,6 @@
 """"""""""""""""""""""""""""""
 " http://blog.adamdklein.com/?p=28
 " https://majutsushi.github.io/tagbar/
-nmap <leader>tb :TagbarToggle<CR>
 let g:tagbar_width = 25
 
 
