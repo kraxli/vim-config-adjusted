@@ -171,5 +171,7 @@ command! Pkd :cd ~/Dropbox/PKD
 
 " }}}
 
+" autocmd VimEnter execute "source ".fnamemodify(expand('<sfile>'), ':h')."/startup.vim"
+
 
 " vim: set foldmethod=marker

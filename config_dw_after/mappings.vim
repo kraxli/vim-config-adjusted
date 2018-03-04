@@ -178,6 +178,8 @@ vnoremap ~ y:call setreg('', dway#misc#TwiddleCase(@"), getregtype(''))<CR>gv""P
 " toggle tagbar
 nnoremap <leader>t :TagbarToggle<cr>
 
+" vim-projectroot
+nnoremap <leader>dp :ProjectRootCD<cr>
 
 " }}} key mappings
 
