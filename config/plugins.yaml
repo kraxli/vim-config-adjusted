@@ -4,6 +4,7 @@
 # Notes:
 #   hook_add: load at Neovim startup
 #   hook_source: load when plugin is started/sourced
+#   hook_post_source: executed after plugin is sourced
 
 # Startup
 # -------
@@ -13,6 +14,7 @@
 - repo: qpkorr/vim-bufkill # dway vim-config-adjusted
   hook_add: |
     command! B :BD
+# or moll / vim-bbye
 - repo: xolox/vim-shell # dway: vim-config-adjusted
 - repo: xolox/vim-misc  # dway: vim-config-adjusted
 - repo: rafi/awesome-vim-colorschemes
@@ -230,10 +232,11 @@
 ## dway vim-config-adjusted (commented out)
 # - repo: scrooloose/nerdtree
 #   depends: nerdtree-git-plugin
+#   on_cmd: {NERDTree}
 #   on_map: { n: <Plug> }
 #   hook_post_source: source $VIMPATH/config/plugins/nerdtree.vim
-
 # - { repo: Xuyuanp/nerdtree-git-plugin, on_source: nerdtree }
+
 - { repo: tpope/vim-commentary, on_map: <Plug>Commentary }
 - { repo: t9md/vim-choosewin, on_map: { n: <Plug> }}
 - { repo: Shougo/vinarise.vim, on_cmd: Vinarise }
@@ -317,6 +320,8 @@
 
 - repo: Yggdroot/indentLine
   hook_add: |
+    let g:indentLine_fileTypeExclude = ['help', 'startify']
+    let g:indentLine_fileTyp = ['python']
     let g:indentLine_char =  '▏'
     set list lcs=tab:\|\
 
@@ -762,6 +767,14 @@
 # Replace text with the contents of a register (copy/paste)
 # - repo: vim-scripts/ReplaceWithRegister
 
+- {repo: tpope/vim-surround, on_cm: [cs]}
+- {repo: tpope/vim-eunuch}
+
+- repo: mhinz/vim-startify
+  hook_add: |
+    let g:startify_update_oldfiles = 1
+    let g:startify_session_persistence = 1
+
 # text editing
 - repo: vim-scripts/utl.vim
   hook_add: |
@@ -775,10 +788,8 @@
 - repo: msprev/unite-bibtex
 
 # Editing Plugins
-# see more on the wordy git-directory for more writing plugin suggestions
 - repo: rhysd/vim-grammarous
 - repo: dbmrq/vim-ditto
-- repo: reedes/vim-wordy
 
 # Navigate between wiki-markdown file:
 - repo: mmai/vim-markdown-wiki
@@ -803,10 +814,50 @@
 # - repo: vim-scripts/mappingmanager
 # - repo: sunaku/vim-shortcut
 
+- repo: hecal3/vim-leader-guide
+  hook_add: | 
+    nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+    vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
+    map <leader>. <Plug>leaderguide-global
+    nnoremap <silent> <localleader> :<c-u>LeaderGuide ','<CR>
+    vnoremap <silent> <localleader> :<c-u>LeaderGuideVisual ','<CR>
+    map <localleader>. <Plug>leaderguide-global
+    nnoremap <silent> ; :<c-u>LeaderGuide ';'<CR>
+    vnoremap <silent> ; :<c-u>LeaderGuideVisual ';'<CR>
+  hook_post_source: |
+    let g:leaderGuide_max_size = 5
+    let g:leaderGuide_submode_mappings = { '<C-F>': 'page_down', '<C-B>': 'page_up'}
+    call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
+    call leaderGuide#register_prefix_descriptions(";", "g:llmap")
+
+- repo: dbakker/vim-projectroot
+- repo: qpkorr/vim-renamer
+- repo: pelodelfuego/vim-swoop
+  on_func: [Swoop, SwoopSelection, SwoopMulti, SwoopMultiSelection, SwoopPattern, SwoopMultiPattern] 
+  hook_add: |
+    let g:swoopUseDefaultKeyMap = 0
+    let g:swoopIgnoreCase = 1
+    let g:swoopWindowsVerticalLayout = 1
+    nmap <Leader>s :call Swoop()<CR>
+    vmap <Leader>s :call SwoopSelection()<CR>
+    nmap <Leader>ms :call SwoopMulti()<CR>
+    vmap <Leader>ms :call SwoopMultiSelection()<CR>
+
+# PLUGINS TO INCLUDE:
+- repo: osyo-manga/vim-over
+- repo: vim-scripts/CmdlineComplete
+  hook_add: |  
+    cmap <c-y> <Plug>CmdlineCompleteBackward
+    cmap <c-e> <Plug>CmdlineCompleteForward
+#
+# PLUGINS TO CHECKOUT
+# tpope/vim-vinegar
+# tpope/vim-sensible
+# haya14busa/incsearch.vim
+
 # PLUGINS OBSERVED
 # https://github.com/kassio/neoterm
 # https://github.com/vimlab/split-term.vim
-# - repo: jceb/vim-orgmode
 
 # rhysd/clever-f.vim
 
@@ -814,7 +865,6 @@
 # - repo: bfredl/nvim-ipy
 # if: !exists('g:dwc_ipython_terminal')
 # on_ft: py
-
 
 
 #  vim: set ts=2 sw=2 tw=80 et :
