@@ -797,6 +797,7 @@
 
 # Editing Plugins
 - repo: rhysd/vim-grammarous
+  on_ft: [txt, md, pdc, mkd, tex]
 - repo: dbmrq/vim-ditto
 
 # Navigate between wiki-markdown file:
@@ -855,8 +856,8 @@
 # PLUGINS TO INCLUDE:
 - repo: vim-scripts/CmdlineComplete
   hook_add: |
-    cmap <c-i> <Plug>CmdlineCompleteBackward
-    cmap <c-s-i> <Plug>CmdlineCompleteForward
+    cmap <unique> <silent> <c-i> <Plug>CmdlineCompleteBackward
+    cmap <unique> <silent> <c-s-i> <Plug>CmdlineCompleteForward
 
 # PLUGINS TO CHECKOUT
 # tpope/vim-vinegar
