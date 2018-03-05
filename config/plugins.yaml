@@ -1,11 +1,6 @@
 # PLUGINS
 # ==========================================
 
-# Notes:
-#   hook_add: load at Neovim startup
-#   hook_source: load when plugin is started/sourced
-#   hook_post_source: executed after plugin is sourced
-
 # Startup
 # -------
 - repo: Shougo/dein.vim
@@ -22,104 +17,6 @@
     autocmd MyAutoCmd FileType denite,qf,nerdtree let b:cursorword=0
     autocmd MyAutoCmd InsertEnter * let b:cursorword=0
     autocmd MyAutoCmd InsertLeave * let b:cursorword=1
-
-# dway: vim-config-adjusted
-- repo: kraxli/vimwiki-task
-  on_ft: [vimwiki, wiki]
-  hook_source: |
-    setlocal spell spelllang=en,de
-
-# dway: vim-config-adjusted
-- repo: vim-pandoc/vim-pandoc
-  on_ft: [pandoc, pdc, md]
-  hook_source: |
-    setlocal spell spelllang=en,de
-    setlocal foldlevel=0
-    au BufRead,BufNewFile *.md set filetype=pandoc
-    let g:pandoc#formatting#extra_equalprg = "--reference-links --atx-headers --wrap=none"
-    let g:pandoc#folding#level=0
-
-# let g:pandoc#formatting#mode = "hA"
-# let g:pandoc#formatting#smart_autoformat_on_cursormoved = 1
-# let g:pandoc#folding#level = 2
-# let g:pandoc#folding#mode = "relative"
-# let g:pandoc#after#modules#enabled = ["nrrwrgn", "tablemode"]
-# let g:pandoc#completion#bib#mode = 'citeproc'
-# let g:pandoc#syntax#colorcolumn = 1
-
-# nunmap <m-Left>
-# nunmap <m-Right>
-# nmap <silent> <m-Left> :wincmd h<CR>
-# nmap <silent> <m-Left> :wincmd h<CR>
-# nmap <silent> <m-Right> :wincmd l<CR>
-# nmap <m-Right> <c-w>l
-# nmap <m-Left> <c-w>h
-# source $HOME/.config/nvim/config/mappings.vim
-#  hook_source: |
-#  au MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc setlocal filetype=pandoc
-# nmap <leader>tb :TagbarToggle<CR>
-
-- repo: vim-pandoc/vim-pandoc-syntax
-  on_ft: [pandoc, pdc]
-
-#  depends: vim-pandoc
-
-- repo: vim-pandoc/vim-pandoc-after
-  on_ft: [pandoc, pdc]
-
-#  hook_add: |
-#    au MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc set filetype=pandoc
-
-# - repo: kassio/neoterm # dway: vim-config-adjusted
-# .../iron-nvim
-
-# - repo: janko-m/vim-test
-#   on_ft: [py, python]
-#   hook_add: |
-#     let test#strategy = "neovim"
-#     let test#python#runner = "pytest"
-
-# # Runners available are 'pytest', 'nose', 'nose2', 'djangotest', 'djangonose' and Python's built-in 'unittest'
-# # or let test#strategy = 'neomake'
-
-- repo: Shougo/unite.vim # dway vim-config-adjusted
-- repo: Shougo/vimfiler.vim # dway vim-config-adjusted
-  depends: Shougo/unite.vim
-- repo: qpkorr/vim-bufkill # dway vim-config-adjusted
-  hook_add: |
-    command! B :BD
-# or moll / vim-bbye
-- repo: xolox/vim-shell # dway: vim-config-adjusted
-- repo: xolox/vim-misc  # dway: vim-config-adjusted
-
-
-- repo: kraxli/nvim-py-minimal
-  on_ft: [py, python]
-  hook_add:
-    let g:nvimipdb_default_keys = 1
-
-- repo: idanarye/vim-dutyl # dway: vim-config-adjusted
-  on_ft: d
-  hook_post_source: |
-    autocmd MyAutoCmd BufRead,BufEnter *.d DUDCDrestartServer
-
-- repo: python-rope/ropevim
-  on_ft: py
-
-# - repo: nvie/vim-pyunit
-# on_ft: py
-
-- repo: alfredodeza/pytest.vim
-  on_ft: [py, python]
-
-- repo: jalvesaq/Nvim-R
-  on_ft: r
-  hook_source: |
-    let R_rconsole_width = 57
-    let R_min_editor_width = 18
-    autocmd! MyAutoCmd VimResized * let R_rconsole_width = winwidth(0) / 2
-
-# dway: vim-config-adjusted
 
 # ==========================================
 # Lazy Loading
@@ -147,6 +44,7 @@
     let g:html5_microdata_attributes_complete = 0
     let g:html5_aria_attributes_complete = 0
 
+# dway: commented out
 # - repo: plasticboy/vim-markdown
 #   on_ft: markdown
 #   hook_add: |
@@ -274,24 +172,6 @@
     \ Gcommit, Gedit, Gdiff, Gremove, Grename, Gmove,
     \ Gcheckout, Gpush, Gpull, Gfetch, Gadd, Gstatus, Ggrep, Gmerg]
   hook_source: let g:easygit_enable_command = 1
-  hook_add: |
-    command! -nargs=+ Git :AsyncRun git <args>
-    command! GaddAll :Gadd --all
-    command! -nargs=+ GcommitAll :AsyncRun git commit -m <q-args> -a
-
-# command! -nargs=+ GcommitAll execute 'AsyncRun git commit -m "'.string(<args>).'" -a'
-# command! -nargs=+ Git :NeomakeSh git <args>
-# command! GaddAll :Gadd --all
-# command! -nargs=+ GcommitAll :NeomakeSh git commit -m <args> -a
-
-# command! -nargs=+ GcommitThis :NeomakeSh git add %:p|
-#   \:NeomakeSh git commit -m <args> %:p
-
-# see also denite-git bellow for log and status
-
-
-# - repo: tpope/vim-fugitive
-#   on_cmd: [Gedit, Gsplit, Gvsplit, Gtabedit, Gdiff, Ggrep, Gbrowse, Git, Glog, Gread, Gwrite, Gmove, Gdelete, Gbrowse, Gstatus, Ggrep]
 
 - repo: majutsushi/tagbar
   if: empty($VIM_MINIMAL)
@@ -322,15 +202,7 @@
     let g:gitgutter_map_keys = 0
     let g:gitgutter_sh = $SHELL
 
-- repo: Yggdroot/indentLine
-  hook_add: |
-    let g:indentLine_fileTypeExclude = ['help', 'startify']
-    let g:indentLine_fileTyp = ['python']
-    let g:indentLine_char =  '▏'
-    set list lcs=tab:\|\
-
-# set list lcs=tab:\▏\
-
+# dway: commented out 
 # - repo: nathanaelkane/vim-indent-guides
 #   on_cmd: [ IndentGuidesEnable, IndentGuidesDisable, IndentGuidesToggle ]
 #   hook_post_source: |
@@ -407,38 +279,7 @@
     let g:vimwiki_hl_headers = 1
     let g:vimwiki_hl_cb_checked = 1
     let g:vimwiki_autowriteall = 0
-    au FileType pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=nv
-
-# hook_post_source: |
-#   nunmap <m-Left>
-#   nunmap <m-Right>
-#   nmap <silent> <m-Left> :wincmd h<CR>
-#   nmap <silent> <m-Right> :wincmd l<CR>
-
-
-# hook_source: |
-#   autocmd BufEnter,BufRead *.wiki nunmap <m-Left>
-#   autocmd BufEnter,BufRead *.wiki map <silent> <m-Left> :wincmd h<CR>
-#   autocmd BufEnter,BufRead *.wiki map <silent> <m-Right> :wincmd l<CR>
-
-# hook_source: |
-#   let g:vimwiki_list = [
-#   \   { 'diary_header': 'Diary',
-#   \     'diary_link_fmt': '%Y-%m/%d',
-#   \     'auto_toc': 1,
-#   \     'path': '~/Dropbox/VimWiki/',
-#   \     'path_html': '~/Dropbox/VimWiki/vimwiki_html/',
-#   \     'template_path': '~/Dropbox/VimWiki/templates',
-#   \     'template_default': 'default',
-#   \     'template_ext': '.html'},
-#   \   { 'path': '~/docs/blog/',
-#   \     'syntax': 'markdown',
-#   \     'ext': '.md' }
-#   \ ]
-
-# dway: vim-config-adjusted
-# - repo: xolox/vim-notes
-#   on_cmd: Note
+    au filetype pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=nv
 
 # ==========================================
 # Completion
@@ -458,31 +299,6 @@
     let g:neocomplete#data_directory = $VARPATH.'/complete'
     let g:neocomplete#enable_at_startup = 1
   hook_source: source $VIMPATH/config/plugins/neocomplete.vim
-
-# dway: vim-config-adjusted (see also bellow for g:neosnippet#data_directory)
-- repo: honza/vim-snippets
-- repo: kiith-sa/DSnips
-
-# https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
-- repo: SirVer/ultisnips
-  depends: [ vim-snippets, DSnips ]
-  hook_add: |
-    let g:UltiSnipsSnippetsDir=['UltiSnips',
-      \ $VARPATH. '/dein/repos/github.com' . '/honza/vim-snippets/UltiSnips',
-      \ $VARPATH . '/dein/repos/github.com' . "/kiith-sa/DSnips"]
-    let g:UltiSnipsUsePythonVersion = 3
-    let g:UltiSnipsEditSplit="vertical"
-
-#   on_event: InsertCharPre
-#   on_ft: snippets
-#   hook_add: |
-#     let g:UltiSnipsUsePythonVersion = 3
-#     let g:UltiSnipsListSnippets="<c-ll>"
-#     let g:UltiSnipsExpandTrigger="<c-ll>"
-#     let g:UltiSnipsJumpForwardTrigger="<c-o>"
-#     let g:UltiSnipsJumpBackwardTrigger="<c-s-o>"
-#     let g:UltiSnipsEditSplit="vertical"
-
 
 - repo: Shougo/neosnippet.vim
   depends: [ neosnippet-snippets, vim-snippets, context_filetype.vim ]
@@ -563,12 +379,6 @@
 
 # Only NeoVim ------------------------------
 
-# dway: vim-config-adjusted
-- repo: landaire/deoplete-d
-  if: has('nvim')
-  on_ft: d
-  on_i: 1
-
 - repo: zchee/deoplete-go
   if: has('nvim') && ! empty($GOPATH) && empty($VIM_MINIMAL)
   build: make
@@ -619,34 +429,14 @@
 - { repo: rafi/vim-denite-z, on_source: denite.nvim }
 - { repo: rafi/vim-denite-session, on_source: denite.nvim }
 
-# dway / kraxli: add commands for denite-git
 - repo: chemzqm/denite-git
   on_source: denite.nvim
-  hook_add: |
-    command! Glog :Denite gitlog
-    command! Gstatus2 :Denite gitstatus
-    command! Gchanged :Denite gitchanged
 
 - repo: rafi/vim-denite-mpc
   if: executable('mpc') && empty($VIM_MINIMAL)
   on_source: denite.nvim
   hook_source: call denite#custom#var('mpc', 'default_view', 'date')
-
-# dway: vim-config-adjusted
-- repo: rafi/vim-denite-task
-  on_source: denite.nvim
-  hook_source: |
-    call denite#custom#var('task', 'taskrc', '~/.taskrc')
-    call denite#custom#var('task', 'data_dir', '~/.task')
-    call denite#custom#var('task', 'date_format', '%y-%m-%d %H:%M')
-    call denite#custom#var('task', 'format', '{id:3.3} | {priority:1.1} | {project:15.15} | {description:40.40} | {entry} | {due}')
-    call denite#custom#var('task', 'label_width', 17)
-    call denite#custom#var('task', 'formats', {
-      \     'format': '{id:3.3} | {priority:1.1} | {project:15.15} | {description}',
-      \ })
-  hook_add:
-    command! -nargs=* Tw :NeomakeSh task <args>
-
+  
 # ==========================================
 # Operators
 # ---------
@@ -657,7 +447,6 @@
   on_map: { vnx: <Plug> }
 
 - repo: rhysd/vim-operator-surround
-  on_cmd: Csurround
 
   depends: [ vim-operator-user, vim-textobj-multiblock ]
   on_map: { vnx: <Plug> }
@@ -689,192 +478,3 @@
   on_map: { ox: <Plug> }
   hook_add: let g:textobj_function_no_default_key_mappings = 1
 
-
-# ==========================================
-# Experimental
-# ------------
-
-# https://www.abidibo.net/blog/2016/04/06/django-debug-vim-and-vdebug/
-- repo: joonty/vdebug
-  on_ft: py
-
-# - repo: idanarye/vim-vebugger
-#   on_ft: py
-
-- repo: dbgx/lldb.nvim
-  on_ft: [d, cpp, hpp, c, h]
-  hook_add: |
-    set hidden
-    command! DDebug :AsyncRun dmd -g %:p
-
-# command! DDebug :NeomakeSh dmd -g %:p
-
-# I addend hidden with the hope that lldb.nvim will run more stable
-# -gc --build=debug
-
-# - repo: sbdchd/vim-run
-#   on_ft: py
-#   hook_add: |
-#     let g:run_cmd_python = ['python3']
-#     let g:run_split = 'down'
-#     let g:run_auto_close = 0
-
-# or fzy
-# - repo: junegunn/fzf { 'dir': '~/.fzf', 'do': './install --all' }
-- repo: junegunn/fzf.vim
-  hook_source: set rtp+=~/.fzf
-
-# https://github.com/ggreer/the_silver_searcher
-- repo: mileszs/ack.vim
-  hook_add: let g:ackprg = 'ag --nogroup --nocolor --column'
-
-# let g:ackprg = 'ag --vimgrep'
-# http://betterthanack.com/
-# http://www.wezm.net/technical/2016/09/ripgrep-with-vim/
-# https://github.com/jhawthorn/fzy
-
-# delete asyncrun as soon neomakesh works for python
-- repo: skywind3000/asyncrun.vim
-
-# - repo: w0rp/ale
-
-# https://8thlight.com/blog/chris-jordan/2016/06/13/running-tests-in-vim.html
-# pytest config of blueyed: https://github.com/neomake/neomake/issues/1138
-# - repo: janko-m/vim-test
-
-# - repo: sbdchd/neoformat
-
-# - repo: gotcha/vimpdb
-# on_ft: py
-
-# https://fortes.com/2017/language-server-neovim/
-# - repo: autozimu/LanguageClient-neovim
-#   hook_source: |
-#     let g:LanguageClient_autoStart = 1
-#     let g:LanguageClient_serverCommands = {}
-#     let g:LanguageClient_serverCommands.python = ['pyls']
-#     nnoremap  <leader>ld :call LanguageClient_textDocument_definition()<cr>
-#     nnoremap  <leader>lh :call LanguageClient_textDocument_hover()<cr>
-#     nnoremap  <leader>lr :call LanguageClient_textDocument_rename()<cr>
-#   hook_add: |
-#     set hidden
-
-
-# let g:LanguageClient_serverCommands.python = ['pyls']
-# <leader>ld to go to definition
-# <leader>lh for type info under cursor
-# <leader>lr to rename variable under cursor
-
-# for completion: roxma/nvim-completion-manager
-#
-
-# autoformat
-
-# Replace text with the contents of a register (copy/paste)
-# - repo: vim-scripts/ReplaceWithRegister
-
-- {repo: tpope/vim-surround, on_cm: [cs]}
-- {repo: tpope/vim-eunuch}
-
-- repo: mhinz/vim-startify
-  hook_add: |
-    let g:startify_change_to_vcs_root = 0
-    let g:startify_change_to_dir = 0
-    let g:startify_update_oldfiles = 1
-    let g:startify_session_persistence = 1
-
-# text editing
-- repo: vim-scripts/utl.vim
-  hook_add: |
-    let g:utl_cfg_hdl_mt_text_directory='VIM'
-    let g:utl_cfg_hdl_scm_http_system = "silent !firefox -remote 'ping()' &&
-                                         \ firefox -remote 'openURL( %u )' ||
-                                         \ firefox '%u#%f' &"
-
-- repo: lervag/vimtex
-- repo: wbthomason/buildit.nvim
-- repo: msprev/unite-bibtex
-
-# Editing Plugins
-- repo: rhysd/vim-grammarous
-  on_ft: [txt, md, pdc, mkd, tex]
-- repo: dbmrq/vim-ditto
-
-# Navigate between wiki-markdown file:
-- repo: mmai/vim-markdown-wiki
-
-# http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
-- repo: tpope/vim-repeat
-- repo: tpope/vim-speeddating
-- repo: vim-scripts/SyntaxRange
-
-# - repo: inkarkat/vim-SyntaxRange
-# - repo: PeterRincker/vim-narrow
-
-- repo: mmai/vim-markdown-wiki
-  on_ft: [pdc, md, mkd]
-  hook_source: |
-    nnoremap <leader><CR> :MdwiGotoLink
-    nnoremap <Leader><Backspace> :MdwiReturn
-  hook_add:
-    command! GoTo :MdwiGotoLink
-    command! GoBack :MdwiReturn
-
-# - repo: vim-scripts/mappingmanager
-# - repo: sunaku/vim-shortcut
-
-- repo: hecal3/vim-leader-guide
-  hook_add: |
-    nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
-    vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
-    map <leader>. <Plug>leaderguide-global
-    nnoremap <silent> <localleader> :<c-u>LeaderGuide ','<CR>
-    vnoremap <silent> <localleader> :<c-u>LeaderGuideVisual ','<CR>
-    map <localleader>. <Plug>leaderguide-global
-    nnoremap <silent> ; :<c-u>LeaderGuide ';'<CR>
-    vnoremap <silent> ; :<c-u>LeaderGuideVisual ';'<CR>
-  hook_post_source: |
-    let g:leaderGuide_max_size = 5
-    let g:leaderGuide_submode_mappings = { '<C-F>': 'page_down', '<C-B>': 'page_up'}
-    call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
-    call leaderGuide#register_prefix_descriptions(";", "g:llmap")
-
-- repo: dbakker/vim-projectroot
-- repo: qpkorr/vim-renamer
-
-- repo: pelodelfuego/vim-swoop
-  on_func: [Swoop, SwoopSelection, SwoopMulti, SwoopMultiSelection, SwoopPattern, SwoopMultiPattern]
-  hook_add: |
-    let g:swoopUseDefaultKeyMap = 0
-    let g:swoopIgnoreCase = 1
-    let g:swoopWindowsVerticalLayout = 1
-    nmap <Leader>s :call Swoop()<CR>
-    vmap <Leader>s :call SwoopSelection()<CR>
-    nmap <Leader>ms :call SwoopMulti()<CR>
-    vmap <Leader>ms :call SwoopMultiSelection()<CR>
-
-# PLUGINS TO INCLUDE:
-- repo: vim-scripts/CmdlineComplete
-  hook_add: |
-    cmap <unique> <silent> <c-i> <Plug>CmdlineCompleteBackward
-    cmap <unique> <silent> <c-s-i> <Plug>CmdlineCompleteForward
-
-# PLUGINS TO CHECKOUT
-# tpope/vim-vinegar
-# tpope/vim-sensible
-# haya14busa/incsearch.vim
-
-# PLUGINS OBSERVED
-# https://github.com/kassio/neoterm
-# https://github.com/vimlab/split-term.vim
-# osyo-manga/vim-over
-
-# rhysd/clever-f.vim
-
-
-# - repo: bfredl/nvim-ipy
-# if: !exists('g:dwc_ipython_terminal')
-# on_ft: py
-
-
-#  vim: set ts=2 sw=2 tw=80 et :

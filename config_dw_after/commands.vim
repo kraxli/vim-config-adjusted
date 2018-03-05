@@ -50,6 +50,11 @@ if has('unix')
    command! ShaDaFix wshada!
 endif
 
+" GIT / Denite
+command! Glog :Denite gitlog
+command! Gstatus2 :Denite gitstatus
+command! Gchanged :Denite gitchanged
+
 
 " vim: foldmethod=marker:
 
