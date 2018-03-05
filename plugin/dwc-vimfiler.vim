@@ -1,4 +1,4 @@
-" TODO: hmmm this file is at least called twice at startup???     
+" TODO: hmmm this file is at least called twice at startup???
 "
 " from SpaceVim: https://github.com/SpaceVim/SpaceVim/blob/dev/config/plugins/vimfiler.vim
 "https://github.com/Shougo/vimfiler.vim/issues/344
@@ -22,6 +22,13 @@ let g:vimfiler_ignore_pattern = [
       \ '^\.netrwhist$',
       \ '\.class$'
       \]
+
+" =======================================================
+" open external files
+" -------------------
+" call vimfiler#set_execute_file('PDF,pdf', 'evince')
+call vimfiler#set_execute_file('PDF,pdf', 'FoxitReader')
+" call vimfiler#set_execute_file('xlsx,xls', 'C:\Program Files\Microsoft Office\Office15\Excel.exe')
 
 if has('mac')
   let g:vimfiler_quick_look_command =
@@ -82,33 +89,33 @@ function! s:vimfilerinit()
   nmap <buffer> i      <Plug>(vimfiler_switch_to_history_directory)
   nmap <buffer> <Tab>  <Plug>(vimfiler_switch_to_other_window)
   nmap <buffer> <C-r>  <Plug>(vimfiler_redraw_screen)
-  
+
   " dway adjustements
   nnoremap <silent><buffer><expr> t vimfiler#do_action('tabopen')
 
 endf
- 
+
 
 command! -nargs=?  -bar -complete=file E :call VimFilerDway(<q-args>)
 command! -nargs=?  -bar -complete=file V :call VimFilerDway(<q-args>)
-" command! Ev :25Vex %:p:h " |vertical resize 25   
+" command! Ev :25Vex %:p:h " |vertical resize 25
 " dway adjustements
 command! -nargs=? Vf :VimFilerExplorer <args> -winminwidth=25 -winwidth=30
-command! Vb :VimFilerBufferDir -explorer -winminwidth=25 -winwidth=30 
+command! Vb :VimFilerBufferDir -explorer -winminwidth=25 -winwidth=30
 " command! -nargs=?  -bar -complete=customlist,vimfiler#complete E :call VimFilerDway(<q-args>)
 
-function! VimFilerDway(...)    
-  let num_args = a:0 
-    
-  if num_args == 0 || a:1 == ''     
-    VimFilerBufferDir -explorer -winminwidth=25 -winwidth=30 
-  else   
+function! VimFilerDway(...)
+  let num_args = a:0
+
+  if num_args == 0 || a:1 == ''
+    VimFilerBufferDir -explorer -winminwidth=25 -winwidth=30
+  else
     let folder = fnamemodify(expand(a:1), ':p:h')
-    call vimfiler#init#_command({ 'explorer' : 1, }, folder.' -winminwidth=25 -winwidth=30')  
+    call vimfiler#init#_command({ 'explorer' : 1, }, folder.' -winminwidth=25 -winwidth=30')
   endif
 
 endfunction
 
 
- 
+
 " vim:set et sw=2:
