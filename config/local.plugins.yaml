@@ -5,9 +5,18 @@
 #   hook_add: load at Neovim startup
 #   hook_source: load when plugin is started/sourced
 #   hook_post_source: executed after plugin is sourced
+#   put keyboar shortcuts in the hook_add block
 
 # Startup
 # -------
+- repo: Shougo/unite.vim
+- repo: Shougo/vimfiler.vim
+  depends: Shougo/unite.vim
+- repo: qpkorr/vim-bufkill
+# or moll / vim-bbye
+- repo: xolox/vim-shell
+- repo: xolox/vim-misc
+
 
 # dway: vim-config-adjusted
 # - repo: xolox/vim-notes
@@ -140,17 +149,6 @@
 # # Runners available are 'pytest', 'nose', 'nose2', 'djangotest', 'djangonose' and Python's built-in 'unittest'
 # # or let test#strategy = 'neomake'
 
-- repo: Shougo/unite.vim # dway vim-config-adjusted
-- repo: Shougo/vimfiler.vim # dway vim-config-adjusted
-  depends: Shougo/unite.vim
-- repo: qpkorr/vim-bufkill # dway vim-config-adjusted
-  hook_add: |
-    command! B :BD
-# or moll / vim-bbye
-- repo: xolox/vim-shell # dway: vim-config-adjusted
-- repo: xolox/vim-misc  # dway: vim-config-adjusted
-
-
 - repo: kraxli/nvim-py-minimal
   on_ft: [py, python]
   hook_add:
@@ -264,7 +262,7 @@
 # Replace text with the contents of a register (copy/paste)
 # - repo: vim-scripts/ReplaceWithRegister
 
-# is the following redundant by - repo: rhysd/vim-operator-surround in rafis?
+  # TODO: is the following redundant by - repo: rhysd/vim-operator-surround in rafis?
 - {repo: tpope/vim-surround, on_cm: [cs, Csurround]}
 - {repo: tpope/vim-eunuch}
 

@@ -54,6 +54,12 @@ endif
 command! Glog :Denite gitlog
 command! Gstatus2 :Denite gitstatus
 command! Gchanged :Denite gitchanged
+command! -nargs=+ Git :AsyncRun git <args>
+command! GaddAll :Gadd --all
+command! -nargs=+ GcommitAll :AsyncRun git commit -m <q-args> -a
+
+" Bufkill
+" command! B :BD
 
 
 " vim: foldmethod=marker:

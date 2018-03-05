@@ -21,6 +21,12 @@ Best with Neovim or Vim 8 with +python3 extensions enabled.
 - [ ] additional and adjusted mappings
 - [ ] adjusted settings
 
+## Keymaps
+
+- vimfiler:
+  - <shift-e>: open file in split (vertical) window
+
+
 ## Features
 
 - Fast startup time
