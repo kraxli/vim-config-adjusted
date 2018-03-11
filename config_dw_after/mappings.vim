@@ -47,6 +47,12 @@ nnoremap <c-z> za
 onoremap <c-z> <C-C>za
 " make fold from visual selection
 vnoremap <c-z> zf
+" Focus the current fold by closing all others
+nnoremap <c-s-z> zMza
+" nnoremap <c-s-z> zM<Right>
+" nnoremap <c-s-z> zMzo
+
+
 
 " Search for a pattern then press F10 to fold misses.
 nnoremap <F10> :setlocal foldexpr=(getline(v:lnum)!~@/) foldmethod=expr<CR><Bar>zM

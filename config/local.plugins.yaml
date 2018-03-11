@@ -16,6 +16,10 @@
 # or moll / vim-bbye
 - repo: xolox/vim-shell
 - repo: xolox/vim-misc
+- repo: dbakker/vim-projectroot
+- repo: qpkorr/vim-renamer
+# delete asyncrun as soon neomakesh works for python
+- repo: skywind3000/asyncrun.vim
 
 
 # dway: vim-config-adjusted
@@ -38,15 +42,15 @@
 
 
 
-# https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
-- repo: SirVer/ultisnips
-  depends: [ vim-snippets, DSnips ]
-  hook_add: |
-    let g:UltiSnipsSnippetsDir=['UltiSnips',
-      \ $VARPATH. '/dein/repos/github.com' . '/honza/vim-snippets/UltiSnips',
-      \ $VARPATH . '/dein/repos/github.com' . "/kiith-sa/DSnips"]
-    let g:UltiSnipsUsePythonVersion = 3
-    let g:UltiSnipsEditSplit="vertical"
+# # https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
+# - repo: SirVer/ultisnips
+#   depends: [ vim-snippets, DSnips ]
+#   hook_add: |
+#     let g:UltiSnipsSnippetsDir=['UltiSnips',
+#       \ $VARPATH. '/dein/repos/github.com' . '/honza/vim-snippets/UltiSnips',
+#       \ $VARPATH . '/dein/repos/github.com' . "/kiith-sa/DSnips"]
+#     let g:UltiSnipsUsePythonVersion = 3
+#     let g:UltiSnipsEditSplit="vertical"
 
 #   on_event: InsertCharPre
 #   on_ft: snippets
@@ -222,8 +226,6 @@
 # http://www.wezm.net/technical/2016/09/ripgrep-with-vim/
 # https://github.com/jhawthorn/fzy
 
-# delete asyncrun as soon neomakesh works for python
-- repo: skywind3000/asyncrun.vim
 
 # - repo: w0rp/ale
 
@@ -290,9 +292,6 @@
   on_ft: [txt, md, pdc, mkd, tex]
 - repo: dbmrq/vim-ditto
 
-# Navigate between wiki-markdown file:
-- repo: mmai/vim-markdown-wiki
-
 # http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
 - repo: tpope/vim-repeat
 - repo: tpope/vim-speeddating
@@ -313,24 +312,22 @@
 # - repo: vim-scripts/mappingmanager
 # - repo: sunaku/vim-shortcut
 
-- repo: hecal3/vim-leader-guide
-  hook_add: |
-    nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
-    vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
-    map <leader>. <Plug>leaderguide-global
-    nnoremap <silent> <localleader> :<c-u>LeaderGuide ','<CR>
-    vnoremap <silent> <localleader> :<c-u>LeaderGuideVisual ','<CR>
-    map <localleader>. <Plug>leaderguide-global
-    nnoremap <silent> ; :<c-u>LeaderGuide ';'<CR>
-    vnoremap <silent> ; :<c-u>LeaderGuideVisual ';'<CR>
-  hook_post_source: |
-    let g:leaderGuide_max_size = 5
-    let g:leaderGuide_submode_mappings = { '<C-F>': 'page_down', '<C-B>': 'page_up'}
-    call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
-    call leaderGuide#register_prefix_descriptions(";", "g:llmap")
+# - repo: hecal3/vim-leader-guide
+#   hook_add: |
+#     nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+#     vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
+#     map <leader>. <Plug>leaderguide-global
+#     nnoremap <silent> <localleader> :<c-u>LeaderGuide ','<CR>
+#     vnoremap <silent> <localleader> :<c-u>LeaderGuideVisual ','<CR>
+#     map <localleader>. <Plug>leaderguide-global
+#     nnoremap <silent> ; :<c-u>LeaderGuide ';'<CR>
+#     vnoremap <silent> ; :<c-u>LeaderGuideVisual ';'<CR>
+#   hook_post_source: |
+#     let g:leaderGuide_max_size = 5
+#     let g:leaderGuide_submode_mappings = { '<C-F>': 'page_down', '<C-B>': 'page_up'}
+#     call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
+#     call leaderGuide#register_prefix_descriptions(";", "g:llmap")
 
-- repo: dbakker/vim-projectroot
-- repo: qpkorr/vim-renamer
 
 - repo: pelodelfuego/vim-swoop
   on_func: [Swoop, SwoopSelection, SwoopMulti, SwoopMultiSelection, SwoopPattern, SwoopMultiPattern]
@@ -344,10 +341,10 @@
     vmap <Leader>ms :call SwoopMultiSelection()<CR>
 
 # PLUGINS TO INCLUDE:
-- repo: vim-scripts/CmdlineComplete
+- repo: kraxli/CmdlineComplete
   hook_add: |
-    cmap <unique> <silent> <c-i> <Plug>CmdlineCompleteBackward
-    cmap <unique> <silent> <c-s-i> <Plug>CmdlineCompleteForward
+    cmap <silent> <c-i> <Plug>CmdlineCompleteBackward
+    cmap <silent> <c-s-i> <Plug>CmdlineCompleteForward
 
 # PLUGINS TO CHECKOUT
 # tpope/vim-vinegar
