@@ -205,7 +205,7 @@
     let g:indent_guides_default_mapping = 0
     let g:indent_guides_guide_size = 1
     let g:indent_guides_indent_levels = 15
-    let g:custom_exclude = [ 'help', 'denite', 'codi' ]
+    let g:custom_exclude = [ 'help', 'denite', 'codi', 'startify' ]
     autocmd MyAutoCmd BufEnter *
       \ if ! empty(&l:filetype) && index(g:custom_exclude, &l:filetype) == -1
       \|   if g:indent_guides_autocmds_enabled == 0 && &l:expandtab
@@ -234,7 +234,7 @@
     let g:lint_filetypes = [
       \  'ansible', 'python', 'php', 'ruby', 'vim', 'go', 'sh',
       \  'javascript', 'jsx', 'javascript.jsx', 'json', 'css',
-      \  'markdown', 'html', 'yaml', d, pandoc, pdc
+      \  'markdown', 'html', 'yaml', 'd', 'pandoc', 'pdc'
       \ ]
     autocmd MyAutoCmd BufWritePost *
       \ if index(g:lint_filetypes, &filetype) > -1 && empty(&buftype)

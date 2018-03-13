@@ -28,6 +28,7 @@ let g:vimfiler_ignore_pattern = [
 " -------------------
 " call vimfiler#set_execute_file('PDF,pdf', 'evince')
 call vimfiler#set_execute_file('PDF,pdf', 'FoxitReader')
+call vimfiler#set_execute_file('HTML,html,htmls,HTMLS', 'firefox')
 " call vimfiler#set_execute_file('xlsx,xls', 'C:\Program Files\Microsoft Office\Office15\Excel.exe')
 
 if has('mac')
@@ -96,7 +97,9 @@ function! s:vimfilerinit()
 endf
 
 
-nmap <localleader>e :call VimFilerDway()
+nnoremap <silent> <localleader>a  :<C-u>VimFilerCurrentDir -buffer-name=explorer -no-quit -split -winwidth=30 -toggle<CR>
+nnoremap <localleader>e :call VimFilerDway()<cr>
+" nnoremap <silent> <localleader>e  :<C-u>VimFilerBufferDir -buffer-name=explorer -no-quit -split -winwidth=30 -toggle<CR>
 command! -nargs=?  -bar -complete=file E :call VimFilerDway(<q-args>)
 command! -nargs=?  -bar -complete=file V :call VimFilerDway(<q-args>)
 " command! Ev :25Vex %:p:h " |vertical resize 25

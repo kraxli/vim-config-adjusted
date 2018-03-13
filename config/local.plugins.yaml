@@ -13,7 +13,6 @@
 # -------
 - repo: Shougo/unite.vim
 - repo: Shougo/vimfiler.vim
-  depends: Shougo/unite.vim
 - repo: qpkorr/vim-bufkill
 # or moll / vim-bbye
 - repo: xolox/vim-shell
@@ -164,12 +163,12 @@
 # =======================================================
 # Interface
 # ---------
-- repo: Yggdroot/indentLine
-  hook_add: |
-    let g:indentLine_fileTypeExclude = ['help', 'startify']
-    let g:indentLine_fileTyp = ['python']
-    let g:indentLine_char =  '▏'
-    set list lcs=tab:\|\
+# - repo: Yggdroot/indentLine
+#   hook_add: |
+#     let g:indentLine_fileTypeExclude = [ 'help', 'denite', 'codi', 'startify' ]
+#     let g:indentLine_fileTyp = ['python']
+#     let g:indentLine_char =  '▏'
+#     set list lcs=tab:\|\
 
 # =======================================================
 # Organizers and Note taking
