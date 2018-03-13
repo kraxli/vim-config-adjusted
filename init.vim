@@ -158,11 +158,7 @@ au! MyAutoCmd FileType pandoc setlocal foldmethod=expr
 
 " {{{
 " to move:
-"in Vim only alphabetic letters can be mapped in combination with the CTRL key
-" let R_assign_map = ":"
-" let R_assign_map = "<M-_>"
 
-let R_assign = 2
 command! Pkd :cd ~/Dropbox/PKD
 
 " }}}

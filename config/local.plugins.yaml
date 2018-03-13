@@ -6,7 +6,9 @@
 #   hook_source: load when plugin is started/sourced
 #   hook_post_source: executed after plugin is sourced
 #   put keyboar shortcuts in the hook_add block
+#   in Vim only alphabetic letters can be mapped in combination with the CTRL key
 
+# =======================================================
 # Startup
 # -------
 - repo: Shougo/unite.vim
@@ -21,26 +23,123 @@
 # delete asyncrun as soon neomakesh works for python
 - repo: skywind3000/asyncrun.vim
 
+# =======================================================
+# General
+# -------
+- repo: wbthomason/buildit.nvim
 
-# dway: vim-config-adjusted
-# - repo: xolox/vim-notes
-#   on_cmd: Note
+- repo: junegunn/fzf.vim
+  hook_source: set rtp+=~/.fzf
 
+# https://github.com/ggreer/the_silver_searcher
+# - repo: mileszs/ack.vim
+  # hook_add: let g:ackprg = 'ag --nogroup --nocolor --column'
+
+- repo: pelodelfuego/vim-swoop
+  on_func: [Swoop, SwoopSelection, SwoopMulti, SwoopMultiSelection, SwoopPattern, SwoopMultiPattern]
+  hook_add: |
+    let g:swoopUseDefaultKeyMap = 0
+    let g:swoopIgnoreCase = 1
+    let g:swoopWindowsVerticalLayout = 1
+    nmap <Leader>s :call Swoop()<CR>
+    vmap <Leader>s :call SwoopSelection()<CR>
+    nmap <Leader>ms :call SwoopMulti()<CR>
+    vmap <Leader>ms :call SwoopMultiSelection()<CR>
+
+- repo: mhinz/vim-startify
+  hook_add: |
+    let g:startify_change_to_vcs_root = 0
+    let g:startify_change_to_dir = 0
+    let g:startify_update_oldfiles = 1
+    let g:startify_session_persistence = 1
+
+- repo: vim-scripts/utl.vim
+  hook_add: |
+    let g:utl_cfg_hdl_mt_text_directory='VIM'
+    let g:utl_cfg_hdl_scm_http_system = "silent !firefox -remote 'ping()' &&
+                                         \ firefox -remote 'openURL( %u )' ||
+                                         \ firefox '%u#%f' &"
+
+# TODO: is the following redundant by - repo: rhysd/vim-operator-surround in rafis?
+- {repo: tpope/vim-surround, on_cm: [cs, Csurround]}
+- {repo: tpope/vim-eunuch}
+# http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
+- repo: tpope/vim-repeat
+- repo: tpope/vim-speeddating
+- repo: vim-scripts/SyntaxRange
+
+
+# =======================================================
 # Completion
 # ----------
-
-# dway: vim-config-adjusted
 - repo: landaire/deoplete-d
   if: has('nvim')
   on_ft: d
   on_i: 1
 
+# =======================================================
+# Programming languages
+# ---------------------
+- repo: idanarye/vim-dutyl # dway: vim-config-adjusted
+  on_ft: d
+  hook_post_source: |
+    autocmd MyAutoCmd BufRead,BufEnter *.d DUDCDrestartServer
+
+- repo: kraxli/nvim-py-minimal
+  on_ft: [py, python]
+  hook_add:
+    let g:nvimipdb_default_keys = 1
+
+- repo: python-rope/ropevim
+  on_ft: py
+
+# - repo: nvie/vim-pyunit
+# on_ft: py
+
+- repo: alfredodeza/pytest.vim
+  on_ft: [py, python]
+
+# - repo: janko-m/vim-test
+#   on_ft: [py, python]
+#   hook_add: |
+#     let test#strategy = "neovim"
+#     let test#python#runner = "pytest"
+
+# # Runners available are 'pytest', 'nose', 'nose2', 'djangotest', 'djangonose' and Python's built-in 'unittest'
+# # or let test#strategy = 'neomake'
+
+- repo: jalvesaq/Nvim-R
+  on_ft: r
+  hook_add: let R_assign = 2
+  hook_source: |
+    let R_rconsole_width = 57
+    let R_min_editor_width = 18
+    autocmd! MyAutoCmd VimResized * let R_rconsole_width = winwidth(0) / 2
+
+# let R_assign_map = ":"
+# let R_assign_map = "<M-_>"
+
+# https://www.abidibo.net/blog/2016/04/06/django-debug-vim-and-vdebug/
+# - repo: joonty/vdebug
+  # on_ft: py
+
+# - repo: idanarye/vim-vebugger
+#   on_ft: py
+
+- repo: dbgx/lldb.nvim
+  on_ft: [d, cpp, hpp, c, h]
+  hook_add: |
+    set hidden
+    command! DDebug :AsyncRun dmd -g %:p
+
+
+# =======================================================
+# Snippets
+# --------
 
 # dway: vim-config-adjusted (see also bellow for g:neosnippet#data_directory)
 - repo: honza/vim-snippets
 - repo: kiith-sa/DSnips
-
-
 
 # # https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
 # - repo: SirVer/ultisnips
@@ -62,7 +161,7 @@
 #     let g:UltiSnipsJumpBackwardTrigger="<c-s-o>"
 #     let g:UltiSnipsEditSplit="vertical"
 
-# ==========================================
+# =======================================================
 # Interface
 # ---------
 - repo: Yggdroot/indentLine
@@ -72,9 +171,17 @@
     let g:indentLine_char =  '▏'
     set list lcs=tab:\|\
 
-# ==========================================
-# Organizers
-# -------
+# =======================================================
+# Organizers and Note taking
+# --------------------------
+- repo: mmai/vim-markdown-wiki
+  on_ft: [pdc, md, mkd]
+  hook_source: |
+    nnoremap <leader><CR> :MdwiGotoLink
+    nnoremap <Leader><Backspace> :MdwiReturn
+  hook_add:
+    command! GoTo :MdwiGotoLink
+    command! GoBack :MdwiReturn
 
 # dway: vim-config-adjusted
 - repo: rafi/vim-denite-task
@@ -91,8 +198,9 @@
   hook_add:
     command! -nargs=* Tw :NeomakeSh task <args>
 
-
-
+# dway: vim-config-adjusted
+# - repo: xolox/vim-notes
+#   on_cmd: Note
 
 # dway: vim-config-adjusted
 - repo: kraxli/vimwiki-task
@@ -100,13 +208,25 @@
   hook_source: |
     setlocal spell spelllang=en,de
 
-# dway: vim-config-adjusted
+# =======================================================
+# Text processing
+# ---------------
+- repo: lervag/vimtex
+  on_ft: [tex, latex]
+
+- repo: msprev/unite-bibtex
+  depends: Shougo/unite.vim
+  on_ft: [tex, latex, pdc, pandoc, md, markdown]
+
+- repo: rhysd/vim-grammarous
+  on_ft: [tex, latex, txt, text, pdc, pandoc, md, markdown, wiki, vimwiki]
+
+- repo: dbmrq/vim-ditto
+  on_ft: [tex, latex, txt, text, pdc, pandoc, md, markdown, wiki, vimwiki]
+
 - repo: vim-pandoc/vim-pandoc
   on_ft: [pandoc, pdc, md]
-  hook_source: |
-    setlocal spell spelllang=en,de
-    setlocal foldlevel=0
-    au BufRead,BufNewFile *.md set filetype=pandoc
+  hook_add: |
     let g:pandoc#formatting#extra_equalprg = "--reference-links --atx-headers --wrap=none"
     let g:pandoc#folding#level=0
 
@@ -118,87 +238,15 @@
 # let g:pandoc#completion#bib#mode = 'citeproc'
 # let g:pandoc#syntax#colorcolumn = 1
 
-# nunmap <m-Left>
-# nunmap <m-Right>
-# nmap <silent> <m-Left> :wincmd h<CR>
-# nmap <silent> <m-Left> :wincmd h<CR>
-# nmap <silent> <m-Right> :wincmd l<CR>
-# nmap <m-Right> <c-w>l
-# nmap <m-Left> <c-w>h
-# source $HOME/.config/nvim/config/mappings.vim
-#  hook_source: |
-#  au MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc setlocal filetype=pandoc
-# nmap <leader>tb :TagbarToggle<CR>
-
 - repo: vim-pandoc/vim-pandoc-syntax
   on_ft: [pandoc, pdc]
-
-#  depends: vim-pandoc
 
 - repo: vim-pandoc/vim-pandoc-after
   on_ft: [pandoc, pdc]
 
-#  hook_add: |
-#    au MyAutoCmd BufEnter,BufRead *.pdc,*.pandoc set filetype=pandoc
-
-# - repo: kassio/neoterm # dway: vim-config-adjusted
-# .../iron-nvim
-
-# - repo: janko-m/vim-test
-#   on_ft: [py, python]
-#   hook_add: |
-#     let test#strategy = "neovim"
-#     let test#python#runner = "pytest"
-
-# # Runners available are 'pytest', 'nose', 'nose2', 'djangotest', 'djangonose' and Python's built-in 'unittest'
-# # or let test#strategy = 'neomake'
-
-- repo: kraxli/nvim-py-minimal
-  on_ft: [py, python]
-  hook_add:
-    let g:nvimipdb_default_keys = 1
-
-- repo: idanarye/vim-dutyl # dway: vim-config-adjusted
-  on_ft: d
-  hook_post_source: |
-    autocmd MyAutoCmd BufRead,BufEnter *.d DUDCDrestartServer
-
-- repo: python-rope/ropevim
-  on_ft: py
-
-# - repo: nvie/vim-pyunit
-# on_ft: py
-
-- repo: alfredodeza/pytest.vim
-  on_ft: [py, python]
-
-- repo: jalvesaq/Nvim-R
-  on_ft: r
-  hook_source: |
-    let R_rconsole_width = 57
-    let R_min_editor_width = 18
-    autocmd! MyAutoCmd VimResized * let R_rconsole_width = winwidth(0) / 2
-
-# dway: vim-config-adjusted
-
-
-
-# ==========================================
-# Experimental
-# ------------
-
-# https://www.abidibo.net/blog/2016/04/06/django-debug-vim-and-vdebug/
-- repo: joonty/vdebug
-  on_ft: py
-
-# - repo: idanarye/vim-vebugger
-#   on_ft: py
-
-- repo: dbgx/lldb.nvim
-  on_ft: [d, cpp, hpp, c, h]
-  hook_add: |
-    set hidden
-    command! DDebug :AsyncRun dmd -g %:p
+# =======================================================
+# Plugins not yet used
+# --------------------
 
 # command! DDebug :NeomakeSh dmd -g %:p
 
@@ -211,15 +259,6 @@
 #     let g:run_cmd_python = ['python3']
 #     let g:run_split = 'down'
 #     let g:run_auto_close = 0
-
-# or fzy
-# - repo: junegunn/fzf { 'dir': '~/.fzf', 'do': './install --all' }
-- repo: junegunn/fzf.vim
-  hook_source: set rtp+=~/.fzf
-
-# https://github.com/ggreer/the_silver_searcher
-- repo: mileszs/ack.vim
-  hook_add: let g:ackprg = 'ag --nogroup --nocolor --column'
 
 # let g:ackprg = 'ag --vimgrep'
 # http://betterthanack.com/
@@ -264,50 +303,9 @@
 # Replace text with the contents of a register (copy/paste)
 # - repo: vim-scripts/ReplaceWithRegister
 
-  # TODO: is the following redundant by - repo: rhysd/vim-operator-surround in rafis?
-- {repo: tpope/vim-surround, on_cm: [cs, Csurround]}
-- {repo: tpope/vim-eunuch}
-
-- repo: mhinz/vim-startify
-  hook_add: |
-    let g:startify_change_to_vcs_root = 0
-    let g:startify_change_to_dir = 0
-    let g:startify_update_oldfiles = 1
-    let g:startify_session_persistence = 1
-
-# text editing
-- repo: vim-scripts/utl.vim
-  hook_add: |
-    let g:utl_cfg_hdl_mt_text_directory='VIM'
-    let g:utl_cfg_hdl_scm_http_system = "silent !firefox -remote 'ping()' &&
-                                         \ firefox -remote 'openURL( %u )' ||
-                                         \ firefox '%u#%f' &"
-
-- repo: lervag/vimtex
-- repo: wbthomason/buildit.nvim
-- repo: msprev/unite-bibtex
-
-# Editing Plugins
-- repo: rhysd/vim-grammarous
-  on_ft: [txt, md, pdc, mkd, tex]
-- repo: dbmrq/vim-ditto
-
-# http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
-- repo: tpope/vim-repeat
-- repo: tpope/vim-speeddating
-- repo: vim-scripts/SyntaxRange
 
 # - repo: inkarkat/vim-SyntaxRange
 # - repo: PeterRincker/vim-narrow
-
-- repo: mmai/vim-markdown-wiki
-  on_ft: [pdc, md, mkd]
-  hook_source: |
-    nnoremap <leader><CR> :MdwiGotoLink
-    nnoremap <Leader><Backspace> :MdwiReturn
-  hook_add:
-    command! GoTo :MdwiGotoLink
-    command! GoBack :MdwiReturn
 
 # - repo: vim-scripts/mappingmanager
 # - repo: sunaku/vim-shortcut
@@ -328,23 +326,6 @@
 #     call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
 #     call leaderGuide#register_prefix_descriptions(";", "g:llmap")
 
-
-- repo: pelodelfuego/vim-swoop
-  on_func: [Swoop, SwoopSelection, SwoopMulti, SwoopMultiSelection, SwoopPattern, SwoopMultiPattern]
-  hook_add: |
-    let g:swoopUseDefaultKeyMap = 0
-    let g:swoopIgnoreCase = 1
-    let g:swoopWindowsVerticalLayout = 1
-    nmap <Leader>s :call Swoop()<CR>
-    vmap <Leader>s :call SwoopSelection()<CR>
-    nmap <Leader>ms :call SwoopMulti()<CR>
-    vmap <Leader>ms :call SwoopMultiSelection()<CR>
-
-# PLUGINS TO INCLUDE:
-- repo: kraxli/CmdlineComplete
-  hook_add: |
-    cmap <silent> <c-i> <Plug>CmdlineCompleteBackward
-    cmap <silent> <c-s-i> <Plug>CmdlineCompleteForward
 
 # PLUGINS TO CHECKOUT
 # tpope/vim-vinegar

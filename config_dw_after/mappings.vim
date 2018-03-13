@@ -1,13 +1,13 @@
 
 " {{{ === key mappings ===
 
-inoremap jk <esc>
-inoremap kj <esc>
-inoremap jj <Esc>
 imap jj <esc>
 
+ noremap ;ee :execute "e ".g:dway#base#path_config_nvim.g:dway#base#os_path_sep."init.vim"<cr>
+ noremap ;uu :execute "source ".g:dway#base#path_config_nvim.g:dway#base#os_path_sep."init.vim"<cr>
+
 " expand file name root
-"imap ,fn <c-r>=expand('%:t:r')<cr>
+imap ;fn <c-r>=expand('%:t:r')<cr>
 
 " map <C-m> ]c
 

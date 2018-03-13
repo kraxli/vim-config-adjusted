@@ -1,3 +1,4 @@
+---
 # PLUGINS
 # ==========================================
 
@@ -14,11 +15,10 @@
 - repo: itchyny/vim-parenmatch
 - repo: itchyny/vim-cursorword
   hook_add: |
-    autocmd MyAutoCmd FileType denite,qf,nerdtree let b:cursorword=0
+    autocmd MyAutoCmd FileType denite,qf,nerdtree,vimfiler let b:cursorword=0
     autocmd MyAutoCmd InsertEnter * let b:cursorword=0
     autocmd MyAutoCmd InsertLeave * let b:cursorword=1
 
-# ==========================================
 # Lazy Loading
 # ==========================================
 
@@ -44,7 +44,6 @@
     let g:html5_microdata_attributes_complete = 0
     let g:html5_aria_attributes_complete = 0
 
-# dway: commented out
 # - repo: plasticboy/vim-markdown
 #   on_ft: markdown
 #   hook_add: |
@@ -59,8 +58,6 @@
 #       \ 'bash=sh',
 #       \ 'ini=dosini'
 #       \ ]
-#   hook_post_source: |
-#     au BufNewFile,BufRead,BufEnter *.md set filetype=pandoc
 
 # - repo: rhysd/vim-gfm-syntax
 #   depends: vim-markdown
@@ -131,14 +128,12 @@
 # ==========================================
 # Commands
 # --------
-## dway vim-config-adjusted (commented out)
 # - repo: scrooloose/nerdtree
 #   depends: nerdtree-git-plugin
-#   on_cmd: {NERDTree}
 #   on_map: { n: <Plug> }
 #   hook_post_source: source $VIMPATH/config/plugins/nerdtree.vim
-# - { repo: Xuyuanp/nerdtree-git-plugin, on_source: nerdtree }
 
+# - { repo: Xuyuanp/nerdtree-git-plugin, on_source: nerdtree }
 - { repo: tpope/vim-commentary, on_map: <Plug>Commentary }
 - { repo: t9md/vim-choosewin, on_map: { n: <Plug> }}
 - { repo: Shougo/vinarise.vim, on_cmd: Vinarise }
@@ -153,9 +148,9 @@
 - { repo: tweekmonster/helpful.vim, on_cmd: HelpfulVersion }
 - { repo: lambdalisue/gina.vim, on_cmd: Gina }
 
-- repo: mzlogin/vim-markdown-toc
-  on_cmd: [ GenTocGFM, GenTocRedcarpet, GenTocGitLab, UpdateToc ]
-  hook_source: let g:vmt_auto_update_on_save = 0
+# - repo: mzlogin/vim-markdown-toc
+#  on_cmd: [ GenTocGFM, GenTocRedcarpet, GenTocGitLab, UpdateToc ]
+#  hook_source: let g:vmt_auto_update_on_save = 0
 
 - repo: easymotion/vim-easymotion
   on_map: { n: <Plug> }
@@ -167,17 +162,14 @@
     let g:EasyMotion_use_smartsign_us = 1
 
 - repo: chemzqm/vim-easygit
-  on_cmd: [
-    \ Gcd, Glcd, Gblame, GcommitCurrent, GdiffThis, Gbrowse,
-    \ Gcommit, Gedit, Gdiff, Gremove, Grename, Gmove,
-    \ Gcheckout, Gpush, Gpull, Gfetch, Gadd, Gstatus, Ggrep, Gmerg]
+  on_cmd: [Gcd, Glcd, Gcommit, Gblame, Gstatus, Gdiff, Gbrowse, Gstatus, Gpush]
   hook_source: let g:easygit_enable_command = 1
 
 - repo: majutsushi/tagbar
   if: empty($VIM_MINIMAL)
   on_cmd: TagbarToggle
   hook_source: |
-    let g:tagbar_width = 25
+    let g:tagbar_width = 40
     if executable('jsctags')
       let g:tagbar_type_javascript = { 'ctagsbin': 'jsctags' }
     endif
@@ -202,27 +194,26 @@
     let g:gitgutter_map_keys = 0
     let g:gitgutter_sh = $SHELL
 
-# dway: commented out 
-# - repo: nathanaelkane/vim-indent-guides
-#   on_cmd: [ IndentGuidesEnable, IndentGuidesDisable, IndentGuidesToggle ]
-#   hook_post_source: |
-#     call indent_guides#init_script_vars()
-#     call indent_guides#highlight_colors()
-#   hook_add: |
-#     let g:indent_guides_color_change_percent = 3
-#     let g:indent_guides_autocmds_enabled = 0
-#     let g:indent_guides_default_mapping = 0
-#     let g:indent_guides_guide_size = 1
-#     let g:indent_guides_indent_levels = 15
-#     let g:custom_exclude = [ 'help', 'denite', 'codi' ]
-#     autocmd MyAutoCmd BufEnter *
-#       \ if ! empty(&l:filetype) && index(g:custom_exclude, &l:filetype) == -1
-#       \|   if g:indent_guides_autocmds_enabled == 0 && &l:expandtab
-#       \|     IndentGuidesEnable
-#       \|   elseif g:indent_guides_autocmds_enabled == 1 && ! &l:expandtab
-#       \|     IndentGuidesDisable
-#       \|   endif
-#       \| endif
+- repo: nathanaelkane/vim-indent-guides
+  on_cmd: [ IndentGuidesEnable, IndentGuidesDisable, IndentGuidesToggle ]
+  hook_post_source: |
+    call indent_guides#init_script_vars()
+    call indent_guides#highlight_colors()
+  hook_add: |
+    let g:indent_guides_color_change_percent = 3
+    let g:indent_guides_autocmds_enabled = 0
+    let g:indent_guides_default_mapping = 0
+    let g:indent_guides_guide_size = 1
+    let g:indent_guides_indent_levels = 15
+    let g:custom_exclude = [ 'help', 'denite', 'codi' ]
+    autocmd MyAutoCmd BufEnter *
+      \ if ! empty(&l:filetype) && index(g:custom_exclude, &l:filetype) == -1
+      \|   if g:indent_guides_autocmds_enabled == 0 && &l:expandtab
+      \|     IndentGuidesEnable
+      \|   elseif g:indent_guides_autocmds_enabled == 1 && ! &l:expandtab
+      \|     IndentGuidesDisable
+      \|   endif
+      \| endif
 
 - repo: MattesGroeger/vim-bookmarks
   on_path: .*
@@ -235,7 +226,7 @@
   on_path: COMMIT_EDITMSG
   hook_source: let g:committia_min_window_width = 70
 
-- repo: neomake/neomake
+- repo: benekastah/neomake
   if: has('nvim') && empty($VIM_MINIMAL)
   on_cmd: Neomake
   hook_source: source $VIMPATH/config/plugins/neomake.vim
@@ -243,7 +234,7 @@
     let g:lint_filetypes = [
       \  'ansible', 'python', 'php', 'ruby', 'vim', 'go', 'sh',
       \  'javascript', 'jsx', 'javascript.jsx', 'json', 'css',
-      \  'markdown', 'html', 'yaml', 'd', 'dlang'
+      \  'markdown', 'html', 'yaml', d, pandoc, pdc
       \ ]
     autocmd MyAutoCmd BufWritePost *
       \ if index(g:lint_filetypes, &filetype) > -1 && empty(&buftype)
@@ -271,15 +262,25 @@
 
 - repo: vimwiki/vimwiki
   if: empty($VIM_MINIMAL)
-  on_ft: [vimwiki, wiki]
   on_map: { n: <Plug> }
-  on_cmd: [Vimwiki, VimwikiTabIndex]
+  on_cmd: Vimwiki
   hook_add: |
     let g:vimwiki_use_calendar = 1
     let g:vimwiki_hl_headers = 1
     let g:vimwiki_hl_cb_checked = 1
     let g:vimwiki_autowriteall = 0
-    au filetype pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=nv
+  hook_source: |
+    let g:vimwiki_list = [
+    \   { 'diary_header': 'Diary',
+    \     'diary_link_fmt': '%Y-%m/%d',
+    \     'auto_toc': 1,
+    \     'path': '~/docs/wiki/',
+    \     'syntax': 'markdown',
+    \     'ext': '.md' },
+    \   { 'path': '~/docs/blog/',
+    \     'syntax': 'markdown',
+    \     'ext': '.md' }
+    \ ]
 
 # ==========================================
 # Completion
@@ -301,22 +302,16 @@
   hook_source: source $VIMPATH/config/plugins/neocomplete.vim
 
 - repo: Shougo/neosnippet.vim
-  depends: [ neosnippet-snippets, vim-snippets, context_filetype.vim ]
+  depends: [ neosnippet-snippets, context_filetype.vim ]
   if: empty($VIM_MINIMAL)
   on_event: InsertCharPre
   on_ft: snippet
-  hook_add: |
-    let g:neosnippet#data_directory = $VARPATH. '/dein/repos/github.com' . '/honza/vim-snippets/snippets'
-    let g:neosnippet#snippets_directory = [
-            \ $VARPATH . '/dein/repos/github.com' . '/honza/vim-snippets/snippets',
-            \ '~/.config/nvim/snippets']
+  hook_add: let g:neosnippet#data_directory = $VARPATH.'/snippets'
   hook_source: |
     let g:neosnippet#enable_snipmate_compatibility = 1
     let g:neosnippet#enable_completed_snippet = 1
     let g:neosnippet#expand_word_boundary = 1
     autocmd MyAutoCmd InsertLeave * NeoSnippetClearMarkers
-
-# let g:neosnippet#data_directory = $VARPATH.'/snippets'
 
 - repo: ludovicchabant/vim-gutentags
   if: executable('ctags') && empty($VIM_MINIMAL)
@@ -374,11 +369,7 @@
     let g:jedi#quickfix_window_height = 10
     let g:jedi#use_splits_not_buffers = 'right'
 
-- repo: fisadev/vim-isort
-
-
 # Only NeoVim ------------------------------
-
 - repo: zchee/deoplete-go
   if: has('nvim') && ! empty($GOPATH) && empty($VIM_MINIMAL)
   build: make
@@ -426,17 +417,15 @@
   hook_source: source $VIMPATH/config/plugins/denite.vim
 
 - { repo: chemzqm/unite-location, on_source: denite.nvim }
+- { repo: chemzqm/denite-git, on_source: denite.nvim }
 - { repo: rafi/vim-denite-z, on_source: denite.nvim }
 - { repo: rafi/vim-denite-session, on_source: denite.nvim }
-
-- repo: chemzqm/denite-git
-  on_source: denite.nvim
 
 - repo: rafi/vim-denite-mpc
   if: executable('mpc') && empty($VIM_MINIMAL)
   on_source: denite.nvim
   hook_source: call denite#custom#var('mpc', 'default_view', 'date')
-  
+
 # ==========================================
 # Operators
 # ---------
@@ -447,7 +436,6 @@
   on_map: { vnx: <Plug> }
 
 - repo: rhysd/vim-operator-surround
-
   depends: [ vim-operator-user, vim-textobj-multiblock ]
   on_map: { vnx: <Plug> }
 
@@ -478,3 +466,4 @@
   on_map: { ox: <Plug> }
   hook_add: let g:textobj_function_no_default_key_mappings = 1
 
+#  vim: set ts=2 sw=2 tw=80 et :
