@@ -443,6 +443,12 @@ Name           | Description
 [osyo-manga/vim-textobj-multiblock]: https://github.com/osyo-manga/vim-textobj-multiblock
 [kana/vim-textobj-function]: https://github.com/kana/vim-textobj-function
 
+## General Key-mappings
+
+Key   | Mode | Action
+----- |:----:| ------------------
+`ctrl` + `p`/`n` | command line | word completion from open file/buffer(s)
+
 ## Custom Key-mappings
 
 Note that,
