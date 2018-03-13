@@ -98,7 +98,7 @@ endf
 
 
 nnoremap <silent> <localleader>a  :<C-u>VimFilerCurrentDir -buffer-name=explorer -no-quit -split -winwidth=30 -toggle<CR>
-nnoremap <localleader>e :call VimFilerDway()<cr>
+nnoremap <silent> <localleader>e :call VimFilerDway()<cr>
 " nnoremap <silent> <localleader>e  :<C-u>VimFilerBufferDir -buffer-name=explorer -no-quit -split -winwidth=30 -toggle<CR>
 command! -nargs=?  -bar -complete=file E :call VimFilerDway(<q-args>)
 command! -nargs=?  -bar -complete=file V :call VimFilerDway(<q-args>)
