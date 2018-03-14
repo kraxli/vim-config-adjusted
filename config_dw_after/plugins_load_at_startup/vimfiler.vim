@@ -97,7 +97,8 @@ function! s:vimfilerinit()
 endf
 
 
-nnoremap <silent> <localleader>e  :<C-u>VimFilerCurrentDir -buffer-name=explorer -no-quit -split -winwidth=30 -toggle<CR>
+nnoremap <silent> <localleader>e  :<C-u>VimFilerCurrentDir -explorer -winminwidth=25 -winwidth=30 -toggle<cr>
+" "-buffer-name=explorer -no-quit -split -winwidth=30 -toggle<CR>
 nnoremap <silent> <localleader>a :call VimFilerDway()<cr>
 " nnoremap <silent> <localleader>a  :<C-u>VimFilerBufferDir -buffer-name=explorer -no-quit -split -winwidth=30 -toggle<CR>
 command! -nargs=?  -bar -complete=file E :call VimFilerDway(<q-args>)
