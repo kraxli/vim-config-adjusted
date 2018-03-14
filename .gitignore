@@ -1,7 +1,7 @@
 /benchmarks/
 /spell
 /.vault.vim
-/.local.vimrc
+/* /.local.vimrc */
 /config/local.vim
 *~
 /.stignore
@@ -11,3 +11,4 @@
 undodir
 mappings2diff.vim
 mappings2diff.vimX
+*startup*log
