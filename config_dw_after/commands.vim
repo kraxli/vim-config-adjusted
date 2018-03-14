@@ -57,6 +57,7 @@ command! Gchanged :Denite gitchanged
 command! -nargs=+ Git :AsyncRun git <args>
 command! GaddAll :Gadd --all
 command! -nargs=+ GcommitAll :AsyncRun git commit -m <q-args> -a
+command! -nargs=+ GcommitCurrent :NeomakeSh git commit -m <q-args> %:h
 
 " Bufkill
 " command! B :BD
