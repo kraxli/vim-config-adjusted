@@ -11,8 +11,6 @@
 # =======================================================
 # Startup
 # -------
-- repo: Shougo/unite.vim
-- repo: Shougo/vimfiler.vim
 - repo: qpkorr/vim-bufkill
 # or moll / vim-bbye
 - repo: xolox/vim-shell
@@ -25,6 +23,12 @@
 # =======================================================
 # General
 # -------
+
+- repo: Shougo/vimfiler.vim
+  depends: Shougo/unite.vim
+- { repo: Shougo/unite.vim, on_source: [vimfiler, unite-bibtex] }
+
+# TODO check out usage
 - repo: wbthomason/buildit.nvim
 
 - repo: junegunn/fzf.vim
@@ -203,13 +207,16 @@
 
 # dway: vim-config-adjusted
 - repo: kraxli/vimwiki-task
-  on_ft: [vimwiki, wiki]
+  on_ft: [vimwiki, wiki, md]
   hook_source: |
     setlocal spell spelllang=en,de
+  hook_post_source: source $VIMPATH/config_dw_after/plugins/vimwiki.vim
 
 # =======================================================
 # Text processing
 # ---------------
+
+# TODO usage and better integration
 - repo: lervag/vimtex
   on_ft: [tex, latex]
 
@@ -238,10 +245,11 @@
 # let g:pandoc#syntax#colorcolumn = 1
 
 - repo: vim-pandoc/vim-pandoc-syntax
-  on_ft: [pandoc, pdc]
+  on_ft: [pandoc, pdc, md]
 
 - repo: vim-pandoc/vim-pandoc-after
-  on_ft: [pandoc, pdc]
+  on_ft: [pandoc, pdc, md]
+
 
 # =======================================================
 # Plugins not yet used

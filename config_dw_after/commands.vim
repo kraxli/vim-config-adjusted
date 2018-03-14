@@ -43,7 +43,6 @@ command! DeinRecash :call dein#recache_runtimepath()
 command! DeinInstall :call dein#install()
 command! DeinReinstall :call dein#reinstall()
 
-
 " div
 if has('unix')
    command! -bar ShaDaDelete NeomakeSh! rm ~/.local/share/nvim/shada/* | NeomakeSh! touch ~/.local/share/nvim/shada/main.shada
@@ -57,10 +56,18 @@ command! Gchanged :Denite gitchanged
 command! -nargs=+ Git :AsyncRun git <args>
 command! GaddAll :Gadd --all
 command! -nargs=+ GcommitAll :AsyncRun git commit -m <q-args> -a
-command! -nargs=+ GcommitCurrent :NeomakeSh git commit -m <q-args> %:h
+command! -nargs=+ GcommitThis :NeomakeSh git commit -m <q-args> %:h
 
 " Bufkill
 " command! B :BD
+
+" Backgournd 
+nmap <leader>cs :call dway#misc#ToggleColorScheme(color_scheme1, color_scheme2)<cr>
+" noremap <leader>b :call dway#misc#ToggleBgCs(color_scheme1, color_scheme2)<cr>
+
+" go back:
+nmap gb <c-o> " <c-;>
+
 
 
 " vim: foldmethod=marker:

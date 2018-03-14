@@ -25,3 +25,14 @@ set statusline=%F
 
 " do not set readonly
 " set noro
+
+" Color Scheme
+colorscheme hybrid " gruvbox  hybrid
+set background=dark
+
+let color_scheme1 = 'hybrid'
+let color_scheme2 = 'gruvbox'
+
+" Status bar/line
+set statusline+=%F
+

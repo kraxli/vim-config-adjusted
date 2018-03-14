@@ -6,7 +6,7 @@
 
 let g:config_load_home = fnamemodify(expand('<sfile>'), ':p:h:gs?\\?'.g:dway#base#os_path_sep.'?')
 let g:config_folder = g:config_load_home.g:dway#base#os_path_sep."config_dw_after"
-let g:config_plugins_folder = g:config_load_home.g:dway#base#os_path_sep."config_dw_after".g:dway#base#os_path_sep."plugins"
+let g:config_plugins_folder = g:config_load_home.g:dway#base#os_path_sep."config_dw_after".g:dway#base#os_path_sep."plugins_load_at_startup"
 
 
 " execute 'set rtp +=' . fnamemodify(g:config_load_home, ':p:h:h')
