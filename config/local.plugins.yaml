@@ -16,7 +16,10 @@
 - repo: xolox/vim-shell
 - repo: xolox/vim-misc
 - repo: dbakker/vim-projectroot
-- repo: qpkorr/vim-renamer
+- repo: Shougo/unite.vim
+# - { repo: Shougo/unite.vim, on_source: [vimfiler, unite-bibtex] }
+- repo: Shougo/vimfiler.vim
+#  depends: Shougo/unite.vim
 # delete asyncrun as soon neomakesh works for python
 - repo: skywind3000/asyncrun.vim
 
@@ -24,9 +27,10 @@
 # General
 # -------
 
-- repo: Shougo/vimfiler.vim
-  depends: Shougo/unite.vim
-- { repo: Shougo/unite.vim, on_source: [vimfiler, unite-bibtex] }
+# themis.vim is a testing framework for Vim script.
+
+- repo: qpkorr/vim-renamer
+  on_cmd: Renamer
 
 # TODO check out usage
 - repo: wbthomason/buildit.nvim
@@ -38,6 +42,7 @@
 # - repo: mileszs/ack.vim
   # hook_add: let g:ackprg = 'ag --nogroup --nocolor --column'
 
+# TODO inspect
 - repo: pelodelfuego/vim-swoop
   on_func: [Swoop, SwoopSelection, SwoopMulti, SwoopMultiSelection, SwoopPattern, SwoopMultiPattern]
   hook_add: |
@@ -55,6 +60,7 @@
     let g:startify_change_to_dir = 0
     let g:startify_update_oldfiles = 1
     let g:startify_session_persistence = 1
+    let g:startify_disable_at_vimenter = 1
 
 - repo: vim-scripts/utl.vim
   hook_add: |
@@ -118,6 +124,9 @@
     let R_rconsole_width = 57
     let R_min_editor_width = 18
     autocmd! MyAutoCmd VimResized * let R_rconsole_width = winwidth(0) / 2
+
+- repo: vim-scripts/octave.vim
+  on_ft: [m, oct]
 
 # let R_assign_map = ":"
 # let R_assign_map = "<M-_>"
@@ -213,8 +222,14 @@
   hook_post_source: source $VIMPATH/config_dw_after/plugins/vimwiki.vim
 
 # =======================================================
-# Text processing
-# ---------------
+# Text processing / editing
+# -------------------------
+
+# gabrielelana/vim-markdown
+- repo: 'tenfyzhong/tagbar-markdown.vim'
+  on_ft: [markdown, md]
+
+# lvht/tagbar-markdown
 
 # TODO usage and better integration
 - repo: lervag/vimtex
@@ -230,11 +245,12 @@
 - repo: dbmrq/vim-ditto
   on_ft: [tex, latex, txt, text, pdc, pandoc, md, markdown, wiki, vimwiki]
 
-- repo: vim-pandoc/vim-pandoc
-  on_ft: [pandoc, pdc, md]
-  hook_add: |
-    let g:pandoc#formatting#extra_equalprg = "--reference-links --atx-headers --wrap=none"
-    let g:pandoc#folding#level=0
+# - repo: vim-pandoc/vim-pandoc
+#   on_ft: [pandoc, pdc, md]
+#   hook_add: |
+#     let g:pandoc#formatting#extra_equalprg = "--reference-links --atx-headers --wrap=none"
+#     let g:pandoc#folding#level=0
+#   hook_post_source: source $VIMPATH/config_dw_after/plugins/pandoc.vim
 
 # let g:pandoc#formatting#mode = "hA"
 # let g:pandoc#formatting#smart_autoformat_on_cursormoved = 1
@@ -244,12 +260,11 @@
 # let g:pandoc#completion#bib#mode = 'citeproc'
 # let g:pandoc#syntax#colorcolumn = 1
 
-- repo: vim-pandoc/vim-pandoc-syntax
-  on_ft: [pandoc, pdc, md]
+# - repo: vim-pandoc/vim-pandoc-syntax
+#   on_ft: [pandoc, pdc, md]
 
-- repo: vim-pandoc/vim-pandoc-after
-  on_ft: [pandoc, pdc, md]
-
+# - repo: vim-pandoc/vim-pandoc-after
+#   on_ft: [pandoc, pdc, md]
 
 # =======================================================
 # Plugins not yet used
