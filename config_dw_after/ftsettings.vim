@@ -2,10 +2,10 @@
 augroup filetypeSettings
    autocmd!
    autocmd BufRead,BufNewFile,BufEnter filetype vim setlocal foldmethod=marker
-   autocmd BufRead,BufNewFile,BufEnter *.md set filetype=pandoc
+   " autocmd BufRead,BufNewFile,BufEnter *.md set filetype=pandoc
    " autocmd BufRead,BufNewFile,BufEnter,BufWinEnter *.wiki IndentGuidesDisable
 
-   au FileType pandoc,markdown,text nnoremap <leader>li "='- [ ] '<cr>Pa
+   au FileType pandoc,markdown,text nnoremap <silent> <leader>li "='- [ ] '<cr>Pa
 
    " Spell checking
 	 au FileType tex,latex,pandoc,pdc,txt,vimwiki,wiki,md,markdown setlocal spell spelllang=en,de
