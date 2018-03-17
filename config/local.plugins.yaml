@@ -23,6 +23,23 @@
 # delete asyncrun as soon neomakesh works for python
 - repo: skywind3000/asyncrun.vim
 
+# TODO check out usage
+- repo: wbthomason/buildit.nvim
+
+# http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
+# TODO: is the following redundant by - repo: rhysd/vim-operator-surround in rafis?
+- {repo: tpope/vim-surround, on_cm: [cs, Csurround]}
+- {repo: tpope/vim-eunuch}
+- repo: tpope/vim-repeat
+- repo: tpope/vim-speeddating
+- repo: vim-scripts/SyntaxRange
+- repo: junegunn/fzf.vim
+  hook_source: set rtp+=~/.fzf
+
+# - repo: tpope/vim-abolish
+# - repo: kshenoy/vim-signature
+# - repo: wdicarlo/vim-notebook
+
 # =======================================================
 # General
 # -------
@@ -31,12 +48,6 @@
 
 - repo: qpkorr/vim-renamer
   on_cmd: Renamer
-
-# TODO check out usage
-- repo: wbthomason/buildit.nvim
-
-- repo: junegunn/fzf.vim
-  hook_source: set rtp+=~/.fzf
 
 # https://github.com/ggreer/the_silver_searcher
 # - repo: mileszs/ack.vim
@@ -68,14 +79,6 @@
     let g:utl_cfg_hdl_scm_http_system = "silent !firefox -remote 'ping()' &&
                                          \ firefox -remote 'openURL( %u )' ||
                                          \ firefox '%u#%f' &"
-
-# TODO: is the following redundant by - repo: rhysd/vim-operator-surround in rafis?
-- {repo: tpope/vim-surround, on_cm: [cs, Csurround]}
-- {repo: tpope/vim-eunuch}
-# http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
-- repo: tpope/vim-repeat
-- repo: tpope/vim-speeddating
-- repo: vim-scripts/SyntaxRange
 
 
 # =======================================================
@@ -239,13 +242,18 @@
   depends: Shougo/unite.vim
   on_ft: [tex, latex, pdc, pandoc, md, markdown]
 
+# TODO does wordy makes this redundant?
 - repo: rhysd/vim-grammarous
-  on_ft: [tex, latex, txt, text, pdc, pandoc, md, markdown, wiki, vimwiki]
+  on_cmd: [GrammarousCheck, 'Unite grammarous']
 
+# TODO load on commands and maybe add mappings
 - repo: dbmrq/vim-ditto
   on_ft: [tex, latex, txt, text, pdc, pandoc, md, markdown, wiki, vimwiki]
 
 - repo: godlygeek/tabular
+  on_ft: [tex, latex, txt, text, pdc, pandoc, md, markdown, wiki, vimwiki]
+
+- repo: beloglazov/vim-online-thesaurus
   on_ft: [tex, latex, txt, text, pdc, pandoc, md, markdown, wiki, vimwiki]
 
 # - repo: vim-pandoc/vim-pandoc
