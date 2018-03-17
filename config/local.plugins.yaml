@@ -245,6 +245,9 @@
 - repo: dbmrq/vim-ditto
   on_ft: [tex, latex, txt, text, pdc, pandoc, md, markdown, wiki, vimwiki]
 
+- repo: godlygeek/tabular
+  on_ft: [tex, latex, txt, text, pdc, pandoc, md, markdown, wiki, vimwiki]
+
 # - repo: vim-pandoc/vim-pandoc
 #   on_ft: [pandoc, pdc, md]
 #   hook_add: |
