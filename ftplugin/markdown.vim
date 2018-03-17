@@ -3,6 +3,8 @@
  au FileType pandoc,markdown setlocal spell spelllang=en,de
  au FileType pandoc,markdown setlocal foldlevel=0
 
+nnoremap <silent> <c-space> :call dway#markdown#SwitchStatus()<cr>
+
 " <!-- http://docs.mathjax.org/en/latest/configuration.html -->>
 
 " https://github.com/jgm/pandoc/wiki/Pandoc-Tricks
