@@ -29,6 +29,8 @@
 - repo: tpope/vim-repeat
 - repo: tpope/vim-speeddating
 - repo: vim-scripts/SyntaxRange
+
+# TODO load conditinally 
 - repo: junegunn/fzf.vim
   hook_source: set rtp+=~/.fzf
 
@@ -43,8 +45,6 @@
 # themis.vim is a testing framework for Vim script.
 
 - repo: qpkorr/vim-bufkill
-  on_map: {n: bd}
-  on_cmd: [BD, BW, BUN, BB, BF, BA]
 # or moll / vim-bbye
 
 - repo: qpkorr/vim-renamer
