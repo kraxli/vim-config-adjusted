@@ -51,6 +51,7 @@
 
 - repo: tpope/vim-abolish
   on_cmd: [Subvert]
+  on_map: {n: [crs, crm, crc, cru, cr-, cr., cr<space>, crt]}
   hook_post_source: source $VIMPATH/config_dw_after/plugins/abolish.vim
 
 # https://github.com/ggreer/the_silver_searcher
