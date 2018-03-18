@@ -11,10 +11,6 @@
 # =======================================================
 # Startup
 # -------
-- repo: qpkorr/vim-bufkill
-  on_map: {n: bd}
-  on_cmd: [BD, BW, BUN, BB, BF, BA]
-# or moll / vim-bbye
 - repo: xolox/vim-shell
 - repo: xolox/vim-misc
 - repo: dbakker/vim-projectroot
@@ -45,6 +41,11 @@
 # -------
 
 # themis.vim is a testing framework for Vim script.
+
+- repo: qpkorr/vim-bufkill
+  on_map: {n: bd}
+  on_cmd: [BD, BW, BUN, BB, BF, BA]
+# or moll / vim-bbye
 
 - repo: qpkorr/vim-renamer
   on_cmd: Renamer
