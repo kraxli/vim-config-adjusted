@@ -21,13 +21,13 @@ command! VTerm :call dway#term#openterm('vsp')
 command! TTerm :call dway#term#openterm('tabnew')
 
 " over rule the read only option when opening a file
- " cnoreabbrev w w!
- " cnoreabbrev x x!
+ cnoreabbrev ww w!
+ cnoreabbrev xx x!
+ cnoreabbrev qq q!
 
 " save and quit
-command! W :w!
-command! X :x!
-command! Q :q!
+command! W :w
+command! Q :q
 
 command! ShowPath :echo expand('%:p')
 command! CopyBufferPath :let @+ = expand("%:p:h")
