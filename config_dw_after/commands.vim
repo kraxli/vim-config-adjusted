@@ -51,24 +51,13 @@ endif
 
 " GIT / Denite
 command! Glog :Denite gitlog
-command! Gstatus2 :Denite gitstatus
+command! GstatusDenite :Denite gitstatus
 command! Gchanged :Denite gitchanged
-command! -nargs=+ Git :AsyncRun git <args>
+command! -nargs=+ Git :NeomakeSh git <args>
 command! GaddAll :Gadd --all
-command! -nargs=+ GcommitAll :AsyncRun git commit -m <q-args> -a
+command! -nargs=+ GcommitAll :NeomakeSh git commit -m <q-args> -a
 command! -nargs=+ GcommitThis :NeomakeSh git commit -m <q-args> %:h
-
-" Bufkill
-" command! B :BD
-
-" Backgournd 
-nmap <leader>cs :call dway#misc#ToggleColorScheme(color_scheme1, color_scheme2)<cr>
-" noremap <leader>b :call dway#misc#ToggleBgCs(color_scheme1, color_scheme2)<cr>
-
-" go back:
-nmap gb <c-o> " <c-;>
-
+command! GaddThis :Gadd %:h
 
 
 " vim: foldmethod=marker:
-

@@ -3,8 +3,10 @@
 
 imap jj <esc>
 
- noremap ;ee :execute "e ".g:dway#base#path_config_nvim.g:dway#base#os_path_sep."init.vim"<cr>
- noremap ;uu :execute "source ".g:dway#base#path_config_nvim.g:dway#base#os_path_sep."init.vim"<cr>
+nnoremap ;ee :execute "e ".g:dway#base#path_config_nvim.g:dway#base#os_path_sep."init.vim"<cr>
+nnoremap ;uu :execute "source ".g:dway#base#path_config_nvim.g:dway#base#os_path_sep."init.vim"<cr>
+
+nnoremap bd :BD
 
 " expand file name root
 imap ;fn <c-r>=expand('%:t:r')<cr>
@@ -12,7 +14,7 @@ imap ;fn <c-r>=expand('%:t:r')<cr>
 " map <C-m> ]c
 
 " go back (to last position)
-nnoremap gb <c-o>
+nnoremap gb <c-o>  " <c-;>
 " go to previous/forward
 nnoremap gp <c-i>
 if has('gui')
@@ -36,6 +38,12 @@ map <leader>ct :tabclose<cr>
 " change directory to the one of the current file
 map <leader>cd :lcd %:p:h<cr>
 map <leader>gcd :cd %:p:h<cr>
+
+" Backgournd 
+nmap <leader>cs :call dway#misc#ToggleColorScheme(color_scheme1, color_scheme2)<cr>
+" noremap <leader>b :call dway#misc#ToggleBgCs(color_scheme1, color_scheme2)<cr>
+
+
 
 " toggle spelling (<leader>se)
 nnoremap <F2> :set spell! spelllang=en,de <cr>
@@ -199,6 +207,9 @@ nmap fe <F6>
 nmap ff <F6>
 " gx from pandoc and netrw does the job for many things
 " a good map candidate would also be <c-enter>
+
+" Startify
+nnoremap ;sf :Startify
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
