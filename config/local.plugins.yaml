@@ -12,6 +12,8 @@
 # Startup
 # -------
 - repo: qpkorr/vim-bufkill
+  on_map: {n: bd}
+  on_cmd: [BD, BW, BUN, BB, BF, BA]
 # or moll / vim-bbye
 - repo: xolox/vim-shell
 - repo: xolox/vim-misc
