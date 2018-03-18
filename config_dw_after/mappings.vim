@@ -6,8 +6,6 @@ imap jj <esc>
 nnoremap ;ee :execute "e ".g:dway#base#path_config_nvim.g:dway#base#os_path_sep."init.vim"<cr>
 nnoremap ;uu :execute "source ".g:dway#base#path_config_nvim.g:dway#base#os_path_sep."init.vim"<cr>
 
-nnoremap bd :BD
-
 " expand file name root
 imap ;fn <c-r>=expand('%:t:r')<cr>
 
@@ -105,6 +103,7 @@ nmap <silent> <leader>u0 :t.\|s/./=/g\|:nohls<cr>
 nmap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
 
 "" Use the bufkill plugin to eliminate a buffer but keep the window layout
+nnoremap bd :BD<cr>
 nmap <leader>bd :BD<cr>
 " kill buffer from buff kill plugin
 nmap <localleader>k :BK<cr>
