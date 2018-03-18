@@ -7,6 +7,8 @@
 """"""""""""""""""""""""""""""
 " http://blog.adamdklein.com/?p=28
 " https://majutsushi.github.io/tagbar/
+" Tagbar-Wiki: https://github.com/majutsushi/tagbar/wiki
+" Tagbar-Wiki (dlang): https://github.com/majutsushi/tagbar/wiki#d
 let g:tagbar_width = 25
 
 

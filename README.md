@@ -7,9 +7,6 @@ Best with Neovim or Vim 8 with +python3 extensions enabled.
 ## Adjustments
 
 - [ ] additonal plugins:
-  - pandoc
-  - pandoc-after
-  - pandoc-syntax
   - vimwiki-tasks
   - vimfiler (replace nerdtree)
   - deoplete-d

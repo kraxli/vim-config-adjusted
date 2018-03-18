@@ -84,7 +84,7 @@
                                          \ firefox '%u#%f' &"
 
 # TODO delete asyncrun as soon neomakesh works for python
-{- repo: skywind3000/asyncrun.vim, on_cmd: AsyncRun}
+- {repo: skywind3000/asyncrun.vim, on_cmd: AsyncRun}
 
 # =======================================================
 # Completion
@@ -133,11 +133,11 @@
     let R_min_editor_width = 18
     autocmd! MyAutoCmd VimResized * let R_rconsole_width = winwidth(0) / 2
 
-- repo: vim-scripts/octave.vim
-  on_ft: [m, oct]
-
 # let R_assign_map = ":"
 # let R_assign_map = "<M-_>"
+
+- repo: vim-scripts/octave.vim
+  on_ft: [m, oct]
 
 # https://www.abidibo.net/blog/2016/04/06/django-debug-vim-and-vdebug/
 # - repo: joonty/vdebug
@@ -261,26 +261,6 @@
 - repo: beloglazov/vim-online-thesaurus
   on_ft: [tex, latex, txt, text, pdc, pandoc, md, markdown, wiki, vimwiki]
 
-# - repo: vim-pandoc/vim-pandoc
-#   on_ft: [pandoc, pdc, md]
-#   hook_add: |
-#     let g:pandoc#formatting#extra_equalprg = "--reference-links --atx-headers --wrap=none"
-#     let g:pandoc#folding#level=0
-#   hook_post_source: source $VIMPATH/config_dw_after/plugins/pandoc.vim
-
-# let g:pandoc#formatting#mode = "hA"
-# let g:pandoc#formatting#smart_autoformat_on_cursormoved = 1
-# let g:pandoc#folding#level = 2
-# let g:pandoc#folding#mode = "relative"
-# let g:pandoc#after#modules#enabled = ["nrrwrgn", "tablemode"]
-# let g:pandoc#completion#bib#mode = 'citeproc'
-# let g:pandoc#syntax#colorcolumn = 1
-
-# - repo: vim-pandoc/vim-pandoc-syntax
-#   on_ft: [pandoc, pdc, md]
-
-# - repo: vim-pandoc/vim-pandoc-after
-#   on_ft: [pandoc, pdc, md]
 
 # =======================================================
 # Plugins not yet used

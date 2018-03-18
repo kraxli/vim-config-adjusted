@@ -152,7 +152,7 @@ nnoremap c<F12> :call dway#misc#ToggleColorScheme('gruvbox', 'Tomorrow')<cr>
 
 " tables / tabular
 vnoremap <leader>pt :call dway#table#table()<cr>
-vnoremap <leader>ptt :call dway#table#table()<cr> gv  :!pandoc -f markdown -t rst<cr>
+vnoremap <leader>ptt :call dway#table#table()<cr> gv :!pandoc -f markdown -t rst<cr>
 inoremap <silent> <Bar>   <Bar><Esc>:call dway#table#align()<CR>a
 
 "%\\@=%m open system file explorer (not need: handeled by vim-shell)
