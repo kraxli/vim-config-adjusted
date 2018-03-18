@@ -20,8 +20,6 @@
 # - { repo: Shougo/unite.vim, on_source: [vimfiler, unite-bibtex] }
 - repo: Shougo/vimfiler.vim
 #  depends: Shougo/unite.vim
-# delete asyncrun as soon neomakesh works for python
-- repo: skywind3000/asyncrun.vim
 
 # TODO check out usage
 - repo: wbthomason/buildit.nvim
@@ -85,6 +83,8 @@
                                          \ firefox -remote 'openURL( %u )' ||
                                          \ firefox '%u#%f' &"
 
+# TODO delete asyncrun as soon neomakesh works for python
+{- repo: skywind3000/asyncrun.vim, on_cmd: AsyncRun}
 
 # =======================================================
 # Completion
