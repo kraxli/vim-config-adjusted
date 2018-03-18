@@ -43,8 +43,6 @@ map <leader>gcd :cd %:p:h<cr>
 nmap <leader>cs :call dway#misc#ToggleColorScheme(color_scheme1, color_scheme2)<cr>
 " noremap <leader>b :call dway#misc#ToggleBgCs(color_scheme1, color_scheme2)<cr>
 
-
-
 " toggle spelling (<leader>se)
 nnoremap <F2> :set spell! spelllang=en,de <cr>
 
