@@ -23,8 +23,7 @@
 - repo: wbthomason/buildit.nvim
 
 # http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
-# TODO: is the following redundant by - repo: rhysd/vim-operator-surround in rafis?
-- {repo: tpope/vim-surround, on_cm: [cs, Csurround]}
+# Vim sugar for the UNIX shell commands that need it the most.
 - {repo: tpope/vim-eunuch}
 - repo: tpope/vim-repeat
 - repo: tpope/vim-speeddating
@@ -43,6 +42,8 @@
 # -------
 
 # themis.vim is a testing framework for Vim script.
+
+# not taking: cwoac/nvim
 
 - repo: qpkorr/vim-bufkill
 # or moll / vim-bbye
