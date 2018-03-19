@@ -210,6 +210,20 @@ nnoremap ;sf :Startify
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" other operator surround mappings than rafi uses (his do not realy 
+" work for me)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if dein#tap('vim-operator-surround')
+	map <silent>oa <Plug>(operator-surround-append)
+	map <silent>od <Plug>(operator-surround-delete)
+	map <silent>or <Plug>(operator-surround-replace)
+	nmap <silent>oaa <Plug>(operator-surround-append)<Plug>(textobj-multiblock-i)
+	nmap <silent>odd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
+	nmap <silent>orr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
+endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TERMINAL Mappings for Neovim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('nvim')
