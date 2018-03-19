@@ -44,11 +44,6 @@ nmap <leader>cs :call dway#misc#ToggleColorScheme(color_scheme1, color_scheme2)<
 " toggle spelling (<leader>se)
 nnoremap <F2> :set spell! spelllang=en,de <cr>
 
-" Underline the current line with '='
-nmap <silent> ;u0 :t.\|s/./=/g\|:nohls<cr>
-" Underline the current line with '-'
-nmap <silent> ;u- :t.\|s/./-/g\|:nohls<cr>
-
 
 " {{{ == Folding ==
 " toggle folds (or <F8> instead of zt)
@@ -61,7 +56,6 @@ vnoremap <c-z> zf
 nnoremap <c-s-z> zMza
 " nnoremap <c-s-z> zM<Right>
 " nnoremap <c-s-z> zMzo
-
 
 
 " Search for a pattern then press F10 to fold misses.
@@ -106,6 +100,7 @@ map! <S-Insert> <MiddleMouse>
 
 "" Underline the current line with '='
 nmap <silent> <leader>u0 :t.\|s/./=/g\|:nohls<cr>
+" Underline the current line with '-'
 nmap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
 
 "" Use the bufkill plugin to eliminate a buffer but keep the window layout
