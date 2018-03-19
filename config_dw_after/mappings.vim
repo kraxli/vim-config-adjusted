@@ -44,6 +44,12 @@ nmap <leader>cs :call dway#misc#ToggleColorScheme(color_scheme1, color_scheme2)<
 " toggle spelling (<leader>se)
 nnoremap <F2> :set spell! spelllang=en,de <cr>
 
+" Underline the current line with '='
+nmap <silent> ;u0 :t.\|s/./=/g\|:nohls<cr>
+" Underline the current line with '-'
+nmap <silent> ;u- :t.\|s/./-/g\|:nohls<cr>
+
+
 " {{{ == Folding ==
 " toggle folds (or <F8> instead of zt)
 inoremap <c-z> <C-O>za
