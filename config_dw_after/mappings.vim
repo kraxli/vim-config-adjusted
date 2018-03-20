@@ -201,7 +201,7 @@ nmap ;ll :Limelight!!<cr>
 nnoremap oe yiW:Open <cr>
 " nnoremap <leader>o :OpenBrowser <cr>
 " nmap fe <F6>
-" gx from pandoc and netrw does the job for many things
+" gx / ge from pandoc and netrw does the job for many things
 " a good map candidate would also be <c-enter>
 
 " Startify
