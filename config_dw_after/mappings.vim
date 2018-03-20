@@ -198,11 +198,9 @@ nmap ;ll :Limelight!!<cr>
 " shell-vim
 " open file explorere
 " open files, url, ... (default map in vim-shell is F6)
-nnoremap ge yiW:Open <cr>
-" nnoremap <leader>ob yiW:Open <cr>
+nnoremap oe yiW:Open <cr>
 " nnoremap <leader>o :OpenBrowser <cr>
-nmap fe <F6>
-nmap ff <F6>
+" nmap fe <F6>
 " gx from pandoc and netrw does the job for many things
 " a good map candidate would also be <c-enter>
 
