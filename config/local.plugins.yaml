@@ -17,7 +17,7 @@
 - repo: Shougo/unite.vim
 # - { repo: Shougo/unite.vim, on_source: [vimfiler, unite-bibtex] }
 - repo: Shougo/vimfiler.vim
-#  depends: Shougo/unite.vim
+  depends: Shougo/unite.vim
 
 # TODO check out usage
 - repo: wbthomason/buildit.nvim
@@ -33,9 +33,15 @@
 - repo: junegunn/fzf.vim
   hook_source: set rtp+=~/.fzf
 
-# - repo: tpope/vim-abolish
 # - repo: kshenoy/vim-signature
 # - repo: wdicarlo/vim-notebook
+
+- repo: vim-scripts/utl.vim
+  hook_add: |
+    let g:utl_cfg_hdl_mt_text_directory='VIM'
+    let g:utl_cfg_hdl_scm_http_system = "silent !firefox -remote 'ping()' &&
+                                         \ firefox -remote 'openURL( %u )' ||
+                                         \ firefox '%u#%f' &"
 
 # =======================================================
 # General
@@ -73,19 +79,13 @@
     vmap <Leader>ms :call SwoopMultiSelection()<CR>
 
 - repo: mhinz/vim-startify
+  on_cmd: [Startify, StartifyDebug]
   hook_add: |
     let g:startify_change_to_vcs_root = 0
     let g:startify_change_to_dir = 0
     let g:startify_update_oldfiles = 1
     let g:startify_session_persistence = 1
     let g:startify_disable_at_vimenter = 1
-
-- repo: vim-scripts/utl.vim
-  hook_add: |
-    let g:utl_cfg_hdl_mt_text_directory='VIM'
-    let g:utl_cfg_hdl_scm_http_system = "silent !firefox -remote 'ping()' &&
-                                         \ firefox -remote 'openURL( %u )' ||
-                                         \ firefox '%u#%f' &"
 
 # TODO delete asyncrun as soon neomakesh works for python
 - {repo: skywind3000/asyncrun.vim, on_cmd: AsyncRun}
