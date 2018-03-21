@@ -17,7 +17,7 @@ nnoremap <silent> <c-space> :call dway#markdown#SwitchStatus()<cr>
 command!  Pandoc2HTML :NeomakeSh pandoc %:p
   \ -s
   \ -N
-  \ -o %:p:r.html
+  \ -o %:p:h/html/%:p:t:r.html
   \ --toc
   \ --mathjax='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
   \ --variable linkcolor=blue
@@ -40,7 +40,7 @@ command!  Pandoc2HTML :NeomakeSh pandoc %:p
 command!  Pandoc2HTMLBS :NeomakeSh pandoc %:p
   \ -s
   \ -N
-  \ -o %:p:r.html
+  \ -o %:p:h/html/%:p:t:r.html
   \ --toc
   \ --toc-depth=2
   \ --mathjax='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
@@ -59,7 +59,7 @@ command!  Pandoc2HTMLBS :NeomakeSh pandoc %:p
 command!  Pandoc2HTMLkiller :NeomakeSh pandoc %:p
   \ -s
   \ -N
-  \ -o %:p:r.html
+  \ -o %:p:h/html/%:p:t:r.html
   \ --toc
   \ --toc-depth=2
   \ --mathjax='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
@@ -72,7 +72,7 @@ command!  Pandoc2HTMLkiller :NeomakeSh pandoc %:p
 command!  Pandoc2Pdf :NeomakeSh pandoc %:p
   \ -s
   \ -N
-  \ -o %:p:r.pdf
+  \ -o %:p:h/pdf/%:p:t:r.pdf
   \ --toc
   \ --latex-engine=xelatex
   \ --variable geometry=a4paper
