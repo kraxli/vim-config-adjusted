@@ -184,7 +184,7 @@ endif
 
 " For snippet_complete marker
 if has('conceal') && v:version >= 703
-	set conceallevel=2 concealcursor=nv
+	set conceallevel=2 concealcursor=c
 endif
 
 " }}}

@@ -27,6 +27,12 @@ call plug#begin('~/.config/nvim/plugged')
    " Plugin outside ~/.vim/plugged with post-update hook
    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
+   let dir_dutils = '~/.dutils'
+   let do_dlang_install = 'git submodule update --init --recursive \| make ldc'
+   Plug 'dlang-community/DCD', {'dir': dir_dutils, 'do': do_dlang_install}
+   Plug 'dlang-community/D-Scanner', {'dir': dir_dutils, 'do': do_dlang_install}
+   Plug 'dlang-community/dfmt', {'dir': dir_dutils, 'do': do_dlang_install}
+
    " Unmanaged plugin (manually installed and updated)
    " Plug '~/my-prototype-plugin'
 
