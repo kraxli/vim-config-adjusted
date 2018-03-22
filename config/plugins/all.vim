@@ -139,6 +139,8 @@ endif
 if dein#tap('vim-quickhl')
 	nmap <Leader>, <Plug>(quickhl-manual-this)
 	xmap <Leader>, <Plug>(quickhl-manual-this)
+	nmap <Leader>; <Plug>(quickhl-manual-reset)
+	xmap <Leader>; <Plug>(quickhl-manual-reset)
 endif
 
 if dein#tap('vim-sidemenu')
