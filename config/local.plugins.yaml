@@ -58,7 +58,8 @@
   on_cmd: Renamer
 
 - repo: tpope/vim-abolish
-  on_cmd: [Subvert]
+  on_cmd: [Subvert, Abolish]
+  on_ft: [md, pdc, tex, txt]
   on_map: {n: [crs, crm, crc, cru, cr-, cr., cr<space>, crt]}
   hook_post_source: source $VIMPATH/config_dw_after/plugins/abolish.vim
 
