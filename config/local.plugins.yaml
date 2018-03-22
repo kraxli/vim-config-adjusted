@@ -102,6 +102,12 @@
 # =======================================================
 # Programming languages
 # ---------------------
+
+# scarface-one/vim-dlang-phobos-highlighter
+# bsed/vim-dlang
+# AndreaOrru/vim-dlang-autofold-unittest
+# (jethrovt/oss-vim-dlang-autofold-unittests )
+
 - repo: idanarye/vim-dutyl # dway: vim-config-adjusted
   on_ft: d
   hook_post_source: |
