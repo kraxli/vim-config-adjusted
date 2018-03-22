@@ -3,6 +3,13 @@
 
 imap jj <esc>
 
+" =======================================================
+" {{{ Window
+" --------
+nnoremap <c-w>< <c-w>5<
+
+" }}}
+
 nnoremap ;ee :execute "e ".g:dway#base#path_config_nvim.g:dway#base#os_path_sep."init.vim"<cr>
 nnoremap ;uu :execute "source ".g:dway#base#path_config_nvim.g:dway#base#os_path_sep."init.vim"<cr>
 
