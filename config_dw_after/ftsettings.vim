@@ -12,8 +12,9 @@ augroup filetypeSettings
 	 "
    " Cursor setting
    au FileType pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=nv
-   au BufNewFile,BufEnter,BufRead,BufReadPost,BufReadPre *.pandoc,*.pdc,*.markdown,*.md,*.tex,*.vimwiki,*.wiki,*.txt, setl conceallevel=2 concealcursor=nv
+   au BufNewFile,BufEnter,BufRead,BufReadPost,BufReadPre *.pandoc,*.pdc,*.markdown,*.md,*.tex,*.vimwiki,*.wiki,*.txt, setl conceallevel=2 concealcursor=c
 " au! MyAutoCmd FileType pandoc setlocal foldmethod=expr
+   " au FileType markdown setl nofoldenable
 
    au BufRead,BufNewFile *.m,*.oct set filetype=octave
    au BufRead,BufNewFile *.m,*.oct set syntax=matlab
