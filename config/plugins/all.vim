@@ -35,7 +35,7 @@ if dein#tap('denite.nvim')
 	nnoremap <silent> <Leader>gc :<C-u>Denite gitbranch<CR>
 
 	" Open Denite with word under cursor or selection
-	nnoremap <silent> <Leader>gf :DeniteCursorWord file_rec<CR>
+	nnoremap <silent> <Leader>ff :DeniteCursorWord file_rec<CR>
 	nnoremap <silent> <Leader>gg :DeniteCursorWord grep<CR>
 	vnoremap <silent> <Leader>gg
 		\ :<C-u>call <SID>get_selection('/')<CR>
@@ -128,7 +128,7 @@ if dein#tap('indentLine')
 elseif dein#tap('vim-indent-guides')
 	nmap <silent><Leader>ti :<C-u>IndentGuidesToggle<CR>
 endif
-
+ 
 if dein#tap('vim-edgemotion')
 	map gj <Plug>(edgemotion-j)
 	map gk <Plug>(edgemotion-k)

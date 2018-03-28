@@ -61,6 +61,8 @@
       \ 'ini=dosini'
       \ ]
 
+#    let g:vim_markdown_folding_disabled = 1
+
 - repo: rhysd/vim-gfm-syntax
   depends: vim-markdown
   on_ft: markdown
@@ -171,7 +173,7 @@
   if: empty($VIM_MINIMAL)
   on_cmd: TagbarToggle
   hook_source: |
-    let g:tagbar_width = 40
+    let g:tagbar_width = 30
     if executable('jsctags')
       let g:tagbar_type_javascript = { 'ctagsbin': 'jsctags' }
     endif
@@ -278,13 +280,15 @@
     \   { 'diary_header': 'Diary',
     \     'diary_link_fmt': '%Y-%m/%d',
     \     'auto_toc': 1,
-    \     'path': '~/docs/wiki/',
+    \     'path': '~/Dropbox/PKD/vimwiki/',
     \     'syntax': 'markdown',
     \     'ext': '.md' },
     \   { 'path': '~/docs/blog/',
     \     'syntax': 'markdown',
     \     'ext': '.md' }
     \ ]
+  hook_post_source: |
+    au FileType vimwiki set filetype=markdown
 
 # ==========================================
 # Completion
