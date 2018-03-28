@@ -275,6 +275,7 @@
     let g:vimwiki_hl_headers = 1
     let g:vimwiki_hl_cb_checked = 1
     let g:vimwiki_autowriteall = 0
+    let g:vimwiki_global_ext = 0
   hook_source: |
     let g:vimwiki_list = [
     \   { 'diary_header': 'Diary',
@@ -287,8 +288,9 @@
     \     'syntax': 'markdown',
     \     'ext': '.md' }
     \ ]
-  hook_post_source: |
-    au FileType vimwiki set filetype=markdown
+
+# hook_post_source: |
+  # au FileType vimwiki set filetype=markdown
 
 # ==========================================
 # Completion

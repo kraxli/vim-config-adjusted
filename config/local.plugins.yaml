@@ -245,7 +245,7 @@
 # -------------------------
 
 # gabrielelana/vim-markdown
-- repo: 'tenfyzhong/tagbar-markdown.vim'
+- repo: tenfyzhong/tagbar-markdown.vim
   on_ft: [markdown, md, vimwiki, wiki]
 
 # lvht/tagbar-markdown
