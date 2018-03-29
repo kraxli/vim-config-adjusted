@@ -50,6 +50,7 @@
 # themis.vim is a testing framework for Vim script.
 
 # not taking: cwoac/nvim
+- repo: cwoac/nvim
 
 - repo: qpkorr/vim-bufkill
 # or moll / vim-bbye
@@ -206,15 +207,14 @@
 # Organizers and Note taking
 # --------------------------
 - repo: mmai/vim-markdown-wiki
-  on_ft: [pdc, md, mkd]
+  on_ft: [pdc, md, mkd, markdown, pandoc]
   hook_source: |
-    nnoremap <leader><CR> :MdwiGotoLink
-    nnoremap <Leader><Backspace> :MdwiReturn
+    autocmd MyAutoCmd FileType markdown nnoremap <CR> :MdwiGotoLink<cr>
+    autocmd MyAutoCmd FileType markdown nnoremap <Backspace> :MdwiReturn<CR>
   hook_add:
-    command! GoTo :MdwiGotoLink
-    command! GoBack :MdwiReturn
+    command! GoTo :MdwiGotoLink<cr>
+    command! GoBack :MdwiReturn<cr>
 
-# dway: vim-config-adjusted
 - repo: rafi/vim-denite-task
   on_source: denite.nvim
   hook_source: |
@@ -245,8 +245,9 @@
 # -------------------------
 
 # gabrielelana/vim-markdown
-# - repo: kraxli/tagbar-markdown.vim
-  # on_ft: [markdown, md, vimwiki, wiki]
+# https://github.com/jszakmeister/markdown2ctags
+- repo: kraxli/tagbar-markdown.vim
+  on_ft: [markdown, md, vimwiki, wiki]
 
 # lvht/tagbar-markdown
 
