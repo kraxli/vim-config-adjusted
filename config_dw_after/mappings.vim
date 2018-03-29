@@ -193,7 +193,7 @@ vnoremap ~ y:call setreg('', dway#misc#TwiddleCase(@"), getregtype(''))<CR>gv""P
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " toggle tagbar
 " nnoremap <leader>t :TagbarToggle<cr>
-nnoremap <leader>tb :TagbarToggle<CR>
+nnoremap <silent><leader>tb :TagbarToggle<CR>
 
 " vim-projectroot
 nnoremap <silent><leader>pr :ProjectRootCD<cr>

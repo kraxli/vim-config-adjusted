@@ -8,11 +8,15 @@ augroup filetypeSettings
    au FileType pandoc,markdown,text nnoremap <silent> <leader>li "='- [ ] '<cr>Pa
 
    " Spell checking
-	 au FileType tex,latex,pandoc,pdc,txt,vimwiki,wiki,md,markdown setlocal spell spelllang=en,de
+   au FileType tex,latex,pandoc,pdc,txt,vimwiki,wiki,md,markdown setlocal spell spelllang=en,de
 	 "
    " Cursor setting
-   au FileType pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=nv
-   au BufNewFile,BufEnter,BufRead,BufReadPost,BufReadPre *.pandoc,*.pdc,*.markdown,*.md,*.tex,*.vimwiki,*.wiki,*.txt, setl conceallevel=2 concealcursor=c
+   au FileType pandoc,markdown,tex,vimwiki,txt setl conceallevel=2 concealcursor=c
+   au BufNewFile,BufEnter,BufRead,BufReadPost,BufReadPre 
+      \ *.pandoc,*.pdc,*.markdown,*.md,*.tex,*.vimwiki,*.wiki,*.txt, 
+      \ setl conceallevel=2 concealcursor=c
+
+   " au BufNewFile,BufEnter,BufRead,BufReadPost,BufReadPre *.vimwiki,*.wiki set filetype=markdown
 " au! MyAutoCmd FileType pandoc setlocal foldmethod=expr
    " au FileType markdown setl nofoldenable
 
