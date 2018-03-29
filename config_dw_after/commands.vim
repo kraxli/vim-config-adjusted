@@ -11,6 +11,11 @@ command! Lcd :lcd %:p:h
 command! Ecurrent :lcd %:p:h | :E
 command! Ec :Ecurrent
 
+" Open file in browser
+au MyAutoCmd Filetype markdown command! OB :silent execute("call dway#markdown#OpenInBrowser('%')")
+" au MyAutoCmd Filetype vimfiler command! OB :silent execute("call dway#markdown#OpenInBrowser('<cfile>')")
+
+
 " =======================================================
 " Windwos
 " Split windows vertically and open empty buffer
