@@ -53,8 +53,8 @@
     let g:vim_markdown_frontmatter = 1
     let g:vim_markdown_conceal = 1
     let g:vim_markdown_math = 1
-    let g:vim_markdown_folding_style_pythonic = 1
     let g:vim_markdown_fenced_languages = [
+    let g:vim_markdown_follow_anchor = 1
       \ 'c++=cpp',
       \ 'viml=vim',
       \ 'bash=sh',
@@ -62,6 +62,7 @@
       \ ]
 
 #    let g:vim_markdown_folding_disabled = 1
+# let g:vim_markdown_folding_style_pythonic = 1
 
 - repo: rhysd/vim-gfm-syntax
   depends: vim-markdown

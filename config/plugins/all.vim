@@ -187,6 +187,8 @@ endif
 
 if dein#tap('vimwiki')
 	nnoremap <silent> <Leader>W :<C-u>VimwikiIndex<CR>
+	nnoremap <silent> ;ww :<C-u>VimwikiIndex<CR>
+  nnoremap <silent> ;wt :<C-u>VimwikiTabIndex<cr>
 endif
 
 if dein#tap('vim-choosewin')
