@@ -21,7 +21,8 @@ else
 endif
 
 " path to source file
-let g:scr_path=fnamemodify(expand('<sfile>:p'), ':h:h:h').'/scr'
+" let g:scr_path=fnamemodify(expand('<sfile>:p'), ':h:h:h').'/scr'
+let g:scr_path=fnamemodify(expand('<sfile>:p'), ':h').'/scr'
 " }}} Path
 
 " {{{ === Settings ===
