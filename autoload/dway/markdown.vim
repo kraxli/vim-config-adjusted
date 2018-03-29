@@ -25,3 +25,23 @@ function! dway#markdown#SwitchStatus()
   endif
 endfunction
 " }}}
+"
+
+function! dway#markdown#OpenInBrowser()
+
+  let html_folder = 'html/'
+  " let html_extension = '.html'
+
+  " let file = fnamemodify(expand('<sfile>'), ':p')
+  let file = resolve(expand('%:p'))
+  let fname_core = fnamemodify(file, ':t:r')
+  let file_path = fnamemodify(file, ':h')
+
+  if has('unix')
+    let html_file = file_path."/".html_folder.fname_core.'.html'
+    " Open html_file
+    execute("!".g:cmd_default_browser." ".html_file)
+  endif
+
+
+endfunction
