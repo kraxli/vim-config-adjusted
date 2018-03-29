@@ -173,29 +173,9 @@ let g:tagbar_type_pandoc = {
      \ }
 "}}} pandoc
 
-let s:scr_path=fnamemodify(expand('<sfile>:p'), ':h:h:h').'/scr'
+let g:scr_path=fnamemodify(expand('<sfile>:p'), ':h:h:h').'/scr'
 
 " {{{ vimwiki
-" let g:tagbar_type_vimwiki = {
-"     \ 'ctagstype' : 'vimwiki',
-"     \ 'kinds'     : [
-"         \ 'h:headers',
-"         \ 'g:graphics:0:0',
-"         \ 'l:labels',
-"         \ 'r:refs:1:0',
-"         \ 'p:pagerefs:1:0'
-"     \ ],
-"     \ 'sort'    : 0,
-"      \ }
-" let g:tagbar_type_vimwiki = {
-" 			\   'ctagstype':'vimwiki'
-" 			\ , 'kinds':['h:header']
-" 			\ , 'sro':'&&&'
-" 			\ , 'kind2scope':{'h':'header'}
-" 			\ , 'ctagsbin': s:scr_path.'/vwtags.py'
-" 			\ , 'ctagsargs': 'default'
-" 			\ , 'sort':0
-" 			\ }
 " }}}
 
 " }}} Tags

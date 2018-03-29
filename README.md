@@ -579,8 +579,9 @@ Key   | Mode | Action
 `<leader>`+`gl` | Normal | Git log (all)
 `<leader>`+`gs` | Normal | Git status
 `<leader>`+`gc` | Normal | Git branches
-`<leader>`+`gf` | Normal | Grep word under cursor
+`<leader>`+`ff` | Normal | find word under cursor
 `<leader>`+`gg` | Normal/Visual | Grep word under cursor
+`<leader>`+`gf` | Normal/Visual | Grep word under cursor in current file !!TODO
 | **Within _Denite_ mode** |||
 `Escape` | Normal/Insert | Toggle modes
 `jj` | Insert | Leave Insert mode

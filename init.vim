@@ -11,14 +11,17 @@ let g:python3_host_prog = '/usr/bin/python3'
       " let g:deoplete#sources#d#dcd_client_binary = g:dwc_dcd_bin_dir.'dcd-client'
       " call dutyl#register#tool('dcd-client', g:dwc_dcd_bin_dir.'dcd-client')
 
-" {{{ === Path ===
+" {{{ === Paths ===
 
 if has('unix')
 	 let $PATH=$PATH.';'.'~/.dutils/Dscanner/bin;~/.dutils/DCD/bin'
 else
 	 let  $PATH=$PATH.';'
+
 endif
 
+" path to source file
+let g:scr_path=fnamemodify(expand('<sfile>:p'), ':h:h:h').'/scr'
 " }}} Path
 
 " {{{ === Settings ===
