@@ -80,6 +80,13 @@ nnoremap zs :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\
 
 " }}} folding
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" {{{ filetyp specfic
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au FileType markdown nnoremap <backspace> :bp<cr>
+
+" }}} filetype specifc
+
 " {{{ == search highlighting ==
 
 " Press Space Space to turn off highlighting and clear any message already displayed.
@@ -213,6 +220,9 @@ nnoremap oe yiW:Open <cr>
 
 " Startify
 nnoremap ;sf :Startify
+
+" Calendar
+nnoremap <localleader>c
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

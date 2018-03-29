@@ -159,6 +159,7 @@ let g:tagbar_type_d = {
 " {{{ pandoc
 " https://unix.stackexchange.com/questions/285325/how-to-match-markdown-setext-headers-in-in-exuberant-ctags
 " https://github.com/vim-scripts/Tagbar/blob/master/doc/tagbar.txt
+" see: ~/.ctags file
 
 let g:tagbar_type_pandoc = {
     \ 'ctagstype' : 'pandoc',
@@ -173,9 +174,18 @@ let g:tagbar_type_pandoc = {
      \ }
 "}}} pandoc
 
-let g:scr_path=fnamemodify(expand('<sfile>:p'), ':h:h:h').'/scr'
 
 " {{{ vimwiki
+" let g:tagbar_type_vimwiki = {
+" 			\   'ctagstype':'vimwiki'
+" 			\ , 'kinds':['h:header']
+" 			\ , 'sro':'&&&'
+" 			\ , 'kind2scope':{'h':'header'}
+" 			\ , 'sort':0
+" 			\ , 'ctagsbin': g:scr_path.'/vwtags.py'
+" 			\ , 'ctagsargs': 'default'
+" 			\ }
+
 " }}}
 
 " }}} Tags
