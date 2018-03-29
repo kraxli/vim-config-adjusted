@@ -50,7 +50,6 @@
 # themis.vim is a testing framework for Vim script.
 
 # not taking: cwoac/nvim
-- repo: cwoac/nvim
 
 - repo: qpkorr/vim-bufkill
 # or moll / vim-bbye
@@ -268,9 +267,6 @@
   on_ft: [tex, latex, txt, text, pdc, pandoc, md, markdown, wiki, vimwiki]
 
 - repo: godlygeek/tabular
-  on_ft: [tex, latex, txt, text, pdc, pandoc, md, markdown, wiki, vimwiki]
-
-- repo: beloglazov/vim-online-thesaurus
   on_ft: [tex, latex, txt, text, pdc, pandoc, md, markdown, wiki, vimwiki]
 
 
