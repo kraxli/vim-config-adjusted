@@ -84,8 +84,10 @@ nnoremap zs :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\
 " {{{ filetyp specfic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 au MyAutoCmd FileType markdown nnoremap <backspace> :bp<cr>
-au MyAutoCmd Filetype markdown nnoremap <silent>ob :call dway#markdown#OpenInBrowser('%')<cr>
-" au MyAutoCmd Filetype vimfiler nnoremap <silent><leader>ob :call dway#markdown#OpenInBrowser('<cfile>')<cr>
+au MyAutoCmd Filetype markdown nnoremap <silent>;b :call dway#markdown#OpenInBrowser('%')<cr><cr>
+au MyAutoCmd Filetype markdown nnoremap <silent>ob :call dway#markdown#OpenInBrowser('%')<cr><cr>
+au MyAutoCmd Filetype vimfiler nmap <silent>gb :call dway#markdown#OpenInBrowser('<cfile>')<cr><cr>
+au MyAutoCmd Filetype vimfiler nmap <silent>b :call dway#markdown#OpenInBrowser('<cfile>')<cr><cr>
 
 " }}} filetype specifc
 
