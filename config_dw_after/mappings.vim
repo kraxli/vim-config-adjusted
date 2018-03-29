@@ -222,8 +222,7 @@ nnoremap oe yiW:Open <cr>
 nnoremap ;sf :Startify
 
 " Calendar
-nnoremap <localleader>c
-
+nnoremap <localleader>c :Calendar
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " other operator surround mappings than rafi uses (his do not realy 
