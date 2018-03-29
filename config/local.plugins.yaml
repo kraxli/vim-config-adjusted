@@ -205,14 +205,14 @@
 # =======================================================
 # Organizers and Note taking
 # --------------------------
-- repo: mmai/vim-markdown-wiki
-  on_ft: [pdc, md, mkd, markdown, pandoc]
-  hook_source: |
-    autocmd MyAutoCmd FileType markdown nnoremap <CR> :MdwiGotoLink<cr>
-    autocmd MyAutoCmd FileType markdown nnoremap <Backspace> :MdwiReturn<CR>
-  hook_add:
-    command! GoTo :MdwiGotoLink<cr>
-    command! GoBack :MdwiReturn<cr>
+# - repo: mmai/vim-markdown-wiki
+#   on_ft: [pdc, md, mkd, markdown, pandoc]
+#   hook_source: |
+#     autocmd MyAutoCmd FileType markdown nnoremap <CR> :MdwiGotoLink<cr>
+#     autocmd MyAutoCmd FileType markdown nnoremap <Backspace> :MdwiReturn<CR>
+#   hook_add:
+#     command! GoTo :MdwiGotoLink<cr>
+#     command! GoBack :MdwiReturn<cr>
 
 - repo: rafi/vim-denite-task
   on_source: denite.nvim
