@@ -114,8 +114,8 @@ cnoremap <C-d> <C-w>
 " Switch history search pairs, matching my bash shell
 cnoremap <C-p>  <Up>
 cnoremap <C-n>  <Down>
-cnoremap <Up>   <C-p>
-cnoremap <Down> <C-n>
+" cnoremap <Up>   <C-p>
+" cnoremap <Down> <C-n>
 
 " }}}
 " File operations {{{

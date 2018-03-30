@@ -296,5 +296,10 @@ if dwc_key_maps
   vnoremap <F7> :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
 endif "dwc_key_maps
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" command line mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " }}} key mappings
+
 
