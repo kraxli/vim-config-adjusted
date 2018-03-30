@@ -228,6 +228,9 @@ nnoremap ;sf :Startify
 " Calendar
 nnoremap <localleader>c :Calendar
 
+" Gundo
+nnoremap <c-g>d :GundoToggle<cr>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " other operator surround mappings than rafi uses (his do not realy 
 " work for me)

@@ -54,6 +54,9 @@
 - repo: qpkorr/vim-bufkill
 # or moll / vim-bbye
 
+- repo: sjl/gundo.vim
+  on_cmd: [GundoHide, GundoRenderGraph, GundoShow, GundoToggle]
+
 - repo: qpkorr/vim-renamer
   on_cmd: Renamer
 
