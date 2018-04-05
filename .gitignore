@@ -14,3 +14,4 @@ mappings2diff.vimX
 *startup*log
 swoopBuf
 .netrwhist
+autoload/plug.vim.old

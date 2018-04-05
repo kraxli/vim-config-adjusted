@@ -67,5 +67,9 @@ command! -nargs=+ GcommitAll :NeomakeSh git commit -m <q-args> -a
 command! -nargs=+ GcommitThis :NeomakeSh git commit -m <q-args> %:h
 command! GaddThis :Gadd %:h
 
+" profiling / debuggin vim
+command! ProfilerStart :call dway#profiler_start() 
+command! ProfilerStop :call dway#profiler_stop() 
+
 
 " vim: foldmethod=marker:
