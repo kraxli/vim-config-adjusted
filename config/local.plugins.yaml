@@ -235,12 +235,12 @@
 # - repo: xolox/vim-notes
 #   on_cmd: Note
 
-# dway: vim-config-adjusted
-# - repo: kraxli/vimwiki-task
-#   on_ft: [vimwiki, wiki, md]
-#   hook_source: |
-#     setlocal spell spelllang=en,de
-#   hook_post_source: source $VIMPATH/config_dw_after/plugins/vimwiki.vim
+- repo: kraxli/vimwiki-task
+  on_ft: [vimwiki]
+  hook_add: let g:vimwiki_folding = 'custom'
+  hook_source: |
+    setlocal spell spelllang=en,de
+  hook_post_source: source $VIMPATH/config_dw_after/plugins/vimwiki.vim
 
 # =======================================================
 # Text processing / editing
@@ -248,18 +248,17 @@
 
 # gabrielelana/vim-markdown
 # https://github.com/jszakmeister/markdown2ctags
+# on_ft: [markdown, vimwiki]
 - repo: kraxli/tagbar-markdown.vim
-  on_ft: [markdown, vimwiki]
-
-# lvht/tagbar-markdown
+  on_if: tagbar_md_loaded
 
 # TODO usage and better integration
 - repo: lervag/vimtex
   on_ft: [tex, latex]
 
-- repo: msprev/unite-bibtex
-  depends: Shougo/unite.vim
-  on_ft: [tex, latex, pdc, pandoc markdown]
+# - repo: msprev/unite-bibtex
+#   depends: Shougo/unite.vim
+#   on_ft: [tex, latex, pdc, pandoc, markdown]
 
 # TODO does wordy makes this redundant?
 - repo: rhysd/vim-grammarous

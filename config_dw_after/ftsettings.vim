@@ -16,6 +16,9 @@ augroup filetypeSettings
       \ *.pandoc,*.pdc,*.markdown,*.md,*.tex,*.vimwiki,*.wiki,*.txt, 
       \ setl conceallevel=2 concealcursor=c
 
+   " Folding
+   au FileType vimwiki,markdwon setl foldmethod=expr
+
    " au BufNewFile,BufEnter,BufRead,BufReadPost,BufReadPre *.vimwiki,*.wiki set filetype=markdown
 " au! MyAutoCmd FileType pandoc setlocal foldmethod=expr
    " au FileType markdown setl nofoldenable
