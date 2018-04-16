@@ -94,11 +94,11 @@ if dein#tap('vim-operator-surround')
 	map <silent>sa <Plug>(operator-surround-append)
 	map <silent>sd <Plug>(operator-surround-delete)
 	map <silent>sr <Plug>(operator-surround-replace)
-	nmap <silent>saa <Plug>(operator-surround-append)<Plug>(textobj-multiblock-i)
-	nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
-	nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
+	nmap <silent>sma <Plug>(operator-surround-append)<Plug>(textobj-multiblock-i)
+	nmap <silent>smd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
+	nmap <silent>smr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
 endif
-
+(asd test asdf) 
 if dein#tap('vim-operator-replace')
 	xmap p <Plug>(operator-replace)
 endif
@@ -325,6 +325,7 @@ if dein#tap('vim-commentary')
 endif
 
 if dein#tap('vim-easymotion')
+	" letter e would be free!
 	nmap ss <Plug>(easymotion-s2)
 	nmap sd <Plug>(easymotion-s)
 	nmap sf <Plug>(easymotion-overwin-f)
