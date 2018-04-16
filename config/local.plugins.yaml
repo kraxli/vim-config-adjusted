@@ -248,9 +248,8 @@
 
 # gabrielelana/vim-markdown
 # https://github.com/jszakmeister/markdown2ctags
-# on_ft: [markdown, vimwiki]
 - repo: kraxli/tagbar-markdown.vim
-  on_if: tagbar_md_loaded
+  on_ft: [markdown, vimwiki]
 
 # TODO usage and better integration
 - repo: lervag/vimtex
