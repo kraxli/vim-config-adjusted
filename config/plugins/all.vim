@@ -98,7 +98,7 @@ if dein#tap('vim-operator-surround')
 	nmap <silent>smd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
 	nmap <silent>smr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
 endif
-(asd test asdf) 
+
 if dein#tap('vim-operator-replace')
 	xmap p <Plug>(operator-replace)
 endif
