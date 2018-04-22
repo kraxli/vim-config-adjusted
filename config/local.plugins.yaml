@@ -98,9 +98,16 @@
 # Completion
 # ----------
 - repo: landaire/deoplete-d
+  depends: [deoplete, vim-dutyl]
+  hook_add: |
+    let g:dwc_dcd_bin_dir='/home/dave/.dutils/DCD/bin/'
+    let g:deoplete#sources#d#dub_binary = '/usr/bin/dub'
+    let g:deoplete#sources#d#dcd_server_autostart = 1
+    let g:deoplete#sources#d#dcd_server_binary = g:dwc_dcd_bin_dir.'dcd-server'
+    let g:deoplete#sources#d#dcd_client_binary = g:dwc_dcd_bin_dir.'dcd-client'
   if: has('nvim')
   on_ft: d
-  on_i: 1
+  hook_post_source: source $VIMPATH/config_dw_after/plugins/dutyl.vim
 
 # =======================================================
 # Programming languages
@@ -120,6 +127,8 @@
   on_ft: [py, python]
   hook_add:
     let g:nvimipdb_default_keys = 1
+  hook_source:
+    au TermOpen * let g:last_ipy_terminal_job_id = b:terminal_job_id
 
 - repo: python-rope/ropevim
   on_ft: py
@@ -216,6 +225,12 @@
 #   hook_add:
 #     command! GoTo :MdwiGotoLink<cr>
 #     command! GoBack :MdwiReturn<cr>
+
+- repo: tbabej/taskwiki
+  on_ft: [vimwiki]
+- repo: blindFS/vim-taskwarrior
+- repo: powerman/vim-plugin-AnsiEsc
+  on_ft: [vimwiki]
 
 - repo: rafi/vim-denite-task
   on_source: denite.nvim

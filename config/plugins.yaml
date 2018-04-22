@@ -277,18 +277,23 @@
     let g:vimwiki_hl_cb_checked = 1
     let g:vimwiki_autowriteall = 0
     let g:vimwiki_global_ext = 0
+    command! Tasks :e ~/Dropbox/tasks/Tasks.wiki
+    au! BufRead,BufEnter *.wiki setl filetype=vimwiki
   hook_source: |
     let g:vimwiki_list = [
-    \   { 'diary_header': 'Diary',
-    \     'diary_link_fmt': '%Y-%m/%d',
-    \     'auto_toc': 1,
-    \     'path': '~/Dropbox/PKD/vimwiki/',
-    \     'syntax': 'markdown',
-    \     'ext': '.wiki' },
-    \   { 'path': '~/Dropbox/blog/',
-    \     'syntax': 'markdown',
-    \     'ext': '.md' }
-    \ ]
+      \   { 'diary_header': 'Diary',
+      \     'diary_link_fmt': '%Y-%m/%d',
+      \     'auto_toc': 1,
+      \     'path': '~/Dropbox/PKD/vimwiki/',
+      \     'syntax': 'markdown',
+      \     'ext': '.wiki' },
+      \   { 'path': '~/Dropbox/blog/',
+      \     'syntax': 'markdown',
+      \     'ext': '.md' },
+      \   { 'path': '~/Dropbox/tasks/',
+      \     'syntax': 'markdown',
+      \     'ext': '.wiki' },
+      \ ]
 
 # hook_post_source: |
   # au FileType vimwiki set filetype=markdown
