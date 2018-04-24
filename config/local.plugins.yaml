@@ -11,9 +11,9 @@
 # =======================================================
 # Startup
 # -------
+
 - repo: xolox/vim-shell
 - repo: xolox/vim-misc
-- repo: dbakker/vim-projectroot
 - repo: Shougo/unite.vim
 # - { repo: Shougo/unite.vim, on_source: [vimfiler, unite-bibtex] }
 - repo: Shougo/vimfiler.vim
@@ -29,7 +29,7 @@
 - repo: tpope/vim-speeddating
 - repo: vim-scripts/SyntaxRange
 
-# TODO load conditinally 
+# TODO load conditinally
 - repo: junegunn/fzf.vim
   hook_source: set rtp+=~/.fzf
 
@@ -42,6 +42,10 @@
     let g:utl_cfg_hdl_scm_http_system = "silent !firefox -remote 'ping()' &&
                                          \ firefox -remote 'openURL( %u )' ||
                                          \ firefox '%u#%f' &"
+
+- repo: dbakker/vim-projectroot
+  hook_add: |
+    let g:rootmarkers = ['.git', 'PKD', 'index.md', 'index.wiki', '.projectroot','.svn']
 
 # =======================================================
 # General
@@ -98,9 +102,9 @@
 # Completion
 # ----------
 - repo: landaire/deoplete-d
-  depends: [deoplete, vim-dutyl]
+  depends: [deoplete]
   hook_add: |
-    let g:dwc_dcd_bin_dir='/home/dave/.dutils/DCD/bin/'
+    let g:dwc_dcd_bin_dir = '/home/dave/.dutils/DCD/bin/'
     let g:deoplete#sources#d#dub_binary = '/usr/bin/dub'
     let g:deoplete#sources#d#dcd_server_autostart = 1
     let g:deoplete#sources#d#dcd_server_binary = g:dwc_dcd_bin_dir.'dcd-server'
@@ -125,9 +129,8 @@
 
 - repo: kraxli/nvim-py-minimal
   on_ft: [py, python]
-  hook_add:
-    let g:nvimipdb_default_keys = 1
-  hook_source:
+  hook_add: let g:nvimipdb_default_keys = 1
+  hook_source: |
     au TermOpen * let g:last_ipy_terminal_job_id = b:terminal_job_id
 
 - repo: python-rope/ropevim

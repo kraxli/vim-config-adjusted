@@ -8,3 +8,16 @@ endfunction
 let g:dway#base#os_path_sep = ((has('win16') || has('win32') || has('win64'))?'\':'/') 
 
 let g:dway#base#path_config_nvim = fnamemodify(expand('<sfile>'), ':h:h:h')
+
+
+" project root:
+function! dway#base#AutoProjectRootLCD()
+" function! <SID>AutoProjectRootCD()
+try
+    if &ft != 'help'
+    ProjectRootLCD
+    endif
+catch
+    " Silently ignore invalid buffers
+endtry
+endfunction
