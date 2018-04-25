@@ -111,7 +111,6 @@
     let g:deoplete#sources#d#dcd_client_binary = g:dwc_dcd_bin_dir.'dcd-client'
   if: has('nvim')
   on_ft: d
-  hook_post_source: source $VIMPATH/config_dw_after/plugins/dutyl.vim
 
 # =======================================================
 # Programming languages
@@ -122,10 +121,12 @@
 # AndreaOrru/vim-dlang-autofold-unittest
 # (jethrovt/oss-vim-dlang-autofold-unittests )
 
-- repo: idanarye/vim-dutyl # dway: vim-config-adjusted
-  on_ft: d
-  hook_post_source: |
-    autocmd MyAutoCmd BufRead,BufEnter *.d DUDCDrestartServer
+# - repo: idanarye/vim-dutyl
+#   on_ft: d
+#   hook_post_source: |
+#     call dutyl#register#tool('dcd-client', g:dwc_dcd_bin_dir.'dcd-client')
+#     call dutyl#register#tool('dcd-server', g:dwc_dcd_bin_dir.'dcd-server')
+#     autocmd MyAutoCmd BufRead,BufEnter *.d DUDCDrestartServer
 
 - repo: kraxli/nvim-py-minimal
   on_ft: [py, python]
