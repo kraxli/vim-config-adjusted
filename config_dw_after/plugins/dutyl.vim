@@ -1,8 +1,9 @@
 """"""""""""""""""""""""""""""""""""""""""""
 "  d-lang / d-utyls / deoplete-d "
 """"""""""""""""""""""""""""""""""""""""""""
-call dutyl#register#tool('dcd-client', g:dwc_dcd_bin_dir.'dcd-client')
-call dutyl#register#tool('dcd-server', g:dwc_dcd_bin_dir.'dcd-server')
+" call dutyl#register#tool('dcd-client', g:dwc_dcd_bin_dir.'dcd-client')
+" call dutyl#register#tool('dcd-server', g:dwc_dcd_bin_dir.'dcd-server')
+
 " or make symbolic link from the .dcd/DCD/bin directoires to the usr/bin dir
 
 " call deoplete#custom#set('d',          'mark', '⌁')

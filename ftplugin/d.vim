@@ -12,7 +12,7 @@ let g:dutyl_neverAddClosingParen=1
 " == set path to import folders == 
 " the following path seems to work:
 " let g:dutyl_stdImportPaths=['/usr/include/dmd', '/usr/include/dmd/phobos']
-let g:dutyl_stdImportPaths=['/usr/include/dmd', '/usr/include/dmd/phobos', '/usr/include/phobos', '/usr/include/dmd/druntime/import', '/home/dave/.dub/packages/ggplotd-1.1.1/ggplotd/source', "/home/dave/.dub/packages/dstats-1.0.3/source", "/home/dave/.dub/packages/vibe-d-0.7.30/vibe-d/source/", "~/.dub/packages/consoled-1.0.4/source/", '/home/dave/.dub/packages/mir-0.22.0/mir/source', '/home/dave/.dub/packages/mir-0.22.0/mir/source/mir', '/home/dave/Dropbox/A_Coding/D/libdsmisc/source']
+let g:dutyl_stdImportPaths=['/usr/include/dmd', '/usr/include/dmd/phobos', '/usr/include/phobos', '/usr/include/dmd/druntime/import', '/home/dave/.dub/packages/ggplotd-1.1.1/ggplotd/source', "/home/dave/.dub/packages/dstats-1.0.5/source", "/home/dave/.dub/packages/vibe-d-0.8.3/vibe-d/source/", "~/.dub/packages/consoled-1.0.4/source/", '/home/dave/.dub/packages/mir-0.22.0/mir/source', '/home/dave/.dub/packages/mir-0.22.0/mir/source/mir', '/home/dave/Dropbox/A_Coding/D/libdsmisc/source']
 
 """""""""""""""""""""""""""""""""""""""""""""""
 "  vim-dlang-extra-highlight (extends vim.d)  "
