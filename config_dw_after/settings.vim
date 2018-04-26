@@ -28,7 +28,7 @@ set statusline=%F
 
 " Color Scheme
 colorscheme hybrid " gruvbox  hybrid
-set background=dark
+set background=light " dark
 
 let color_scheme1 = 'hybrid'
 let color_scheme2 = 'gruvbox'
