@@ -45,7 +45,7 @@
 
 - repo: dbakker/vim-projectroot
   hook_add: |
-    let g:rootmarkers = ['.git', 'PKD', 'index.md', 'index.wiki', '.projectroot','.svn']
+    let g:rootmarkers = ['.git', 'PKD', 'index.md', 'index.wiki', 'dub.json', 'dub.sdl','.projectroot', '.svn']
 
 # =======================================================
 # General
