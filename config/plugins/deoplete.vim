@@ -82,8 +82,8 @@ let g:deoplete#omni#input_patterns.javascript = ''
 " }}}
 " Ranking and Marks " {{{
 " Default rank is 100, higher is better.
-call deoplete#custom#set('ultisnips',     'mark', 'ϛ') " dway: vim-config-adjusted
-" call deoplete#custom#set('ultisnips',     'rank', 490)  " dway: vim-config-adjusted
+call deoplete#custom#source('ultisnips',     'mark', 'ϛ') " dway: vim-config-adjusted
+" call deoplete#custom#source('ultisnips',     'rank', 490)  " dway: vim-config-adjusted
 call deoplete#custom#source('omni',          'mark', '⌾')
 call deoplete#custom#source('flow',          'mark', '⌁')
 call deoplete#custom#source('padawan',       'mark', '⌁')
@@ -125,10 +125,9 @@ call deoplete#custom#source('syntax',        'rank', 200)
 " Default matchers: ['matcher_length', 'matcher_fuzzy']
 
 " dway:
-call deoplete#custom#set('ultisnips', 'min_pattern_length', 1)
-call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
+call deoplete#custom#source('ultisnips', 'min_pattern_length', 1)
+call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
 
-" call deoplete#custom#set('_', 'converters', [
 call deoplete#custom#source('_', 'converters', [
 	\ 'converter_remove_paren',
 	\ 'converter_remove_overlap',

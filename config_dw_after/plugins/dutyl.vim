@@ -6,8 +6,8 @@
 
 " or make symbolic link from the .dcd/DCD/bin directoires to the usr/bin dir
 
-" call deoplete#custom#set('d',          'mark', '⌁')
-" call deoplete#custom#set('d',          'rank', 640)
+" call deoplete#custom#source('d',          'mark', '⌁')
+" call deoplete#custom#source('d',          'rank', 640)
 
 
 " let g:deoplete#sources.d = ['buffer', 'tag', 'ultisnips']
