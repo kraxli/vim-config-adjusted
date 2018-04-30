@@ -2,7 +2,6 @@
 /* /spell */
 /.vault.vim
 /* /.local.vimrc */
-/config/local.vim
 *~
 /.stignore
 /.stfolder
