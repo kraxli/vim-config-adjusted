@@ -44,8 +44,9 @@ command!  Pandoc2HTMLBS :NeomakeSh pandoc %:p
   \ --toc
   \ --toc-depth=2
   \ --mathjax='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
-  \ --css ~/pandoc-bootstrap-template/template.css
-  \ --template ~/pandoc-bootstrap-template/template.html
+  " \ --css ~/pandoc-bootstrap-template/template.css
+  \ --css ~/.config/nvim/templates/pandoc-bs-template.css
+  \ --template ~/.config/nvim/templates/pandoc-bs-template.css
   " \ --template ~/pandoc-bootstrap-template/standalone.html
   " \ --variable linkcolor=blue
   " \ --variable citecolor=blue
