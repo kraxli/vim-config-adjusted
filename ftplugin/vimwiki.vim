@@ -5,6 +5,16 @@
 
 nnoremap <silent> <c-space> :call dway#markdown#SwitchStatus()<cr>
 
+function! Vimwiki2Markdown()
+	execute 'silent %s/ =\+//g'
+	execute 'silent %s/^= \([a-zA-ZöüäÖÜÄ:0-9 /-]\)/# \1'
+	execute 'silent %s/^== \([a-zA-ZöüäÖÜÄ:0-9 /-]\)/## \1'
+	execute 'silent %s/^=== \([a-zA-ZöüäÖÜÄ:0-9 /-]\)/### \1'
+	execute 'silent %s/^==== \([a-zA-ZöüäÖÜÄ:0-9 /-]\)/#### \1'
+endfunction
+
+command! Vimwiki2Markdown :silent call Vimwiki2Markdown()<cr>
+
 " <!-- http://docs.mathjax.org/en/latest/configuration.html -->>
 
 " https://github.com/jgm/pandoc/wiki/Pandoc-Tricks
