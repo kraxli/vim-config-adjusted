@@ -22,6 +22,7 @@ body {
   /* max-width: 42em; */
   /* max-width: 19cm; */
   max-width: 24cm;
+  /* max-width: 100%; */
   background: #fefefe;
 }
 
@@ -101,15 +102,18 @@ h3 {
 }
 
 h4 {
-  font-size: 1.2em;
+  /* font-size: 1.2em; */
+  font-size: 1.3em;
 }
 
 h5 {
-  font-size: 1em;
+  /* font-size: 1em; */
+  font-size: 1.3em;
 }
 
 h6 {
-  font-size: 0.9em;
+  /* font-size: 0.9em; */
+  font-size: 1.3em;
 }
 
 blockquote {
@@ -189,15 +193,21 @@ sub {
 ul, ol {
   margin: 1em 0;
   padding: 0 0 0 2em;
+  font-size: 130%;
 }
 
 li p:last-child {
   margin-bottom: 0;
+  font-size: 1.5em;
 }
 
 ul ul, ol ol {
   margin: .3em 0;
 }
+
+/* ul li{ */
+/*  font-size:8px; */
+/* } */
 
 dl {
   margin-bottom: 1em;
@@ -282,11 +292,6 @@ table td {
     color: black !important;
     filter: none !important;
     -ms-filter: none !important;
-  }
-
-  body {
-    font-size: 12pt;
-    max-width: 100%;
   }
 
   a, a:visited {
