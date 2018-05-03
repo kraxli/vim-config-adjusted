@@ -4,8 +4,8 @@
  */
 
 html {
-  /* font-size: 100%; */
-  font-size: 120%;
+  font-size: 100%;
+  /* font-size: 120%; */
   overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -68,8 +68,8 @@ a::selection {
 }
 
 p {
-  font-size: 130%;
-  /* font-size: 1.5em; */
+  /* font-size: 130%; */
+  font-size: 1.3em;
   margin: 1em 0;
 }
 
@@ -193,16 +193,20 @@ sub {
 ul, ol {
   margin: 1em 0;
   padding: 0 0 0 2em;
-  font-size: 130%;
+  /* font-size: 1.2em; */
+  font-size: 1.3em;
 }
 
 li p:last-child {
   margin-bottom: 0;
-  font-size: 1.5em;
+  /* font-size: 1.5em; */
+  font-size: 1.3em;
 }
 
 ul ul, ol ol {
   margin: .3em 0;
+  /* % required to make it the same size as level above */
+  font-size: 100%;
 }
 
 /* ul li{ */
