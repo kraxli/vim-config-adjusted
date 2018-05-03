@@ -151,14 +151,4 @@ function! PandocPublish()
 endfunction
 command! PandocPublish :call PandocPublish()
 
-augroup PandocGroup
-  autocmd!
-
-  " hf is more in line with hb
-  nmap <localleader>hf <localleader>hn
-  " same command for .tex files in tex.vim
-  nmap <leader>op :!evince %:p:r.pdf & <cr><cr>
-  set tabstop=2 softtabstop=2 shiftwidth=2 expandtab  autoindent
-
-augroup END
 
