@@ -15,3 +15,4 @@ swoopBuf
 *.netrwhist
 autoload/plug.vim.old
 history.log
+plugged/

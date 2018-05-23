@@ -1,5 +1,8 @@
 
 call plug#begin('~/.config/nvim/plugged')
+   Plug 'landaire/deoplete-d', {'for': 'd'}
+   let g:deoplete#sources#d#dcd_server_autostart = 1
+
    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 
