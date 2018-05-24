@@ -150,10 +150,8 @@
 # hook_post_source: |
 #   call dutyl#register#tool('dcd-client', '/home/dave/.dutils/dcd/bin/dcd-client')
 #   call dutyl#register#tool('dcd-server', '/home/dave/.dutils/dcd/bin/dcd-server')
-
 # call dutyl#register#tool('dcd-client', g:dmisc_dcd_bin_dir.'dcd-client')
 # call dutyl#register#tool('dcd-server', g:dmisc_dcd_bin_dir.'dcd-server')
-
 
 - repo: kraxli/nvim-py-minimal
   on_ft: [py, python]

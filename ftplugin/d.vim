@@ -8,7 +8,7 @@ let g:dmisc_dcd_bin_dir='/home/dave/.dutils/dcd/bin/'
 " ============================================
 " DFMT:
 " --------------------------------------------
-au! MyAutoCmd FileType d command! Dfmt :silent !dfmt -i --indent_style=tab --indent_size=2 --max_line_length=80 --brace_style=stroustrup --space_after_cast=false --align_switch_statements=true  %:p
+au! MyAutoCmd FileType d command! Dfmt :silent !dfmt -i --indent_style=tab --indent_size=2 --max_line_length=80 --brace_style=stroustrup --space_after_cast=false  %:p
 
 
 " autocmd MyAutoCmd FileType d nnoremap <silent><buffer> <c-d>f :Dfmt<cr>
