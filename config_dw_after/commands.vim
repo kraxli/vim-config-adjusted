@@ -64,8 +64,8 @@ command! Gchanged :Denite gitchanged
 command! -nargs=+ Git :NeomakeSh git <args>
 command! GaddAll :Gadd --all
 command! -nargs=+ GcommitAll :NeomakeSh git commit -m <q-args> -a
-command! -nargs=+ GcommitThis :NeomakeSh git commit -m <q-args> %:h
-command! GaddThis :Gadd %:h
+command! -nargs=+ GcommitThis :NeomakeSh git commit -m <q-args> %
+command! GaddThis :Gadd %
 
 " profiling / debuggin vim
 command! -nargs=* ProfilerStart :call dway#debug#profiler_start(<q-args>) 
