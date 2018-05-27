@@ -210,9 +210,18 @@ nmap <silent> <c-Right> :tabnext<cr>
 " Lower / Upper Case, Inital Upper Case And Toggle Case:
 vnoremap ~ y:call setreg('', dway#misc#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins specific mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+augroup ironmapping
+  autocmd!
+  autocmd Filetype python nmap <buffer> <localleader>s <Plug>(iron-send-motion)
+    autocmd Filetype python vmap <buffer> <localleader>s <Plug>(iron-send-motion)
+    autocmd Filetype python nmap <buffer> <localleader>p <Plug>(iron-repeat-cmd)
+augroup END
+
+
 " toggle tagbar
 " nnoremap <leader>t :TagbarToggle<cr>
 nnoremap <silent><leader>tb :TagbarToggle<CR>
