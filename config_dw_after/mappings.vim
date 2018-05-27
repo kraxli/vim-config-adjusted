@@ -216,9 +216,9 @@ vnoremap ~ y:call setreg('', dway#misc#TwiddleCase(@"), getregtype(''))<CR>gv""P
 
 augroup ironmapping
   autocmd!
-  autocmd Filetype python nmap <buffer> <localleader>s <Plug>(iron-send-motion)
-    autocmd Filetype python vmap <buffer> <localleader>s <Plug>(iron-send-motion)
-    autocmd Filetype python nmap <buffer> <localleader>p <Plug>(iron-repeat-cmd)
+  autocmd Filetype python nmap <buffer> ;e <Plug>(iron-send-motion)
+  autocmd Filetype python vmap <buffer> ;e <Plug>(iron-send-motion)
+  autocmd Filetype python nmap <buffer> ;lc <Plug>(iron-repeat-cmd)
 augroup END
 
 
@@ -252,6 +252,13 @@ nnoremap <localleader>c :Calendar
 " Gundo
 nnoremap <c-g>d :GundoToggle<cr>
 
+" nvim-r
+augroup nvimr
+  au!
+  autocmd Filetype r nmap <buffer> ;e <Plug>RSendLine
+  autocmd Filetype r vmap <buffer> ;e <Plug>RSendSelection
+
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " other operator surround mappings than rafi uses (his do not realy 
