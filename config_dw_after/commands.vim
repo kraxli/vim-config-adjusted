@@ -47,7 +47,7 @@ command! -nargs=* Git :!git <args>
 " dein plugin manager
 command! DeinClean :call map(dein#check_clean(), "delete(v:val, 'rf')")
 command! DeinUpdate :call dein#update() " update and install
-command! DeinRecash :call dein#recache_runtimepath()
+command! DeinRecache :call dein#recache_runtimepath()
 command! DeinInstall :call dein#install()
 command! DeinReinstall :call dein#reinstall()
 command! DeinRemotes :call dein#remote_plugins() | UpdateRemotePlugins
