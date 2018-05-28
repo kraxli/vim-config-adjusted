@@ -199,6 +199,7 @@
     let R_min_editor_width = 18
     autocmd! MyAutoCmd VimResized * let R_rconsole_width = winwidth(0) / 2
 
+# R_assign: use double underscore for <-
 # let R_assign_map = ":"
 # let R_assign_map = "<M-_>"
 
