@@ -50,8 +50,8 @@ command! DeinUpdate :call dein#update() " update and install
 command! DeinRecash :call dein#recache_runtimepath()
 command! DeinInstall :call dein#install()
 command! DeinReinstall :call dein#reinstall()
-commnad! DeinRemotes :call dein#remote_plugins | UpdateRemotePlugins
-command! DeinInfo :cll dein#check_install()
+command! DeinRemotes :call dein#remote_plugins() | UpdateRemotePlugins
+command! DeinInfo :call dein#check_install()
 
 " div
 if has('unix')
