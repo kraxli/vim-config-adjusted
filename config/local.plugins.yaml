@@ -104,11 +104,7 @@
   hook_add: |
     let g:iron_repl_open_cmd='split'
     let g:iron_map_defaults=1
-  hook_source: |
-    command! Repl :IronRepl
-    command! Iron :IronRepl
-
-# on_cmd: [IronRepl, IronPromptRepl, IronPromptCommand]
+  on_cmd: [IronRepl, IronPromptRepl, IronPromptCommand]
 
 # =======================================================
 # Completion

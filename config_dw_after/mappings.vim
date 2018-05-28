@@ -30,7 +30,7 @@ endif
 " jump to quickfix or location list/window
 nmap <script> <silent> <leader>cc :call dway#misc#ToggleQuickFix()<CR>
 nmap <script> <silent> <leader>ll :call dway#misc#ToggleLocationList()<CR>
-nnoremap <leader>c :cnext<cr> " probably 
+nnoremap <leader>c :cnext<cr> " probably
 nnoremap <leader>l :lnext<cr>
 " nnoremap <space>c :copen<cr>
 " " nnoremap <leader><space> :cclose<cr>
@@ -44,7 +44,7 @@ map <leader>ct :tabclose<cr>
 map <leader>cd :lcd %:p:h<cr>
 map <leader>gcd :cd %:p:h<cr>
 
-" Backgournd 
+" Backgournd
 nmap <leader>cs :call dway#misc#ToggleColorScheme(color_scheme1, color_scheme2)<cr>
 " noremap <leader>b :call dway#misc#ToggleBgCs(color_scheme1, color_scheme2)<cr>
 
@@ -214,11 +214,41 @@ vnoremap ~ y:call setreg('', dway#misc#TwiddleCase(@"), getregtype(''))<CR>gv""P
 " Plugins specific mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-augroup ironmapping
+augroup pythonmapping
   autocmd!
-  autocmd Filetype python nmap <buffer> ;e <Plug>(iron-send-motion)
+
+  " -------------------------------------------------------
+  " iron-vim
+  " -------------------------------------------------------
+  autocmd Filetype python nmap <buffer> ;e <Plug>(iron-send-motion)<down>
   autocmd Filetype python vmap <buffer> ;e <Plug>(iron-send-motion)
   autocmd Filetype python nmap <buffer> ;lc <Plug>(iron-repeat-cmd)
+
+  " -------------------------------------------------------
+  " minimal-py
+  " -------------------------------------------------------
+
+  " au FileType python nmap  <buffer> ;p <Plug>(py-send-line-to-repl)<cr>
+  " au FileType python vmap  <buffer> ;p <Plug>(py-send-selection-to-repl)<cr>
+  " au FileType python map   <buffer> ;fp <Plug>(py-send-file-to-repl)<cr>
+
+  au FileType python nmap  ;p :PySendLine<cr>
+  au FileType python vmap  ;p :PySendSelection<cr>
+  au FileType python nmap  ;fp :PySendFile<cr>
+
+  au FileType python nmap gl :call nvimipdb#GoToDebugLine()<cr>
+  au FileType python nmap gt :call nvimipdb#OpenDebugFile()<cr>
+
+  " au FileType python nmap ;id :execute("Ipdb")<cr>
+  au FileType python nmap <F5> :Ipdb
+  au FileType python nmap ;d :Ipdb
+  au FileType python nmap <F9> :PyRun
+  au FileType python nmap ;r :PyRun
+
+  au FileType python nmap ;bp Oimport ipdb; ipdb.set_trace()<esc>
+  au FileType python nmap ;bp oimport ipdb; ipdb.set_trace()<esc>
+  au FileType python nmap ;db :nvimipdb#DelBreakPoints()
+
 augroup END
 
 
@@ -261,7 +291,7 @@ augroup nvimr
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" other operator surround mappings than rafi uses (his do not realy 
+" other operator surround mappings than rafi uses (his do not realy
 " work for me)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " if dein#tap('vim-operator-surround')
