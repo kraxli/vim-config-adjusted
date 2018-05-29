@@ -246,7 +246,7 @@ augroup pythonmapping
   au FileType python nmap ;r :PyRun
 
   au FileType python nmap ;bp Oimport ipdb; ipdb.set_trace()<esc>
-  au FileType python nmap ;bp oimport ipdb; ipdb.set_trace()<esc>
+  au FileType python nmap ;Bp oimport ipdb; ipdb.set_trace()<esc>
   au FileType python nmap ;db :minpy#DelBreakPoints()
 
 augroup END
