@@ -236,8 +236,8 @@ augroup pythonmapping
   au FileType python vmap  ;p :PySendSelection<cr>
   au FileType python nmap  ;fp :PySendFile<cr>
 
-  au FileType python nmap gl :call nvimipdb#GoToDebugLine()<cr>
-  au FileType python nmap gt :call nvimipdb#OpenDebugFile()<cr>
+  au FileType python nmap gl :call minpy#GoToDebugLine()<cr>
+  au FileType python nmap gt :call minpy#OpenDebugFile()<cr>
 
   " au FileType python nmap ;id :execute("Ipdb")<cr>
   au FileType python nmap <F5> :Ipdb
@@ -247,7 +247,7 @@ augroup pythonmapping
 
   au FileType python nmap ;bp Oimport ipdb; ipdb.set_trace()<esc>
   au FileType python nmap ;bp oimport ipdb; ipdb.set_trace()<esc>
-  au FileType python nmap ;db :nvimipdb#DelBreakPoints()
+  au FileType python nmap ;db :minpy#DelBreakPoints()
 
 augroup END
 
