@@ -163,7 +163,8 @@
 
 - repo: kraxli/nvim-py-minimal
   on_ft: [py, python]
-  hook_add: let g:nvimipdb_default_keys = 1
+  hook_add: let g:minpy_default_keys = 1
+  hook_add: let g:minpy_color_column = 1
   hook_source: |
     au TermOpen * let g:last_ipy_terminal_job_id = b:terminal_job_id
 
