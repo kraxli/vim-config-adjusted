@@ -170,6 +170,7 @@ if dein#tap('committia.vim')
 endif
 
 if dein#tap('python_match.vim')
+	" kraxli (comment two lines)
 	" nmap <buffer> {{ [%
 	" nmap <buffer> }} ]%
 endif
