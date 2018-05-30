@@ -38,6 +38,23 @@ call deoplete#custom#source('_', 'min_pattern_length', 2)
 " Limit Sources " {{{
 " ---
 
+" =======================================================
+" TODO: completion for R
+" added by kraxli: (not working)
+" https://github.com/Shougo/deoplete.nvim/issues/745
+" https://github.com/gaalcaras/ncm-R/issues/10
+" -------------------------------------------------------
+" call deoplete#custom#var('omni', 'input_patterns', {
+"       \ 'tex' : g:vimtex#re#deoplete,
+"     \ 'r': '[^. *\t]\.\w*',
+" \})
+
+" call deoplete#custom#option('omni_patterns':  {
+"     \ 'r': ['[^. *\t]\.\w*', '\h\w*::\w*', '\h\w*\$\w*'],
+"     \},
+" -------------------------------------------------------
+
+
 let g:deoplete#sources = get(g:, 'deoplete#sources', {})
 let g:deoplete#sources.go = ['vim-go']
 " let g:deoplete#sources.javascript = ['file', 'ternjs']
@@ -145,8 +162,11 @@ call deoplete#custom#source('_', 'converters', [
 autocmd MyAutoCmd CompleteDone * silent! pclose!
 
 " Movement within 'ins-completion-menu'
-imap <expr><C-j>   pumvisible() ? "\<Down>" : "\<C-j>"
-imap <expr><C-k>   pumvisible() ? "\<Up>" : "\<C-k>"
+" adjustment by kraxli:
+" imap <expr><C-j>   pumvisible() ? "\<Down>" : "\<C-j>"
+" imap <expr><C-k>   pumvisible() ? "\<Up>" : "\<C-k>"
+imap <expr><C-j>   pumvisible() ? "\<c-n>" : "\<C-j>"
+imap <expr><C-k>   pumvisible() ? "\<c-p>" : "\<C-k>"
 
 " Scroll pages in menu
 inoremap <expr><C-f> pumvisible() ? "\<PageDown>" : "\<Right>"
@@ -173,18 +193,24 @@ inoremap <silent><expr><CR> pumvisible() ?
 " 2. Otherwise, if within a snippet, jump to next input
 " 3. Otherwise, if preceding chars are whitespace, insert tab char
 " 4. Otherwise, start manual autocomplete
-imap <silent><expr><Tab> pumvisible() ? "\<Down>"
+
+" adjustment by kraxli
+" imap <silent><expr><Tab> pumvisible() ? "\<Down>"
+imap <silent><expr><Tab> pumvisible() ? "\<c-n>"
 	\ : (neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)"
 	\ : (<SID>is_whitespace() ? "\<Tab>"
 	\ : deoplete#manual_complete()))
 
-smap <silent><expr><Tab> pumvisible() ? "\<Down>"
+" adjustment by kraxli
+" smap <silent><expr><Tab> pumvisible() ? "\<Down>"
+smap <silent><expr><Tab> pumvisible() ? "\<c-n>"
 	\ : (neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)"
 	\ : (<SID>is_whitespace() ? "\<Tab>"
 	\ : deoplete#manual_complete()))
 
-
-inoremap <expr><S-Tab>  pumvisible() ? "\<Up>" : "\<C-h>"
+" adjustment by kraxli
+" inoremap <expr><S-Tab>  pumvisible() ? "\<Up>" : "\<C-h>"
+inoremap <expr><S-Tab>  pumvisible() ? "\<c-p>" : "\<C-h>"
 
 function! s:is_whitespace() "{{{
 	let col = col('.') - 1
