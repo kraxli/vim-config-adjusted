@@ -236,8 +236,8 @@ augroup pythonmapping
   au FileType python vmap  ;p :PySendSelection<cr>
   au FileType python nmap  ;fp :PySendFile<cr>
 
-  au FileType python nmap gl :call minpy#GoToDebugLine()<cr>
-  au FileType python nmap gt :call minpy#OpenDebugFile()<cr>
+  au FileType python nmap dl :call minpy#GoToDebugLine()<cr>
+  au FileType python nmap df :call minpy#OpenDebugFile()<cr>
 
   " au FileType python nmap ;id :execute("Ipdb")<cr>
   au FileType python nmap <F5> :Ipdb
