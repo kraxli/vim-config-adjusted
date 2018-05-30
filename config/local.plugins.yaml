@@ -136,6 +136,11 @@
 #             \ },
 #             \ }
 
+# TODO R completion:
+  # https://github.com/gaalcaras/ncm-R
+  # https://github.com/jalvesaq/Nvim-R/issues/326
+  # https://github.com/Shougo/deoplete.nvim/issues/745
+
 # =======================================================
 # Programming languages
 # ---------------------
@@ -225,6 +230,7 @@
 - repo: honza/vim-snippets
 - repo: kiith-sa/DSnips
 
+# TODO
 # # https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
 # - repo: SirVer/ultisnips
 #   depends: [ vim-snippets, DSnips ]
