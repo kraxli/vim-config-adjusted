@@ -1,10 +1,12 @@
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " deoplete ctrl-space completion
-inoremap <expr><c-space> pumvisible() ? "\<c-n>" : "\<c-x><c-o>"
-" inoremap <silent><c-space> <c-x><c-o>
+" inoremap <expr><c-space> pumvisible() ? "\<c-n>" : "\<c-x><c-o>"
+inoremap <expr><c-space> pumvisible() ? "\<c-x><c-o>" : "\<c-x><c-o>"
+" inoremap <expr><c-space> <c-x><c-o>
 
 " Use Deoplete.
 " let g:deoplete#enable_at_startup = 1
