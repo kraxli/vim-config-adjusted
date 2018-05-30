@@ -170,8 +170,8 @@ if dein#tap('committia.vim')
 endif
 
 if dein#tap('python_match.vim')
-	nmap <buffer> {{ [%
-	nmap <buffer> }} ]%
+	" nmap <buffer> {{ [%
+	" nmap <buffer> }} ]%
 endif
 
 if dein#tap('goyo.vim')
