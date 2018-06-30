@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/dave/.config/nvim/config_dw_after/plugins_load_at_startup'
 let g:netrw_dirhist_2='/home/dave/.cache/vim/dein/repos/github.com/kraxli/vimwiki-task/ftplugin'
 let g:netrw_dirhist_3='/home/dave/.dub/packages/vibe-d-0.7.28/vibe-d/source'
 let g:netrw_dirhist_4='/home/dave/.dub/packages/vibe-d-0.7.28/vibe-d/source/vibe'
+let g:netrw_dirhist_5='/home/dave/.config/nvim/.ipynb_checkpoints'

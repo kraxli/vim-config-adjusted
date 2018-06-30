@@ -43,6 +43,17 @@ let g:neomake_python_py3_maker = {
     \ '\@File\:\ %f'
     \ }
 
+
+" TODO: see https://github.com/w0rp/ale/blob/master/ale_linters/r/lintr.vim
+let s:cmd_string = 'suppressPackageStartupMessages(library(lintr));'
+let g:neomake_r_lintr_maker = {
+\ 'exe': 'Rscript',
+\ 'args': [-e, s:cmd_string]
+}
+
+let g:neomake_r_enabled_makers = ['lintr']
+
+
 " DEFAULTS:
 
 " Default d maker:

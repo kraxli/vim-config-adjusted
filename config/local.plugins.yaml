@@ -12,12 +12,12 @@
 # Startup
 # -------
 
-- repo: xolox/vim-shell
-- repo: xolox/vim-misc
-- repo: Shougo/unite.vim
-# - { repo: Shougo/unite.vim, on_source: [vimfiler, unite-bibtex] }
-- repo: Shougo/vimfiler.vim
-  depends: Shougo/unite.vim
+ - repo: xolox/vim-shell
+ - repo: xolox/vim-misc
+ - repo: Shougo/unite.vim
+ # - { repo: Shougo/unite.vim, on_source: [vimfiler, unite-bibtex] }
+ - repo: Shougo/vimfiler.vim
+   depends: Shougo/unite.vim
 
 # TODO check out usage
 - repo: wbthomason/buildit.nvim
@@ -193,12 +193,15 @@
 # # Runners available are 'pytest', 'nose', 'nose2', 'djangotest', 'djangonose' and Python's built-in 'unittest'
 # # or let test#strategy = 'neomake'
 
+# https://medium.freecodecamp.org/turning-vim-into-an-r-ide-cd9602e8c217
 - repo: jalvesaq/Nvim-R
   on_ft: r
   hook_add: |
     let R_assign = 2
     autocmd! MyAutoCmd FileType r set colorcolumn=+1
     autocmd MyAutoCmd FileType r set textwidth=80
+    let g:rout_follow_colorscheme = 1
+    let g:Rout_more_colors = 1
   hook_source: |
     let R_rconsole_width = 57
     let R_min_editor_width = 18
@@ -207,6 +210,13 @@
 # R_assign: use double underscore for <-
 # let R_assign_map = ":"
 # let R_assign_map = "<M-_>"
+
+# TODO: to be removed aafter ncm-R supports deoplete
+- repo: roxma/nvim-completion-manager
+  on_ft: r
+
+- repo: gaalcaras/ncm-R
+  on_ft: r
 
 - repo: vim-scripts/octave.vim
   on_ft: [m, oct]
@@ -439,6 +449,3 @@
 
 
 #  vim: set ts=2 sw=2 tw=80 et :
-
-
-
