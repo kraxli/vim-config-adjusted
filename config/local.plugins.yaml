@@ -287,8 +287,9 @@
 #     command! GoTo :MdwiGotoLink<cr>
 #     command! GoBack :MdwiReturn<cr>
 
-- repo: tbabej/taskwiki
-  on_ft: [vimwiki]
+# - repo: tbabej/taskwiki
+#   on_ft: [vimwiki]
+
 - repo: blindFS/vim-taskwarrior
 - repo: powerman/vim-plugin-AnsiEsc
   on_ft: [vimwiki]
