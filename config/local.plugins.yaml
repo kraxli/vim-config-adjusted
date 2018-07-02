@@ -12,12 +12,12 @@
 # Startup
 # -------
 
- - repo: xolox/vim-shell
- - repo: xolox/vim-misc
- - repo: Shougo/unite.vim
- # - { repo: Shougo/unite.vim, on_source: [vimfiler, unite-bibtex] }
- - repo: Shougo/vimfiler.vim
-   depends: Shougo/unite.vim
+- repo: xolox/vim-shell
+- repo: xolox/vim-misc
+- repo: Shougo/unite.vim
+# - { repo: Shougo/unite.vim, on_source: [vimfiler, unite-bibtex] }
+- repo: Shougo/vimfiler.vim
+  depends: Shougo/unite.vim
 
 # TODO check out usage
 - repo: wbthomason/buildit.nvim
@@ -47,6 +47,9 @@
   hook_add: |
     let g:rootmarkers = ['.git', 'dub.json', 'dub.sdl', 'index.md', 'index.wiki','.projectroot', '.svn']
 
+# or moll / vim-bbye
+- repo: qpkorr/vim-bufkill
+
 # =======================================================
 # General
 # -------
@@ -55,8 +58,6 @@
 
 # not taking: cwoac/nvim
 
-- repo: qpkorr/vim-bufkill
-# or moll / vim-bbye
 
 - repo: sjl/gundo.vim
   on_cmd: [GundoHide, GundoRenderGraph, GundoShow, GundoToggle]

@@ -591,6 +591,7 @@ Key   | Mode | Action
 `sg` | Normal | Open in a vertical split
 `sv` | Normal | Open in a split
 `'` | Normal | Toggle mark current candidate
+<localleader> ?? | Normal | show keybindings 
 
 ### Plugin: NERDTree
 
@@ -729,6 +730,7 @@ Key   | Mode | Action
 `<leader>`+`W` | Normal | Wiki
 `<leader>`+`K` | Normal | Thesaurus
 `<leader>`+`?` | Normal | Dictionary (macOS only)
+
 
 ## Credits & Contribution
 
