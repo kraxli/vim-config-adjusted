@@ -36,10 +36,6 @@ command! TTerm :call dway#term#openterm('tabnew')
 command! W :w
 command! Q :q
 
-command! ww :w!
-command! xx :x!
-command! qq :q!
-
 command! ShowPath :echo expand('%:p')
 command! CopyBufferPath :let @+ = expand("%:p:h")
 " command! CopyBufferName :let @+ = expand("%:r")
