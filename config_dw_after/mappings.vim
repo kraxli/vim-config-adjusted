@@ -134,7 +134,7 @@ nmap <silent> <leader>u0 :t.\|s/./=/g\|:nohls<cr>
 nmap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
 
 "" Use the bufkill plugin to eliminate a buffer but keep the window layout
-nnoremap bd :BD<cr>
+nnoremap db :BD<cr>
 nmap <leader>bd :BD<cr>
 " kill buffer from buff kill plugin
 nmap <localleader>k :BK<cr>
