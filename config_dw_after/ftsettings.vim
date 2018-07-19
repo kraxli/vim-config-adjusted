@@ -36,7 +36,9 @@ augroup quickFix
    autocmd BufReadPost location nnoremap <buffer> <CR> <CR>
 augroup END
 
-
+if expand('%:t') == 'plugins.yaml'
+  setlocal nospell
+endif
 
 
 
