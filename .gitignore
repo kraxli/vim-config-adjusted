@@ -16,3 +16,4 @@ swoopBuf
 autoload/plug.vim.old
 history.log
 plugged/
+.ipynb_checkpoints/

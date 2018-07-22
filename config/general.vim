@@ -8,7 +8,11 @@ set report=0                 " Don't report on line changes
 set errorbells               " Trigger bell on error
 set visualbell               " Use visual bell instead of beeping
 set hidden                   " hide buffers when abandoned instead of unload
-set fileformats=unix,dos,mac " Use Unix as the standard file type
+if has('unix')
+	set fileformats=unix,dos,mac " Use Unix as the standard file type
+elseif
+	set fileformats=dos,unix,mac " Use Unix as the standard file type
+endif
 set magic                    " For regular expressions turn magic on
 set path=.,**                " Directories to search when using gf
 set virtualedit=block        " Position cursor anywhere in visual block
@@ -202,7 +206,7 @@ autocmd MyAutoCmd TextChangedI,TextChanged *
 autocmd MyAutoCmd BufWritePost *
 	\ if &l:foldmethod ==# 'manual' && exists('b:foldmethod_save') |
 	\   let &l:foldmethod = b:foldmethod_save |
-	\   execute 'normal! zx' |
+	" \   execute 'normal! zx' |
 	\ endif
 
 if has('folding')

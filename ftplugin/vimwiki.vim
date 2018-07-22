@@ -119,11 +119,12 @@ command! Pandoc2Doc :NeomakeSh pandoc %:p
   \ -f markdown
   \ -s
   \ -N
-  \ -o %:p:r.doc
+  \ -o %:p:h/docs/%:p:t:r.doc
   \ --toc
   \ --filter pandoc-eqnos
   \ --filter pandoc-tablenos
   \ --filter pandoc-fignos
+  " \ -o %:p:t:r.doc
 
 
 command! -nargs=1 PandocLib :NeomakeSh pandoc %:p

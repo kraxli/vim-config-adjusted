@@ -730,6 +730,7 @@ Key   | Mode | Action
 `<leader>`+`W` | Normal | Wiki
 `<leader>`+`K` | Normal | Thesaurus
 `<leader>`+`?` | Normal | Dictionary (macOS only)
+topHL)<Plug>(StopHL)
 
 
 ## Credits & Contribution

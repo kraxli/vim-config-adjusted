@@ -36,3 +36,5 @@ let color_scheme2 = 'gruvbox'
 " Status bar/line
 set statusline+=%F
 
+set breakindent
+" let &showbreak=' '
