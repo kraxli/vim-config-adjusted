@@ -85,16 +85,17 @@ nnoremap zs :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\
 " {{{ filetyp specfic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 au MyAutoCmd FileType markdown nnoremap <backspace> :bp<cr>
-au MyAutoCmd Filetype markdown,vimwiki nmap <silent><leader>ob :call dway#markdown#OpenInBrowser('%')<cr><cr>
-au MyAutoCmd Filetype vimfiler nmap <silent>gb :call dway#markdown#OpenInBrowser('<cfile>')<cr><cr>
-au MyAutoCmd Filetype vimfiler nmap <silent>b :call dway#markdown#OpenInBrowser('<cfile>')<cr><cr>
+" au MyAutoCmd Filetype markdown,vimwiki nmap <silent><c-g>b :call dway#markdown#OpenInBrowser('%')<cr><cr>
+au MyAutoCmd Filetype markdown,vimwiki nmap <silent><c-o>b :call dway#markdown#OpenInBrowser('%')<cr><cr>
+" au MyAutoCmd Filetype vimfiler nmap <silent><c-g>b :call dway#markdown#OpenInBrowser('<cfile>')<cr><cr>
+au MyAutoCmd Filetype vimfiler nmap <silent><c-g>b :call dway#markdown#OpenInBrowser('<cfile>')<cr><cr>
 
 augroup GroupMarkdown
   autocmd!
   " hf is more in line with hb
   au FileType markdown,vimwiki :nmap <localleader>hf <localleader>hn
   " same command for .tex files in tex.vim
-  au FileType markdown,vimwiki :nmap <leader>op :!evince %:p:r.pdf & <cr><cr>
+  au FileType markdown,vimwiki :nmap <c-o>p :!evince %:p:r.pdf & <cr><cr>
   set tabstop=2 softtabstop=2 shiftwidth=2 expandtab  autoindent
 
 augroup END
@@ -267,7 +268,7 @@ nmap ;ll :Limelight!!<cr>
 " shell-vim
 " open file explorere
 " open files, url, ... (default map in vim-shell is F6)
-nnoremap <c-o> yiW:Open <cr>
+nnoremap <c-o>o yiW:Open <cr>
 " nnoremap <c-o>e yiW:Open <cr>
 " nnoremap <leader>o :OpenBrowser <cr>
 " nmap fe <F6>
