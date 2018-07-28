@@ -160,9 +160,6 @@ endif
 " Browse old files
 noremap <leader>bof :browse oldfiles
 
-" remap gF
-nnoremap <s-f> gF
-
 " open file under cursor in new vim-tab
 " nnoremap <leader>g<s-f> <c-w>gf
 nnoremap g<s-f> <c-w>gf
