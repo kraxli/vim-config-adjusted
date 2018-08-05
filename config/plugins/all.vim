@@ -47,6 +47,15 @@ if dein#tap('denite.nvim')
 		let @/ = substitute(escape(@s, '\'.a:cmdtype), '\n', '\\n', 'g')
 		let @s = temp
 	endfunction "}}}
+
+" kraxli:
+" search This file
+command! -nargs=1 GrepBuffer :vimgrep <q-args> % | :Denite quickfix -buffer-name=list<CR>
+command! -nargs=1 GrepFile :GrepBuffer <args>
+nmap <leader>gt :GrepBuffer<space>
+nmap <leader>gf :GrepBuffer<space>
+
+
 endif
 
 if dein#tap('vim-denite-z')
@@ -353,5 +362,15 @@ if dein#tap('vim-textobj-function')
 	xmap <silent> af <Plug>(textobj-function-a)
 	xmap <silent> if <Plug>(textobj-function-i)
 endif
+
+" kraxli
+if dein#tap('nvim-R')
+  augroup RCmd
+		au!
+		au FileType R command! RStart :call StartR("R")
+		au FileType R command! RCustomStart :call StartR("custom")
+	augroup END
+endif
+
 
 " vim: set ts=2 sw=2 tw=80 noet :
