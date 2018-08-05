@@ -1,5 +1,6 @@
 
 
+" not really required as nvim-r provides such a functionality 
 function! Rformat2()
 	let line_number = line(".")
 	execute 'silent %s/,\(\d\|[a-z,A-Z]\)/, \1/g'
@@ -22,4 +23,7 @@ endfunction
 
 " au FileType r command! Rformat2 :call Rformat2()
 
+" https://stackoverflow.com/questions/4794859/exuberant-ctags-with-r
+" command! -nargs=? Rtags :!Rscript -e 'rtags(path="'.<q-args>.'", recursive=TRUE, ofile="RTAGS")' -e 'etags2ctags("RTAGS", "rtags")' -e 'unlink("RTAGS")'
+" set tags+=rtags
 
