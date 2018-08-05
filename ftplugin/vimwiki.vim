@@ -119,7 +119,7 @@ command! Pandoc2Doc :NeomakeSh pandoc %:p
   \ -f markdown
   \ -s
   \ -N
-  \ -o %:p:h/docs/%:p:t:r.doc
+  \ -o %:p:h/docs/%:p:t:r.docx
   \ --toc
   \ --filter pandoc-eqnos
   \ --filter pandoc-tablenos
