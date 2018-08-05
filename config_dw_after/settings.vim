@@ -38,3 +38,7 @@ set statusline+=%F
 
 set breakindent
 " let &showbreak=' '
+
+if executable('ag')
+	set grepprg=ag
+endif
