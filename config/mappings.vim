@@ -5,6 +5,10 @@
 " Non-standard {{{
 " ------------
 
+nnoremap <silent><Leader>ee :e ~/.config/nvim/init.vim<CR>
+nnoremap <silent><Leader>ss :source ~/.config/nvim/init.vim<CR>
+nnoremap <silent><Leader>uu :source ~/.config/nvim/init.vim<CR>
+
 " Window-control prefix
 nnoremap  [Window]   <Nop>
 nmap      s [Window]
