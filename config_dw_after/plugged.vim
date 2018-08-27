@@ -1,7 +1,9 @@
 
 call plug#begin('~/.config/nvim/plugged')
-   Plug 'landaire/deoplete-d', {'for': 'd'}
-   let g:deoplete#sources#d#dcd_server_autostart = 1
+   if !exists('g:gui_oni')
+      Plug 'landaire/deoplete-d', {'for': 'd'}
+      let g:deoplete#sources#d#dcd_server_autostart = 1
+   endif
 
    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 

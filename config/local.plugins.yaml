@@ -44,6 +44,7 @@
                                          \ firefox '%u#%f' &"
 
 - repo: dbakker/vim-projectroot
+  if:  ! exists("g:gui_oni")
   hook_add: |
     let g:rootmarkers = ['.git', 'dub.json', 'dub.sdl', 'index.md', 'index.wiki','.projectroot', '.svn']
 
@@ -151,14 +152,15 @@
 # AndreaOrru/vim-dlang-autofold-unittest
 # (jethrovt/oss-vim-dlang-autofold-unittests )
 
-- repo: idanarye/vim-dutyl
-  on_ft: d
-  hook_add: |
-    let g:dutyl_neverAddClosingParen=1
-    let g:dmisc_dcd_bin_dir='/home/dave/.dutils/dcd/bin/'
-    let g:dutyl_neverAddClosingParen=1
-    let g:dutyl_dontHandleIndent = 1
-  hook_source: autocmd MyAutoCmd BufRead,BufEnter *.d DUDCDrestartServer
+# - repo: idanarye/vim-dutyl
+#   if: ! exists('g:gui_oni')
+#   on_ft: d
+#   hook_add: |
+#     let g:dutyl_neverAddClosingParen=1
+#     let g:dmisc_dcd_bin_dir='/home/dave/.dutils/dcd/bin/'
+#     let g:dutyl_neverAddClosingParen=1
+#     let g:dutyl_dontHandleIndent = 1
+#   hook_source: autocmd MyAutoCmd BufRead,BufEnter *.d DUDCDrestartServer
 
 # let g:dutyl_dontHandleFormat = 1
 # hook_post_source: |
@@ -175,6 +177,7 @@
     au TermOpen * let g:last_ipy_terminal_job_id = b:terminal_job_id
 
 - repo: python-rope/ropevim
+  if: ! exists('g:gui_oni')
   hook_add: |
     let ropevim_vim_completion = 0
   on_ft: python
@@ -446,7 +449,7 @@
 
 
 # - repo: bfredl/nvim-ipy
-# if: !exists('g:dwc_ipython_terminal')
+# if: ! exists('g:dwc_ipython_terminal')
 # on_ft: py
 
 
