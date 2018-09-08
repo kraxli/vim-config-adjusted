@@ -49,15 +49,18 @@
   hook_add: |
     let g:vim_markdown_override_foldtext = 0
     let g:vim_markdown_initial_foldlevel = 999
+    let g:vim_markdown_folding_style_pythonic = 1
     let g:vim_markdown_new_list_item_indent = 2
     let g:vim_markdown_frontmatter = 1
     let g:vim_markdown_conceal = 1
-    let g:vim_markdown_math = 1
+    let g:tex_conceal = ""
+    let g:vim_markdown_math = 0
     let g:vim_markdown_follow_anchor = 1
     let g:vim_markdown_fenced_languages = [
       \ 'c++=cpp',
       \ 'viml=vim',
       \ 'bash=sh',
+      \ 'zsh=sh',
       \ 'ini=dosini'
       \ ]
 
@@ -239,7 +242,7 @@
     source $VIMPATH/config_dw_after/plugins/neomake.vim
   hook_add: |
     let g:lint_filetypes = [
-      \  'ansible', 'python', 'php', 'ruby', 'vim', 'go', 'sh',
+      \  'ansible', 'php', 'ruby', 'vim', 'go', 'sh',
       \  'javascript', 'jsx', 'javascript.jsx', 'json', 'css',
       \  'markdown', 'html', 'yaml', 'd', 'pandoc', 'pdc'
       \ ]
@@ -296,7 +299,7 @@
       \ ]
 
 # hook_post_source: |
-  # au FileType vimwiki set filetype=markdown
+# au FileType vimwiki set filetype=markdown
 
 # ==========================================
 # Completion

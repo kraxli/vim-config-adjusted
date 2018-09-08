@@ -3,9 +3,15 @@ call plug#begin('~/.config/nvim/plugged')
    if !exists('g:gui_oni')
       Plug 'landaire/deoplete-d', {'for': 'd'}
       let g:deoplete#sources#d#dcd_server_autostart = 1
-   endif
+      Plug 'autozimu/LanguageClient-neovim', {
+	    \ 'branch': 'next',
+	    \ 'do': 'bash install.sh',
+	    \ }  
+      endif
 
    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+  
 
 
    " Make sure you use single quotes

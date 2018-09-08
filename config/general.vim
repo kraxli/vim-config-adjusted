@@ -42,7 +42,7 @@ set sessionoptions-=buffers
 set sessionoptions+=tabpages
 
 " if ( ! has('nvim') || $DISPLAY !=? '') && has('clipboard')
-if has('clipboard')
+if (has('clipboard')  && ! exists('g:gui_oni'))
 	set clipboard& clipboard+=unnamedplus
 endif
 

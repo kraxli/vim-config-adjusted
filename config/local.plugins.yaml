@@ -74,19 +74,19 @@
 
 # https://github.com/ggreer/the_silver_searcher
 # - repo: mileszs/ack.vim
-  # hook_add: let g:ackprg = 'ag --nogroup --nocolor --column'
+#   hook_add: let g:ackprg = 'ag --nogroup --nocolor --column'
 
 # TODO inspect
-- repo: pelodelfuego/vim-swoop
-  on_func: [Swoop, SwoopSelection, SwoopMulti, SwoopMultiSelection, SwoopPattern, SwoopMultiPattern]
-  hook_add: |
-    let g:swoopUseDefaultKeyMap = 0
-    let g:swoopIgnoreCase = 1
-    let g:swoopWindowsVerticalLayout = 1
-    nmap <Leader>s :call Swoop()<CR>
-    vmap <Leader>s :call SwoopSelection()<CR>
-    nmap <Leader>ms :call SwoopMulti()<CR>
-    vmap <Leader>ms :call SwoopMultiSelection()<CR>
+# - repo: pelodelfuego/vim-swoop
+#   on_func: [Swoop, SwoopSelection, SwoopMulti, SwoopMultiSelection, SwoopPattern, SwoopMultiPattern]
+#   hook_add: |
+#     let g:swoopUseDefaultKeyMap = 0
+#     let g:swoopIgnoreCase = 1
+#     let g:swoopWindowsVerticalLayout = 1
+#     nmap <Leader>s :call Swoop()<CR>
+#     vmap <Leader>s :call SwoopSelection()<CR>
+#     nmap <Leader>ms :call SwoopMulti()<CR>
+#     vmap <Leader>ms :call SwoopMultiSelection()<CR>
 
 - repo: mhinz/vim-startify
   on_cmd: [Startify, StartifyDebug]
@@ -119,12 +119,12 @@
 # - repo: landaire/deoplete-d
 #   on_ft: d
 #   if: has('nvim')
+
 #   depends: [deoplete]
 #   hook_add: |
 #     let g:dmisc_dcd_bin_dir = '/home/dave/.dutils/DCD/bin/'
 #     let g:deoplete#sources#d#dub_binary = '/usr/bin/dub'
 #     let g:deoplete#sources#d#dcd_server_autostart = 1
-
 #     let g:deoplete#sources#d#dcd_server_binary = g:dmisc_dcd_bin_dir.'dcd-server'
 #     let g:deoplete#sources#d#dcd_client_binary = g:dmisc_dcd_bin_dir.'dcd-client'
 
@@ -139,9 +139,9 @@
 #             \ }
 
 # TODO R completion:
-  # https://github.com/gaalcaras/ncm-R
-  # https://github.com/jalvesaq/Nvim-R/issues/326
-  # https://github.com/Shougo/deoplete.nvim/issues/745
+# https://github.com/gaalcaras/ncm-R
+# https://github.com/jalvesaq/Nvim-R/issues/326
+# https://github.com/Shougo/deoplete.nvim/issues/745
 
 # =======================================================
 # Programming languages
@@ -326,14 +326,19 @@
 # Text processing / editing
 # -------------------------
 
-# gabrielelana/vim-markdown
 # https://github.com/jszakmeister/markdown2ctags
-- repo: kraxli/tagbar-markdown.vim
-  on_ft: [markdown, vimwiki]
+# - repo: kraxli/tagbar-markdown.vim
+#   on_ft: [markdown, vimwiki]
+
+# - repo: gabrielelana/vim-markdown
+#   on_ft: markdown
+#   hook_add: |
+#     let g:markdown_enable_conceal = 1
+#     let g:markdown_enable_folding = 1
 
 # TODO usage and better integration
-- repo: lervag/vimtex
-  on_ft: [tex, latex]
+# - repo: lervag/vimtex
+#   on_ft: [tex, latex]
 
 # - repo: msprev/unite-bibtex
 #   depends: Shougo/unite.vim
@@ -397,6 +402,13 @@
 #   hook_add: |
 #     set hidden
 
+# - repo: autozimu/LanguageClient-neovim
+# hook_add: |
+# let g:LanguageClient_serverCommands = {
+#   \ 'd': ['serve-d'],
+#   \ }
+# hook_source: |
+#   call denite#custom#var('task', 'taskrc', '~/.taskrc')
 
 # let g:LanguageClient_serverCommands.python = ['pyls']
 # <leader>ld to go to definition
