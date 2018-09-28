@@ -19,7 +19,8 @@ if !exists('g:gui_oni')
 		" Customizable dfmt (set your own options):
 			au  FileType d command! -nargs=* DfmtC :silent !dfmt -i <f-args> %:p
 
-		au FileType d command! OpenDmdConfig :e ~/.config/dmd
+			au FileType d  command! OpenDmdConf :e /etc/dmd.conf
+
 		" autocmd MyAutoCmd FileType d nnoremap <silent><buffer> <c-d>f :Dfmt<cr>
 
 		" ============================================
