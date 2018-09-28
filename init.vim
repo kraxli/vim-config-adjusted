@@ -53,6 +53,15 @@ execute 'source '."~/Dropbox/ActiveHome/.settings/quickfiles.vim"
 
 " }}} load config file
 
+" " set background=light
+" " colorscheme PaperColor
+" colorscheme codedark " papercolor
+" let g:airline_theme = 'codedark'
+" " let g:airline_theme='papercolor'
+
+colorscheme codedark
+command! BgToggle :<silent> call dway#misc#ToggleBgCs('codedark', 'PaperColor')<cr>
+nmap <leader>b :call dway#misc#ToggleBgCs('codedark', 'PaperColor')<cr>
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 " set guicursor=

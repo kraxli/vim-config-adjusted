@@ -1,8 +1,5 @@
 
-
-
 " let g:dway#base#os_path_sep = ((has('win16') || has('win32') || has('win64'))?'\':'/') 
-
 
 let g:config_load_home = fnamemodify(expand('<sfile>'), ':p:h:gs?\\?'.g:dway#base#os_path_sep.'?')
 let g:config_folder = g:config_load_home.g:dway#base#os_path_sep."config_dw_after"

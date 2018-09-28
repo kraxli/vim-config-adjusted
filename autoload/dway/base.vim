@@ -21,3 +21,4 @@ catch
     " Silently ignore invalid buffers
 endtry
 endfunction
+

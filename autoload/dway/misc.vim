@@ -47,13 +47,13 @@ function! dway#misc#ToggleColorScheme(scheme1, scheme2)
    " let currentScheme = colorscheme
    " echo currentScheme
    if a:scheme1 == ''
-    let scheme1='gruvbox'
+    let scheme1='codedark'
    else
      let scheme1=a:scheme1
    end
 
    if a:scheme2 == ''
-    let scheme2='solarized'
+    let scheme2='PaperColor'
    else
      let scheme2=a:scheme2
    end
