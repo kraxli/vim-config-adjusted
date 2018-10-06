@@ -43,36 +43,41 @@ endfunc
 
 
 
-function! dway#misc#ToggleColorScheme(scheme1, scheme2)
+function! dway#misc#ToggleColorScheme(darkScheme, lightScheme)
    " let currentScheme = colorscheme
    " echo currentScheme
-   if a:scheme1 == ''
-    let scheme1='codedark'
+   if a:darkScheme == ''
+    let darkScheme='codedark'
    else
-     let scheme1=a:scheme1
+     let darkScheme=a:darkScheme
    end
 
-   if a:scheme2 == ''
-    let scheme2='PaperColor'
+   if a:lightScheme == ''
+    let lightScheme='PaperColor'
    else
-     let scheme2=a:scheme2
+     let lightScheme=a:lightScheme
    end
 
-   if g:colors_name == scheme1
-     execute 'colorscheme '.scheme2
+   if ! exists('g:colors_name')
+    let g:colors_name = 'codedark'
+   end
+
+   if g:colors_name == darkScheme
+     execute 'colorscheme '.lightScheme
+     execute 'set background=light'
    else
-     execute 'colorscheme '.scheme1
+     execute 'colorscheme '.darkScheme
+     execute 'set background=dark'
    endif
 
-   syntax on
+   " execute 'set background='.(&background ==# 'dark' ? 'light' : 'dark')
 
 endfunction
 
 
-function! dway#misc#ToggleBgCs(scheme1, scheme2)
+function! dway#misc#ToggleBgCs(darkScheme, lightScheme)
   " toggle background and colorscheme
-  call dway#misc#ToggleColorScheme(a:scheme1, a:scheme2)
-	execute 'set background='.(&background ==# 'dark' ? 'light' : 'dark')
+  call dway#misc#ToggleColorScheme(a:darkScheme, a:lightScheme)
 endfunction
 
 function! dway#misc#OpenExplorer(path)
