@@ -201,6 +201,7 @@
 # # or let test#strategy = 'neomake'
 
 # https://medium.freecodecamp.org/turning-vim-into-an-r-ide-cd9602e8c217
+
 - repo: jalvesaq/Nvim-R
   on_ft: r
   hook_add: |
@@ -393,7 +394,7 @@
     nmap <F8> <Plug>(ale_fix)
     let g:ale_fixers = {
     \ 'd': [
-        \   'uncrustify',
+    \   'uncrustify',
     \       'remove_trailing_lines',
     \       'trim_whitespace'
     \       ]
