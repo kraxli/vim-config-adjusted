@@ -155,15 +155,14 @@
 # AndreaOrru/vim-dlang-autofold-unittest
 # (jethrovt/oss-vim-dlang-autofold-unittests )
 
-# - repo: idanarye/vim-dutyl
-#   if: ! exists('g:gui_oni')
-#   on_ft: d
-#   hook_add: |
-#     let g:dutyl_neverAddClosingParen=1
-#     let g:dmisc_dcd_bin_dir='/home/dave/.dutils/dcd/bin/'
-#     let g:dutyl_neverAddClosingParen=1
-#     let g:dutyl_dontHandleIndent = 1
-#   hook_source: autocmd MyAutoCmd BufRead,BufEnter *.d DUDCDrestartServer
+- repo: idanarye/vim-dutyl
+  if: ! exists('g:gui_oni')
+  on_ft: d
+  hook_add: |
+    let g:dmisc_dcd_bin_dir='/home/dave/.dutils/dcd/bin/'
+    let g:dutyl_neverAddClosingParen=1
+    let g:dutyl_dontHandleIndent = 1
+  hook_source: autocmd MyAutoCmd BufRead,BufEnter *.d DUDCDrestartServer
 
 # let g:dutyl_dontHandleFormat = 1
 # hook_post_source: |
