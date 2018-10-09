@@ -372,5 +372,10 @@ if dein#tap('nvim-R')
 	augroup END
 endif
 
+if dein#tap('vim-dutyl')
+	au Filetype d nmap <silent> K :DUddoc<cr>
+	au Filetype d nmap <silent> <c-k> :DUddoc<cr>
+endif
+
 
 " vim: set ts=2 sw=2 tw=80 noet :
