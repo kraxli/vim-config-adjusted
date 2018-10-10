@@ -366,15 +366,19 @@ endif
 " kraxli
 if dein#tap('nvim-R')
   augroup RCmd
-		au!
-		au FileType R command! RStart :call StartR("R")
-		au FileType R command! RCustomStart :call StartR("custom")
-	augroup END
+    au!
+    au FileType R command! RStart :call StartR("R")
+    au FileType R command! RCustomStart :call StartR("custom")
+  augroup END
 endif
 
 if dein#tap('vim-dutyl')
-	au Filetype d nmap <silent> K :DUddoc<cr>
-	au Filetype d nmap <silent> <c-k> :DUddoc<cr>
+  augroup DMaps
+    au!
+    au Filetype d nmap <silent> K :DUddoc<cr>
+    au Filetype d nmap <silent> <c-k> :DUddoc<cr>
+    " <silent> gd :DUjump
+  augroup END
 endif
 
 
