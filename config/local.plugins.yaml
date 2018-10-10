@@ -159,13 +159,13 @@
 # if: ! exists('g:gui_oni')
 
 - repo: idanarye/vim-dutyl
-  on_ft: [d]
+  on_ft: d
   on_cmd: [DUDCDrestartServer, DUjump, DUddoc, DUexecute, DUupdateCTags]
   hook_add: |
     let g:dmisc_dcd_bin_dir='/home/dave/.dutils/dcd/bin/'
     let g:dutyl_neverAddClosingParen = 1
     let g:dutyl_dontHandleIndent = 1
-  hook_post_source: |
+  hook_source: |
     autocmd! BufRead,BufEnter,BufNewFile *.d DUDCDrestartServer
 
 # let g:dutyl_dontHandleFormat = 1
