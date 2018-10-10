@@ -7,28 +7,32 @@ if ! exists('g:gui_oni')
 	" autocmd MyAutoCmd BufRead,BufEnter *.d DUDCDrestartServer
 endif
 
-" ============================================
-" DFMT:
-" Note: au! ... will would delete all the previously set commands in the group DlangAutoCmd
-" --------------------------------------------
-
-" Predefined dfmt:
 augroup DlangAutoCmd
+	" Note: au! ... will would delete all the previously set commands in the group DlangAutoCmd
 	au!
-	au FileType d command! -nargs=* Dfmt :silent !dfmt %:p -i --indent_style=tab --indent_size=2 --max_line_length=100 --brace_style=stroustrup --space_after_cast=false  <f-args>
+	" ============================================
+	" DFMT:
+	" --------------------------------------------
+	" Predefined dfmt:
+	if executable('dfmt')
+		au FileType d command! -nargs=* Dfmt :silent !dfmt %:p -i --indent_style=tab --indent_size=2 --max_line_length=100 --brace_style=stroustrup --space_after_cast=false  <f-args>
 
-	" Customizable dfmt (set your own options):
-	au FileType d command! -nargs=* DfmtC :silent !dfmt -i <f-args> %:p
-	" autocmd MyAutoCmd FileType d nnoremap <silent><buffer> <c-d>f :Dfmt<cr>
+		" Customizable dfmt (set your own options):
+		au FileType d command! -nargs=* DfmtC :silent !dfmt -i <f-args> %:p
+		" autocmd MyAutoCmd FileType d nnoremap <silent><buffer> <c-d>f :Dfmt<cr>
+	endif
 
 	" ============================================
 	" DFIX:
 	" --------------------------------------------
-	au  FileType d command! Dfix :silent !dfix %:p
+	if executable('dfix')
+		au  FileType d command! Dfix :silent !dfix %:p
+	endif
 
 	" ============================================
 	" Misc:
 	" --------------------------------------------
+
 	au FileType d  command! OpenDmdConf :e /etc/dmd.conf
 
 augroup END
