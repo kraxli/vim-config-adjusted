@@ -1,3 +1,4 @@
+---
 # My personal PLUGINS
 # ==========================================
 
@@ -46,7 +47,8 @@
 - repo: dbakker/vim-projectroot
   if: ! exists("g:gui_oni")
   hook_add: |
-    let g:rootmarkers = ['.git', 'dub.json', 'dub.sdl', 'index.md', 'index.wiki','.projectroot', '.svn']
+    let g:rootmarkers = ['.git', 'dub.json', 'dub.sdl', 'index.md', \
+      'index.wiki', '.projectroot', '.svn']
 
 # or moll / vim-bbye
 - repo: qpkorr/vim-bufkill
@@ -61,7 +63,6 @@
 
 - repo: tomasiser/vim-code-dark
 - repo: NLKNguyen/papercolor-theme
-
 
 - repo: sjl/gundo.vim
   on_cmd: [GundoHide, GundoRenderGraph, GundoShow, GundoToggle]
@@ -81,7 +82,8 @@
 
 # TODO inspect
 # - repo: pelodelfuego/vim-swoop
-#   on_func: [Swoop, SwoopSelection, SwoopMulti, SwoopMultiSelection, SwoopPattern, SwoopMultiPattern]
+#   on_func: [Swoop, SwoopSelection, SwoopMulti, SwoopMultiSelection, \
+#     SwoopPattern, SwoopMultiPattern]
 #   hook_add: |
 #     let g:swoopUseDefaultKeyMap = 0
 #     let g:swoopIgnoreCase = 1
@@ -154,17 +156,17 @@
 # bsed/vim-dlang
 # AndreaOrru/vim-dlang-autofold-unittest
 # (jethrovt/oss-vim-dlang-autofold-unittests )
-
+# if: ! exists('g:gui_oni')
 
 - repo: idanarye/vim-dutyl
-  if: ! exists('g:gui_oni')
-  on_ft: d
+  on_ft: [d]
+  on_cmd: [DUDCDrestartServer, DUjump, DUddoc, DUexecute, DUupdateCTags]
   hook_add: |
     let g:dmisc_dcd_bin_dir='/home/dave/.dutils/dcd/bin/'
-    let g:dutyl_neverAddClosingParen=1
+    let g:dutyl_neverAddClosingParen = 1
     let g:dutyl_dontHandleIndent = 1
-  hook_source: |
-    autocmd MyAutoCmd BufRead,BufEnter *.d DUDCDrestartServer
+  hook_post_source: |
+    autocmd! BufRead,BufEnter,BufNewFile *.d DUDCDrestartServer
 
 # let g:dutyl_dontHandleFormat = 1
 # hook_post_source: |
@@ -175,8 +177,9 @@
 
 - repo: kraxli/nvim-py-minimal
   on_ft: [py, python]
-  hook_add: let g:minpy_default_keys = 1
-  hook_add: let g:minpy_color_column = 1
+  hook_add: |
+    let g:minpy_default_keys = 1
+    let g:minpy_color_column = 1
   hook_source: |
     au TermOpen * let g:last_ipy_terminal_job_id = b:terminal_job_id
 
@@ -198,7 +201,8 @@
 #     let test#strategy = "neovim"
 #     let test#python#runner = "pytest"
 
-# # Runners available are 'pytest', 'nose', 'nose2', 'djangotest', 'djangonose' and Python's built-in 'unittest'
+# # Runners available are 'pytest', 'nose', 'nose2', 'djangotest',
+# 'djangonose' and Python's built-in 'unittest'
 # # or let test#strategy = 'neomake'
 
 # https://medium.freecodecamp.org/turning-vim-into-an-r-ide-cd9602e8c217
@@ -305,17 +309,15 @@
   on_ft: [vimwiki]
 
 - repo: rafi/vim-denite-task
-  on_source: denite.nvim
+  on_cmd: [Tw]
   hook_source: |
     call denite#custom#var('task', 'taskrc', '~/.taskrc')
     call denite#custom#var('task', 'data_dir', '~/.task')
     call denite#custom#var('task', 'date_format', '%y-%m-%d %H:%M')
-    call denite#custom#var('task', 'format', '{id:3.3} | {priority:1.1} | {project:15.15} | {description:40.40} | {entry} | {due}')
-    call denite#custom#var('task', 'label_width', 17)
-    call denite#custom#var('task', 'formats', {
-      \     'format': '{id:3.3} | {priority:1.1} | {project:15.15} | {description}',
-      \ })
-  hook_add:
+    call denite#custom#var('task', 'format', '{id:3.3} | {priority:1.1} |
+      {project:15.15} | {description:40.40} | {entry} | {due}')
+    call denite#custom#var('task', 'label_width', '17')
+  hook_add: |
     command! -nargs=* Tw :NeomakeSh task <args>
 
 # dway: vim-config-adjusted
@@ -402,8 +404,6 @@
     \ }
 
 
-
-
 # https://8thlight.com/blog/chris-jordan/2016/06/13/running-tests-in-vim.html
 # pytest config of blueyed: https://github.com/neomake/neomake/issues/1138
 # - repo: janko-m/vim-test
@@ -465,7 +465,8 @@
 #     vnoremap <silent> ; :<c-u>LeaderGuideVisual ';'<CR>
 #   hook_post_source: |
 #     let g:leaderGuide_max_size = 5
-#     let g:leaderGuide_submode_mappings = { '<C-F>': 'page_down', '<C-B>': 'page_up'}
+#     let g:leaderGuide_submode_mappings = \
+#     { '<C-F>': 'page_down', '<C-B>': 'page_up'}
 #     call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
 #     call leaderGuide#register_prefix_descriptions(";", "g:llmap")
 

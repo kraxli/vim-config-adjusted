@@ -45,7 +45,10 @@ command! CopyBufferName :let @+ = expand("%:p")
 command! -nargs=* Git :!git <args>
 
 " dein plugin manager
-command! DeinClean :call map(dein#check_clean(), "delete(v:val, 'rf')")
+command! DeinClean
+    \ :call map(dein#check_clean(), "delete(v:val, 'rf')") |
+    \ :call dein#recache_runtimepath()
+
 command! DeinUpdate :call dein#update() " update and install
 command! DeinRecache :call dein#recache_runtimepath()
 command! DeinInstall :call dein#install()
@@ -70,8 +73,8 @@ command! -nargs=+ GcommitThis :NeomakeSh git commit -m <q-args> %
 command! GaddThis :NeomakeSh git add %
 
 " profiling / debuggin vim
-command! -nargs=* ProfilerStart :call dway#debug#profiler_start(<q-args>) 
-command! ProfilerStop :call dway#debug#profiler_stop() 
+command! -nargs=* ProfilerStart :call dway#debug#profiler_start(<q-args>)
+command! ProfilerStop :call dway#debug#profiler_stop()
 
 
 " vim: foldmethod=marker:
