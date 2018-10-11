@@ -5,6 +5,9 @@ if ! exists('g:gui_oni')
 	" call dutyl#register#tool('dcd-client', g:dmisc_dcd_bin_dir.'dcd-client')
 	" call dutyl#register#tool('dcd-server', g:dmisc_dcd_bin_dir.'dcd-server')
 	" autocmd MyAutoCmd BufRead,BufEnter *.d DUDCDrestartServer
+	
+  let g:dutyl_stdImportPaths=['/snap/dmd/current/import/druntime', '/snap/dmd/31/import/phobos']
+
 endif
 
 augroup DlangAutoCmd
@@ -33,6 +36,12 @@ augroup DlangAutoCmd
 	" Misc:
 	" --------------------------------------------
 
-	au FileType d  command! OpenDmdConf :e /etc/dmd.conf
+	au FileType d command! OpenDmdConf :e ~/dmd.conf
+	" ['/snap/dmd/current/import/druntime', '/snap/dmd/31/import/phobos']
+	au FileType d command! ExPhobos :V  /snap/dmd/31/import/phobos
+	au FileType d command! ExRuntime :V  /snap/dmd/current/import/druntime
+	au FileType d command! OpenPhobos :ExPhobos<cr>
+	au FileType d command! OpenRuntime :ExRuntime<cr>
+
 
 augroup END
