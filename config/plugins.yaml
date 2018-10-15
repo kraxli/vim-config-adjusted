@@ -273,14 +273,13 @@
 - repo: vimwiki/vimwiki
   if: empty($VIM_MINIMAL)
   on_map: { n: <Plug> }
-  on_cmd: Vimwiki
+  on_cmd: [Vimwiki, VimwikiTabIndex, ToDo]
   hook_add: |
     let g:vimwiki_use_calendar = 1
     let g:vimwiki_hl_headers = 1
     let g:vimwiki_hl_cb_checked = 1
     let g:vimwiki_autowriteall = 0
     let g:vimwiki_global_ext = 0
-    command! Tasks :e ~/Dropbox/tasks/Tasks.wiki
     au! BufRead,BufEnter *.wiki setl filetype=vimwiki
   hook_source: |
     let g:vimwiki_list = [

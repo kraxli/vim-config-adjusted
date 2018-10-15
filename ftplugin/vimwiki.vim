@@ -3,6 +3,10 @@
  au! FileType vimwiki setlocal spell spelllang=en,de
  au! FileType vimwiki setlocal foldlevel=0
 
+command! Tasks :e ~/Dropbox/tasks/Tasks.wiki
+command! ToDo :e ~/Dropbox/PKD/vimwiki/ToDo.wiki
+command! Vimwiki2Markdown :silent call Vimwiki2Markdown()<cr>
+
 nnoremap <silent> <c-space> :call dway#markdown#SwitchStatus()<cr>
 
 function! Vimwiki2Markdown()
@@ -13,7 +17,6 @@ function! Vimwiki2Markdown()
 	execute 'silent %s/^==== \([a-zA-ZöüäÖÜÄ:0-9 /-]\)/#### \1'
 endfunction
 
-command! Vimwiki2Markdown :silent call Vimwiki2Markdown()<cr>
 
 " <!-- http://docs.mathjax.org/en/latest/configuration.html -->>
 
