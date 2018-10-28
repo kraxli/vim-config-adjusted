@@ -381,5 +381,16 @@ if dein#tap('vim-dutyl')
   augroup END
 endif
 
+if dein#tap('nvim-py-minimal')
+	au FileType python map  <leader>bp <Plug>SetBreakPoint
+	au FileType python map  <leader>Bp <Plug>SetBreakPointBelow
+	nnoremap <leader>bd :call minpy#DelBreakPoints() " DelBreakPoints
+	au TermOpen * nmap <buffer> gt <Plug>GoToDebugLine
+	au FileType python map <F5> <Plug>Ipdb
+	autocmd Filetype python nmap <silent> <c-e> "+yy :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+	autocmd Filetype python vmap <silent> <c-e> "+y :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+	autocmd Filetype python nnoremap <silent> <c-e><c-e> :%y+<cr> :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+endif
+
 
 " vim: set ts=2 sw=2 tw=80 noet :
