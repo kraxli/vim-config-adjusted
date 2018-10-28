@@ -106,12 +106,14 @@
 - {repo: skywind3000/asyncrun.vim, on_cmd: AsyncRun}
 
 # - repo: kraxli/iron.nvim
-- repo: BurningEther/iron.nvim
-  on_ft: [python]
+# - repo: BurningEther/iron.nvim
+- repo: Vigemus/iron.nvim
+  on_ft: [python, py]
   hook_add: |
-    let g:iron_repl_open_cmd='split'
+    let g:iron_repl_open_cmd='vsplit'
     let g:iron_map_defaults=1
-  on_cmd: [IronRepl, IronPromptRepl, IronPromptCommand]
+
+#  on_cmd: [IronPy, IronRepl, IronPromptRepl, IronPromptCommand]
 
 # =======================================================
 # Completion
@@ -324,12 +326,12 @@
 # - repo: xolox/vim-notes
 #   on_cmd: Note
 
-# - repo: kraxli/vimwiki-task
-#   on_ft: [vimwiki]
-#   hook_add: let g:vimwiki_folding = 'custom'
-#   hook_source: |
-#     setlocal spell spelllang=en,de
-#   hook_post_source: source $VIMPATH/config_dw_after/plugins/vimwiki.vim
+- repo: kraxli/vimwiki-task
+  on_ft: [vimwiki]
+  hook_add: let g:vimwiki_folding = 'custom'
+  hook_source: |
+    setlocal spell spelllang=en,de
+  hook_post_source: source $VIMPATH/config_dw_after/plugins/vimwiki.vim
 
 # =======================================================
 # Text processing / editing
