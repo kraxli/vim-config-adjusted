@@ -20,12 +20,16 @@ imap ;fn <c-r>=expand('%:t:r')<cr>
 
 " go back (to last position)
 nnoremap gb <c-o>  " <c-;>
-" go to previous/forward
-nnoremap gp <c-i>
+" go to next/forward
+nnoremap gn <c-i>
 if has('gui')
-   noremap <C-BS> <c-o>
-   noremap <S-C-BS> <c-i>
+  noremap <C-BS> <c-o>
+  noremap <S-C-BS> <c-i>
 endif
+
+" indent
+nmap <c-i> :call dway#base#IndentFile()<cr>
+vmap <c-i> =
 
 " jump to quickfix or location list/window
 nmap <script> <silent> <leader>cc :call dway#misc#ToggleQuickFix()<CR>
@@ -37,7 +41,7 @@ nmap <script> <silent> <leader>ll :call dway#misc#ToggleLocationList()<CR>
 " " nnoremap <leader><space> :cclose<cr>
 " nnoremap <space>l :lopen<cr>
 
- " open and colose (new) tab
+" open and colose (new) tab
 map <leader>nt :tabnew<cr>
 map <leader>ct :tabclose<cr>
 
@@ -71,9 +75,9 @@ nnoremap <F10> :setlocal foldexpr=(getline(v:lnum)!~@/) foldmethod=expr<CR><Bar>
 " TODO: restore original foldmethod (hack: simply by reloading file with ":e" )
 
 if has('gui')
-   nnoremap <s-F10> :setlocal foldexpr=(getline(v:lnum)=~@/) foldmethod=expr<CR><Bar>zM
+  nnoremap <s-F10> :setlocal foldexpr=(getline(v:lnum)=~@/) foldmethod=expr<CR><Bar>zM
 else
-   nnoremap z<F10> :setlocal foldexpr=(getline(v:lnum)=~@/) foldmethod=expr<CR><Bar>zM
+  nnoremap z<F10> :setlocal foldexpr=(getline(v:lnum)=~@/) foldmethod=expr<CR><Bar>zM
 endif
 
 " fold by search
@@ -145,7 +149,7 @@ nnoremap <C-E> ,
 
 "" Make the current file executable
 if has("unix")
- " :w<cr>:!external_command -> send :w (current line / mark) to external command
+  " :w<cr>:!external_command -> send :w (current line / mark) to external command
   nmap <leader>x :w<cr>:!chmod 755 %<cr>:e<cr>
 endif
 
@@ -308,34 +312,34 @@ augroup END
 " TERMINAL Mappings for Neovim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('nvim')
-   " To map <Esc> to exit terminal-mode: >
-   tnoremap <Esc> <C-\><C-n>
+  " To map <Esc> to exit terminal-mode: >
+  tnoremap <Esc> <C-\><C-n>
 
-   " To simulate |i_CTRL-R| in terminal-mode: >
-   tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+  " To simulate |i_CTRL-R| in terminal-mode: >
+  tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
-   " To use `ALT+{h,j,k,l}` to navigate windows from any mode: >
-   tnoremap <c-left> <esc><C-\><C-N><C-w>h
-   tnoremap <c-down> <esc><C-\><C-N><C-w>j
-   tnoremap <c-up> <esc><C-\><C-N><C-w>k
-   tnoremap <c-right> <esc><C-\><C-N><C-w>l
-   " inoremap <A-h> <C-\><C-N><C-w>h
-   " inoremap <A-j> <C-\><C-N><C-w>j
-   " inoremap <A-k> <C-\><C-N><C-w>k
-   " inoremap <A-l> <C-\><C-N><C-w>l
-   " nnoremap <A-h> <C-w>h
-   " nnoremap <A-j> <C-w>j
-   " nnoremap <A-k> <C-w>k
-   " nnoremap <A-l> <C-w>l
+  " To use `ALT+{h,j,k,l}` to navigate windows from any mode: >
+  tnoremap <c-left> <esc><C-\><C-N><C-w>h
+  tnoremap <c-down> <esc><C-\><C-N><C-w>j
+  tnoremap <c-up> <esc><C-\><C-N><C-w>k
+  tnoremap <c-right> <esc><C-\><C-N><C-w>l
+  " inoremap <A-h> <C-\><C-N><C-w>h
+  " inoremap <A-j> <C-\><C-N><C-w>j
+  " inoremap <A-k> <C-\><C-N><C-w>k
+  " inoremap <A-l> <C-\><C-N><C-w>l
+  " nnoremap <A-h> <C-w>h
+  " nnoremap <A-j> <C-w>j
+  " nnoremap <A-k> <C-w>k
+  " nnoremap <A-l> <C-w>l
 
-   augroup Terminal
-      au!
-      " au TermOpen * nmap <buffer> gf :call dway#term#term_gf()<cr>
-      au TermOpen * nmap <buffer> <cr> :call dway#term#term_gf()<cr>
-      " au TermOpen * tnoremap <buffer> gt :call dway#term#term_gf_tabnew()<cr>
-      au TermOpen * nmap <buffer> gt :call dway#term#term_gf_tabnew()<cr>
-      au TermOpen * nmap <buffer> <c-cr> :call dway#term#term_gf_tabnew()<cr>
-   augroup END
+  augroup Terminal
+    au!
+    " au TermOpen * nmap <buffer> gf :call dway#term#term_gf()<cr>
+    au TermOpen * nmap <buffer> <cr> :call dway#term#term_gf()<cr>
+    " au TermOpen * tnoremap <buffer> gt :call dway#term#term_gf_tabnew()<cr>
+    au TermOpen * nmap <buffer> gt :call dway#term#term_gf_tabnew()<cr>
+    au TermOpen * nmap <buffer> <c-cr> :call dway#term#term_gf_tabnew()<cr>
+  augroup END
 endif
 
 

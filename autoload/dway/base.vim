@@ -22,3 +22,11 @@ catch
 endtry
 endfunction
 
+function! dway#base#IndentFile()
+  " get line
+  let line = line('.')
+  let col = virtcol('.')
+  execute "normal! gg=G"
+  " execute ":".line
+  call cursor(line, col)
+endfunction
