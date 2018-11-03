@@ -48,12 +48,12 @@ if dein#tap('denite.nvim')
 		let @s = temp
 	endfunction "}}}
 
-" kraxli:
-" search This file
-command! -nargs=1 GrepBuffer :vimgrep <q-args> % | :Denite quickfix -buffer-name=list<CR>
-command! -nargs=1 GrepFile :GrepBuffer <args>
-nmap <leader>gt :GrepBuffer<space>
-nmap <leader>gf :GrepBuffer<space>
+	" kraxli:
+	" search This file
+	command! -nargs=1 GrepBuffer :vimgrep <q-args> % | :Denite quickfix -buffer-name=list<CR>
+	command! -nargs=1 GrepFile :GrepBuffer <args>
+	nmap <leader>gt :GrepBuffer<space>
+	nmap <leader>gf :GrepBuffer<space>
 
 
 endif
@@ -137,7 +137,7 @@ if dein#tap('indentLine')
 elseif dein#tap('vim-indent-guides')
 	nmap <silent><Leader>ti :<C-u>IndentGuidesToggle<CR>
 endif
- 
+
 if dein#tap('vim-edgemotion')
 	map gj <Plug>(edgemotion-j)
 	map gk <Plug>(edgemotion-k)
@@ -198,7 +198,7 @@ endif
 if dein#tap('vimwiki')
 	nnoremap <silent> <Leader>W :<C-u>VimwikiIndex<CR>
 	nnoremap <silent> ;ww :<C-u>VimwikiIndex<CR>
-  nnoremap <silent> ;wt :<C-u>VimwikiTabIndex<cr>
+	nnoremap <silent> ;wt :<C-u>VimwikiTabIndex<cr>
 endif
 
 if dein#tap('vim-choosewin')
@@ -365,20 +365,20 @@ endif
 
 " kraxli
 if dein#tap('nvim-R')
-  augroup RCmd
-    au!
-    au FileType R command! RStart :call StartR("R")
-    au FileType R command! RCustomStart :call StartR("custom")
-  augroup END
+	augroup RCmd
+		au!
+		au FileType R command! RStart :call StartR("R")
+		au FileType R command! RCustomStart :call StartR("custom")
+	augroup END
 endif
 
 if dein#tap('vim-dutyl')
-  augroup DMaps
-    au!
-    au Filetype d nmap <silent> K :DUddoc<cr>
-    au Filetype d nmap <silent> <c-k> :DUddoc<cr>
-    " <silent> gd :DUjump
-  augroup END
+	augroup DMaps
+		au!
+		au Filetype d nmap <silent> K :DUddoc<cr>
+		au Filetype d nmap <silent> <c-k> :DUddoc<cr>
+		" <silent> gd :DUjump
+	augroup END
 endif
 
 if dein#tap('nvim-py-minimal')
@@ -387,10 +387,27 @@ if dein#tap('nvim-py-minimal')
 	nnoremap <leader>bd :call minpy#DelBreakPoints() " DelBreakPoints
 	au TermOpen * nmap <buffer> gt <Plug>GoToDebugLine
 	au FileType python map <F5> <Plug>Ipdb
-	autocmd Filetype python nmap <silent> <c-e> "+yy :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
-	autocmd Filetype python vmap <silent> <c-e> "+y :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
-	autocmd Filetype python nnoremap <silent> <c-e><c-e> :%y+<cr> :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+
+	autocmd Filetype python nnoremap <silent> ef :%y+<cr> :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
 endif
+
+
+if dein#tap('iron.nvim')
+	nmap <silent> <c-e> :call IronSend(getline('.'))<cr>
+	vmap <c-e> <Plug>(iron-send-motion)<cr>
+
+	nmap <silent> el :call IronSend(getline('.'))<cr>
+	vmap el <Plug>(iron-send-motion)<cr>
+	" vmap el :call IronSendMotion('visual')<cr>
+endif
+
+if dein#tap('LanguageClient-neovim')
+	nnoremap <c-m> :call LanguageClient_contextMenu()<CR>
+	nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+	nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+	nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+endif
+
 
 
 " vim: set ts=2 sw=2 tw=80 noet :

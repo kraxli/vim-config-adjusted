@@ -5,3 +5,4 @@ nmap <silent> <m-Down> :wincmd j<CR>
 nmap <silent> <m-Left> :wincmd h<CR>
 nmap <silent> <m-Right> :wincmd l<CR>
 
+nmap <silent> <c-space> :call dway#markdown#SwitchStatus()<cr>

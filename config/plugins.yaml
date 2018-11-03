@@ -296,8 +296,9 @@
       \     'syntax': 'markdown',
       \     'ext': '.wiki' },
       \ ]
+  hook_post_source: |
+    nmap <silent> <c-space> :call dway#markdown#SwitchStatus()<cr>
 
-# hook_post_source: |
 # au FileType vimwiki set filetype=markdown
 
 # ==========================================
@@ -375,13 +376,13 @@
 - { repo: Shougo/neco-syntax, on_source: [ neocomplete.vim, deoplete.nvim ]}
 
 - repo: davidhalter/jedi-vim
-  if: empty($VIM_MINIMAL) && ! exists('g:gui_oni')
+  if: ! exists('g:gui_oni') && empty($VIM_MINIMAL)
   on_ft: python
   hook_add: |
     let g:jedi#completions_enabled = 0
     let g:jedi#auto_vim_configuration = 0
     let g:jedi#smart_auto_mappings = 0
-    let g:jedi#show_call_signatures = 1
+    let g:jedi#show_call_signatures = 2
   hook_source: |
     let g:jedi#use_tag_stack = 0
     let g:jedi#popup_select_first = 0

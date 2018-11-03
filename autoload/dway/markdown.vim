@@ -3,6 +3,9 @@
 " credit/source: https://github.com/gabrielelana/vim-markdown/blob/23e7da1a1266c40fa0d285437c310944a39f573d/autoload/markdown.vim
 function! dway#markdown#SwitchStatus()
   let current_line = getline('.')
+  if match(current_line, '^\S*') >= 0
+    call setline('.', substitute(current_line, '^\S*', '\1 *', ''))
+  endif
   if match(current_line, '^\s*[*\-+] \[ \]') >= 0
     call setline('.', substitute(current_line, '^\(\s*[*\-+]\) \[ \]', '\1 [x]', ''))
     return
