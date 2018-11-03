@@ -393,19 +393,24 @@ endif
 
 
 if dein#tap('iron.nvim')
-	nmap <silent> <c-e> :call IronSend(getline('.'))<cr>
-	vmap <c-e> <Plug>(iron-send-motion)<cr>
+	nmap <c-e> :call IronSend(getline('.'))<cr>
+	xmap <c-e> :call IronSendMotion('visual')<cr>
+	vmap <c-e> :call IronSendMotion('visual')<cr>
 
-	nmap <silent> el :call IronSend(getline('.'))<cr>
-	vmap el <Plug>(iron-send-motion)<cr>
-	" vmap el :call IronSendMotion('visual')<cr>
+	nmap ex :call IronSend(getline('.'))<cr>
+	xmap ex :call IronSendMotion('visual')<cr>
+	vmap ex :call IronSendMotion('visual')<cr>
 endif
+
+" xmap xe <Plug>(iron-send-motion)<cr>
+" nmap <silent> <c-e> :call IronSend(getline('.'))<cr>
 
 if dein#tap('LanguageClient-neovim')
 	nnoremap <c-m> :call LanguageClient_contextMenu()<CR>
 	nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 	nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 	nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+	nnoremap gb <c-o>
 endif
 
 

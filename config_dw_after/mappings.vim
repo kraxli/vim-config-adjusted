@@ -19,7 +19,7 @@ imap ;fn <c-r>=expand('%:t:r')<cr>
 " map <C-m> ]c
 
 " go back (to last position)
-nnoremap gb <c-o>  " <c-;>
+nnoremap gb <c-o> " <c-;>
 " go to next/forward
 nnoremap gn <c-i>
 if has('gui')

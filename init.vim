@@ -65,4 +65,6 @@ nmap <leader>b :call dway#misc#ToggleBgCs('codedark', 'PaperColor')<cr>
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 " set guicursor=
+
+let g:go_version_warning = 0
 " vim: set foldmethod=marker
