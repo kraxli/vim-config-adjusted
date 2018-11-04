@@ -48,7 +48,6 @@
                                          \ firefox '%u#%f' &"
 
 - repo: dbakker/vim-projectroot
-  if: ! exists("g:gui_oni")
   hook_add: |
     let g:rootmarkers = ['.git', 'dub.json', 'dub.sdl', 'index.md', \
       'index.wiki', '.projectroot', '.svn']
@@ -188,7 +187,6 @@
     au TermOpen * let g:last_ipy_terminal_job_id = b:terminal_job_id
 
 - repo: python-rope/ropevim
-  if: ! exists('g:gui_oni')
   hook_add: |
     let ropevim_vim_completion = 0
   on_ft: python
@@ -370,25 +368,19 @@
 
 # https://fortes.com/2017/language-server-neovim/
 # - repo: SpaceVim/LanguageClient-neovim
-- repo: autozimu/LanguageClient-neovim
-  build: bash install.sh
-  on_ft: [python, d]
-  rev: next
-  hook_source: |
-    let g:LanguageClient_autoStart = 1
-    let g:LanguageClient_serverCommands = {}
-    nnoremap  <leader>ld :call LanguageClient_textDocument_definition()<cr>
-    nnoremap  <leader>lh :call LanguageClient_textDocument_hover()<cr>
-    nnoremap  <leader>lr :call LanguageClient_textDocument_rename()<cr>
-    let g:LanguageClient_serverCommands = {
-    \ 'd': ['serve-d'],
-    \ }
-    let g:LanguageClient_serverCommands.python = ['pyls']
-  hook_add: |
-    set hidden
-    set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+# - repo: autozimu/LanguageClient-neovim
+#   hook_source: |
+#     set hidden
+#     let g:LanguageClient_autoStart = 1
+#     let g:LanguageClient_serverCommands = {
+#     \ 'd': ['serve-d'],
+#     \ }
+#   hook_add: |
+#     set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 
-# for completion: roxma/nvim-completion-manager
+# let g:LanguageClient_serverCommands.python = ['pyls']
+#  build: bash install.sh
+#  rev: next
 
 # =======================================================
 # Plugins not yet used
