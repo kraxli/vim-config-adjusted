@@ -6,6 +6,7 @@
 # -------
 - repo: Shougo/dein.vim
   rev: tags/1.5
+
 - repo: rafi/awesome-vim-colorschemes
 - repo: rafi/vim-badge
 - repo: thinca/vim-localrc
