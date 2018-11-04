@@ -385,22 +385,30 @@ if dein#tap('nvim-py-minimal')
 	au FileType python map  <leader>bp <Plug>SetBreakPoint
 	au FileType python map  <leader>Bp <Plug>SetBreakPointBelow
 	nnoremap <leader>bd :call minpy#DelBreakPoints() " DelBreakPoints
-	au TermOpen * nmap <buffer> gt <Plug>GoToDebugLine
-	au FileType python map <F5> <Plug>Ipdb
+	au TermOpen * nmap <buffer> gt <Plug>GoToDebugLine<cr>
+	au FileType python map <F5> <Plug>Ipdb<cr>
 
 	autocmd Filetype python nnoremap <silent> ef :%y+<cr> :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+	autocmd Filetype python nmap <silent> ex "+yy :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+	autocmd Filetype python vmap <silent> ex "+y :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+	autocmd Filetype python nmap <silent> <c-e> "+yy :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+	autocmd Filetype python vmap <silent> <c-e> "+y :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+
+	" nmap <c-e>: <Plug>PySendLine2Repl<cr>
+	" xmap <c-e>: <Plug>PySendSelection2Repl<cr>
+	" nmap eF : <Plug>PySendFile2Repl<cr>
 endif
 
 
-if dein#tap('iron.nvim')
-	nmap <c-e> :call IronSend(getline('.'))<cr>
-	xmap <c-e> :call IronSendMotion('visual')<cr>
-	vmap <c-e> :call IronSendMotion('visual')<cr>
+" if dein#tap('iron.nvim')
+" 	nmap <c-e> :call IronSend(getline('.'))<cr>
+" 	xmap <c-e> :call IronSendMotion('visual')<cr>
+" 	vmap <c-e> :call IronSendMotion('visual')<cr>
 
-	nmap ex :call IronSend(getline('.'))<cr>
-	xmap ex :call IronSendMotion('visual')<cr>
-	vmap ex :call IronSendMotion('visual')<cr>
-endif
+" 	nmap ex :call IronSend(getline('.'))<cr>
+" 	xmap ex :call IronSendMotion('visual')<cr>
+" 	vmap ex :call IronSendMotion('visual')<cr>
+" endif
 
 " xmap xe <Plug>(iron-send-motion)<cr>
 " nmap <silent> <c-e> :call IronSend(getline('.'))<cr>

@@ -108,13 +108,12 @@
 # TODO delete asyncrun as soon neomakesh works for python
 - {repo: skywind3000/asyncrun.vim, on_cmd: AsyncRun}
 
-# - repo: kraxli/iron.nvim
 # - repo: Vigemus/iron.nvim
-- repo: BurningEther/iron.nvim
-  on_ft: [python, py]
-  hook_add: |
-    let g:iron_repl_open_cmd='vsplit'
-    let g:iron_map_defaults=1
+# - repo: BurningEther/iron.nvim
+#   on_ft: [python, py]
+#   hook_add: |
+#     let g:iron_repl_open_cmd='vsplit'
+#     let g:iron_map_defaults=1
 
 #  on_cmd: [IronPy, IronRepl, IronPromptRepl, IronPromptCommand]
 
