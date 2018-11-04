@@ -63,6 +63,8 @@ colorscheme codedark
 command! BgToggle :<silent> call dway#misc#ToggleBgCs('codedark', 'PaperColor')<cr>
 nmap <leader>b :call dway#misc#ToggleBgCs('codedark', 'PaperColor')<cr>
 
+command! Todo :e ~/Dropbox/PKD/vimwiki/ToDo.wiki<cr>
+
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 " set guicursor=
 
