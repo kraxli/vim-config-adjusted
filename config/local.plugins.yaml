@@ -18,6 +18,7 @@
 - repo: Shougo/unite.vim
 # - { repo: Shougo/unite.vim, on_source: [vimfiler, unite-bibtex] }
 - repo: Shougo/vimfiler.vim
+  rev: tags/ver.4.2
   depends: Shougo/unite.vim
 
 # (Optional) Showing function signature and inline doc.
