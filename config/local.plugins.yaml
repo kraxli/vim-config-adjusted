@@ -368,20 +368,21 @@
   on_ft: [tex, latex, txt, text, pdc, pandoc, md, markdown, wiki, vimwiki]
 
 # https://fortes.com/2017/language-server-neovim/
-# - repo: SpaceVim/LanguageClient-neovim
+## - repo: SpaceVim/LanguageClient-neovim
 # - repo: autozimu/LanguageClient-neovim
+#   build: bash install.sh
+#   rev: next
+#   on_ft: [d]
 #   hook_source: |
 #     set hidden
 #     let g:LanguageClient_autoStart = 1
 #     let g:LanguageClient_serverCommands = {
 #     \ 'd': ['serve-d'],
+#     \ 'python': ['pyls']
 #     \ }
+#     let g:LanguageClient_serverCommands.python3 = ['/home/dave/.local/bin/pyls']
 #   hook_add: |
 #     set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-
-# let g:LanguageClient_serverCommands.python = ['pyls']
-#  build: bash install.sh
-#  rev: next
 
 # =======================================================
 # Plugins not yet used

@@ -41,9 +41,10 @@ call deoplete#custom#source('_', 'min_pattern_length', 2)
 " Limit Sources " {{{
 " ---
 
-call deoplete#custom#source('LanguageClient',
-            \ 'min_pattern_length',
-            \ 2)
+" LanguageClient:
+" call deoplete#custom#source('LanguageClient',
+"             \ 'min_pattern_length',
+"             \ 2)
 
 " =======================================================
 " TODO: completion for R
