@@ -4,9 +4,27 @@
 imap jj <esc>
 
 " =======================================================
-" {{{ Window
+" {{{ Window and tabs
 " --------
 nnoremap <c-w>< <c-w>5<
+
+" open and colose (new) tab
+map <leader>nt :tabnew<cr>
+map <leader>ct :tabclose<cr>
+
+" move split windows right / left
+noremap <s-m-Right> <esc><c-w>r
+map <silent> <s-m-Left> <esc><c-w>r
+
+" move between split windows
+map <silent> <c-Up> :wincmd k<CR>
+map <silent> <c-Down> :wincmd j<CR>
+map <silent> <c-Left> :wincmd h<CR>
+map <silent> <c-Right> :wincmd l<CR>
+
+" move beween tabs
+nmap <silent> <c-PageUp> :tabprevious<cr>
+nmap <silent> <c-PageDown> :tabnext<cr>
 
 " }}}
 
@@ -41,9 +59,6 @@ nmap <script> <silent> <leader>ll :call dway#misc#ToggleLocationList()<CR>
 " " nnoremap <leader><space> :cclose<cr>
 " nnoremap <space>l :lopen<cr>
 
-" open and colose (new) tab
-map <leader>nt :tabnew<cr>
-map <leader>ct :tabclose<cr>
 
 " change directory to the one of the current file
 map <leader>cd :lcd %:p:h<cr>
@@ -197,18 +212,6 @@ if dein#tap('vimwiki')
   " nunmap <m-left>
   " unmap <m-Right>
 endif
-
-" move between split windows
-noremap <s-m-Right> <esc><c-w>r
-map <silent> <s-m-Left> <esc><c-w>r
-map <silent> <m-Up> :wincmd k<CR>
-map <silent> <m-Down> :wincmd j<CR>
-map <silent> <m-Left> :wincmd h<CR>
-map <silent> <m-Right> :wincmd l<CR>
-
-nmap <silent> <c-Left> :tabprevious<cr>
-nmap <silent> <c-Right> :tabnext<cr>
-
 
 " Lower / Upper Case, Inital Upper Case And Toggle Case:
 vnoremap ~ y:call setreg('', dway#misc#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
