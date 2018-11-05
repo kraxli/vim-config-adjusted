@@ -14,7 +14,11 @@ map <leader>ct :tabclose<cr>
 
 " move split windows right / left
 noremap <s-m-Right> <esc><c-w>r
-map <silent> <s-m-Left> <esc><c-w>r
+noremap <silent> <s-m-Left> <esc><c-w>r
+nmap <silent> <m-Down> :hide<cr>
+nmap  <silent> q :hide<cr> " qq ??
+nmap <silent> <m-Up> :only<cr> " <c-w>o
+nmap <silent> <m-Right> :vsp\|bp<cr>
 
 " move between split windows
 map <silent> <c-Up> :wincmd k<CR>
@@ -25,6 +29,10 @@ map <silent> <c-Right> :wincmd l<CR>
 " move beween tabs
 nmap <silent> <c-PageUp> :tabprevious<cr>
 nmap <silent> <c-PageDown> :tabnext<cr>
+
+" close buffers
+noremap <silent> Qq :q!
+noremap <silent> Qa :qa!
 
 " }}}
 
@@ -152,12 +160,6 @@ map! <S-Insert> <MiddleMouse>
 nmap <silent> <leader>u0 :t.\|s/./=/g\|:nohls<cr>
 " Underline the current line with '-'
 nmap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
-
-"" Use the bufkill plugin to eliminate a buffer but keep the window layout
-nnoremap db :BD<cr>
-nmap <leader>bd :BD<cr>
-" kill buffer from buff kill plugin
-nmap <localleader>k :BK<cr>
 
 "" Use CTRL-E to replace the original ',' mapping
 nnoremap <C-E> ,
