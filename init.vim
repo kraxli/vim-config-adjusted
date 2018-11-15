@@ -62,6 +62,7 @@ execute 'source '."~/Dropbox/ActiveHome/.settings/quickfiles.vim"
 colorscheme codedark
 command! BgToggle :<silent> call dway#misc#ToggleBgCs('codedark', 'PaperColor')<cr>
 nmap <leader>b :call dway#misc#ToggleBgCs('codedark', 'PaperColor')<cr>
+nmap gx :Open<cr>
 
 command! Todo :e ~/Dropbox/PKD/vimwiki/ToDo.wiki<cr>
 
