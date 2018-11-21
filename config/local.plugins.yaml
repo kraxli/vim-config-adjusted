@@ -108,8 +108,8 @@
 # TODO delete asyncrun as soon neomakesh works for python
 - {repo: skywind3000/asyncrun.vim, on_cmd: AsyncRun}
 
+# # - repo: BurningEther/iron.nvim
 # - repo: Vigemus/iron.nvim
-# - repo: BurningEther/iron.nvim
 #   on_ft: [python, py]
 #   hook_add: |
 #     let g:iron_repl_open_cmd='vsplit'
@@ -117,9 +117,25 @@
 
 #  on_cmd: [IronPy, IronRepl, IronPromptRepl, IronPromptCommand]
 
+- repo: kassio/neoterm
+# see for Julia: https://github.com/mpastell/Weave.jl
+# see for Python: https://github.com/mpastell/Pweave
+
+# https://discourse.julialang.org/t/choice-of-ide-for-julia/3137/10
+- repo: JuliaEditorSupport/julia-vim
+  hook_add: let g:default_julia_version = "1.0.2"
+
+- repo: zyedidia/julialint.vim
+  on_ft: julia
+
+
 # =======================================================
 # Completion
 # ----------
+
+- repo: JuliaEditorSupport/deoplete-julia
+  on_ft: julia
+
 # - repo: landaire/deoplete-d
 # rev: dub-based-imports
 # - repo: monkoose/deoplete-d
@@ -317,8 +333,7 @@
     call denite#custom#var('task', 'taskrc', '~/.taskrc')
     call denite#custom#var('task', 'data_dir', '~/.task')
     call denite#custom#var('task', 'date_format', '%y-%m-%d %H:%M')
-    call denite#custom#var('task', 'format', '{id:3.3} | {priority:1.1} |
-      {project:15.15} | {description:40.40} | {entry} | {due}')
+    call denite#custom#var('task', 'format', '{id:3.3} | {priority:1.1} | {project:15.15} | {description:40.40} | {entry} | {due}')
     call denite#custom#var('task', 'label_width', '17')
   hook_add: |
     command! -nargs=* Tw :NeomakeSh task <args>

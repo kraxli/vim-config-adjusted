@@ -20,6 +20,9 @@ else
 
 endif
 
+autocmd BufRead,BufNewFile *.jl :set filetype=julia
+autocmd BufRead,BufNewFile *.jl :set syntax=julia
+
 " path to source file
 " let g:scr_path=fnamemodify(expand('<sfile>:p'), ':h:h:h').'/scr'
 let g:scr_path=fnamemodify(expand('<sfile>:p'), ':h').'/scr'
