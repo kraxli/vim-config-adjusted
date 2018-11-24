@@ -130,9 +130,6 @@
 # Completion
 # ----------
 
-- repo: JuliaEditorSupport/deoplete-julia
-  on_ft: julia
-
 # - repo: landaire/deoplete-d
 # rev: dub-based-imports
 # - repo: monkoose/deoplete-d
@@ -381,8 +378,22 @@
 
 # https://fortes.com/2017/language-server-neovim/
 ## - repo: SpaceVim/LanguageClient-neovim
-# - repo: autozimu/LanguageClient-neovim
-#   build: bash install.sh
+- repo: autozimu/LanguageClient-neovim
+  if: !exists('g:gui_oni')
+  build: bash install.sh
+  hook_source: |
+    set hidden
+    let g:LanguageClient_autoStart = 1
+    let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls'],
+    \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e',
+    \ 'using LanguageServer; server = LanguageServer.LanguageServerInstance(stdin, stdout, false); server.runlinter = true; run(server);'],
+    \ }
+    let g:LanguageClient_serverCommands.python3 = ['/home/dave/.local/bin/pyls']
+  hook_add: |
+    set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+
+
 #   rev: next
 #   on_ft: [d]
 #   hook_source: |
