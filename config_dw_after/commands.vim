@@ -28,9 +28,9 @@ command! VTerm :call dway#term#openterm('vsp')
 command! TTerm :call dway#term#openterm('tabnew')
 
 " over rule the read only option when opening a file
- cnoreabbrev ww w!
- cnoreabbrev xx x!
- cnoreabbrev qq q!
+ cnoreabbrev <silent> ww w!
+ cnoreabbrev <silent> xx x!
+ cnoreabbrev <silent> qq q!
 
 " save and quit
 command! W :w

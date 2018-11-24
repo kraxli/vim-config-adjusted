@@ -186,8 +186,8 @@ noremap <leader>bof :browse oldfiles
 nnoremap g<s-f> <c-w>gf
 
 " Include Time Stamps
-nnoremap <F4> "=strftime("%Y-%m-%d")<CR>P
-inoremap <F4> <C-R>=strftime("%Y-%m-%d")<CR>
+nnoremap <silent> <F4> "=strftime("%Y-%m-%d")<CR>P
+inoremap <silent> <F4> <C-R>=strftime("%Y-%m-%d")<CR>
 
 " path
 " echo expand('%:p:r')
