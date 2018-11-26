@@ -10,7 +10,6 @@
 - repo: rafi/awesome-vim-colorschemes
 - repo: rafi/vim-badge
 - repo: thinca/vim-localrc
-- repo: christoomey/vim-tmux-navigator
 - repo: junegunn/vim-peekaboo
 - repo: tpope/vim-sleuth
 - repo: itchyny/vim-gitbranch
@@ -20,6 +19,10 @@
     autocmd MyAutoCmd FileType denite,qf,nerdtree,vimfiler let b:cursorword=0
     autocmd MyAutoCmd InsertEnter * let b:cursorword=0
     autocmd MyAutoCmd InsertLeave * let b:cursorword=1
+
+# - repo: christoomey/vim-tmux-navigator
+
+# if: ! empty(&l:filetype) && &l:filetype != "python" || &l:filetype != "python.python3"
 
 # Lazy Loading
 # ==========================================
@@ -119,7 +122,6 @@
 - { repo: chrisbra/csv.vim, on_ft: csv }
 - { repo: tpope/vim-git, on_ft: [ gitcommit, gitrebase, gitconfig ]}
 - { repo: ekalinin/Dockerfile.vim, on_ft: [ Dockerfile, yaml.docker-compose ]}
-- { repo: tmux-plugins/vim-tmux, on_ft: tmux }
 - { repo: andreshazard/vim-logreview, on_ft: logreview }
 
 - { repo: cespare/vim-toml, on_ft: toml }
@@ -130,6 +132,8 @@
 - { repo: exu/pgsql.vim, on_ft: pgsql }
 - { repo: othree/nginx-contrib-vim, on_ft: nginx }
 - { repo: IN3D/vim-raml, on_ft: raml }
+
+# - { repo: tmux-plugins/vim-tmux, on_ft: tmux }
 
 # ==========================================
 # Commands
@@ -234,12 +238,12 @@
 - repo: benekastah/neomake
   if: has('nvim') && empty($VIM_MINIMAL)
   on_cmd: Neomake
-  hook_source: | 
+  hook_source: |
     source $VIMPATH/config/plugins/neomake.vim
     source $VIMPATH/config_dw_after/plugins/neomake.vim
   hook_add: |
     let g:lint_filetypes = [
-      \  'yaml.ansible', 'python', 'php', 'ruby', 'vim', 'go', 'sh',
+      \  'yaml.ansible', 'php', 'ruby', 'vim', 'go', 'sh',
       \  'javascript', 'jsx', 'javascript.jsx', 'json', 'css',
       \  'markdown', 'html', 'yaml', 'd', 'pandoc', 'pdc'
       \ ]
@@ -383,7 +387,7 @@
     let g:jedi#auto_vim_configuration = 0
     let g:jedi#smart_auto_mappings = 0
     let g:jedi#show_call_signatures = 2
-    let g:jedi#show_call_signatures_delay = 100
+    let g:jedi#show_call_signatures_delay = 0
   hook_source: |
     let g:jedi#use_tag_stack = 0
     let g:jedi#popup_select_first = 0
@@ -400,7 +404,7 @@
   on_event: InsertEnter
 
 - repo: zchee/deoplete-jedi
-  if: has('nvim') && empty($VIM_MINIMAL)
+  if: has('nvim') && empty($VIM_MINIMAL) && ! exists('g:gui_oni')
   on_ft: python
   on_event: InsertEnter
   hook_source: autocmd MyAutoCmd FileType python setlocal omnifunc=
@@ -414,10 +418,10 @@
     let g:tern_request_timeout = 1
     let g:tern_show_signature_in_pum = 0
 
-- repo: wellle/tmux-complete.vim
-  if: has('nvim') && empty($VIM_MINIMAL)
-  on_event: InsertEnter
-  hook_add: let g:tmuxcomplete#trigger = ''
+# - repo: wellle/tmux-complete.vim
+#   if: has('nvim') && empty($VIM_MINIMAL)
+#   on_event: InsertEnter
+#   hook_add: let g:tmuxcomplete#trigger = ''
 
 - repo: fszymanski/deoplete-emoji
   if: has('nvim') && empty($VIM_MINIMAL)

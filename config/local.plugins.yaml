@@ -117,7 +117,8 @@
 
 #  on_cmd: [IronPy, IronRepl, IronPromptRepl, IronPromptCommand]
 
-- repo: kassio/neoterm
+# - repo: kassio/neoterm
+
 # see for Julia: https://github.com/mpastell/Weave.jl
 # see for Python: https://github.com/mpastell/Pweave
 
@@ -237,9 +238,14 @@
 # let R_assign_map = ":"
 # let R_assign_map = "<M-_>"
 
+- repo: roxma/nvim-yarp
+  on_ft: [r, julia]
+
 # TODO: to be removed aafter ncm-R supports deoplete
-- repo: roxma/nvim-completion-manager
-  on_ft: r
+# former: roxma/nvim-completion-manager
+- repo: ncm2/ncm2
+  depends: roxma/nvim-yarp
+  on_ft: [r, julia]
 
 - repo: gaalcaras/ncm-R
   on_ft: r
@@ -322,6 +328,7 @@
   on_ft: [vimwiki]
 
 - repo: rafi/vim-denite-task
+  depends: denite.nvim
   on_cmd: [Tw]
   hook_source: |
     call denite#custom#var('task', 'taskrc', '~/.taskrc')
@@ -378,30 +385,21 @@
 
 # https://fortes.com/2017/language-server-neovim/
 ## - repo: SpaceVim/LanguageClient-neovim
-- repo: autozimu/LanguageClient-neovim
-  if: !exists('g:gui_oni')
-  build: bash install.sh
-  hook_source: |
-    set hidden
-    let g:LanguageClient_autoStart = 1
-    let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls'],
-    \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e',
-    \ 'using LanguageServer; server = LanguageServer.LanguageServerInstance(stdin, stdout, false); server.runlinter = true; run(server);'],
-    \ }
-    let g:LanguageClient_serverCommands.python3 = ['/home/dave/.local/bin/pyls']
-  hook_add: |
-    set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-
-
+# - repo: autozimu/LanguageClient-neovim
 #   rev: next
-#   on_ft: [d]
+#   build: bash install.sh
+#   if: !exists('g:gui_oni')
+#   on_ft: [julia]
 #   hook_source: |
 #     set hidden
+#     let g:LanguageClient_hasSnippetSupport = 0
 #     let g:LanguageClient_autoStart = 1
 #     let g:LanguageClient_serverCommands = {
+#     \ 'python': ['pyls'],
+#     \ 'python.python3': ['pyls'],
 #     \ 'd': ['serve-d'],
-#     \ 'python': ['pyls']
+#     \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e',
+#     \ 'using LanguageServer; server = LanguageServer.LanguageServerInstance(stdin, stdout, false); server.runlinter = true; run(server);'],
 #     \ }
 #     let g:LanguageClient_serverCommands.python3 = ['/home/dave/.local/bin/pyls']
 #   hook_add: |
@@ -428,18 +426,39 @@
 # http://www.wezm.net/technical/2016/09/ripgrep-with-vim/
 # https://github.com/jhawthorn/fzy
 
-# TODO: remove after neomake supports R
 - repo: w0rp/ale
-  on_ft: [r]
+  on_ft: [r, python, d]
+  on_cmd: [ALEnable, ALELint, ALEFix]
+  hook_add: |
+    let g:ale_linters_explicit = 0
+    let g:ale_lint_on_enter = 0
+    let g:ale_sign_column_always = 0
+    let g:ale_echo_msg_error_str = 'E'
+    let g:ale_echo_msg_warning_str = 'W'
+    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+    let g:ale_sign_error = '⤫'
+    let g:ale_sign_style_error = '⤫'
+    let g:ale_sign_warning = '⚠'
+    let g:ale_set_highlights = 1
+    let g:ale_python_pylama_executable = 'pylama'
+    let g:ale_python_pylama_options = ''
+    let g:ale_python_pylama_use_global = 0
+    let g:ale_python_mypy_options = ''
+    let g:ale_fixers = {
+    \ 'd': ['uncrustify', 'remove_trailing_lines', 'trim_whitespace'],
+    \ 'python' : ['autopep8', 'yapf', 'black']
+    \ }
+    let g:airline#extensions#ale#enabled = 1
+    let g:ale_completion_enabled = 1
+    highlight clear ALEErrorSign
+    highlight clear ALEWarningSign
+    highlight ALEErrorSign ctermfg=9
+    highlight ALEError ctermfg=9
+    highlight ALEWarning ctermbg=none
   hook_source: |
     nmap <F8> <Plug>(ale_fix)
-    let g:ale_fixers = {
-    \ 'd': [
-    \   'uncrustify',
-    \       'remove_trailing_lines',
-    \       'trim_whitespace'
-    \       ]
-    \ }
+    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 
 # https://8thlight.com/blog/chris-jordan/2016/06/13/running-tests-in-vim.html
@@ -484,7 +503,6 @@
 # haya14busa/incsearch.vim
 
 # PLUGINS OBSERVED
-# https://github.com/kassio/neoterm
 # https://github.com/vimlab/split-term.vim
 # osyo-manga/vim-over
 
