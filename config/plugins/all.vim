@@ -393,22 +393,71 @@ if dein#tap('vim-dutyl')
 endif
 
 if dein#tap('nvim-py-minimal')
-  au FileType python map  <leader>bp <Plug>SetBreakPoint
-  au FileType python map  <leader>Bp <Plug>SetBreakPointBelow
-  nnoremap <leader>bd :call minpy#DelBreakPoints() " DelBreakPoints
-  au TermOpen * nmap <buffer> gt <Plug>GoToDebugLine<cr>
-  au FileType python map <F5> <Plug>Ipdb<cr>
+		augroup pythonmapping
+		autocmd!
+    " -------------------------------------------------------
+    " minimal-py
+    " -------------------------------------------------------
 
-  autocmd Filetype python nnoremap <silent> ef :%y+<cr> :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
-  autocmd Filetype python nmap <silent> ex "+yy :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
-  autocmd Filetype python vmap <silent> ex "+y :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
-  autocmd Filetype python nmap <silent> <c-e> "+yy :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
-  autocmd Filetype python vmap <silent> <c-e> "+y :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+    " au FileType python nmap  <buffer> ;p <Plug>(py-send-line-to-repl)<cr>
+    " au FileType python vmap  <buffer> ;p <Plug>(py-send-selection-to-repl)<cr>
+    " au FileType python map   <buffer> ;fp <Plug>(py-send-file-to-repl)<cr>
 
-  " nmap <c-e>: <Plug>PySendLine2Repl<cr>
-  " xmap <c-e>: <Plug>PySendSelection2Repl<cr>
-  " nmap eF : <Plug>PySendFile2Repl<cr>
+    au FileType python nmap  ;p :PySendLine<cr>
+    au FileType python vmap  ;p :PySendSelection<cr>
+    au FileType python nmap  ;fp :PySendFile<cr>
+
+    au FileType python nmap dl :call minpy#GoToDebugLine()<cr>
+    au FileType python nmap df :call minpy#OpenDebugFile()<cr>
+
+    " au FileType python nmap ;id :execute("Ipdb")<cr>
+    au FileType python map <F9> :Ipdb<cr>
+    " au FileType python map <F9> <Plug>Ipdb<cr>
+    au FileType python nmap ;d :Ipdb<cr>
+    au FileType python nmap <F5> :PyRun<cr>
+
+    au FileType python nmap ;bp Oimport ipdb; ipdb.set_trace()<esc>
+    au FileType python nmap ;Bp oimport ipdb; ipdb.set_trace()<esc>
+    au FileType python nmap ;db :minpy#DelBreakPoints()
+
+    au FileType python nmap  <leader>bp <Plug>SetBreakPoint
+    au FileType python nmap  <leader>Bp <Plug>SetBreakPointBelow
+    nnoremap <leader>bd :call minpy#DelBreakPoints() " DelBreakPoints
+    au TermOpen * nmap <buffer> gt <Plug>GoToDebugLine<cr>
+
+    autocmd Filetype python nmap <silent> ex "+yy :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+    autocmd Filetype python vmap <silent> ex "+y :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+    autocmd Filetype python nmap <silent> <c-e> "+yy :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+    autocmd Filetype python vmap <silent> <c-e> "+y :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+    autocmd Filetype python nnoremap <silent> ef :%y+<cr> :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+    autocmd Filetype python nnoremap <silent> <s-c-e> :%y+<cr> :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+    " autocmd Filetype python vmap <silent> <c-cr> "+y :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+    " autocmd Filetype python vmap <silent> <c-cr> "+y :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+
+    " nmap <c-e>: <Plug>PySendLine2Repl<cr>
+    " xmap <c-e>: <Plug>PySendSelection2Repl<cr>
+    " nmap eF : <Plug>PySendFile2Repl<cr>
+  augroup END
 endif
+
+
+" if dein#tap('nvim-py-minimal')
+"   au FileType python map  <leader>bp <Plug>SetBreakPoint
+"   au FileType python map  <leader>Bp <Plug>SetBreakPointBelow
+"   nnoremap <leader>bd :call minpy#DelBreakPoints() " DelBreakPoints
+"   au TermOpen * nmap <buffer> gt <Plug>GoToDebugLine<cr>
+"   au FileType python map <F5> <Plug>Ipdb<cr>
+
+"   autocmd Filetype python nnoremap <silent> ef :%y+<cr> :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+"   autocmd Filetype python nmap <silent> ex "+yy :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+"   autocmd Filetype python vmap <silent> ex "+y :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+"   autocmd Filetype python nmap <silent> <c-e> "+yy :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+"   autocmd Filetype python vmap <silent> <c-e> "+y :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
+
+"   " nmap <c-e>: <Plug>PySendLine2Repl<cr>
+"   " xmap <c-e>: <Plug>PySendSelection2Repl<cr>
+"   " nmap eF : <Plug>PySendFile2Repl<cr>
+" endif
 
 
 " if dein#tap('iron.nvim')
@@ -424,18 +473,22 @@ endif
 " xmap xe <Plug>(iron-send-motion)<cr>
 " nmap <silent> <c-e> :call IronSend(getline('.'))<cr>
 
-" if dein#tap('LanguageClient-neovim')
-" 	nnoremap <c-m> :call LanguageClient_contextMenu()<CR>
-" 	" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" 	" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" 	" nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<cr>
-" 	nnoremap <silent> <leader>lr :call LanguageClient_textDocument_rename()<cr>
-" 	nnoremap <leader>ld :call LanguageClient_textDocument_definition()<cr>
-" 	nnoremap  <leader>lh :call LanguageClient_textDocument_hover()<cr>
+if dein#tap('LanguageClient-neovim')
+	noremap <c-m> :call LanguageClient_contextMenu()<CR>
+	" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+	" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+	" nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<cr>
+	nnoremap <silent> <leader>lr :call LanguageClient_textDocument_rename()<cr>
+	nnoremap <leader>ld :call LanguageClient_textDocument_definition()<cr>
+	nnoremap  <leader>lh :call LanguageClient_textDocument_hover()<cr>
 
-" 	nnoremap gb <c-o>
-" endif
+	nnoremap gb <c-o>
+endif
 
-
+if dein#tap('w0rp/ale')
+	nmap <F8> <Plug>(ale_fix)
+	nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+	nmap <silent> <C-j> <Plug>(ale_next_wrap)
+endif
 
 " vim: set ts=2 sw=2 tw=80 noet :

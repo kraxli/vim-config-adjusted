@@ -162,7 +162,7 @@ nmap <silent> <leader>u0 :t.\|s/./=/g\|:nohls<cr>
 nmap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
 
 "" Use CTRL-E to replace the original ',' mapping
-nnoremap <C-E> ,
+" nnoremap <C-E> ,
 
 "" Make the current file executable
 if has("unix")
@@ -222,44 +222,6 @@ vnoremap ~ y:call setreg('', dway#misc#TwiddleCase(@"), getregtype(''))<CR>gv""P
 " Plugins specific mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-augroup pythonmapping
-  autocmd!
-
-  " -------------------------------------------------------
-  " iron-vim
-  " -------------------------------------------------------
-  autocmd Filetype python nmap <buffer> ;e <Plug>(iron-send-motion)<down>
-  autocmd Filetype python vmap <buffer> ;e <Plug>(iron-send-motion)
-  autocmd Filetype python nmap <buffer> ;lc <Plug>(iron-repeat-cmd)
-
-  " -------------------------------------------------------
-  " minimal-py
-  " -------------------------------------------------------
-
-  " au FileType python nmap  <buffer> ;p <Plug>(py-send-line-to-repl)<cr>
-  " au FileType python vmap  <buffer> ;p <Plug>(py-send-selection-to-repl)<cr>
-  " au FileType python map   <buffer> ;fp <Plug>(py-send-file-to-repl)<cr>
-
-  au FileType python nmap  ;p :PySendLine<cr>
-  au FileType python vmap  ;p :PySendSelection<cr>
-  au FileType python nmap  ;fp :PySendFile<cr>
-
-  au FileType python nmap dl :call minpy#GoToDebugLine()<cr>
-  au FileType python nmap df :call minpy#OpenDebugFile()<cr>
-
-  " au FileType python nmap ;id :execute("Ipdb")<cr>
-  au FileType python nmap <F5> :Ipdb
-  au FileType python nmap ;d :Ipdb
-  au FileType python nmap <F9> :PyRun
-  au FileType python nmap ;r :PyRun
-
-  au FileType python nmap ;bp Oimport ipdb; ipdb.set_trace()<esc>
-  au FileType python nmap ;Bp oimport ipdb; ipdb.set_trace()<esc>
-  au FileType python nmap ;db :minpy#DelBreakPoints()
-
-augroup END
-
-
 " toggle tagbar
 " nnoremap <leader>t :TagbarToggle<cr>
 nnoremap <silent><leader>tb :TagbarToggle<CR>
@@ -269,7 +231,6 @@ nnoremap <silent><leader>pr :ProjectRootCD<cr>
 
 " LimeLight
 nmap ;ll :Limelight!!<cr>
-
 
 " shell-vim
 " open file explorere

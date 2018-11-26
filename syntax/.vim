@@ -8,6 +8,11 @@ highlight Folded ctermfg=White ctermbg=DarkGrey guifg=White guibg=DarkGrey
 
 highlight TermCursor ctermfg=blue guifg=blue
 
+highlight ALEError ctermbg=none
+highlight ALEWarning ctermbg=none
+
+highlight error ctermbg=none
+
 
 " }}}
 

@@ -11,7 +11,6 @@ function! PostprocessXelatexMaker(entry)
       endif
 endfunction
 
-
 let g:neomake_tex_xelatex_maker = {
         \ 'exe': 'xelatex',
         \ 'args': ['-file-line-error', '-8bit', '-interaction', 'nonstopmode'],
@@ -19,14 +18,11 @@ let g:neomake_tex_xelatex_maker = {
     \ }
         " \ 'postprocess': function('PostprocessXelatexMaker')
 
-
-
 let g:neomake_d_dscanner_maker = {
     \ 'exe': 'dscanner',
     \ 'args': ['--verbose'],
     \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)'
     \ }
-
 
 let g:neomake_pdc_pdcHtml_maker = {
     \ 'exe': 'pandoc',
@@ -37,12 +33,19 @@ let g:neomake_pdc_pdcHtml_maker = {
     " works with Async python %:p
     " :set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]
 
-let g:neomake_python_py3_maker = {
+let g:neomake_python_maker = {
     \ 'exe': 'python3',
     \ 'errorformat': '\ %#File\ \"%f\"\\,\ line\ %l\\,\ %m,' .
     \ '\@File\:\ %f'
     \ }
 
+let g:neomake_python_py3_maker = {
+    \ 'exe': 'python3',
+    \ 'errorformat': '\ %#File\ \"%f\"\\,\ line\ %l\\,\ %m,' .
+    \ '\@File\:\ %f'
+    \ }
+let g:neomake_python_enabled_makers = ['mypy', python', 'frosted', 'pylama', 'vulture']
+let g:neomake_python_pylint_exe = '/home/dave/.local/bin/pylint'
 
 " TODO: see https://github.com/w0rp/ale/blob/master/ale_linters/r/lintr.vim
 let s:cmd_string = 'suppressPackageStartupMessages(library(lintr));'
@@ -53,9 +56,7 @@ let g:neomake_r_lintr_maker = {
 
 let g:neomake_r_enabled_makers = ['lintr']
 
-
 " DEFAULTS:
-
 " Default d maker:
 let g:neomake_d_enabled_makers = ['dmd']
 

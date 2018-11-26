@@ -3,7 +3,9 @@
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 " let g:python3_host_prog = '/home/dave/.pyenv/versions/python364/bin/python'
-" let g:python3_host_prog = '/home/dave/.pyenv/versions/python351/bin/python'
+
+" To disable Python 2 support:
+" let g:loaded_python_provider = 1
 
 " set runtimepath+=~/Dropbox/VimWiki
 " TODO:
@@ -22,6 +24,8 @@ endif
 
 autocmd BufRead,BufNewFile *.jl :set filetype=julia
 autocmd BufRead,BufNewFile *.jl :set syntax=julia
+" autocmd BufRead,BufNewFile *.py :set filetype=python.python3
+" autocmd FileType python :set filetype=python.python3
 
 " path to source file
 " let g:scr_path=fnamemodify(expand('<sfile>:p'), ':h:h:h').'/scr'
@@ -74,4 +78,5 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 " set guicursor=
 
 let g:go_version_warning = 0
+
 " vim: set foldmethod=marker
