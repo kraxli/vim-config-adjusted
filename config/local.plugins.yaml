@@ -136,9 +136,9 @@
 # - repo: monkoose/deoplete-d
 # - repo: Sobaya007/deoplete-d
 
-- repo: viniarck/deoplete-d
-  on_ft: d
-  if: has('nvim')
+# - repo: viniarck/deoplete-d
+#   on_ft: d
+#   if: has('nvim')
 
 #   depends: [deoplete]
 #   hook_add: |
@@ -173,6 +173,9 @@
 # (jethrovt/oss-vim-dlang-autofold-unittests )
 # if: ! exists('g:gui_oni')
 
+
+# On my neovim setup. I use dutly. Dscanner generates ctags recursively when I press F7. Which Ctrl-P uses for jump marks.
+# I use kdbg (or maybe DDD, Nemiver, gdbgui, cgdb) to debug, its just a somewhat pretty frontend to gdb. Thats pretty much it.
 - repo: idanarye/vim-dutyl
   on_ft: d
   on_cmd: [DUDCDrestartServer, DUjump, DUddoc, DUexecute, DUupdateCTags]
@@ -257,11 +260,12 @@
 # - repo: joonty/vdebug
 # on_ft: py
 
+# - repo: dbgx/lldb.nvim
 # - repo: idanarye/vim-vebugger
 #   on_ft: py
 
-- repo: dbgx/lldb.nvim
-  on_ft: [d, cpp, hpp, c, h]
+- repo: idanarye/vim-vebugger
+  on_ft: [d, cpp, hpp, c, h, python]
   hook_add: |
     set hidden
     command! DDebug :AsyncRun dmd -g %:p
