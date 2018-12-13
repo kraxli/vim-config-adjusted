@@ -19,7 +19,7 @@ augroup TexGroup
 
   nmap <S-F12> call BibTex() <cr>
 
-  nmap <F12> NeomakeSh xelatex  --include-directory=%:p:h --output-directory=%:p:h  %:p <cr>
+  nmap <F12> AsyncRun xelatex  --include-directory=%:p:h --output-directory=%:p:h  %:p <cr>
   " autocmd! BufNewFile,BufRead *.tex nnoremap <F12> :!pdflatex %:p -output-directory=%:h<cr>
 
   command! Texify call Texify()<cr><cr>

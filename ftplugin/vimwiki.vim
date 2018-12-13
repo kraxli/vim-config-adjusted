@@ -25,7 +25,7 @@ endfunction
 
 " !pandoc %:p -s -o %:p:r.html
 " command! Pandoc2HTML :Pandoc  html
-command!  Pandoc2HTML :NeomakeSh pandoc %:p
+command!  Pandoc2HTML :AsyncRun pandoc %:p
   \ -f markdown
   \ -s
   \ -N
@@ -49,7 +49,7 @@ command!  Pandoc2HTML :NeomakeSh pandoc %:p
 " pandoc ~/Dropbox/PKD/interviews.md -o interviews.html -f markdown --template standalone.html --css template.css --toc --toc-depth=2
 
 " source: https://github.com/tonyblundell/pandoc-bootstrap-template
-command!  Pandoc2HTMLBS :NeomakeSh pandoc %:p
+command!  Pandoc2HTMLBS :AsyncRun pandoc %:p
   \ -f markdown
   \ -s
   \ -N
@@ -69,7 +69,7 @@ command!  Pandoc2HTMLBS :NeomakeSh pandoc %:p
   " \ --filter pandoc-tablenos
   " \ --filter pandoc-fignos
 
-command!  Pandoc2HTMLkiller :NeomakeSh pandoc %:p
+command!  Pandoc2HTMLkiller :AsyncRun pandoc %:p
   \ -f markdown
   \ -s
   \ -N
@@ -83,7 +83,7 @@ command!  Pandoc2HTMLkiller :NeomakeSh pandoc %:p
 
 " !pandoc %:p -s --variable urlcolor=cyan -o %:p:r.pdf
 " command!  Pandoc2Pdf :Pandoc  pdf
-command!  Pandoc2Pdf :NeomakeSh pandoc %:p
+command!  Pandoc2Pdf :AsyncRun pandoc %:p
   \ -s
   \ -N
   \ -o %:p:h/pdf/%:p:t:r.pdf
@@ -116,7 +116,7 @@ command! Pandoc2Md :!pandoc %:p
   " \ --variable toccolor=blue
 
 
-command! Pandoc2Doc :NeomakeSh pandoc %:p
+command! Pandoc2Doc :AsyncRun pandoc %:p
   \ -f markdown
   \ -s
   \ -N
@@ -128,14 +128,14 @@ command! Pandoc2Doc :NeomakeSh pandoc %:p
   " \ -o %:p:t:r.doc
 
 
-command! -nargs=1 PandocLib :NeomakeSh pandoc %:p
+command! -nargs=1 PandocLib :AsyncRun pandoc %:p
   \ +inline_notes
   \ --filter pandoc-citeproc
   \ <f-args>
   " see:  http://johnmacfarlane.net/pandoc/demos.html
 
 
-command!  Pandoc2Epub :NeomakeSh pandoc %:p
+command!  Pandoc2Epub :AsyncRun pandoc %:p
   \ -f markdown
   \ -s
   \ -N
@@ -149,7 +149,7 @@ command!  Pandoc2Epub :NeomakeSh pandoc %:p
   \ --variable=linkcolor:blue
 
 
-command! Pandoc2LatexA4 :NeomakeSh pandoc %:p
+command! Pandoc2LatexA4 :AsyncRun pandoc %:p
   \ -f markdown
   \ -s
   \ -N

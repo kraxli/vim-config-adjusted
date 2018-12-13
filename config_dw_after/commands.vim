@@ -58,7 +58,7 @@ command! DeinInfo :call dein#check_install()
 
 " div
 if has('unix')
-   command! -bar ShaDaDelete NeomakeSh! rm ~/.local/share/nvim/shada/* | NeomakeSh! touch ~/.local/share/nvim/shada/main.shada
+   command! -bar ShaDaDelete AsyncRun! rm ~/.local/share/nvim/shada/* | AsyncRun! touch ~/.local/share/nvim/shada/main.shada
    command! ShaDaFix wshada!
 endif
 
@@ -66,12 +66,12 @@ endif
 command! Glog :Denite gitlog
 command! GstatusDenite :Denite gitstatus
 command! Gchanged :Denite gitchanged
-command! -nargs=+ Git :NeomakeSh git <args>
+command! -nargs=+ Git :AsyncRun git <args>
 command! GaddAll :Gadd --all
-command! Gamend :NeomakeSh git commit --all --amend --no-edit
-command! -nargs=+ GcommitAll :NeomakeSh git commit -m <q-args> -a
-command! -nargs=+ GcommitThis :NeomakeSh git commit -m <q-args> %
-command! GaddThis :NeomakeSh git add %
+command! Gamend :AsyncRun git commit --all --amend --no-edit
+command! -nargs=+ GcommitAll :AsyncRun git commit -m <q-args> -a
+command! -nargs=+ GcommitThis :AsyncRun git commit -m <q-args> %
+command! GaddThis :AsyncRun git add %
 
 " profiling / debuggin vim
 command! -nargs=* ProfilerStart :call dway#debug#profiler_start(<q-args>)
