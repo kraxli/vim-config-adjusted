@@ -175,20 +175,6 @@ let g:tagbar_type_pandoc = {
 "}}} pandoc
 
 
-" {{{ vimwiki
-" let g:tagbar_type_vimwiki = {
-" 			\   'ctagstype':'vimwiki'
-" 			\ , 'kinds':['h:header']
-" 			\ , 'sro':'&&&'
-" 			\ , 'kind2scope':{'h':'header'}
-" 			\ , 'sort':0
-" 			\ , 'ctagsbin': g:scr_path.'/vwtags.py'
-" 			\ , 'ctagsargs': 'default'
-" 			\ }
-
-" }}}
-
-
 let g:tagbar_type_r = {
     \ 'ctagstype' : 'r',
     \ 'kinds'     : [
@@ -197,6 +183,25 @@ let g:tagbar_type_r = {
         \ 'v:FunctionVariables',
     \ ]
 \ }
+
+
+let g:tagbar_type_markdown = {
+           \ 'ctagstype': 'markdown',
+           \ 'ctagsbin' :  '/usr/local/bin/markdown2ctags',
+           \ 'ctagsargs' : '-f - --sort=yes',
+           \ 'kinds' : [
+               \ 's:sections',
+               \ 'i:images'
+           \ ],
+           \ 'sro' : '|',
+           \ 'kind2scope' : {
+               \ 's' : 'sect',
+           \ },
+           \ 'sort': 0,
+       \ }
+
+
+let g:tagbar_type_vimwiki = g:tagbar_type_markdown
 
 " }}} Tags
 
