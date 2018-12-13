@@ -431,6 +431,7 @@ if dein#tap('nvim-py-minimal')
     autocmd Filetype python vmap <silent> <c-e> "+y :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
     autocmd Filetype python nnoremap <silent> ef :%y+<cr> :call minpy#send2repl(["\%paste"], g:last_ipy_terminal_job_id)<cr>
 
+
     " nmap <c-e>: <Plug>PySendLine2Repl<cr>
     " xmap <c-e>: <Plug>PySendSelection2Repl<cr>
     " nmap eF : <Plug>PySendFile2Repl<cr>
