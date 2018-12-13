@@ -267,7 +267,8 @@ Name           | Description
 [nathanaelkane/vim-indent-guides] | Visually display indent levels in code
 [MattesGroeger/vim-bookmarks] | Bookmarks, works independently from vim marks
 [rhysd/committia.vim] | Pleasant editing on Git commit messages
-[benekastah/neomake] | Asynchronous linting and make framework
+[skywind3000/asyncrun.vim] | Running commands asyncronously
+[w0rp/ale] | Asynchronous Lint Engine
 [junegunn/goyo] | Distraction-free writing
 [junegunn/limelight] | Hyperfocus-writing
 [itchyny/calendar.vim] | Calendar application

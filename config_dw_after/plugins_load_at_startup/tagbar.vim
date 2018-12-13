@@ -195,7 +195,7 @@ let g:tagbar_type_markdown = {
            \ ],
            \ 'sro' : '|',
            \ 'kind2scope' : {
-               \ 's' : 'sect',
+               \ 's' : 'section',
            \ },
            \ 'sort': 0,
        \ }

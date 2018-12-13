@@ -245,9 +245,6 @@ nnoremap <c-o>o yiW:Open <cr>
 " Startify
 nnoremap ;sf :Startify
 
-" Calendar
-nnoremap <localleader>c :Calendar
-
 " Gundo
 nnoremap <c-g>d :GundoToggle<cr>
 

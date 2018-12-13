@@ -73,6 +73,24 @@ command! -nargs=+ GcommitAll :AsyncRun git commit -m <q-args> -a
 command! -nargs=+ GcommitThis :AsyncRun git commit -m <q-args> %
 command! GaddThis :AsyncRun git add %
 
+command! -bang -nargs=0 GCheckout
+  \ call fzf#vim#grep(
+  \   'git branch -v', 0,
+  \   {
+  \     'sink': function('dway#fzf#open_branch_fzf')
+  \   },
+  \   <bang>0
+  \ )
+
+command! -bang -nargs=0 GBranches :GCheckout <args> <cr>
+" dway#fzf#open_branch_fzf(line)
+
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number '.shellescape(<q-args>), 0,
+  \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+
+
 " profiling / debuggin vim
 command! -nargs=* ProfilerStart :call dway#debug#profiler_start(<q-args>)
 command! ProfilerStop :call dway#debug#profiler_stop()

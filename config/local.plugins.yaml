@@ -281,7 +281,8 @@
 
 # TODO
 # # https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
-# - repo: SirVer/ultisnips
+# -der><tab> <plug>(fzf-maps-x)
+# omap <leader><tab> <plug>(fzf-maps-o)repo: SirVer/ultisnips
 #   depends: [ vim-snippets, DSnips ]
 #   hook_add: |
 #     let g:UltiSnipsSnippetsDir=['UltiSnips',
