@@ -128,8 +128,9 @@ map <Leader>cd :lcd %:p:h<CR>:pwd<CR>
 " Fast saving
 nnoremap <silent><Leader>w :write<CR>
 vnoremap <silent><Leader>w <Esc>:write<CR>
-nnoremap <silent><C-s> :<C-u>write<CR>
-vnoremap <silent><C-s> :<C-u>write<CR>
+nnoremap <silent><C-s>s :<C-u>write<CR>
+vnoremap <silent><C-s>s :<C-u>write<CR>
+cnoremap <silent><C-s>s <C-u>write<CR>
 cnoremap <silent><C-s> <C-u>write<CR>
 
 " Save a file with sudo

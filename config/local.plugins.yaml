@@ -282,18 +282,17 @@
 - repo: kiith-sa/DSnips
   on_ft: snippet
 
-# TODO: if plumivsible and <snip> then call the snippet rigger function
+# TODO: if pumvsible and <snip> then call the snippet rigger function
 # # https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
 # https://github.com/simonweil/dotfiles/blob/master/nvimrc
 - repo: SirVer/ultisnips
-  on_ft: snippet
   depends: [vim-snippets, DSnips]
   hook_add: |
     let g:UltiSnipsSnippetsDir=['UltiSnips',
       \ $VARPATH. '/dein/repos/github.com' . '/honza/vim-snippets/UltiSnips',
       \ $VARPATH . '/dein/repos/github.com' . "/kiith-sa/DSnips"]
     let g:UltiSnipsUsePythonVersion = 3
-    let g:UltiSnipsExpandTrigger= '<m-cr>' " "<m-cr>"
+    let g:UltiSnipsExpandTrigger= '<c-h>' " '<m-cr>' " "<c-cr>"
     let g:UltiSnipsJumpForwardTrigger="<c-k>"
     let g:UltiSnipsJumpBackwardTrigger="<c-j>"
     let g:UltiSnipsEditSplit="vertical"

@@ -62,13 +62,14 @@ endif
 " kraxli:
 if dein#tap('fzf.vim')
 	nnoremap <silent><LocalLeader>g :<C-U>Ag<cr>
-	nnoremap <LocalLeader>b :Buffers<CR>
-	noremap <c-h> :Snippets<cr>
-	nnoremap <localleader>s :Snippets<cr>
-	nnoremap <localleaders>f :Files .
-	nnoremap <localleader>hf :History<cr> 
-	nnoremap <localleader>hc :History:<cr> 
-	nnoremap <localleader>hs :History/:<cr> 
+	nnoremap <silent><LocalLeader>b :Buffers<CR>
+	nnoremap <silent><localleader>s :Snippets<cr>
+	nnoremap <silent><c-s> :Snippets<cr>
+	imap <silent><c-s> <esc><c-s>
+	nnoremap <silent><localleaders>f :Files .
+	nnoremap <silent><localleader>hf :History<cr> 
+	nnoremap <silent><localleader>hc :History:<cr> 
+	nnoremap <silent><localleader>hs :History/:<cr> 
 
 
 	imap <c-x><c-w> <plug>(fzf-complete-word)
