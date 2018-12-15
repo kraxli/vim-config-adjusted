@@ -63,7 +63,6 @@ endif
 if dein#tap('fzf.vim')
 	nnoremap <silent><LocalLeader>g :<C-U>Ag<cr>
 	nnoremap <LocalLeader>b :Buffers<CR>
-	noremap <c-h> :Snippets<cr>
 	nnoremap <localleader>s :Snippets<cr>
 	nnoremap <localleaders>f :Files .
 	nnoremap <localleader>hf :History<cr> 

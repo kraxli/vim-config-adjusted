@@ -39,8 +39,6 @@ if b:qf_isLoc == 1
 	nnoremap <buffer> 00 <CR>:lclose<CR>
 
 	" kraxli: vim-config-adjusted
-	nnoremap <buffer> <c-j> :lnext<cr>
-	nnoremap <buffer> <c-k> :lprevious<cr>
 	nnoremap <space> :lopen<cr>
 else
 	nnoremap <buffer> 00 <CR>:cclose<CR>
