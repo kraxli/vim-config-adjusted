@@ -79,6 +79,10 @@ let insert_mode_mappings = [
 	\  ['<C-Y>', '<denite:redraw>', 'noremap'],
 	\  ['<BS>', '<denite:smart_delete_char_before_caret>', 'noremap'],
 	\  ['<C-h>', '<denite:smart_delete_char_before_caret>', 'noremap'],
+	\  ['<Tab>', '<denite:move_to_next_line>', 'noremap'],
+	\  ['<C-j>', '<denite:move_to_next_line>', 'noremap'],
+	\  ['<S-tab>', '<denite:move_to_previous_line>', 'noremap'],
+	\  ['<C-k>', '<denite:move_to_previous_line>', 'noremap'],
 	\ ]
 
 let normal_mode_mappings = [
@@ -92,6 +96,27 @@ let normal_mode_mappings = [
 	\   ['sc', '<denite:quit>', 'noremap'],
 	\   ['r', '<denite:redraw>', 'noremap'],
 	\ ]
+
+
+	" SpaceVim
+	" KEY MAPPINGS
+	" let sinsert_mode_mappings = [
+	" 			\ ['jk', '<denite:enter_mode:normal>', 'noremap'],
+	" 			\ ['<Tab>', '<denite:move_to_next_line>', 'noremap'],
+	" 			\ ['<C-j>', '<denite:move_to_next_line>', 'noremap'],
+	" 			\ ['<S-tab>', '<denite:move_to_previous_line>', 'noremap'],
+	" 			\ ['<C-k>', '<denite:move_to_previous_line>', 'noremap'],
+	" 			\ ['<C-t>', '<denite:do_action:tabopen>', 'noremap'],
+	" 			\ ['<C-v>', '<denite:do_action:vsplit>', 'noremap'],
+	" 			\ ['<C-s>', '<denite:do_action:split>', 'noremap'],
+	" 			\ ['<Esc>', '<denite:enter_mode:normal>', 'noremap'],
+	" 			\ ['<C-N>', '<denite:assign_next_matched_text>', 'noremap'],
+	" 			\ ['<C-P>', '<denite:assign_previous_matched_text>', 'noremap'],
+	" 			\ ['<Up>', '<denite:assign_previous_text>', 'noremap'],
+	" 			\ ['<Down>', '<denite:assign_next_text>', 'noremap'],
+	" 			\ ['<C-Y>', '<denite:redraw>', 'noremap'],
+	" 			\ ]
+
 
 for m in insert_mode_mappings
 	call denite#custom#map('insert', m[0], m[1], m[2])
