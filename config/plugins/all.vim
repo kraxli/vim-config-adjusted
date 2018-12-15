@@ -62,6 +62,7 @@ endif
 " kraxli:
 if dein#tap('fzf.vim')
 	nnoremap <silent><LocalLeader>g :<C-U>Ag<cr>
+
 	nnoremap <silent><LocalLeader>b :Buffers<CR>
 	nnoremap <silent><localleader>s :Snippets<cr>
 	nnoremap <silent><c-s> :Snippets<cr>
@@ -70,7 +71,6 @@ if dein#tap('fzf.vim')
 	nnoremap <silent><localleader>hf :History<cr> 
 	nnoremap <silent><localleader>hc :History:<cr> 
 	nnoremap <silent><localleader>hs :History/:<cr> 
-
 
 	imap <c-x><c-w> <plug>(fzf-complete-word)
 	" inoremap <expr> <c-x><c-w> fzf#vim#complete('cat /usr/share/dict/words')
