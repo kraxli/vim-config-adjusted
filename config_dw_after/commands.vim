@@ -69,7 +69,7 @@ command! Gchanged :Denite gitchanged
 command! -nargs=+ Git :AsyncRun git <args>
 command! GaddAll :Gadd --all
 command! Gamend :AsyncRun git commit --all --amend --no-edit
-command! -nargs=+ GcommitAll :AsyncRun git commit -m <q-args> -a
+command! -nargs=+ GcommitAll :AsyncRun git commit -m <q-args> --all
 command! -nargs=+ GcommitThis :AsyncRun git commit -m <q-args> %
 command! GaddThis :AsyncRun git add %
 
