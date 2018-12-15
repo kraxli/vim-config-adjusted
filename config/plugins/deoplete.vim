@@ -106,8 +106,6 @@ let g:deoplete#omni#input_patterns.python = ''
 " }}}
 " Ranking and Marks " {{{
 " Default rank is 100, higher is better.
-call deoplete#custom#source('ultisnips',     'mark', 'ϛ') " dway: vim-config-adjusted
-" call deoplete#custom#source('ultisnips',     'rank', 490)  " dway: vim-config-adjusted
 call deoplete#custom#source('omni',          'mark', '<omni>')
 call deoplete#custom#source('flow',          'mark', '<flow>')
 call deoplete#custom#source('padawan',       'mark', '<php>')
@@ -115,7 +113,8 @@ call deoplete#custom#source('tern',          'mark', '<tern>')
 call deoplete#custom#source('go',            'mark', '<go>')
 call deoplete#custom#source('jedi',          'mark', '<jedi>')
 call deoplete#custom#source('vim',           'mark', '<vim>')
-call deoplete#custom#source('neosnippet',    'mark', '<snip>')
+call deoplete#custom#source('ultisnips',     'mark', '<snip>') " dway: vim-config-adjusted
+" call deoplete#custom#source('neosnippet',    'mark', '<snip>')
 call deoplete#custom#source('tag',           'mark', '<tag>')
 call deoplete#custom#source('around',        'mark', '<around>')
 call deoplete#custom#source('buffer',        'mark', '<buf>')
@@ -130,7 +129,8 @@ call deoplete#custom#source('flow',          'rank', 630)
 call deoplete#custom#source('TernJS',        'rank', 620)
 call deoplete#custom#source('jedi',          'rank', 610)
 call deoplete#custom#source('omni',          'rank', 600)
-call deoplete#custom#source('neosnippet',    'rank', 510)
+call deoplete#custom#source('ultisnips',     'rank', 510)  " dway: vim-config-adjusted
+" call deoplete#custom#source('neosnippet',    'rank', 510)
 call deoplete#custom#source('member',        'rank', 500)
 call deoplete#custom#source('file_include',  'rank', 420)
 call deoplete#custom#source('file',          'rank', 410)
@@ -159,8 +159,6 @@ call deoplete#custom#source('_', 'converters', [
 	\ 'converter_truncate_menu',
 	\ 'converter_auto_delimiter',
 	\ ])
-
-
 
 " }}}
 " Key-mappings and Events " {{{

@@ -63,7 +63,8 @@ endif
 if dein#tap('fzf.vim')
 	nnoremap <silent><LocalLeader>g :<C-U>Ag<cr>
 	nnoremap <LocalLeader>b :Buffers<CR>
-	nnoremap <localleader>fs :Snippets<cr>
+	noremap <c-h> :Snippets<cr>
+	nnoremap <localleader>s :Snippets<cr>
 	nnoremap <localleader>ff :History<cr> 
 	nnoremap <localleader>fc :History:<cr> 
 	nnoremap <localleader>fs :History/:<cr> 
@@ -509,8 +510,8 @@ endif
 
 if dein#tap('ale')
 	nmap <F8> <Plug>(ale_fix)
-	nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-	nmap <silent> <C-j> <Plug>(ale_next_wrap)
+	nmap <silent> <C-p> <Plug>(ale_previous_wrap)
+	nmap <silent> <C-n> <Plug>(ale_next_wrap)
 endif
 
 if dein#tap('calendar.vim')

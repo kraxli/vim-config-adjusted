@@ -277,24 +277,32 @@
 
 # dway: vim-config-adjusted (see also bellow for g:neosnippet#data_directory)
 - repo: honza/vim-snippets
-- repo: kiith-sa/DSnips
+  on_ft: snippet
 
-# TODO
+- repo: kiith-sa/DSnips
+  on_ft: snippet
+
+# TODO: if plumivsible and <snip> then call the snippet rigger function
 # # https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
+# https://github.com/simonweil/dotfiles/blob/master/nvimrc
 - repo: SirVer/ultisnips
+  on_ft: snippet
+  depends: [vim-snippets, DSnips]
   hook_add: |
     let g:UltiSnipsSnippetsDir=['UltiSnips',
       \ $VARPATH. '/dein/repos/github.com' . '/honza/vim-snippets/UltiSnips',
       \ $VARPATH . '/dein/repos/github.com' . "/kiith-sa/DSnips"]
     let g:UltiSnipsUsePythonVersion = 3
+    let g:UltiSnipsExpandTrigger= '<m-cr>' " "<m-cr>"
+    let g:UltiSnipsJumpForwardTrigger="<c-k>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-j>"
     let g:UltiSnipsEditSplit="vertical"
-  hook_add: |
-    let g:UltiSnipsUsePythonVersion = 3
-    let g:UltiSnipsListSnippets="<c-ll>"
-    let g:UltiSnipsExpandTrigger=""
-    let g:UltiSnipsJumpForwardTrigger="<c-o>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-s-o>"
-    let g:UltiSnipsEditSplit="vertical"
+
+# let g:UltiSnipsListSnippets = "<c-L>"
+# let g:UltiSnipsExpandTrigger="<space>"
+# let g:UltiSnipsExpandTrigger="<c-cr>" 
+# let g:UltiSnipsJumpForwardTrigger="<tab>"
+# let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 # =======================================================
 # Interface
