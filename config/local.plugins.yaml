@@ -281,25 +281,20 @@
 
 # TODO
 # # https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
-# -der><tab> <plug>(fzf-maps-x)
-# omap <leader><tab> <plug>(fzf-maps-o)repo: SirVer/ultisnips
-#   depends: [ vim-snippets, DSnips ]
-#   hook_add: |
-#     let g:UltiSnipsSnippetsDir=['UltiSnips',
-#       \ $VARPATH. '/dein/repos/github.com' . '/honza/vim-snippets/UltiSnips',
-#       \ $VARPATH . '/dein/repos/github.com' . "/kiith-sa/DSnips"]
-#     let g:UltiSnipsUsePythonVersion = 3
-#     let g:UltiSnipsEditSplit="vertical"
-
-#   on_event: InsertCharPre
-#   on_ft: snippets
-#   hook_add: |
-#     let g:UltiSnipsUsePythonVersion = 3
-#     let g:UltiSnipsListSnippets="<c-ll>"
-#     let g:UltiSnipsExpandTrigger="<c-ll>"
-#     let g:UltiSnipsJumpForwardTrigger="<c-o>"
-#     let g:UltiSnipsJumpBackwardTrigger="<c-s-o>"
-#     let g:UltiSnipsEditSplit="vertical"
+- repo: SirVer/ultisnips
+  hook_add: |
+    let g:UltiSnipsSnippetsDir=['UltiSnips',
+      \ $VARPATH. '/dein/repos/github.com' . '/honza/vim-snippets/UltiSnips',
+      \ $VARPATH . '/dein/repos/github.com' . "/kiith-sa/DSnips"]
+    let g:UltiSnipsUsePythonVersion = 3
+    let g:UltiSnipsEditSplit="vertical"
+  hook_add: |
+    let g:UltiSnipsUsePythonVersion = 3
+    let g:UltiSnipsListSnippets="<c-ll>"
+    let g:UltiSnipsExpandTrigger=""
+    let g:UltiSnipsJumpForwardTrigger="<c-o>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-s-o>"
+    let g:UltiSnipsEditSplit="vertical"
 
 # =======================================================
 # Interface

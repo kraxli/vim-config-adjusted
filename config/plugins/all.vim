@@ -63,6 +63,11 @@ endif
 if dein#tap('fzf.vim')
 	nnoremap <silent><LocalLeader>g :<C-U>Ag<cr>
 	nnoremap <LocalLeader>b :Buffers<CR>
+	nnoremap <localleader>fs :Snippets<cr>
+	nnoremap <localleader>ff :History<cr> 
+	nnoremap <localleader>fc :History:<cr> 
+	nnoremap <localleader>fs :History/:<cr> 
+
 
 	imap <c-x><c-w> <plug>(fzf-complete-word)
 	" inoremap <expr> <c-x><c-w> fzf#vim#complete('cat /usr/share/dict/words')
