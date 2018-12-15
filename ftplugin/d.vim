@@ -13,6 +13,13 @@ endif
 augroup DlangAutoCmd
 	" Note: au! ... will would delete all the previously set commands in the group DlangAutoCmd
 	au!
+
+	" ============================================
+	" Comment string to use in tpope/vim-commentary
+	" --------------------------------------------
+	" autocmd FileType apache setlocal commentstring=#\ %s
+	autocmd FileType d set commentstring=//\ %s
+
 	" ============================================
 	" DFMT:
 	" --------------------------------------------
@@ -43,5 +50,40 @@ augroup DlangAutoCmd
 	au FileType d command! OpenPhobos :ExPhobos<cr>
 	au FileType d command! OpenRuntime :ExRuntime<cr>
 
-
 augroup END
+
+" tagbar:
+let g:tagbar_type_d = {
+    \ 'ctagstype' : 'd',
+    \ 'kinds'     : [
+    \ 'c:classes:1:1',
+    \ 'f:functions:1:1',
+    \ 'T:template:1:1',
+    \ 'g:enums:1:1',
+    \ 'e:enumerators:0:0',
+    \ 'u:unions:1:1',
+    \ 's:structs:1:1',
+    \ 'v:variables:1:0',
+    \ 'i:interfaces:1:1',
+    \ 'm:members',
+    \ 'a:alias'
+    \ ],
+    \'sro': '.',
+    \ 'kind2scope' : {
+    \ 'c' : 'class',
+    \ 'g' : 'enum',
+    \ 's' : 'struct',
+    \ 'u' : 'union',
+    \ 'T' : 'template'
+    \},
+    \ 'scope2kind' : {
+    \ 'enum'      : 'g',
+    \ 'class'     : 'c',
+    \ 'struct'    : 's',
+    \ 'union'     : 'u',
+    \ 'template'  : 'T'
+    \ },
+    \ 'ctagsbin' : 'dscanner',
+    \ 'ctagsargs' : ['--ctags']
+    \ }
+
