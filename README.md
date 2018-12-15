@@ -415,18 +415,19 @@ Name           | Description
 
 [Shougo/deoplete.nvim]: https://github.com/Shougo/deoplete.nvim
 [Shougo/neocomplete]: https://github.com/Shougo/neocomplete.vim
-[Shougo/neosnippet.vim]: https://github.com/Shougo/neosnippet.vim
 [Raimondi/delimitMate]: https://github.com/Raimondi/delimitMate
 [ludovicchabant/vim-gutentags]: https://github.com/ludovicchabant/vim-gutentags
 [mattn/emmet-vim]: https://github.com/mattn/emmet-vim
 [Shougo/echodoc.vim]: https://github.com/Shougo/echodoc.vim
-[Shougo/neosnippet-snippets]: https://github.com/Shougo/neosnippet-snippets
 [davidhalter/jedi-vim]: https://github.com/davidhalter/jedi-vim
 [zchee/deoplete-go]: https://github.com/zchee/deoplete-go
 [zchee/deoplete-jedi]: https://github.com/zchee/deoplete-jedi
 [carlitux/deoplete-ternjs]: https://github.com/carlitux/deoplete-ternjs
 [wellle/tmux-complete.vim]: https://github.com/wellle/tmux-complete.vim
 [ternjs/tern_for_vim]: https://github.com/ternjs/tern_for_vim
+[ultisnips]:
+[honza-snippets]:
+[DSnips]:
 
 [Shougo/denite.nvim]: https://github.com/Shougo/denite.nvim
 [nixprime/cpsm]: https://github.com/nixprime/cpsm
@@ -631,11 +632,19 @@ Key   | Mode | Action
 `Tab` | Insert/select | Smart tab movement or completion
 `Ctrl`+`j/k/f/b/d/u` | Insert | Movement in completion pop-up
 `Ctrl`+`<Return>` | Insert | Expand Emmet sequence
-`Ctrl`+`o` | Insert | Expand snippet
+`Ctrl`+`h` | Insert | Expand snippet (ultisnips)
 `Ctrl`+`g` | Insert | Refresh candidates
 `Ctrl`+`l` | Insert | Complete common string
 `Ctrl`+`e` | Insert | Cancel selection and close pop-up
 `Ctrl`+`y` | Insert | Close pop-up
+
+### Plugin: ultisnips
+
+Key   | Mode | Action
+----- |:----:| ------------------
+`Ctrl`+`h` | Insert | Expand snippet
+`Ctrl`+`j` | Insert | jump forward in snippet
+`Ctrl`+`k` | Insert | jump backward in snippet
 
 ### Plugin: Commentary
 

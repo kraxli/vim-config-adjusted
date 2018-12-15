@@ -62,15 +62,20 @@ endif
 " kraxli:
 if dein#tap('fzf.vim')
 	nnoremap <silent><LocalLeader>g :<C-U>Ag<cr>
+
 	nnoremap <silent><LocalLeader>b :Buffers<CR>
 	nnoremap <silent><localleader>s :Snippets<cr>
 	nnoremap <silent><c-s> :Snippets<cr>
 	imap <silent><c-s> <esc><c-s>
-	nnoremap <silent><localleaders>f :Files .
+	" FzF ctrl-t
+	nnoremap <silent><localleaders>f :Files .				
 	nnoremap <silent><localleader>hf :History<cr> 
 	nnoremap <silent><localleader>hc :History:<cr> 
 	nnoremap <silent><localleader>hs :History/:<cr> 
-
+	" FzF: ctrl-r
+	nmap <localleader>c :Commands<cr> 
+	nmap <silent> <Leader>gl :Commits<CR>
+	nmap <silent> <Leader>gs :GFiles?<CR>
 
 	imap <c-x><c-w> <plug>(fzf-complete-word)
 	" inoremap <expr> <c-x><c-w> fzf#vim#complete('cat /usr/share/dict/words')
@@ -81,9 +86,7 @@ if dein#tap('fzf.vim')
 	nmap <localleader>k <plug>(fzf-maps-n)
 	xmap <localleader>k <plug>(fzf-maps-x)
 	omap <localleader>k <plug>(fzf-maps-o)
-	nmap <localleader>c :Commands<cr>
-	nmap <silent> <Leader>gl :Commits<CR>
-	nmap <silent> <Leader>gs :GFiles?<CR>
+	
 	" nnoremap <silent> <Leader>gc :<C-u>Denite gitbranch<CR>
 endif
 
@@ -122,6 +125,12 @@ if dein#tap('neosnippet.vim')
 	xmap <silent><C-s> <Plug>(neosnippet_register_oneshot_snippet)
 	smap <silent>L     <Plug>(neosnippet_jump_or_expand)
 	xmap <silent>L     <Plug>(neosnippet_expand_target)
+endif
+
+if dein#tap('ultisnips')
+	inoremap <silent> <C-o> <C-R>=UltiSnips#ExpandSnippetOrJump()<cr>
+	" inoremap <silent> <C-CR> <C-R>=UltiSnips#ExpandSnippetOrJump()<cr>
+	" imap <expr><C-CR> UltiSnips#ExpandSnippet()
 endif
 
 if dein#tap('emmet-vim')
