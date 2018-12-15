@@ -4,8 +4,8 @@
 
 if dein#tap('denite.nvim')
 	nnoremap <silent><LocalLeader>tw :<C-u>Denite task<cr>
-	nnoremap <silent><LocalLeader>r :<C-u>Denite -resume -refresh<CR>
-	nnoremap <silent><LocalLeader>f :<C-u>Denite file/rec<CR>
+	nnoremap <silent><LocalLeader>dr :<C-u>Denite -resume -refresh<CR>
+	nnoremap <silent><LocalLeader>df :<C-u>Denite file/rec<CR>
 	nnoremap <silent><LocalLeader>db :<C-u>Denite buffer file/old -default-action=switch<CR>
 	nnoremap <silent><LocalLeader>d :<C-u>Denite directory_rec -default-action=cd<CR>
 	nnoremap <silent><LocalLeader>v :<C-u>Denite register -buffer-name=register<CR>
@@ -65,9 +65,10 @@ if dein#tap('fzf.vim')
 	nnoremap <LocalLeader>b :Buffers<CR>
 	noremap <c-h> :Snippets<cr>
 	nnoremap <localleader>s :Snippets<cr>
-	nnoremap <localleader>ff :History<cr> 
-	nnoremap <localleader>fc :History:<cr> 
-	nnoremap <localleader>fs :History/:<cr> 
+	nnoremap <localleaders>f :Files .
+	nnoremap <localleader>hf :History<cr> 
+	nnoremap <localleader>hc :History:<cr> 
+	nnoremap <localleader>hs :History/:<cr> 
 
 
 	imap <c-x><c-w> <plug>(fzf-complete-word)
