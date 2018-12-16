@@ -19,10 +19,10 @@ if dein#tap('denite.nvim')
 	nnoremap <silent><LocalLeader>o :<C-u>Denite outline<CR>
 	nnoremap <silent><LocalLeader>s :<C-u>Denite session -buffer-name=list<CR>
 	nnoremap <silent><expr> <LocalLDein commandeader>t &filetype == 'help' ? "g\<C-]>" :
-			\ ":\<C-u>DeniteCursorWord -buffer-name=tag
-			\  tag:include\<CR>"
+		\ ":\<C-u>DeniteCursorWord -buffer-name=tag
+		\  tag:include\<CR>"
 	nnoremap <silent><expr> <LocalLeader>p  &filetype == 'help' ?
-			\ ":\<C-u>pop\<CR>" : ":\<C-u>Denite -mode=normal jump\<CR>"
+		\ ":\<C-u>pop\<CR>" : ":\<C-u>Denite -mode=normal jump\<CR>"
 	nnoremap <silent><LocalLeader>h :<C-u>Denite help<CR>
 	nnoremap <silent><LocalLeader>m :<C-u>Denite mpc -buffer-name=mpc<CR>
 	nnoremap <silent><LocalLeader>/ :<C-u>Denite line<CR>
@@ -40,8 +40,8 @@ if dein#tap('denite.nvim')
 	nnoremap <silent> <Leader>gf :DeniteCursorWord file/rec<CR>
 	nnoremap <silent> <Leader>gg :DeniteCursorWord grep<CR>
 	vnoremap <silent> <Leader>gg
-			\ :<C-u>call <SID>get_selection('/')<CR>
-			\ :execute 'Denite grep:::'.@/<CR><CR>
+		\ :<C-u>call <SID>get_selection('/')<CR>
+		\ :execute 'Denite grep:::'.@/<CR><CR>
 
 	function! s:get_selection(cmdtype)
 		let temp = @s
@@ -68,31 +68,31 @@ if dein#tap('fzf.vim')
 	nnoremap <silent><c-s> :Snippets<cr>
 	imap <silent><c-s> <esc><c-s>
 	" FzF ctrl-t
-	nnoremap <silent><localleaders>f :Files .				
-	nnoremap <silent><localleader>hf :History<cr> 
-	nnoremap <silent><localleader>hc :History:<cr> 
-	nnoremap <silent><localleader>hs :History/:<cr> 
+	nnoremap <silent><localleader>f :Files .<cr>
+	nnoremap <silent><localleader>hf :History<cr>
+	nnoremap <silent><localleader>hc :History:<cr>
+	nnoremap <silent><localleader>hs :History/:<cr>
 	" FzF: ctrl-r
-	nmap <localleader>c :Commands<cr> 
+	nmap <localleader>c :Commands<cr>
 	nmap <silent> <Leader>gl :Commits<CR>
 	nmap <silent> <Leader>gs :GFiles?<CR>
 
 	imap <c-x><c-w> <plug>(fzf-complete-word)
 	" inoremap <expr> <c-x><c-w> fzf#vim#complete('cat /usr/share/dict/words')
-	imap <c-x><c-f> <plug>(fzf-complete-path)
+	imap <c-x><c-p> <plug>(fzf-complete-path)
 	imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 	imap <c-x><c-l> <plug>(fzf-complete-line)
 
 	nmap <localleader>k <plug>(fzf-maps-n)
 	xmap <localleader>k <plug>(fzf-maps-x)
 	omap <localleader>k <plug>(fzf-maps-o)
-	
+
 	" nnoremap <silent> <Leader>gc :<C-u>Denite gitbranch<CR>
 endif
 
 if dein#tap('vim-denite-z')
 	command! -nargs=+ -complete=file Z
-			\ call denite#start([{'name': 'z', 'args': [<q-args>], {'immediately': 1}}])
+		\ call denite#start([{'name': 'z', 'args': [<q-args>], {'immediately': 1}}])
 endif
 
 if dein#tap('tagbar')
@@ -121,7 +121,7 @@ endif
 
 if dein#tap('neosnippet.vim')
 	imap <expr><C-o> neosnippet#expandable_or_jumpable()
-			\ ? "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
+		\ ? "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
 	xmap <silent><C-s> <Plug>(neosnippet_register_oneshot_snippet)
 	smap <silent>L     <Plug>(neosnippet_jump_or_expand)
 	xmap <silent>L     <Plug>(neosnippet_expand_target)
@@ -135,8 +135,8 @@ endif
 
 if dein#tap('emmet-vim')
 	autocmd MyAutoCmd FileType html,css,jsx,javascript,javascript.jsx
-			\ EmmetInstall
-			\ | imap <buffer> <C-Return> <Plug>(emmet-expand-abbr)
+		\ EmmetInstall
+		\ | imap <buffer> <C-Return> <Plug>(emmet-expand-abbr)
 endif
 
 if dein#tap('vim-operator-surround')
@@ -199,7 +199,7 @@ endif
 
 if dein#tap('vim-bookmarks')
 	nmap ma :<C-u>cgetexpr bm#location_list()<CR>
-			\ :<C-u>Denite quickfix -buffer-name=list<CR>
+		\ :<C-u>Denite quickfix -buffer-name=list<CR>
 	nmap mn <Plug>BookmarkNext
 	nmap mp <Plug>BookmarkPrev
 	nmap mm <Plug>BookmarkToggle
@@ -258,11 +258,11 @@ endif
 
 if dein#tap('tern_for_vim')
 	autocmd MyAutoCmd FileType javascript,jsx,javascript.jsx
-			\  nnoremap <silent><buffer> K          :<C-u>TernDoc<CR>
-			\| nnoremap <silent><buffer> <C-]>      :<C-u>TernDefSplit<CR>
-			\| nnoremap <silent><buffer> <leader>g  :<C-u>TernType<CR>
-			\| nnoremap <silent><buffer> <leader>n  :<C-u>TernRefs<CR>
-			\| nnoremap <silent><buffer> <leader>r  :<C-u>TernRename<CR>
+		\  nnoremap <silent><buffer> K          :<C-u>TernDoc<CR>
+		\| nnoremap <silent><buffer> <C-]>      :<C-u>TernDefSplit<CR>
+		\| nnoremap <silent><buffer> <leader>g  :<C-u>TernType<CR>
+		\| nnoremap <silent><buffer> <leader>n  :<C-u>TernRefs<CR>
+		\| nnoremap <silent><buffer> <leader>r  :<C-u>TernRename<CR>
 endif
 
 if dein#tap('vim-gitgutter')
@@ -275,23 +275,23 @@ endif
 
 if dein#tap('vim-go')
 	autocmd MyAutoCmd FileType go
-			\   nmap <C-]> <Plug>(go-def)
-			\ | nmap <Leader>god  <Plug>(go-describe)
-			\ | nmap <Leader>goc  <Plug>(go-callees)
-			\ | nmap <Leader>goC  <Plug>(go-callers)
-			\ | nmap <Leader>goi  <Plug>(go-info)
-			\ | nmap <Leader>gom  <Plug>(go-implements)
-			\ | nmap <Leader>gos  <Plug>(go-callstack)
-			\ | nmap <Leader>goe  <Plug>(go-referrers)
-			\ | nmap <Leader>gor  <Plug>(go-run)
-			\ | nmap <Leader>gov  <Plug>(go-vet)
+		\   nmap <C-]> <Plug>(go-def)
+		\ | nmap <Leader>god  <Plug>(go-describe)
+		\ | nmap <Leader>goc  <Plug>(go-callees)
+		\ | nmap <Leader>goC  <Plug>(go-callers)
+		\ | nmap <Leader>goi  <Plug>(go-info)
+		\ | nmap <Leader>gom  <Plug>(go-implements)
+		\ | nmap <Leader>gos  <Plug>(go-callstack)
+		\ | nmap <Leader>goe  <Plug>(go-referrers)
+		\ | nmap <Leader>gor  <Plug>(go-run)
+		\ | nmap <Leader>gov  <Plug>(go-vet)
 endif
 
 if dein#tap('phpcomplete-extended')
 	autocmd MyAutoCmd FileType php
-			\   nmap <silent> <unique> K <Plug>(phpcomplete-extended-doc)
-			\ | nmap <silent> <unique> <C-]> <Plug>(phpcomplete-extended-goto)
-			\ | nmap <silent> <unique> <Leader>a <Plug>(phpcomplete-extended-add-use)
+		\   nmap <silent> <unique> K <Plug>(phpcomplete-extended-doc)
+		\ | nmap <silent> <unique> <C-]> <Plug>(phpcomplete-extended-goto)
+		\ | nmap <silent> <unique> <Leader>a <Plug>(phpcomplete-extended-add-use)
 endif
 
 if dein#tap('vimagit')
@@ -424,7 +424,7 @@ if dein#tap('vim-dutyl')
 		au!
 		au Filetype d nmap <silent> K :DUddoc<cr>
 		au Filetype d nmap <silent> <c-k> :DUddoc<cr>
-		" <silent> gd :DUjump
+		au Filetype d nmap <silent> gd :DUjump<cr>
 	augroup END
 endif
 
@@ -527,6 +527,20 @@ endif
 
 if dein#tap('calendar.vim')
 	nmap <leader>c :Calendar<cr>
+endif
+
+if dein#tap('nim.vim')
+	fun! JumpToDef()
+		if exists("*GotoDefinition_" . &filetype)
+			call GotoDefinition_{&filetype}()
+		else
+			exe "norm! \<C-]>"
+		endif
+	endf
+
+	" Jump to tag
+	nn <M-g> :call JumpToDef()<cr>
+	ino <M-g> <esc>:call JumpToDef()<cr>i
 endif
 
 " vim: set ts=2 sw=2 tw=80 noet :

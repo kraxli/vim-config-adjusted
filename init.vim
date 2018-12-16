@@ -26,6 +26,7 @@ autocmd BufRead,BufNewFile *.jl :set filetype=julia
 autocmd BufRead,BufNewFile *.jl :set syntax=julia
 " autocmd BufRead,BufNewFile *.py :set filetype=python.python3
 " autocmd FileType python :set filetype=python.python3
+au BufNewFile,BufRead *.nim set filetype=nim
 
 " path to source file
 " let g:scr_path=fnamemodify(expand('<sfile>:p'), ':h:h:h').'/scr'

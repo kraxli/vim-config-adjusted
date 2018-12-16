@@ -167,6 +167,11 @@
 # Programming languages
 # ---------------------
 
+# - repo: baabelfish/nvim-nim
+- repo: zah/nim.vim
+  on_ft: nim
+
+
 # scarface-one/vim-dlang-phobos-highlighter
 # bsed/vim-dlang
 # AndreaOrru/vim-dlang-autofold-unittest
@@ -434,7 +439,7 @@
 # https://github.com/jhawthorn/fzy
 
 - repo: w0rp/ale
-  on_ft: [r, python, d]
+  on_ft: [r, python, d, nim, yaml]
   on_cmd: [ALEnable, ALELint, ALEFix]
   hook_add: |
     let g:ale_linters_explicit = 0
