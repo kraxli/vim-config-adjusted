@@ -282,10 +282,10 @@
 
 # dway: vim-config-adjusted (see also bellow for g:neosnippet#data_directory)
 - repo: honza/vim-snippets
-  on_ft: snippet
+  on_ft: [d, nim, pyhon, markdown, r]
 
 - repo: kiith-sa/DSnips
-  on_ft: snippet
+  on_ft: d
 
 # TODO: if pumvsible and <snip> then call the snippet rigger function
 # # https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
