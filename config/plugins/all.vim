@@ -1,6 +1,6 @@
 
 " Plugin Settings
-"---------------------------------------------------------
+	"---------------------------------------------------------
 
 if dein#tap('denite.nvim')
 	nnoremap <silent><LocalLeader>tw :<C-u>Denite task<cr>
@@ -67,6 +67,7 @@ if dein#tap('fzf.vim')
 	nnoremap <silent><localleader>s :Snippets<cr>
 	nnoremap <silent><c-s> :Snippets<cr>
 	imap <silent><c-s> <esc><c-s>
+
 	" FzF ctrl-t
 	nnoremap <silent><localleader>f :Files .<cr>
 	nnoremap <silent><localleader>hf :History<cr>
