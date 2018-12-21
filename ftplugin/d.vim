@@ -102,3 +102,8 @@ let g:tagbar_type_d = {
   \ 'ctagsargs' : ['--ctags']
 \ }
 
+
+au FileType d command! Run :!dmd -run %
+au FileType d command! Unittest :!dmd -unittest %
+au FileType d map <F5> :Run<cr>
+" au FileType d map <S-F5> :Unittest<cr>
