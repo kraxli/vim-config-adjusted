@@ -45,13 +45,13 @@
   hook_add: |
     let g:utl_cfg_hdl_mt_text_directory='VIM'
     let g:utl_cfg_hdl_scm_http_system = "silent !firefox -remote 'ping()' &&
-                                         \ firefox -remote 'openURL( %u )' ||
-                                         \ firefox '%u#%f' &"
+    \ firefox -remote 'openURL( %u )' ||
+    \ firefox '%u#%f' &"
 
 - repo: dbakker/vim-projectroot
   hook_add: |
     let g:rootmarkers = ['.git', 'dub.json', 'dub.sdl', 'index.md',
-      \ 'index.wiki', '.projectroot', '.svn']
+    \ 'index.wiki', '.projectroot', '.svn']
 
 # or moll / vim-bbye
 - repo: qpkorr/vim-bufkill
@@ -64,7 +64,7 @@
 
 # not taking: cwoac/nvim
 
-- repo: tomasiser/vim-code-dark
+- repo: kraxli/vim-code-dark
 - repo: NLKNguyen/papercolor-theme
 
 - repo: sjl/gundo.vim
@@ -130,6 +130,57 @@
 # =======================================================
 # Completion
 # ----------
+- repo: roxma/nvim-yarp
+
+- repo: ncm2/ncm2
+  hook_add: |
+    autocmd! BufEnter,BufRead,BufNewFile *.* call ncm2#enable_for_buffer()
+    set completeopt=noinsert,menuone,noselect
+    set shortmess+=c
+  hook_source: |
+    inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <c-c> <ESC>
+
+# ncm2/ncm2-gtags
+
+- repo: ncm2/ncm2-ultisnips
+  hook_add: inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+- repo: ncm2/ncm2-bufword
+- repo: fgrsnau/ncm2-otherbuf
+- repo: ncm2/ncm2-path
+- repo: Shougo/neoinclude.vim
+- repo: ncm2/ncm2-neoinclude
+  depends: Shougo/neoinclude.vim
+- repo: ncm2/ncm2-tagprefix
+- repo: ncm2/ncm2-github
+  on_ft: [markdown, text, tex, vimwiki]
+
+
+# words / dictionary completion
+- repo: fgrsnau/ncm2-aspell
+  on_ft: [markdown, text, tex, vimwiki]
+- repo: yuki-ycino/ncm2-dictionary
+  on_ft: [markdown, text, tex, vimwiki]
+- repo: filipekiss/ncm2-look.vim
+  if: has('unix')
+  hook_add: let g:ncm2_look_enabled = 0
+  on_ft: [markdown, text, tex, vimwiki]
+
+- repo: ncm2/ncm2-vim
+  depends: Shougo/neco-vim
+
+
+- repo: ncm2/ncm2-d
+  on_ft: d
+  hook_add: |
+    let g:ncm2_d#dcd_client_bin = 'dcd-client'
+    let g:ncm2_d#dcd_client_args = ['']
+    let g:ncm2_d#dcd_server_bin = 'dcd-server'
+    let g:ncm2_d#dcd_server_args = ['']
+    let g:ncm2_d#dcd_autostart_server = 1
+
 
 # - repo: landaire/deoplete-d
 # rev: dub-based-imports
@@ -157,6 +208,13 @@
 #             \ 'cmd': ['serve-d'],
 #             \ },
 #             \ }
+
+- repo: ncm2/ncm2-jedi
+  on_ft: python
+
+- repo: gaalcaras/ncm-R
+  on_ft: r
+
 
 # TODO R completion:
 # https://github.com/gaalcaras/ncm-R
@@ -188,7 +246,6 @@
     let g:dmisc_dcd_bin_dir='/home/dave/.dutils/dcd/bin/'
     let g:dutyl_neverAddClosingParen = 1
     let g:dutyl_dontHandleIndent = 1
-  hook_source: |
     autocmd! BufRead,BufEnter,BufNewFile *.d DUDCDrestartServer
 
 # let g:dutyl_dontHandleFormat = 1
@@ -246,18 +303,6 @@
 # let R_assign_map = ":"
 # let R_assign_map = "<M-_>"
 
-- repo: roxma/nvim-yarp
-  on_ft: [r, julia]
-
-# TODO: to be removed aafter ncm-R supports deoplete
-# former: roxma/nvim-completion-manager
-- repo: ncm2/ncm2
-  depends: roxma/nvim-yarp
-  on_ft: [r, julia]
-
-- repo: gaalcaras/ncm-R
-  on_ft: r
-
 - repo: vim-scripts/octave.vim
   on_ft: [m, oct]
 
@@ -291,20 +336,22 @@
 # # https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
 # https://github.com/simonweil/dotfiles/blob/master/nvimrc
 - repo: SirVer/ultisnips
-  depends: [vim-snippets, DSnips]
   hook_add: |
     let g:UltiSnipsSnippetsDir=['UltiSnips',
-      \ $VARPATH. '/dein/repos/github.com' . '/honza/vim-snippets/UltiSnips',
-      \ $VARPATH . '/dein/repos/github.com' . "/kiith-sa/DSnips"]
+    \ $VARPATH. '/dein/repos/github.com' . '/honza/vim-snippets/UltiSnips',
+    \ $VARPATH . '/dein/repos/github.com' . "/kiith-sa/DSnips"]
     let g:UltiSnipsUsePythonVersion = 3
-    let g:UltiSnipsExpandTrigger= '<c-h>' " '<m-cr>' " "<c-cr>"
-    let g:UltiSnipsJumpForwardTrigger="<c-k>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+    let g:UltiSnipsJumpForwardTrigger="<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
     let g:UltiSnipsEditSplit="vertical"
+    let g:UltiSnipsRemoveSelectModeMappings = 0
+
+# let g:UltiSnipsExpandTrigger= '<Plug>(ultisnips_expand)' " '<c-h>' '<m-cr>' " "<c-cr>"
+
 
 # let g:UltiSnipsListSnippets = "<c-L>"
 # let g:UltiSnipsExpandTrigger="<space>"
-# let g:UltiSnipsExpandTrigger="<c-cr>" 
+# let g:UltiSnipsExpandTrigger="<c-cr>"
 # let g:UltiSnipsJumpForwardTrigger="<tab>"
 # let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
@@ -457,9 +504,9 @@
     let g:ale_python_pylama_use_global = 0
     let g:ale_python_mypy_options = ''
     let g:ale_fixers = {
-    \ 'd': ['uncrustify', 'remove_trailing_lines', 'trim_whitespace'],
-    \ 'python' : ['autopep8', 'yapf', 'black']
-    \ }
+      \ 'd': ['uncrustify', 'remove_trailing_lines', 'trim_whitespace'],
+      \ 'python' : ['autopep8', 'yapf', 'black']
+      \ }
     let g:airline#extensions#ale#enabled = 1
     let g:ale_completion_enabled = 1
     highlight clear ALEErrorSign

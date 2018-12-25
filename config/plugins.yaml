@@ -305,15 +305,15 @@
 # ==========================================
 # Completion
 # ----------
-- repo: Shougo/deoplete.nvim
-  build: call dein#remote_plugins()
-  rev: tags/4.0
-  depends: context_filetype.vim
-  if: has('nvim') && empty($VIM_MINIMAL)
-  on_event: InsertEnter
-  hook_source: |
-    source $VIMPATH/config/plugins/deoplete.vim
-    call deoplete#enable()
+# - repo: Shougo/deoplete.nvim
+#   build: call dein#remote_plugins()
+#   rev: tags/4.0
+#   depends: context_filetype.vim
+#   if: has('nvim') && empty($VIM_MINIMAL)
+#   on_event: InsertEnter
+#   hook_source: |
+#     source $VIMPATH/config/plugins/deoplete.vim
+#     call deoplete#enable()
 
 #   build: UpdateRemotePlugins
 

@@ -1,6 +1,6 @@
 
 " Plugin Settings
-	"---------------------------------------------------------
+"---------------------------------------------------------
 
 if dein#tap('denite.nvim')
 	nnoremap <silent><LocalLeader>tw :<C-u>Denite task<cr>
@@ -537,11 +537,27 @@ if dein#tap('nim.vim')
 		else
 			exe "norm! \<C-]>"
 		endif
-	endf
+	endfunction
 
 	" Jump to tag
 	nn <M-g> :call JumpToDef()<cr>
 	ino <M-g> <esc>:call JumpToDef()<cr>i
+endif
+
+if dein#tap('ncm2')
+	map <c-space> <Plug>(ncm2_manual_trigger)
+	imap <c-space> <Plug>(ncm2_manual_trigger)
+
+	au User Ncm2Plugin call ncm2#register_source({
+		\ 'name' : 'css',
+		\ 'priority': 9,
+		\ 'subscope_enable': 1,
+		\ 'scope': ['css','scss'],
+		\ 'mark': 'css',
+		\ 'word_pattern': '[\w\-]+',
+		\ 'complete_pattern': ':\s*',
+		\ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+		\ })
 endif
 
 " vim: set ts=2 sw=2 tw=80 noet :

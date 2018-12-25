@@ -1,6 +1,17 @@
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
+setlocal textwidth=80
+setlocal expandtab
+setlocal smarttab
+setlocal nosmartindent
+set foldmethod=indent
+setl foldcolumn=2
+
 
 " https://stackoverflow.com/questions/15052044/vim-folding-with-rainbowparentheses
 setl foldmethod=syntax
+set foldmethod=syntax
 setl foldenable
 setl foldlevel=100
 setl foldcolumn=2
