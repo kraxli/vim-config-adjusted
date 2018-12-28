@@ -7,7 +7,7 @@
 - repo: Shougo/dein.vim
   rev: tags/1.5
 
-- repo: rafi/awesome-vim-colorschemes
+# - repo: rafi/awesome-vim-colorschemes
 - repo: rafi/vim-badge
 - repo: thinca/vim-localrc
 - repo: junegunn/vim-peekaboo
@@ -26,7 +26,7 @@
 # if: ! empty(&l:filetype) && &l:filetype != "python" || &l:filetype != "python.python3"
 
 # Vim8 only:
-- { repo: roxma/nvim-yarp, if: ! has('nvim') }
+# - { repo: roxma/nvim-yarp, if: ! has('nvim') }
 - { repo: roxma/vim-hug-neovim-rpc, if: ! has('nvim'), depends: nvim-yarp }
 
 # Lazy Loading
