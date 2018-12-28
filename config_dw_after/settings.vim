@@ -27,11 +27,11 @@ set statusline=%F
 " set noro
 
 " Color Scheme
-colorscheme hybrid " gruvbox  hybrid
-set background=light " dark
+" colorscheme hybrid " gruvbox  hybrid
+" set background=light " dark
 
-let color_scheme1 = 'hybrid'
-let color_scheme2 = 'gruvbox'
+" let color_scheme1 = 'hybrid'
+" let color_scheme2 = 'gruvbox'
 
 " Status bar/line
 set statusline+=%F

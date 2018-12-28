@@ -48,7 +48,7 @@ let g:path_tex_executables = 'C:\Program Files\MiKTeX 2.9\miktex\bin\x64\'
 
 " {{{ === Load Config files ===
 " Initialize plugin manager 'plug.vim':
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config_dw_after/plugged.vim'
+" execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config_dw_after/plugged.vim'
 
 " original from vim-config:
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/vimrc'
