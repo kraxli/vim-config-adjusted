@@ -9,6 +9,9 @@
 #   put keyboar shortcuts in the hook_add block
 #   in Vim only alphabetic letters can be mapped in combination with the CTRL key
 
+#   TODO:
+#   https://github.com/ncm2/ncm2-gtags OR https://github.com/jsfaint/gen_tags.vim
+
 # =======================================================
 # Startup
 # -------
@@ -64,6 +67,7 @@
 
 # not taking: cwoac/nvim
 
+# see config/theme.vim for speedup config/init.vim 
 - repo: kraxli/vim-code-dark
 - repo: NLKNguyen/papercolor-theme
 
@@ -79,10 +83,6 @@
   on_map: {n: [crs, crm, crc, cru, cr-, cr., cr<space>, crt]}
   hook_post_source: source $VIMPATH/config_dw_after/plugins/abolish.vim
 
-# https://github.com/ggreer/the_silver_searcher
-# - repo: mileszs/ack.vim
-#   hook_add: let g:ackprg = 'ag --nogroup --nocolor --column'
-
 # TODO inspect
 # - repo: pelodelfuego/vim-swoop
 #   on_func: [Swoop, SwoopSelection, SwoopMulti, SwoopMultiSelection, \
@@ -95,6 +95,13 @@
 #     vmap <Leader>s :call SwoopSelection()<CR>
 #     nmap <Leader>ms :call SwoopMulti()<CR>
 #     vmap <Leader>ms :call SwoopMultiSelection()<CR>
+
+
+# - repo: ncm2/ncm2-gtags
+- repo: jsfaint/gen_tags.vim
+  on_cmd: [GenCtags, ClearCtags, EditExt,]
+  on_ft: [d, python, nim, r, c, cpp, h, hpp]
+  hook_add: let g:gen_tags#gtags_default_map = 1
 
 - repo: mhinz/vim-startify
   on_cmd: [Startify, StartifyDebug]
@@ -144,8 +151,6 @@
 
 # autocmd! BufEnter,BufRead,BufNewFile *.* call ncm2#enable_for_buffer()
 #    call ncm2#enable_for_buffer()
-
-# ncm2/ncm2-gtags
 
 - repo: ncm2/ncm2-ultisnips
   on_event: InsertEnter
