@@ -1,6 +1,6 @@
 
 " Plugin Settings
-"---------------------------------------------------------
+	"---------------------------------------------------------
 
 if dein#tap('denite.nvim')
 	nnoremap <silent><LocalLeader>tw :<C-u>Denite task<cr>
