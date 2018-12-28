@@ -137,39 +137,54 @@
     autocmd! BufEnter,BufRead,BufNewFile *.* call ncm2#enable_for_buffer()
     set completeopt=noinsert,menuone,noselect
     set shortmess+=c
-  hook_source: |
     inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
     inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
     inoremap <c-c> <ESC>
 
+# autocmd! BufEnter,BufRead,BufNewFile *.* call ncm2#enable_for_buffer()
+#    call ncm2#enable_for_buffer()
+
 # ncm2/ncm2-gtags
 
 - repo: ncm2/ncm2-ultisnips
+  on_event: InsertEnter
   hook_add: inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 - repo: ncm2/ncm2-bufword
+  on_event: InsertEnter
 - repo: fgrsnau/ncm2-otherbuf
+  on_event: InsertEnter
 - repo: ncm2/ncm2-path
+  on_event: InsertEnter
 - repo: Shougo/neoinclude.vim
+  on_event: InsertEnter
 - repo: ncm2/ncm2-neoinclude
   depends: Shougo/neoinclude.vim
+  on_event: InsertEnter
 - repo: ncm2/ncm2-tagprefix
+  on_event: InsertEnter
 - repo: ncm2/ncm2-github
   on_ft: [markdown, text, tex, vimwiki]
+  on_event: InsertEnter
 
 
 # words / dictionary completion
 - repo: fgrsnau/ncm2-aspell
   on_ft: [markdown, text, tex, vimwiki]
+  on_event: InsertEnter
 - repo: yuki-ycino/ncm2-dictionary
   on_ft: [markdown, text, tex, vimwiki]
+  on_event: InsertEnter
 - repo: filipekiss/ncm2-look.vim
   if: has('unix')
   hook_add: let g:ncm2_look_enabled = 0
   on_ft: [markdown, text, tex, vimwiki]
+  on_event: InsertEnter
 
 - repo: ncm2/ncm2-vim
   depends: Shougo/neco-vim
+  on_ft: vim
+  on_event: InsertEnter
 
 
 - repo: ncm2/ncm2-d
@@ -211,9 +226,11 @@
 
 - repo: ncm2/ncm2-jedi
   on_ft: python
+  on_event: InsertEnter
 
 - repo: gaalcaras/ncm-R
   on_ft: r
+  on_event: InsertEnter
 
 
 # TODO R completion:
@@ -358,12 +375,16 @@
 # =======================================================
 # Interface
 # ---------
-# - repo: Yggdroot/indentLine
-#   hook_add: |
-#     let g:indentLine_fileTypeExclude = [ 'help', 'denite', 'codi', 'startify' ]
-#     let g:indentLine_fileTyp = ['python']
-#     let g:indentLine_char =  '▏'
-#     set list lcs=tab:\|\
+- repo: Yggdroot/indentLine
+  hook_add: |
+    let g:indentLine_fileTypeExclude = [ 'help', 'denite', 'codi', 'startify', 'tagbar' ]
+    let g:indentLine_char =  '¦'
+    let g:indentLine_setColors = 1
+    set list lcs=tab:\|\
+
+#    let g:indentLine_char =  '▏' ┆  ¦
+# let g:indentLine_fileTyp = ['python']
+
 
 # =======================================================
 # Organizers and Note taking
