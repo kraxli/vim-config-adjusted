@@ -18,13 +18,11 @@ if dein#tap('denite.nvim')
 	nnoremap <silent><LocalLeader>u :<C-u>Denite junkfile:new junkfile<CR>
 	nnoremap <silent><LocalLeader>o :<C-u>Denite outline<CR>
 	nnoremap <silent><LocalLeader>s :<C-u>Denite session -buffer-name=list<CR>
-	nnoremap <silent><expr> <LocalLDein commandeader>t &filetype == 'help' ? "g\<C-]>" :
-		\ ":\<C-u>DeniteCursorWord -buffer-name=tag
-		\  tag:include\<CR>"
-	nnoremap <silent><expr> <LocalLeader>p  &filetype == 'help' ?
-		\ ":\<C-u>pop\<CR>" : ":\<C-u>Denite -mode=normal jump\<CR>"
+	nnoremap <silent><LocalLeader>t :<C-u>Denite -buffer-name=tag tag:include<CR>
+	nnoremap <silent><LocalLeader>p :<C-u>Denite -mode=normal jump<CR>
 	nnoremap <silent><LocalLeader>h :<C-u>Denite help<CR>
-	nnoremap <silent><LocalLeader>m :<C-u>Denite mpc -buffer-name=mpc<CR>
+	nnoremap <silent><LocalLeader>m :<C-u>Denite file/rec -buffer-name=memo -path=~/docs/books<CR>
+	" nnoremap <silent><LocalLeader>m :<C-u>Denite mpc -buffer-name=mpc<CR>
 	nnoremap <silent><LocalLeader>/ :<C-u>Denite line<CR>
 	nnoremap <silent><LocalLeader>* :<C-u>DeniteCursorWord line<CR>
 	nnoremap <silent><LocalLeader>z :<C-u>Denite z<CR>
@@ -36,7 +34,7 @@ if dein#tap('denite.nvim')
 	nnoremap <silent> <Leader>gbr :<C-u>Denite gitbranch<CR>
 
 	" Open Denite with word under cursor or selection
-	nnoremap <silent> <Leader>ff :DeniteCursorWord file/rec<CR> " add kraxli
+	nnoremap <silent> <Leader>gt :DeniteCursorWord -buffer-name=tag tag:include<CR> " ff
 	nnoremap <silent> <Leader>gf :DeniteCursorWord file/rec<CR>
 	nnoremap <silent> <Leader>gg :DeniteCursorWord grep<CR>
 	vnoremap <silent> <Leader>gg
@@ -102,6 +100,11 @@ if dein#tap('tagbar')
 	" Also use h/l to open/close folds
 	let g:tagbar_map_closefold = ['h', '-', 'zc']
 	let g:tagbar_map_openfold = ['l', '+', 'zo']
+endif
+
+if dein#tap('defx.nvim')
+	nnoremap <silent> <Leader>f
+		\ :<C-u>Defx -resume -toggle -split=vertical -winwidth=25 -direction=topleft -columns=icons:git:filename:type -buffer-name=tab`tabpagenr()`<CR>
 endif
 
 if dein#tap('nerdtree')
@@ -310,6 +313,11 @@ if dein#tap('vim-easygit')
 	nnoremap <silent> <leader>gB :Gbrowse<CR>
 	nnoremap <silent> <leader>gS :Gstatus<CR>
 	nnoremap <silent> <leader>gp :Gpush<CR>
+endif
+
+if dein#tap('vim-altr')
+	nmap gs  <Plug>(altr-forward)
+	nmap gS  <Plug>(altr-back)
 endif
 
 if dein#tap('undotree')

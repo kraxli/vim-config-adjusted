@@ -32,7 +32,7 @@ Best with Neovim or Vim 8 with +python3 extensions enabled.
 - Custom side-menu (try it out! <kbd>Leader</kbd>+<kbd>l</kbd>)
 - Modular configuration
 - Denite (Unite's successor) centric work-flow
-- Extensive Deoplete and Neocomplete setup
+- Extensive Deoplete setup (auto-completion)
 - Lightweight simple status/tabline
 - Easy customizable theme
 - Premium color-schemes
@@ -73,15 +73,7 @@ ln -s ~/.config/nvim ~/.vim
   use that instead of `~/.config` in the code above.
   Nvim follows the XDG base-directories convention.
 
-**_2._** Almost done! You'll need a YAML interpreter, if you have Ruby
-installed - you can skip this step. Otherwise, either install [yaml2json],
-or use Python:
-
-```sh
-pip3 install --user --upgrade PyYAML
-```
-
-**_3._** If you are a _first-time Neovim user_, you need the python-neovim
+**_2._** If you are a _first-time Neovim user_, you need the pynvim
 packages. Don't worry, run the script provided:
 
 ```sh
@@ -89,9 +81,9 @@ cd ~/.config/nvim
 ./venv.sh
 ```
 
-**_4._** Run `make test` to test your nvim/vim version and compatibility.
+**_3._** Run `make test` to test your nvim/vim version and compatibility.
 
-**_5._** Run `make` to install all plugins.
+**_4._** Run `make` to install all plugins.
 
 Enjoy!
 
@@ -129,6 +121,9 @@ Run `make update`
 
 If you want to add your own configuration, create the `config/local.vim` file
 and add your personal settings there. This file is ignored by `.gitignore`.
+
+If you'd like to install plugins by yourself, create a
+`config/local.plugins.yaml` file and manage your own plugin collection.
 
 ## Structure
 
@@ -279,8 +274,7 @@ Name           | Description
 Name           | Description
 -------------- | ----------------------
 [Shougo/deoplete.nvim] | Neovim: Dark powered asynchronous completion framework
-[Shougo/neocomplete] | Next generation completion framework
-[Shougo/neosnippet.vim] | Contains neocomplete snippets source
+[Shougo/neosnippet.vim] | Snippets with integration to Deoplete
 [Raimondi/delimitMate] | Auto-completion for quotes, parens, brackets
 [ludovicchabant/vim-gutentags] | Manages your tag files
 [mattn/emmet-vim] | Provides support for expanding abbreviations alá emmet
@@ -414,7 +408,7 @@ Name           | Description
 [vimwiki/vimwiki]: https://github.com/vimwiki/vimwiki
 
 [Shougo/deoplete.nvim]: https://github.com/Shougo/deoplete.nvim
-[Shougo/neocomplete]: https://github.com/Shougo/neocomplete.vim
+[Shougo/neosnippet.vim]: https://github.com/Shougo/neosnippet.vim
 [Raimondi/delimitMate]: https://github.com/Raimondi/delimitMate
 [ludovicchabant/vim-gutentags]: https://github.com/ludovicchabant/vim-gutentags
 [mattn/emmet-vim]: https://github.com/mattn/emmet-vim
@@ -486,15 +480,15 @@ Key   | Mode | Action
 `}` | Normal | After paragraph motion go to first non-blank char (}^)
 `<` | Visual/Normal | Indent to left and re-select
 `>` | Visual/Normal | Indent to right and re-select
-`Tab` | Visual | Indent to right and re-select
-`Shift`+`Tab` | Visual | Indent to left and re-select
+`Tab` | Visual/Normal | Indent to right and re-select
+`Shift`+`Tab` | Visual/Normal | Indent to left and re-select
 `gh` | Normal | Show highlight group that matches current cursor
 `gp` | Normal | Select last paste
 `Q` | Normal | Start/stop macro recording
 `gQ` | Normal | Play macro 'q'
 `mj`/`mk` | Normal/Visual | Move lines down/up
-`cp` | Normal | Duplicate paragraph
-`cn`/`cN` | Normal/Visual | Change current word in a repeatable manner
+`<leader>`+`cp` | Normal | Duplicate paragraph
+`<leader>`+`cn`/`cN` | Normal/Visual | Change current word in a repeatable manner
 `s` | Visual | Replace within selected area
 `Ctrl`+`a` | Command | Navigation in command line
 `Ctrl`+`b` | Command | Move cursor backward in command line
@@ -624,7 +618,7 @@ Key   | Mode | Action
 `gf` | Normal | Search in selected directory for files
 `gr` | Normal | Grep in selected directory
 
-### Plugin: Deoplete / Emmet / Neocomplete
+### Plugin: Deoplete / Emmet
 
 Key   | Mode | Action
 ----- |:----:| ------------------
@@ -757,5 +751,5 @@ topHL)<Plug>(StopHL)
 Big thanks to the dark knight [Shougo].
 
 [Shougo]: https://github.com/Shougo
-[lazy-loaded]: ./config/plugins.yaml#L21
-[yaml2json]: https://github.com/koraa/large-yaml2json-json2yaml
+[lazy-loaded]: ./config/plugins.yaml#L28
+[yaml2json]: https://github.com/bronze1man/yaml2json
