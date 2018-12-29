@@ -1,6 +1,6 @@
 
 " Plugin Settings
-	"---------------------------------------------------------
+"---------------------------------------------------------
 
 if dein#tap('denite.nvim')
 	nnoremap <silent><LocalLeader>tw :<C-u>Denite task<cr>
@@ -548,9 +548,20 @@ if dein#tap('nim.vim')
 	ino <M-g> <esc>:call JumpToDef()<cr>i
 endif
 
+if dein#tap('ropevim')
+    nmap Q :call RopeShowDoc()
+    nmap Rd :call RopeGotoDefinition()
+    map <c-c>rd :call RopeGotoDefinition()
+endif
+
 if dein#tap('ncm2')
-	map <c-space> <Plug>(ncm2_manual_trigger)
-	imap <c-space> <Plug>(ncm2_manual_trigger)
+	autocmd! BufEnter,BufRead,BufNewFile *.* call ncm2#enable_for_buffer()
+	set completeopt=noinsert,menuone,noselect
+	set shortmess+=c
+	inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+	inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+	inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+	inoremap <expr><c-space> pumvisible() ? "\<c-x><c-o>" : "\<c-x><c-o>"
 
 	au User Ncm2Plugin call ncm2#register_source({
 		\ 'name' : 'css',
@@ -562,6 +573,11 @@ if dein#tap('ncm2')
 		\ 'complete_pattern': ':\s*',
 		\ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
 		\ })
+endif
+
+if dein#tap('ncm2-ultisnips')
+	" needs to come after other pumvisible for ncm2!!
+	inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 endif
 
 " vim: set ts=2 sw=2 tw=80 noet :

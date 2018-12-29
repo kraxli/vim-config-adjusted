@@ -395,7 +395,7 @@
     let g:delimitMate_expand_cr = 1
     let g:delimitMate_excluded_ft = 'html'
 
-- { repo: Shougo/neosnippet-snippets, lazy: 1 }
+# - { repo: Shougo/neosnippet-snippets, lazy: 1 }
 - { repo: Shougo/context_filetype.vim, lazy: 1 }
 - { repo: Shougo/neco-vim, on_ft: vim }
 # - { repo: Shougo/neco-syntax, on_source: deoplete.nvim }
