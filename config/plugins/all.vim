@@ -124,7 +124,6 @@ if dein#tap('nerdtree')
 endif
 
 if dein#tap('vimfiler.vim')
-	source  $VIMPATH/config/plugins/vimfiler.vim
 
 	nnoremap <silent> <localleader>e  :<C-u>VimFilerCurrentDir -explorer -winminwidth=25 -winwidth=30 -toggle<cr>
 	" "-buffer-name=explorer -no-quit -split -winwidth=30 -toggle<CR>

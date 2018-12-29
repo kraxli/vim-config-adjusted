@@ -29,9 +29,9 @@ if ! exists('g:gui_oni')
 
 endif
 
-augroup DlangAutoCmd
+" augroup DlangAutoCmd
   " Note: au! ... will would delete all the previously set commands in the group DlangAutoCmd
-  au!
+  " au!
 
   " ============================================
   " Comment string to use in tpope/vim-commentary
@@ -69,14 +69,19 @@ augroup DlangAutoCmd
   " Misc:
   " --------------------------------------------
 
-  au FileType d command! OpenDmdConf :e ~/dmd.conf
+	au FileType d command! OpenDmdConf :e ~/dmd.conf
   " ['/snap/dmd/current/import/druntime', '/snap/dmd/31/import/phobos']
   au FileType d command! ExPhobos :V  /snap/dmd/31/import/phobos
   au FileType d command! ExRuntime :V  /snap/dmd/current/import/druntime
   au FileType d command! OpenPhobos :ExPhobos<cr>
   au FileType d command! OpenRuntime :ExRuntime<cr>
 
-augroup END
+" augroup END
+
+au FileType d command! Run :!dmd -run %
+au FileType d command! Unittest :!dmd -unittest %
+au FileType d map <F5> :Run<cr>
+" au FileType d map <S-F5> :Unittest<cr>
 
 " tagbar:
 let g:tagbar_type_d = {
@@ -114,7 +119,3 @@ let g:tagbar_type_d = {
 \ }
 
 
-au FileType d command! Run :!dmd -run %
-au FileType d command! Unittest :!dmd -unittest %
-au FileType d map <F5> :Run<cr>
-" au FileType d map <S-F5> :Unittest<cr>
