@@ -150,6 +150,7 @@
 - repo: roxma/nvim-yarp
 - repo: ncm2/ncm2
 - repo: ncm2/ncm2-ultisnips
+  on_event: InsertEnter
 - repo: ncm2/ncm2-bufword
 - repo: fgrsnau/ncm2-otherbuf
 - repo: ncm2/ncm2-path
@@ -341,6 +342,7 @@
 # # https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
 # https://github.com/simonweil/dotfiles/blob/master/nvimrc
 - repo: SirVer/ultisnips
+  on_event: InsertEnter
   hook_add: |
     let g:UltiSnipsSnippetsDir=['UltiSnips',
     \ $VARPATH. '/dein/repos/github.com' . '/honza/vim-snippets/UltiSnips',
