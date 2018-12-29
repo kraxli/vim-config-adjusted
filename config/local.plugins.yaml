@@ -221,6 +221,16 @@
 - repo: gaalcaras/ncm-R
   on_ft: r
 
+- repo: ncm2/ncm2-go
+  build: go get -u github.com/mdempsky/gocode
+  on_event: InsertEnter
+  on_ft: go
+
+- repo: ncm2/ncm2-tern
+  build: npm install
+  if: executable('npm')
+  on_event: InsertEnter
+  on_ft: [ javascript, jsx, javascript.jsx ]
 
 # TODO R completion:
 # https://github.com/gaalcaras/ncm-R
