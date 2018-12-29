@@ -8,9 +8,10 @@
 #   hook_post_source: executed after plugin is sourced
 #   put keyboar shortcuts in the hook_add block
 #   in Vim only alphabetic letters can be mapped in combination with the CTRL key
+#   on_event: InsertEnter needs to come before on_ft:
+
 
 #   TODO:
-#   https://github.com/ncm2/ncm2-gtags OR https://github.com/jsfaint/gen_tags.vim
 
 # =======================================================
 # Startup
@@ -18,11 +19,14 @@
 
 - repo: xolox/vim-shell
 - repo: xolox/vim-misc
+
 - repo: Shougo/unite.vim
-# - { repo: Shougo/unite.vim, on_source: [vimfiler, unite-bibtex] }
+
 - repo: Shougo/vimfiler.vim
   rev: tags/ver.4.2
   depends: Shougo/unite.vim
+
+#  on_cmd: [VimFilerCurrentDir, VimFilerExplorer, VimFilerBufferDir, VimFiler, VimFilerDway]
 
 # (Optional) Showing function signature and inline doc.
 - repo: Shougo/echodoc.vim
@@ -67,7 +71,7 @@
 
 # not taking: cwoac/nvim
 
-# see config/theme.vim for speedup config/init.vim 
+# see config/theme.vim for speedup config/init.vim
 - repo: kraxli/vim-code-dark
 - repo: NLKNguyen/papercolor-theme
 
@@ -97,11 +101,12 @@
 #     vmap <Leader>ms :call SwoopMultiSelection()<CR>
 
 
+# gutentags is probably does already the same
 # - repo: ncm2/ncm2-gtags
-- repo: jsfaint/gen_tags.vim
-  on_cmd: [GenCtags, ClearCtags, EditExt,]
-  on_ft: [d, python, nim, r, c, cpp, h, hpp]
-  hook_add: let g:gen_tags#gtags_default_map = 1
+# - repo: jsfaint/gen_tags.vim
+#   on_cmd: [GenCtags, ClearCtags, EditExt,]
+#   on_ft: [d, python, nim, r, c, cpp, h, hpp]
+#   hook_add: let g:gen_tags#gtags_default_map = 1
 
 - repo: mhinz/vim-startify
   on_cmd: [Startify, StartifyDebug]
@@ -138,60 +143,35 @@
 # Completion
 # ----------
 - repo: roxma/nvim-yarp
-
 - repo: ncm2/ncm2
-  hook_add: |
-    autocmd! BufEnter,BufRead,BufNewFile *.* call ncm2#enable_for_buffer()
-    set completeopt=noinsert,menuone,noselect
-    set shortmess+=c
-    inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    inoremap <c-c> <ESC>
-
-# autocmd! BufEnter,BufRead,BufNewFile *.* call ncm2#enable_for_buffer()
-#    call ncm2#enable_for_buffer()
-
-- repo: ncm2/ncm2-ultisnips
-  on_event: InsertEnter
-  hook_add: inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+- { repo: ncm2/ncm2-ultisnips, on_ft: [d, python, r, nim, cpp, c, tex] }
 - repo: ncm2/ncm2-bufword
-  on_event: InsertEnter
 - repo: fgrsnau/ncm2-otherbuf
-  on_event: InsertEnter
 - repo: ncm2/ncm2-path
-  on_event: InsertEnter
 - repo: Shougo/neoinclude.vim
-  on_event: InsertEnter
-- repo: ncm2/ncm2-neoinclude
-  depends: Shougo/neoinclude.vim
-  on_event: InsertEnter
+- { repo: ncm2/ncm2-neoinclude, depends: Shougo/neoinclude.vim }
 - repo: ncm2/ncm2-tagprefix
-  on_event: InsertEnter
-- repo: ncm2/ncm2-github
-  on_ft: [markdown, text, tex, vimwiki]
-  on_event: InsertEnter
+- { repo: ncm2/ncm2-github, on_ft: [markdown, text, tex, vimwiki] }
 
 
 # words / dictionary completion
-- repo: fgrsnau/ncm2-aspell
-  on_ft: [markdown, text, tex, vimwiki]
-  on_event: InsertEnter
-- repo: yuki-ycino/ncm2-dictionary
-  on_ft: [markdown, text, tex, vimwiki]
-  on_event: InsertEnter
+# -----------------------------
+- { repo: yuki-ycino/ncm2-dictionary, on_ft: [markdown, text, tex, vimwiki] }
+# - { repo: fgrsnau/ncm2-aspell, on_ft: [markdown, text, tex, vimwiki] }
 - repo: filipekiss/ncm2-look.vim
   if: has('unix')
-  hook_add: let g:ncm2_look_enabled = 0
+  on_cmd: LookEnable
+  hook_add: |
+    let g:ncm2_look_enabled = 1
+    au! BufEnter, BufNewFile, BufRead *.md,*.tex,*.wiki,*.txt LookEnable
   on_ft: [markdown, text, tex, vimwiki]
-  on_event: InsertEnter
 
 - repo: ncm2/ncm2-vim
   depends: Shougo/neco-vim
   on_ft: vim
-  on_event: InsertEnter
 
-
+# on_event: InsertEnte (works but probably just postpones dcd-server startup
+# unnecessarily. But needs to come before on_ft)
 - repo: ncm2/ncm2-d
   on_ft: d
   hook_add: |
@@ -231,11 +211,9 @@
 
 - repo: ncm2/ncm2-jedi
   on_ft: python
-  on_event: InsertEnter
 
 - repo: gaalcaras/ncm-R
   on_ft: r
-  on_event: InsertEnter
 
 
 # TODO R completion:
@@ -349,15 +327,19 @@
 
 # dway: vim-config-adjusted (see also bellow for g:neosnippet#data_directory)
 - repo: honza/vim-snippets
-  on_ft: [d, nim, pyhon, markdown, r]
+  on_event: InsertEnter
+  on_ft: [nim, python, markdown, r]
 
 - repo: kiith-sa/DSnips
+  on_event: InsertEnter
   on_ft: d
 
 # TODO: if pumvsible and <snip> then call the snippet rigger function
 # # https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
 # https://github.com/simonweil/dotfiles/blob/master/nvimrc
 - repo: SirVer/ultisnips
+  on_event: InsertEnter
+  on_ft: [d, nim, python, markdown, r]
   hook_add: |
     let g:UltiSnipsSnippetsDir=['UltiSnips',
     \ $VARPATH. '/dein/repos/github.com' . '/honza/vim-snippets/UltiSnips',
@@ -382,13 +364,16 @@
 # ---------
 - repo: Yggdroot/indentLine
   hook_add: |
+    let g:indentLine_concealcursor = 'c'
+    let g:indentLine_conceallevel = 2
     let g:indentLine_fileTypeExclude = [ 'help', 'denite', 'codi', 'startify', 'tagbar' ]
     let g:indentLine_char =  '¦'
     let g:indentLine_setColors = 1
-    set list lcs=tab:\|\
 
+# set list lcs=tab:\|\
 #    let g:indentLine_char =  '▏' ┆  ¦
 # let g:indentLine_fileTyp = ['python']
+#    let g:indentLine_concealcursor = 'inc'
 
 
 # =======================================================

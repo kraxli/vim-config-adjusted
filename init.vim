@@ -19,7 +19,6 @@ if has('unix')
       let $PATH=$PATH.';'.'~/.dutils/Dscanner/bin;~/.dutils/DCD/bin'
 else
       let  $PATH=$PATH.';'
-
 endif
 
 autocmd BufRead,BufNewFile *.jl :set filetype=julia
@@ -36,6 +35,7 @@ let g:scr_path=fnamemodify(expand('<sfile>:p'), ':h').'/scr'
 " {{{ === Settings ===
 
 set noreadonly
+setl noreadonly
 
 " use dwc functions to send code lines to (ipython-)terminal. Alternative is bfredl/nvim-ipy
 let g:dwc_ipython_terminal = 1

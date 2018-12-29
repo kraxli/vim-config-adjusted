@@ -71,9 +71,6 @@ if expand('%:t') != 'plugins.yaml'
 endif
 autocmd! BufRead,BufNewFile,BufEnter,BufWrite,BufReadPre,BufWritePre,BufWritePost plugins.yaml setlocal nospell
 
-set readonly!
-set noreadonly
-
 set conceallevel=2 concealcursor=c
 
 command! GoPkd :cd ~/Dropbox/PKD
