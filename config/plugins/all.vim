@@ -123,6 +123,24 @@ if dein#tap('nerdtree')
 	nnoremap <silent> <LocalLeader>A :<C-u>let NERDTreeWinPos=1 \| NERDTreeFind<CR>
 endif
 
+if dein#tap('vimfiler.vim')
+	source  $VIMPATH/config/plugins/vimfiler.vim
+
+	nnoremap <silent> <localleader>e  :<C-u>VimFilerCurrentDir -explorer -winminwidth=25 -winwidth=30 -toggle<cr>
+	" "-buffer-name=explorer -no-quit -split -winwidth=30 -toggle<CR>
+
+	nnoremap <silent> <localleader>a :call dway#misc#VimFilerDway()<cr>
+	" nnoremap <silent> <localleader>a  :<C-u>VimFilerBufferDir -buffer-name=explorer -no-quit -split -winwidth=30 -toggle<CR>
+	command! -nargs=?  -bar -complete=file E :call dway#misc#VimFilerDway(<q-args>)
+	command! -nargs=?  -bar -complete=file V :call dway#misc#VimFilerDway(<q-args>)
+	" command! Ev :25Vex %:p:h " |vertical resize 25
+	" dway adjustements
+	command! -nargs=? Vf :VimFilerExplorer <args> -winminwidth=25 -winwidth=30
+	command! Vb :VimFilerBufferDir -explorer -winminwidth=25 -winwidth=30
+	" command! -nargs=?  -bar -complete=customlist,vimfiler#complete E :call dway#misc#VimFilerDway(<q-args>)
+endif
+
+
 if dein#tap('neosnippet.vim')
 	imap <expr><C-o> neosnippet#expandable_or_jumpable()
 		\ ? "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
@@ -549,9 +567,9 @@ if dein#tap('nim.vim')
 endif
 
 if dein#tap('ropevim')
-    nmap Q :call RopeShowDoc()
-    nmap Rd :call RopeGotoDefinition()
-    map <c-c>rd :call RopeGotoDefinition()
+	nmap Q :call RopeShowDoc()
+	nmap Rd :call RopeGotoDefinition()
+	map <c-c>rd :call RopeGotoDefinition()
 endif
 
 if dein#tap('ncm2')

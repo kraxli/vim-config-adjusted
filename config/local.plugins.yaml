@@ -25,8 +25,12 @@
 - repo: Shougo/vimfiler.vim
   rev: tags/ver.4.2
   depends: Shougo/unite.vim
+  lazy: 1
+  on_path: .*
+  on_cmd: [VimFilerCurrentDir, VimFilerExplorer, VimFilerBufferDir, VimFiler, dway#misc#VimFilerDway, VimFilerTab]
 
-#  on_cmd: [VimFilerCurrentDir, VimFilerExplorer, VimFilerBufferDir, VimFiler, VimFilerDway]
+#    source $VIMPATH/config_dw_after/plugins_load_at_startup/vimfiler.vimX
+#  on_cmd: [VimFilerCurrentDir, VimFilerExplorer, VimFilerBufferDir, VimFiler, VimFilerDway, VimFilerTab]
 
 # (Optional) Showing function signature and inline doc.
 - repo: Shougo/echodoc.vim
@@ -144,7 +148,7 @@
 # ----------
 - repo: roxma/nvim-yarp
 - repo: ncm2/ncm2
-- { repo: ncm2/ncm2-ultisnips, on_ft: [d, python, r, nim, cpp, c, tex] }
+- repo: ncm2/ncm2-ultisnips
 - repo: ncm2/ncm2-bufword
 - repo: fgrsnau/ncm2-otherbuf
 - repo: ncm2/ncm2-path
@@ -170,7 +174,7 @@
   depends: Shougo/neco-vim
   on_ft: vim
 
-# on_event: InsertEnte (works but probably just postpones dcd-server startup
+# on_event: InsertEnter (works but probably just postpones dcd-server startup
 # unnecessarily. But needs to come before on_ft)
 - repo: ncm2/ncm2-d
   on_ft: d
