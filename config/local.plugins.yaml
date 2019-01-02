@@ -11,8 +11,6 @@
 #   on_event: InsertEnter needs to come before on_ft:
 
 
-#   TODO:
-
 # =======================================================
 # Startup
 # -------
@@ -24,7 +22,6 @@
 
 - repo: Shougo/vimfiler.vim
   rev: tags/ver.4.2
-  depends: Shougo/unite.vim
   lazy: 1
   on_path: .*
   on_cmd: [VimFilerCurrentDir, VimFilerExplorer, VimFilerBufferDir, VimFiler, dway#misc#VimFilerDway, VimFilerTab]
@@ -45,6 +42,11 @@
 - repo: tpope/vim-repeat
 - repo: tpope/vim-speeddating
 - repo: vim-scripts/SyntaxRange
+
+# tpope/vim-vinegar
+# tpope/vim-sensible
+# haya14busa/incsearch.vim
+
 
 # TODO load conditinally
 - repo: junegunn/fzf.vim
@@ -73,8 +75,6 @@
 # -------
 
 # themis.vim is a testing framework for Vim script.
-
-# not taking: cwoac/nvim
 
 # see config/theme.vim for speedup config/init.vim
 - repo: kraxli/vim-code-dark
@@ -122,7 +122,6 @@
     let g:startify_session_persistence = 1
     let g:startify_disable_at_vimenter = 1
 
-# TODO delete asyncrun as soon neomakesh works for python
 - {repo: skywind3000/asyncrun.vim, on_cmd: AsyncRun}
 
 # # - repo: BurningEther/iron.nvim
@@ -140,9 +139,6 @@
 # see for Python: https://github.com/mpastell/Pweave
 
 # https://discourse.julialang.org/t/choice-of-ide-for-julia/3137/10
-- repo: JuliaEditorSupport/julia-vim
-  hook_add: let g:default_julia_version = "1.0.2"
-
 
 # =======================================================
 # Completion
@@ -155,7 +151,7 @@
 - repo: fgrsnau/ncm2-otherbuf
 - repo: ncm2/ncm2-path
 - repo: Shougo/neoinclude.vim
-- { repo: ncm2/ncm2-neoinclude, depends: Shougo/neoinclude.vim }
+- { repo: ncm2/ncm2-neoinclude }
 - repo: ncm2/ncm2-tagprefix
 - { repo: ncm2/ncm2-github, on_ft: [markdown, text, tex, vimwiki] }
 
@@ -187,34 +183,6 @@
     let g:ncm2_d#dcd_server_args = ['']
     let g:ncm2_d#dcd_autostart_server = 1
 
-
-# - repo: landaire/deoplete-d
-# rev: dub-based-imports
-# - repo: monkoose/deoplete-d
-# - repo: Sobaya007/deoplete-d
-
-# - repo: viniarck/deoplete-d
-#   on_ft: d
-#   if: has('nvim')
-
-#   depends: [deoplete]
-#   hook_add: |
-#     let g:dmisc_dcd_bin_dir = '/home/dave/.dutils/DCD/bin/'
-#     let g:deoplete#sources#d#dub_binary = '/usr/bin/dub'
-#     let g:deoplete#sources#d#dcd_server_autostart = 1
-#     let g:deoplete#sources#d#dcd_server_binary = g:dmisc_dcd_bin_dir.'dcd-server'
-#     let g:deoplete#sources#d#dcd_client_binary = g:dmisc_dcd_bin_dir.'dcd-client'
-
-# - repo: tjdevries/nvim-langserver-shim
-#   on_ft: d
-#   hook_add: |
-#     let g:langserver_executables = {
-#             \ 'd': {
-#             \ 'name': 'Pure-D/serve-d',
-#             \ 'cmd': ['serve-d'],
-#             \ },
-#             \ }
-
 - repo: ncm2/ncm2-jedi
   on_ft: python
 
@@ -232,19 +200,17 @@
   on_event: InsertEnter
   on_ft: [ javascript, jsx, javascript.jsx ]
 
-# TODO R completion:
-# https://github.com/gaalcaras/ncm-R
-# https://github.com/jalvesaq/Nvim-R/issues/326
-# https://github.com/Shougo/deoplete.nvim/issues/745
 
 # =======================================================
 # Programming languages
 # ---------------------
 
-# - repo: baabelfish/nvim-nim
+- repo: JuliaEditorSupport/julia-vim
+  hook_add: let g:default_julia_version = "1.0.2"
+  on_ft: julia
+
 - repo: zah/nim.vim
   on_ft: nim
-
 
 # scarface-one/vim-dlang-phobos-highlighter
 # bsed/vim-dlang
@@ -298,7 +264,6 @@
 
 # # Runners available are 'pytest', 'nose', 'nose2', 'djangotest',
 # 'djangonose' and Python's built-in 'unittest'
-# # or let test#strategy = 'neomake'
 
 # https://medium.freecodecamp.org/turning-vim-into-an-r-ide-cd9602e8c217
 
@@ -322,22 +287,40 @@
 - repo: vim-scripts/octave.vim
   on_ft: [m, oct]
 
-# https://www.abidibo.net/blog/2016/04/06/django-debug-vim-and-vdebug/
-# - repo: joonty/vdebug
-# on_ft: py
-
-# - repo: dbgx/lldb.nvim
-# - repo: idanarye/vim-vebugger
-#   on_ft: py
-
-- repo: idanarye/vim-vebugger
-  on_ft: [d, cpp, hpp, c, h, python]
+- repo: w0rp/ale
+  on_ft: [r, python, d, nim, yaml]
+  on_cmd: [ALEnable, ALELint, ALEFix]
   hook_add: |
-    set hidden
-    command! DDebug :AsyncRun dmd -g %:p
+    let g:ale_linters_explicit = 0
+    let g:ale_lint_on_enter = 0
+    let g:ale_sign_column_always = 0
+    let g:ale_echo_msg_error_str = 'E'
+    let g:ale_echo_msg_warning_str = 'W'
+    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+    let g:ale_sign_error = '⤫'
+    let g:ale_sign_style_error = '⤫'
+    let g:ale_sign_warning = '⚠'
+    let g:ale_set_highlights = 1
+    let g:ale_python_pylama_executable = 'pylama'
+    let g:ale_python_pylama_options = ''
+    let g:ale_python_pylama_use_global = 0
+    let g:ale_python_mypy_options = ''
+    let g:ale_fixers = {
+      \ 'd': ['uncrustify', 'remove_trailing_lines', 'trim_whitespace'],
+      \ 'python' : ['autopep8', 'yapf', 'black']
+      \ }
+    let g:airline#extensions#ale#enabled = 1
+    let g:ale_completion_enabled = 1
+    highlight clear ALEErrorSign
+    highlight clear ALEWarningSign
+    highlight ALEErrorSign ctermfg=9
+    highlight ALEError ctermfg=9
+    highlight ALEWarning ctermbg=none
+  hook_source: |
+    nmap <F8> <Plug>(ale_fix)
+    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-
-# =======================================================
 # Snippets
 # --------
 
@@ -364,13 +347,31 @@
     let g:UltiSnipsRemoveSelectModeMappings = 0
 
 # let g:UltiSnipsExpandTrigger= '<Plug>(ultisnips_expand)' " '<c-h>' '<m-cr>' " "<c-cr>"
-
-
 # let g:UltiSnipsListSnippets = "<c-L>"
 # let g:UltiSnipsExpandTrigger="<space>"
 # let g:UltiSnipsExpandTrigger="<c-cr>"
 # let g:UltiSnipsJumpForwardTrigger="<tab>"
 # let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+
+# =====================================================
+# Debuggers
+# =====================================================
+
+# https://www.abidibo.net/blog/2016/04/06/django-debug-vim-and-vdebug/
+# - repo: joonty/vdebug
+# on_ft: py
+
+# - repo: dbgx/lldb.nvim
+# - repo: idanarye/vim-vebugger
+#   on_ft: py
+
+- repo: idanarye/vim-vebugger
+  on_ft: [d, cpp, hpp, c, h, python]
+  hook_add: |
+    set hidden
+    command! DDebug :AsyncRun dmd -g %:p
+
 
 # =======================================================
 # Interface
@@ -422,7 +423,6 @@
   hook_add: |
     command! -nargs=* Tw :NeomakeSh task <args>
 
-# dway: vim-config-adjusted
 # - repo: xolox/vim-notes
 #   on_cmd: Note
 
@@ -492,58 +492,6 @@
 # Plugins not yet used
 # --------------------
 
-# command! DDebug :NeomakeSh dmd -g %:p
-
-# I addend hidden with the hope that lldb.nvim will run more stable
-# -gc --build=debug
-
-# - repo: sbdchd/vim-run
-#   on_ft: py
-#   hook_add: |
-#     let g:run_cmd_python = ['python3']
-#     let g:run_split = 'down'
-#     let g:run_auto_close = 0
-
-# let g:ackprg = 'ag --vimgrep'
-# http://betterthanack.com/
-# http://www.wezm.net/technical/2016/09/ripgrep-with-vim/
-# https://github.com/jhawthorn/fzy
-
-- repo: w0rp/ale
-  on_ft: [r, python, d, nim, yaml]
-  on_cmd: [ALEnable, ALELint, ALEFix]
-  hook_add: |
-    let g:ale_linters_explicit = 0
-    let g:ale_lint_on_enter = 0
-    let g:ale_sign_column_always = 0
-    let g:ale_echo_msg_error_str = 'E'
-    let g:ale_echo_msg_warning_str = 'W'
-    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-    let g:ale_sign_error = '⤫'
-    let g:ale_sign_style_error = '⤫'
-    let g:ale_sign_warning = '⚠'
-    let g:ale_set_highlights = 1
-    let g:ale_python_pylama_executable = 'pylama'
-    let g:ale_python_pylama_options = ''
-    let g:ale_python_pylama_use_global = 0
-    let g:ale_python_mypy_options = ''
-    let g:ale_fixers = {
-      \ 'd': ['uncrustify', 'remove_trailing_lines', 'trim_whitespace'],
-      \ 'python' : ['autopep8', 'yapf', 'black']
-      \ }
-    let g:airline#extensions#ale#enabled = 1
-    let g:ale_completion_enabled = 1
-    highlight clear ALEErrorSign
-    highlight clear ALEWarningSign
-    highlight ALEErrorSign ctermfg=9
-    highlight ALEError ctermfg=9
-    highlight ALEWarning ctermbg=none
-  hook_source: |
-    nmap <F8> <Plug>(ale_fix)
-    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-    nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-
 # https://8thlight.com/blog/chris-jordan/2016/06/13/running-tests-in-vim.html
 # pytest config of blueyed: https://github.com/neomake/neomake/issues/1138
 # - repo: janko-m/vim-test
@@ -580,11 +528,6 @@
 #     call leaderGuide#register_prefix_descriptions(";", "g:llmap")
 
 
-# PLUGINS TO CHECKOUT
-# tpope/vim-vinegar
-# tpope/vim-sensible
-# haya14busa/incsearch.vim
-
 # PLUGINS OBSERVED
 # https://github.com/vimlab/split-term.vim
 # osyo-manga/vim-over
@@ -596,5 +539,50 @@
 # if: ! exists('g:dwc_ipython_terminal')
 # on_ft: py
 
+# - repo: landaire/deoplete-d
+# rev: dub-based-imports
+# - repo: monkoose/deoplete-d
+# - repo: Sobaya007/deoplete-d
+
+# - repo: viniarck/deoplete-d
+#   on_ft: d
+#   if: has('nvim')
+
+#   depends: [deoplete]
+#   hook_add: |
+#     let g:dmisc_dcd_bin_dir = '/home/dave/.dutils/DCD/bin/'
+#     let g:deoplete#sources#d#dub_binary = '/usr/bin/dub'
+#     let g:deoplete#sources#d#dcd_server_autostart = 1
+#     let g:deoplete#sources#d#dcd_server_binary = g:dmisc_dcd_bin_dir.'dcd-server'
+#     let g:deoplete#sources#d#dcd_client_binary = g:dmisc_dcd_bin_dir.'dcd-client'
+
+# - repo: tjdevries/nvim-langserver-shim
+#   on_ft: d
+#   hook_add: |
+#     let g:langserver_executables = {
+#             \ 'd': {
+#             \ 'name': 'Pure-D/serve-d',
+#             \ 'cmd': ['serve-d'],
+#             \ },
+#             \ }
+
+# command! DDebug :NeomakeSh dmd -g %:p
+
+# I addend hidden with the hope that lldb.nvim will run more stable
+# -gc --build=debug
+
+# - repo: sbdchd/vim-run
+#   on_ft: py
+#   hook_add: |
+#     let g:run_cmd_python = ['python3']
+#     let g:run_split = 'down'
+#     let g:run_auto_close = 0
+
+# let g:ackprg = 'ag --vimgrep'
+# http://betterthanack.com/
+# http://www.wezm.net/technical/2016/09/ripgrep-with-vim/
+# https://github.com/jhawthorn/fzy
+
+# note taking: cwoac/nvim
 
 #  vim: set ts=2 sw=2 tw=80 et :
