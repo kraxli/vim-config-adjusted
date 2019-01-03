@@ -10,15 +10,58 @@
 #   in Vim only alphabetic letters can be mapped in combination with the CTRL key
 #   on_event: InsertEnter needs to come before on_ft:
 
+# TODO:
+# tpope/vim-vinegar
+# tpope/vim-sensible
+# haya14busa/incsearch.vim
+# - repo: kshenoy/vim-signature
+# - repo: wdicarlo/vim-notebook??
+# themis.vim is a testing framework for Vim script.
 
 # =======================================================
 # Startup
 # -------
 
+# see config/theme.vim for speedup config/init.vim
+- repo: kraxli/vim-code-dark
+- repo: NLKNguyen/papercolor-theme
+
+- repo: tpope/vim-repeat
+
+- repo: dbakker/vim-projectroot
+  hook_add: |
+    let g:rootmarkers = ['.git', 'dub.json', 'dub.sdl', 'index.md',
+    \ 'index.wiki', '.projectroot', '.svn']
+
+- repo: Yggdroot/indentLine
+  hook_add: |
+    let g:indentLine_concealcursor = 'c'
+    let g:indentLine_conceallevel = 2
+    let g:indentLine_fileTypeExclude = [ 'help', 'denite', 'codi', 'startify', 'tagbar' ]
+    let g:indentLine_char =  '¦'
+    let g:indentLine_setColors = 1
+
+
+# =======================================================
+# Lazy loading
+# ------------
+
+# TODO load lazily
+- repo: junegunn/fzf.vim
+  hook_source: set rtp+=~/.fzf
+
+- {repo: skywind3000/asyncrun.vim, on_cmd: AsyncRun}
+
 - repo: xolox/vim-shell
+  on_cmd: Open
+  on_map:  <F6>
+  hook_add: let g:shell_verify_urls = 1
+
 - repo: xolox/vim-misc
+  on_source: vim-shell
 
 - repo: Shougo/unite.vim
+  on_source: vimfiler.vim
 
 - repo: Shougo/vimfiler.vim
   rev: tags/ver.4.2
@@ -28,69 +71,47 @@
   hook_add: source  $VIMPATH/config/plugins/vimfiler_let.vim
   hook_source: source  $VIMPATH/config/plugins/vimfiler.vim
 
-#    source $VIMPATH/config_dw_after/plugins_load_at_startup/vimfiler.vimX
-
-# (Optional) Showing function signature and inline doc.
-- repo: Shougo/echodoc.vim
-
-# TODO check out usage
+# TODO check out usage / ALE may be able to do the same
 - repo: wbthomason/buildit.nvim
+  on_cmd: [BuildIt, BuildItStatus]
+  hook_source: let g:buildit_status_location = 'bottom'
 
 # http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
 # Vim sugar for the UNIX shell commands that need it the most.
-- {repo: tpope/vim-eunuch}
-- repo: tpope/vim-repeat
+- repo: tpope/vim-eunuch
+  on_event: CmdwinEnter
+  on_cmd: [Delete, Unlink, Move, Rename, Chmod, Mkdir, Cfind, Clocate, Lfind, Llocate, Wall, SudoWrite, SudoEdit]
+
 - repo: tpope/vim-speeddating
-- repo: vim-scripts/SyntaxRange
-
-# tpope/vim-vinegar
-# tpope/vim-sensible
-# haya14busa/incsearch.vim
-
-
-# TODO load conditinally
-- repo: junegunn/fzf.vim
-  hook_source: set rtp+=~/.fzf
-
-# - repo: kshenoy/vim-signature
-# - repo: wdicarlo/vim-notebook
-
-- repo: vim-scripts/utl.vim
-  hook_add: |
-    let g:utl_cfg_hdl_mt_text_directory='VIM'
-    let g:utl_cfg_hdl_scm_http_system = "silent !firefox -remote 'ping()' &&
-    \ firefox -remote 'openURL( %u )' ||
-    \ firefox '%u#%f' &"
-
-- repo: dbakker/vim-projectroot
-  hook_add: |
-    let g:rootmarkers = ['.git', 'dub.json', 'dub.sdl', 'index.md',
-    \ 'index.wiki', '.projectroot', '.svn']
-
-# or moll / vim-bbye
-- repo: qpkorr/vim-bufkill
-
-# =======================================================
-# General
-# -------
-
-# themis.vim is a testing framework for Vim script.
-
-# see config/theme.vim for speedup config/init.vim
-- repo: kraxli/vim-code-dark
-- repo: NLKNguyen/papercolor-theme
-
-- repo: sjl/gundo.vim
-  on_cmd: [GundoHide, GundoRenderGraph, GundoShow, GundoToggle]
-
-- repo: qpkorr/vim-renamer
-  on_cmd: Renamer
+  on_map: [<C-A>, <C-X>]
 
 - repo: tpope/vim-abolish
   on_cmd: [Subvert, Abolish]
   on_ft: [md, pdc, tex, txt]
   on_map: {n: [crs, crm, crc, cru, cr-, cr., cr<space>, crt]}
   hook_post_source: source $VIMPATH/config_dw_after/plugins/abolish.vim
+
+- repo: vim-scripts/SyntaxRange
+  on_cmd: [SyntaxIgnore, SyntaxInclude]
+  on_ft: [SyntaxRange#Include, SyntaxRange#IncludeEx]
+
+- repo: vim-scripts/utl.vim
+  on_cmd: [Utl, Ut]
+  hook_add: |
+    let g:utl_cfg_hdl_mt_text_directory='VIM'
+    let g:utl_cfg_hdl_scm_http_system = "silent !firefox -remote 'ping()' &&
+    \ firefox -remote 'openURL( %u )' ||
+    \ firefox '%u#%f' &"
+
+# or moll / vim-bbye
+- repo: qpkorr/vim-bufkill
+  on_cmd: [BUN, BD, BW, BB, BF, BA]
+
+- repo: sjl/gundo.vim
+  on_cmd: [GundoHide, GundoRenderGraph, GundoShow, GundoToggle]
+
+- repo: qpkorr/vim-renamer
+  on_cmd: Renamer
 
 # TODO inspect
 # - repo: pelodelfuego/vim-swoop
@@ -122,8 +143,6 @@
     let g:startify_session_persistence = 1
     let g:startify_disable_at_vimenter = 1
 
-- {repo: skywind3000/asyncrun.vim, on_cmd: AsyncRun}
-
 # # - repo: BurningEther/iron.nvim
 # - repo: Vigemus/iron.nvim
 #   on_ft: [python, py]
@@ -145,15 +164,15 @@
 # ----------
 - repo: roxma/nvim-yarp
 - repo: ncm2/ncm2
-- repo: ncm2/ncm2-ultisnips
-  on_event: InsertEnter
-- repo: ncm2/ncm2-bufword
-- repo: fgrsnau/ncm2-otherbuf
-- repo: ncm2/ncm2-path
-- repo: Shougo/neoinclude.vim
-- { repo: ncm2/ncm2-neoinclude }
-- repo: ncm2/ncm2-tagprefix
-- { repo: ncm2/ncm2-github, on_ft: [markdown, text, tex, vimwiki] }
+
+- { repo: ncm2/ncm2-ultisnips, on_event: InsertEnter }
+- { repo: ncm2/ncm2-bufword, on_event: InsertEnter }
+- { repo: fgrsnau/ncm2-otherbuf, on_event: InsertEnter }
+- { repo: ncm2/ncm2-path, on_event: InsertEnter }
+- { repo: Shougo/neoinclude.vim, on_event: InsertEnter }
+- { repo: ncm2/ncm2-neoinclude , on_event: InsertEnter }
+- { repo: ncm2/ncm2-tagprefix, on_event: InsertEnter }
+- { repo: ncm2/ncm2-github, on_evnet: InsertEnter, on_ft: [markdown, text, tex, vimwiki] }
 
 
 # words / dictionary completion
@@ -205,9 +224,13 @@
 # Programming languages
 # ---------------------
 
-- repo: JuliaEditorSupport/julia-vim
-  hook_add: let g:default_julia_version = "1.0.2"
-  on_ft: julia
+# - repo: JuliaEditorSupport/julia-vim
+#   on_ft: julia
+#   hook_add: |
+#     let g:default_julia_version = "1.0.2"
+#     let g:latex_to_unicode_tab = 0
+#     let g:latex_to_unicode_eager = 0
+#     let g:latex_to_unicode_suggestions = 0
 
 - repo: zah/nim.vim
   on_ft: nim
@@ -376,14 +399,6 @@
 # =======================================================
 # Interface
 # ---------
-- repo: Yggdroot/indentLine
-  hook_add: |
-    let g:indentLine_concealcursor = 'c'
-    let g:indentLine_conceallevel = 2
-    let g:indentLine_fileTypeExclude = [ 'help', 'denite', 'codi', 'startify', 'tagbar' ]
-    let g:indentLine_char =  '¦'
-    let g:indentLine_setColors = 1
-
 # set list lcs=tab:\|\
 #    let g:indentLine_char =  '▏' ┆  ¦
 # let g:indentLine_fileTyp = ['python']

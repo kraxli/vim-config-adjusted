@@ -31,8 +31,8 @@ nmap <silent> <c-PageUp> :tabprevious<cr>
 nmap <silent> <c-PageDown> :tabnext<cr>
 
 " close buffers
-noremap <silent> Qq :q!
-noremap <silent> Qa :qa!
+" noremap <silent> Qq :q!
+" noremap <silent> Qa :qa!
 
 " }}}
 

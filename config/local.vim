@@ -75,6 +75,10 @@ set conceallevel=2 concealcursor=c
 
 command! GoPkd :cd ~/Dropbox/PKD
 
+" load some mappings to quickly access as some files
+execute 'source '."~/Dropbox/ActiveHome/.settings/quickfiles.vim"
+
+
 " }}}
 
 " {{{

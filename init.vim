@@ -50,7 +50,7 @@ let g:path_tex_executables = 'C:\Program Files\MiKTeX 2.9\miktex\bin\x64\'
 " Initialize plugin manager 'plug.vim':
 " execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config_dw_after/plugged.vim'
 
-" original from vim-config:
+" original from vim-config (this is the only line in Rafi's config of this file):
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/vimrc'
 
 " execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config_dw_after/terminal_nvim.vim'
