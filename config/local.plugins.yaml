@@ -22,11 +22,15 @@
 # Startup
 # -------
 
+- repo: Shougo/unite.vim
+# on_source: [vimfiler.vim, fzf.vim]
+
 # see config/theme.vim for speedup config/init.vim
 - repo: kraxli/vim-code-dark
 - repo: NLKNguyen/papercolor-theme
 
 - repo: tpope/vim-repeat
+  on_map: .
 
 - repo: dbakker/vim-projectroot
   hook_add: |
@@ -41,6 +45,8 @@
     let g:indentLine_char =  '¦'
     let g:indentLine_setColors = 1
 
+# or moll / vim-bbye
+- repo: qpkorr/vim-bufkill
 
 # =======================================================
 # Lazy loading
@@ -60,16 +66,39 @@
 - repo: xolox/vim-misc
   on_source: vim-shell
 
-- repo: Shougo/unite.vim
-  on_source: vimfiler.vim
-
+# from SpaceVim: https://github.com/SpaceVim/SpaceVim/blob/dev/config/plugins/vimfiler.vim
+# https://github.com/Shougo/vimfiler.vim/issues/344
 - repo: Shougo/vimfiler.vim
   rev: tags/ver.4.2
-  lazy: 1
-  on_path: .*
-  on_cmd: [VimFilerCurrentDir, VimFilerExplorer, VimFilerBufferDir, VimFiler, dway#misc#VimFilerDway, VimFilerTab]
-  hook_add: source  $VIMPATH/config/plugins/vimfiler_let.vim
-  hook_source: source  $VIMPATH/config/plugins/vimfiler.vim
+  on_cmd: [VimFilerCurrentDir, VimFilerExplorer, VimFilerBufferDir, VimFiler, VimFilerFileDway, VimFilerTab]
+  hook_add: |
+    let g:vimfiler_as_default_explorer = 0
+    let g:vimfiler_restore_alternate_file = get(g:, 'vimfiler_restore_alternate_file', 1)
+    let g:vimfiler_tree_indentation = get(g:, 'vimfiler_tree_indentation', 1)
+    let g:vimfiler_tree_leaf_icon = get(g:, 'vimfiler_tree_leaf_icon', '')
+    let g:vimfiler_tree_opened_icon = get(g:, 'vimfiler_tree_opened_icon', '▼')
+    let g:vimfiler_tree_closed_icon = get(g:, 'vimfiler_tree_closed_icon', '▷')
+    let g:vimfiler_file_icon = get(g:, 'vimfiler_file_icon', '')
+    let g:vimfiler_readonly_file_icon = get(g:, 'vimfiler_readonly_file_icon', '*')
+    let g:vimfiler_marked_file_icon = get(g:, 'vimfiler_marked_file_icon', '√')
+    let g:vimfiler_ignore_pattern = [
+          \ '^\.git$',
+          \ '^\.DS_Store$',
+          \ '^\.init\.vim-rplugin\~$',
+          \ '^\.netrwhist$',
+          \ '\.class$'
+          \]
+    if has('mac')
+      let g:vimfiler_quick_look_command =
+            \ '/Applications//Sublime\ Text.app/Contents/MacOS/Sublime\ Text'
+    else
+      let g:vimfiler_quick_look_command = 'gloobus-preview'
+    endif
+  hook_post_source: source $VIMPATH/config/plugins/vimfiler.vim
+# let g:vimfiler_as_default_explorer = get(g:, 'vimfiler_as_default_explorer', 1)
+# let g:vimfiler_preview_action = 'auto_preview'
+# scriptencoding utf-8
+
 
 # TODO check out usage / ALE may be able to do the same
 - repo: wbthomason/buildit.nvim
@@ -102,10 +131,6 @@
     let g:utl_cfg_hdl_scm_http_system = "silent !firefox -remote 'ping()' &&
     \ firefox -remote 'openURL( %u )' ||
     \ firefox '%u#%f' &"
-
-# or moll / vim-bbye
-- repo: qpkorr/vim-bufkill
-  on_cmd: [BUN, BD, BW, BB, BF, BA]
 
 - repo: sjl/gundo.vim
   on_cmd: [GundoHide, GundoRenderGraph, GundoShow, GundoToggle]

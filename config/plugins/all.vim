@@ -125,18 +125,29 @@ endif
 
 if dein#tap('vimfiler.vim')
 
+	function! VimFilerFileDway(...)
+		let num_args = a:0
+
+		if num_args == 0 || a:1 == ''
+			VimFilerBufferDir -explorer -winminwidth=25 -winwidth=30
+		else
+			let folder = fnamemodify(expand(a:1), ':p:h')
+			call vimfiler#init#_command({ 'explorer' : 1, }, folder.' -winminwidth=25 -winwidth=30')
+		endif
+	endfunction
+
 	nnoremap <silent> <localleader>e  :<C-u>VimFilerCurrentDir -explorer -winminwidth=25 -winwidth=30 -toggle<cr>
 	" "-buffer-name=explorer -no-quit -split -winwidth=30 -toggle<CR>
 
-	nnoremap <silent> <localleader>a :call dway#misc#VimFilerDway()<cr>
+	nnoremap <silent> <localleader>a :call VimFilerFileDway()<cr>
 	" nnoremap <silent> <localleader>a  :<C-u>VimFilerBufferDir -buffer-name=explorer -no-quit -split -winwidth=30 -toggle<CR>
-	command! -nargs=?  -bar -complete=file E :call dway#misc#VimFilerDway(<q-args>)
-	command! -nargs=?  -bar -complete=file V :call dway#misc#VimFilerDway(<q-args>)
+
+	command! -nargs=?  -bar -complete=file V :call VimFilerFileDway(<q-args>)
 	" command! Ev :25Vex %:p:h " |vertical resize 25
 	" dway adjustements
 	command! -nargs=? Vf :VimFilerExplorer <args> -winminwidth=25 -winwidth=30
 	command! Vb :VimFilerBufferDir -explorer -winminwidth=25 -winwidth=30
-	" command! -nargs=?  -bar -complete=customlist,vimfiler#complete E :call dway#misc#VimFilerDway(<q-args>)
+	" command! -nargs=?  -bar -complete=customlist,vimfiler#complete E :call VimFilerFileDway(<q-args>)
 endif
 
 

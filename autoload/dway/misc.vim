@@ -1,13 +1,3 @@
-function! dway#misc#VimFilerDway(...)
-  let num_args = a:0
-
-  if num_args == 0 || a:1 == ''
-    VimFilerBufferDir -explorer -winminwidth=25 -winwidth=30
-  else
-    let folder = fnamemodify(expand(a:1), ':p:h')
-    call vimfiler#init#_command({ 'explorer' : 1, }, folder.' -winminwidth=25 -winwidth=30')
-  endif
-endfunction
 
 " general approach to toggle stuff:
 function! dway#misc#ToggleQuickFix()
