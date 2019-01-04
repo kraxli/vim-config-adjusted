@@ -264,9 +264,13 @@ if dein#tap('vim-peekaboo')
 endif
 
 if dein#tap('vimwiki')
+	" nnoremap <silent> <Leader>W :<C-u>VimwikiIndex<CR>
+	nnoremap <c-s-left> @<Plug>VimwikiTableColumnLeft
 	nnoremap <silent> <Leader>W :<C-u>VimwikiIndex<CR>
-	nnoremap <silent> ;ww :<C-u>VimwikiIndex<CR>
-	nnoremap <silent> ;wt :<C-u>VimwikiTabIndex<cr>
+	nnoremap <silent> <leader>ww :<C-u>VimwikiIndex<CR>
+	nnoremap <silent> <Leader>W :<C-u>VimwikiIndex<CR>
+	nnoremap <silent> <leader>wt :<C-u>VimwikiTabIndex<cr>
+	nnoremap <silent> <Leader>WT :<C-u>VimwikiTabIndex<cr>
 endif
 
 if dein#tap('vim-choosewin')

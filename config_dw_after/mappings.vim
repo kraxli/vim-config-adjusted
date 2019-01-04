@@ -207,14 +207,6 @@ inoremap <silent> <Bar>   <Bar><Esc>:call dway#table#align()<CR>a
 "%\\@=%m open system file explorer (not need: handeled by vim-shell)
 " nnoremap <F6> :call dway#misc#OpenExplorer('%:p:h')
 
-if dein#tap('vimwiki')
-  " nnoremap <silent> <Leader>W :<C-u>VimwikiIndex<CR>
-  nnoremap <silent> <Leader>WT :<C-u>VimwikiTabIndex<cr>
-  nnoremap <c-s-left> @<Plug>VimwikiTableColumnLeft
-  " nunmap <m-left>
-  " unmap <m-Right>
-endif
-
 " Lower / Upper Case, Inital Upper Case And Toggle Case:
 vnoremap ~ y:call setreg('', dway#misc#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
