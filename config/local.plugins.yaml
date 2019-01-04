@@ -13,6 +13,8 @@
 # TODO:
 # tpope/vim-vinegar
 # tpope/vim-sensible
+# tpope/vim-surround (conflicting with others?)
+# tpope/vim-unimpaired
 # haya14busa/incsearch.vim
 # - repo: kshenoy/vim-signature
 # - repo: wdicarlo/vim-notebook??
