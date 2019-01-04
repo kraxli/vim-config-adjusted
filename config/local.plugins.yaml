@@ -23,7 +23,7 @@
 # -------
 
 - repo: Shougo/unite.vim
-# on_source: [vimfiler.vim, fzf.vim]
+  on_source: [vimfiler.vim, fzf.vim]
 
 # see config/theme.vim for speedup config/init.vim
 - repo: kraxli/vim-code-dark
