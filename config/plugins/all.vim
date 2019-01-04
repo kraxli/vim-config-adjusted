@@ -52,8 +52,7 @@ if dein#tap('denite.nvim')
 	" search This file
 	command! -nargs=1 GrepBuffer :vimgrep <q-args> % | :Denite quickfix -buffer-name=list<CR>
 	command! -nargs=1 GrepFile :GrepBuffer <args>
-	nmap <localleader>gt :GrepBuffer<space>
-	nmap <localleader>gv :GrepBuffer<space> " grep view (open file / buffer)
+	" nmap <localleader>gv :GrepBuffer<space> " grep view (open file / buffer)
 
 endif
 
