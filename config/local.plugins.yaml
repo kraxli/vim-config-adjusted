@@ -24,8 +24,8 @@
 # Startup
 # -------
 
-- repo: Shougo/unite.vim
-  on_source: [vimfiler.vim, fzf.vim]
+- repo: roxma/nvim-yarp
+- repo: ncm2/ncm2
 
 # see config/theme.vim for speedup config/init.vim
 - repo: kraxli/vim-code-dark
@@ -57,6 +57,9 @@
 # TODO load lazily
 - repo: junegunn/fzf.vim
   hook_source: set rtp+=~/.fzf
+
+- repo: Shougo/unite.vim
+  on_source: [vimfiler.vim, fzf.vim]
 
 - {repo: skywind3000/asyncrun.vim, on_cmd: AsyncRun}
 
@@ -189,8 +192,6 @@
 # =======================================================
 # Completion
 # ----------
-- repo: roxma/nvim-yarp
-- repo: ncm2/ncm2
 
 - { repo: ncm2/ncm2-ultisnips, on_event: InsertEnter }
 - { repo: ncm2/ncm2-bufword, on_event: InsertEnter }
@@ -199,23 +200,9 @@
 - { repo: Shougo/neoinclude.vim, on_event: InsertEnter }
 - { repo: ncm2/ncm2-neoinclude , on_event: InsertEnter }
 - { repo: ncm2/ncm2-tagprefix, on_event: InsertEnter }
-- { repo: ncm2/ncm2-github, on_evnet: InsertEnter, on_ft: [markdown, text, tex, vimwiki] }
-
-
-# words / dictionary completion
-# -----------------------------
-- { repo: yuki-ycino/ncm2-dictionary, on_ft: [markdown, text, tex, vimwiki] }
-# - { repo: fgrsnau/ncm2-aspell, on_ft: [markdown, text, tex, vimwiki] }
-- repo: filipekiss/ncm2-look.vim
-  if: has('unix')
-  on_cmd: LookEnable
-  hook_add: |
-    let g:ncm2_look_enabled = 1
-    au! BufEnter, BufNewFile, BufRead *.md,*.tex,*.wiki,*.txt LookEnable
-  on_ft: [markdown, text, tex, vimwiki]
+- { repo: ncm2/ncm2-github, on_event: InsertEnter, on_ft: [markdown, text, tex, vimwiki] }
 
 - repo: ncm2/ncm2-vim
-  depends: Shougo/neco-vim
   on_ft: vim
 
 # on_event: InsertEnter (works but probably just postpones dcd-server startup
@@ -245,6 +232,18 @@
   if: executable('npm')
   on_event: InsertEnter
   on_ft: [ javascript, jsx, javascript.jsx ]
+
+# words / dictionary completion
+# -----------------------------
+- { repo: yuki-ycino/ncm2-dictionary, on_ft: [markdown, text, tex, vimwiki] }
+# - { repo: fgrsnau/ncm2-aspell, on_ft: [markdown, text, tex, vimwiki] }
+- repo: filipekiss/ncm2-look.vim
+  if: has('unix')
+  on_cmd: LookEnable
+  hook_add: |
+    let g:ncm2_look_enabled = 1
+    au! BufEnter, BufNewFile, BufRead *.md,*.tex,*.wiki,*.txt LookEnable
+  on_ft: [markdown, text, tex, vimwiki]
 
 
 # =======================================================
