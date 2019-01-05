@@ -16,7 +16,6 @@ map <leader>ct :tabclose<cr>
 noremap <s-m-Right> <esc><c-w>r
 noremap <silent> <s-m-Left> <esc><c-w>r
 nmap <silent> <m-Down> :hide<cr>
-nmap  <silent> q :hide<cr> " qq ??
 nmap <silent> <m-Up> :only<cr> " <c-w>o
 nmap <silent> <m-Right> :vsp\|bp<cr>
 
