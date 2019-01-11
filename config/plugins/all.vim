@@ -624,6 +624,10 @@ if dein#tap('ncm2')
 	inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 	inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 	inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+	inoremap <expr> <c-j> pumvisible() ? "\<C-n>" : "\<c-j>"
+	inoremap <expr> <c-k> pumvisible() ? "\<C-p>" : "\<c-k>"
+	inoremap <expr> <down> pumvisible() ? "\<C-n>" : "\<down>"
+	inoremap <expr> <up> pumvisible() ? "\<C-p>" : "\<up>"
 	inoremap <expr><c-space> pumvisible() ? "\<c-x><c-o>" : "\<c-x><c-o>"
 
 	au User Ncm2Plugin call ncm2#register_source({
