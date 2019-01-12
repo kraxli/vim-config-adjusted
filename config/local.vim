@@ -73,7 +73,8 @@ autocmd! BufRead,BufNewFile,BufEnter,BufWrite,BufReadPre,BufWritePre,BufWritePos
 
 set conceallevel=2 concealcursor=c
 
-command! GoPkd :cd ~/Dropbox/PKD
+command! Cd2Pkd :cd ~/Dropbox/PKD<cr>
+command! Cd2Nvim :cd ~/.config/nvim<cr>
 
 " load some mappings to quickly access as some files
 execute 'source '."~/Dropbox/ActiveHome/.settings/quickfiles.vim"
