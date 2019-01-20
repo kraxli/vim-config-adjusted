@@ -144,6 +144,7 @@ cmap W!! w !sudo tee % >/dev/null
 " I like to :quit with 'qq', shrug.
 nnoremap <silent> qq :<C-u>:quit<CR> " quit / hide
 autocmd MyAutoCmd FileType man nnoremap <silent><buffer> qq :<C-u>:quit<CR> " quit / hide
+nnoremap <silent> bb :bd!<cr>
 
 " Macros
 nnoremap Q q

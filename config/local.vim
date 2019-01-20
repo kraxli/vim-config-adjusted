@@ -61,7 +61,7 @@ command! SpellOff :execute('set nospell')
 
 " {{{ final settings
 
-set colorcolumn=100
+set colorcolumn=
 
 au! Filetype vim setl foldmethod=marker
 "indent

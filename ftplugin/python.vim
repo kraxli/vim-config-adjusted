@@ -1,12 +1,14 @@
-setlocal foldmethod=indent
+" setlocal foldmethod=indent
 setlocal tabstop=4
 setlocal softtabstop=4
 setlocal shiftwidth=4
-setlocal textwidth=80
+setlocal textwidth=99
 setlocal expandtab
 setlocal smarttab
 setlocal nosmartindent
-setlocal foldmethod=indent
+" setlocal foldmethod=indent
+" set colorcolumn=+1 " highlight column after textwidth
+set colorcolumn=
 
 
 augroup pythoncommands
@@ -21,5 +23,12 @@ augroup pythoncommands
 
   autocmd FileType python :command! ReplPy :IronPy
   autocmd FileType python :command! ReplPy :IronPy
+
+  au FileType python command! Run3 :!python3 %
+  au FileType python command! Run2 :!python2 %
+  au FileType python command! Run :Run3
+  au FileType python command! Unittest :!dmd -unittest %
+  au FileType python map <F5> :Run<cr>
+
 augroup END
 

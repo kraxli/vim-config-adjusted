@@ -291,8 +291,8 @@ if dein#tap('jedi-vim')
 	" let g:jedi#goto_command = '<C-]>'
 	let g:jedi#goto_command = 'gd'
 	let g:jedi#goto_assignments_command = '<leader>g'
-	let g:jedi#rename_command = '<Leader>r'
-	let g:jedi#usages_command = '<Leader>n'
+	let g:jedi#rename_command = '<Leader>jr'
+	let g:jedi#usages_command = '<Leader>ju'
 endif
 
 if dein#tap('tern_for_vim')
@@ -511,14 +511,14 @@ if dein#tap('nvim-py-minimal')
 		au FileType python vmap  ;p :PySendSelection<cr>
 		au FileType python nmap  ;fp :PySendFile<cr>
 
-		au FileType python nmap dl :call minpy#GoToDebugLine()<cr>
-		au FileType python nmap df :call minpy#OpenDebugFile()<cr>
+		au FileType python command! DbLine :call minpy#GoToDebugLine()<cr>
+		au FileType python command! DbFile :call minpy#OpenDebugFile()<cr>
 
 		" au FileType python nmap ;id :execute("Ipdb")<cr>
 		au FileType python map <F9> :Ipdb<cr>
 		" au FileType python map <F9> <Plug>Ipdb<cr>
 		au FileType python nmap ;d :Ipdb<cr>
-		au FileType python nmap <F5> :PyRun<cr>
+		au FileType python map <F5> :!python3 %<cr>
 
 		au FileType python nmap ;bp Oimport ipdb; ipdb.set_trace()<esc>
 		au FileType python nmap ;Bp oimport ipdb; ipdb.set_trace()<esc>

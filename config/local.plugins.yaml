@@ -174,11 +174,11 @@
     let g:startify_disable_at_vimenter = 1
 
 # # - repo: BurningEther/iron.nvim
-# - repo: Vigemus/iron.nvim
-#   on_ft: [python, py]
-#   hook_add: |
-#     let g:iron_repl_open_cmd='vsplit'
-#     let g:iron_map_defaults=1
+- repo: Vigemus/iron.nvim
+  on_ft: [python, py]
+  hook_add: |
+    let g:iron_repl_open_cmd='vsplit'
+    let g:iron_map_defaults=1
 
 #  on_cmd: [IronPy, IronRepl, IronPromptRepl, IronPromptCommand]
 
@@ -290,7 +290,7 @@
   on_ft: [py, python]
   hook_add: |
     let g:minpy_default_keys = 1
-    let g:minpy_color_column = 1
+    let g:minpy_color_column = 0
   hook_source: |
     au TermOpen * let g:last_ipy_terminal_job_id = b:terminal_job_id
 
@@ -320,7 +320,7 @@
   on_ft: r
   hook_add: |
     let R_assign = 2
-    autocmd! MyAutoCmd FileType r set colorcolumn=+1
+    autocmd! MyAutoCmd FileType r set colorcolumn=
     autocmd MyAutoCmd FileType r set textwidth=80
     let g:rout_follow_colorscheme = 1
     let g:Rout_more_colors = 1
