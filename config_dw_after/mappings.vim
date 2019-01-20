@@ -328,4 +328,5 @@ endif "dwc_key_maps
 
 " }}} key mappings
 
+au MyAutoCmd Filetype markdown map <leader>ob :silent execute("call dway#markdown#OpenInBrowser('%')")<cr>
 
