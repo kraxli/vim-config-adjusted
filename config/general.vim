@@ -52,7 +52,7 @@ if has('mac')
 		\      '+': 'pbpaste',
 		\      '*': 'pbpaste',
 		\   },
-		\   'cache_enabled': 1,
+		\   'cache_enabled': 0,
 		\ }
 endif
 

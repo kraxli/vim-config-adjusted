@@ -103,7 +103,7 @@ endif
 
 if dein#tap('defx.nvim')
 	nnoremap <silent> <Leader>f
-		\ :<C-u>Defx -resume -toggle -split=vertical -winwidth=25 -direction=topleft -columns=icons:git:filename:type -buffer-name=tab`tabpagenr()`<CR>
+		\ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()`<CR>
 endif
 
 if dein#tap('nerdtree')
@@ -234,11 +234,12 @@ if dein#tap('vim-bookmarks')
 endif
 
 if dein#tap('auto-git-diff')
-	nmap <buffer><CR>  <Plug>(auto_git_diff_scroll_manual_update)
-	nmap <buffer><C-n> <Plug>(auto_git_diff_scroll_down_page)
-	nmap <buffer><C-p> <Plug>(auto_git_diff_scroll_up_page)
-	nmap <buffer><C-d> <Plug>(auto_git_diff_scroll_down_half)
-	nmap <buffer><C-u> <Plug>(auto_git_diff_scroll_up_half)
+	autocmd MyAutoCmd FileType gitrebase
+		\  nmap <buffer><CR>  <Plug>(auto_git_diff_scroll_manual_update)
+		\| nmap <buffer><C-n> <Plug>(auto_git_diff_scroll_down_page)
+		\| nmap <buffer><C-p> <Plug>(auto_git_diff_scroll_up_page)
+		\| nmap <buffer><C-d> <Plug>(auto_git_diff_scroll_down_half)
+		\| nmap <buffer><C-u> <Plug>(auto_git_diff_scroll_up_half)
 endif
 
 if dein#tap('committia.vim')
@@ -413,6 +414,8 @@ endif
 if dein#tap('caw.vim')
 	function! InitCaw() abort
 		if ! &l:modifiable
+			silent! nunmap <buffer> <Leader>V
+			silent! xunmap <buffer> <Leader>V
 			silent! nunmap <buffer> <Leader>v
 			silent! xunmap <buffer> <Leader>v
 			silent! nunmap <buffer> gc
@@ -420,8 +423,10 @@ if dein#tap('caw.vim')
 			silent! nunmap <buffer> gcc
 			silent! xunmap <buffer> gcc
 		else
-			xmap <Leader>v <Plug>(caw:hatpos:toggle)
-			nmap <Leader>v <Plug>(caw:hatpos:toggle)
+			xmap <buffer> <Leader>V <Plug>(caw:wrap:toggle)
+			nmap <buffer> <Leader>V <Plug>(caw:wrap:toggle)
+			xmap <buffer> <Leader>v <Plug>(caw:hatpos:toggle)
+			nmap <buffer> <Leader>v <Plug>(caw:hatpos:toggle)
 			nmap <buffer> gc <Plug>(caw:prefix)
 			xmap <buffer> gc <Plug>(caw:prefix)
 			nmap <buffer> gcc <Plug>(caw:hatpos:toggle)
@@ -431,17 +436,6 @@ if dein#tap('caw.vim')
 	autocmd MyAutoCmd FileType * call InitCaw()
 	call InitCaw()
 endif
-
-" if dein#tap('vim-commentary')
-" 	xmap <Leader>v  <Plug>Commentary
-" 	nmap <Leader>v  <Plug>CommentaryLine
-" 	xmap gc  <Plug>Commentary
-" 	nmap gc  <Plug>Commentary
-" 	omap gc  <Plug>Commentary
-" 	nmap gcc <Plug>CommentaryLine
-" 	nmap cgc <Plug>ChangeCommentary
-" 	nmap gcu <Plug>Commentary<Plug>Commentary
-" endif
 
 if dein#tap('vim-easymotion')
 	" letter e would be free!
