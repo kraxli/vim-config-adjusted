@@ -173,13 +173,13 @@
     let g:startify_session_persistence = 1
     let g:startify_disable_at_vimenter = 1
 
-# # - repo: BurningEther/iron.nvim
 - repo: Vigemus/iron.nvim
   on_ft: [python, py]
   hook_add: |
-    let g:iron_repl_open_cmd='vsplit'
     let g:iron_map_defaults=1
 
+# let g:iron_repl_open_cmd = 'vertical 55 split' # 'vsplit'
+# let g:iron_new_python_repl_hooks="ipython"
 #  on_cmd: [IronPy, IronRepl, IronPromptRepl, IronPromptCommand]
 
 # - repo: kassio/neoterm

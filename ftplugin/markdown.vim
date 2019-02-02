@@ -1,7 +1,7 @@
 
  au BufRead,BufNewFile *.md set filetype=markdown
  au FileType pandoc,markdown setlocal spell spelllang=en,de
- au FileType pandoc,markdown setlocal foldlevel=0
+ au FileType pandoc,markdown setlocal foldlevel=99
 
 nnoremap <silent> <c-space> :call dway#markdown#SwitchStatus()<cr>
 
