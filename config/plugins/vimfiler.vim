@@ -5,7 +5,7 @@
 " open external files
 " -------------------
 " call vimfiler#set_execute_file('PDF,pdf', 'evince')
-call vimfiler#set_execute_file('PDF,pdf', 'FoxitReader')
+call vimfiler#set_execute_file('PDF,pdf', 'evince')
 call vimfiler#set_execute_file('HTML,html,htmls,HTMLS', 'firefox')
 " call vimfiler#set_execute_file('xlsx,xls', 'C:\Program Files\Microsoft Office\Office15\Excel.exe')
 

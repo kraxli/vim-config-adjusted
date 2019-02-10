@@ -1,7 +1,8 @@
 
 
 " wrap lines
-set wrap
+" set wrap
+set nowrap
 
 " set line number when opening new buffer
 au BufNewFile,BufRead,BufNew,BufEnter,BufWinEnter * set number
