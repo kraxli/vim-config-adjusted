@@ -63,15 +63,18 @@ if has('unix')
 endif
 
 " GIT / Denite
+command! GDlog :Denite gitlog
 command! Glog :Denite gitlog
 command! GstatusDenite :Denite gitstatus
 command! Gchanged :Denite gitchanged
 command! -nargs=+ Git :AsyncRun git <args>
 command! GaddAll :Gadd --all
 command! Gamend :AsyncRun git commit --all --amend --no-edit
-command! -nargs=+ GcommitAll :AsyncRun git commit -m <q-args> --all
-command! -nargs=+ GcommitThis :AsyncRun git commit -m <q-args> %
+command! -nargs=+ GcommitAll :AsyncRun git add --all && git commit -m <q-args> --all
+command! -nargs=+ GcommitThis :AsyncRun git add %:p && git commit -m <q-args> %:p
 command! GaddThis :AsyncRun git add %
+command! GlogLine r!git log --pretty=format:"\%h | \%s\%d [\%an, \%ad]" --date=short --abbrev-commit --no-merges
+command! GlogGraph r!git log --pretty=format:"\%h | \%s\%d [\%an, \%ad]" --date=short --abbrev-commit --graph --simplify-by-decoration
 
 command! -bang -nargs=0 GCheckout
   \ call fzf#vim#grep(
