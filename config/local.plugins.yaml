@@ -29,7 +29,7 @@
 
 # see config/theme.vim for speedup config/init.vim
 - repo: kraxli/vim-code-dark
-- repo: NLKNguyen/papercolor-theme
+- repo: kraxli/papercolor-theme
 
 - repo: tpope/vim-repeat
   on_map: .
@@ -109,6 +109,22 @@
 - repo: wbthomason/buildit.nvim
   on_cmd: [BuildIt, BuildItStatus]
   hook_source: let g:buildit_status_location = 'bottom'
+
+- repo: tpope/vim-fugitive
+  on_cmd: [Gblame]
+  on_map: {n: [<leader>gb, <leader>gaf]}
+  hook_add: |
+    nnoremap <Leader>gb :Gblame<CR>
+    nnoremap <Leader>gaf :Gw<CR>
+  hook_post_source: command! Glog :Denite gitlog
+
+- repo: tpope/vim-rhubarb
+  on_cmd: [Gbrowse]
+  on_map: {n:[<leader>gb], v:[<leader>gb]}
+  hook_add: |
+    vnoremap <Leader>gb :Gbrowse<CR>
+    nnoremap <Leader>gb :.Gbrowse<CR>
+
 
 # http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
 # Vim sugar for the UNIX shell commands that need it the most.
