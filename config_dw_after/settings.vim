@@ -21,9 +21,6 @@ endif
 set undodir=~/.config/nvim/undodir
 set undofile
 
-" full path in statusline 
-set statusline=%F
-
 " do not set readonly
 " set noro
 
@@ -34,8 +31,9 @@ set statusline=%F
 " let color_scheme1 = 'hybrid'
 " let color_scheme2 = 'gruvbox'
 
-" Status bar/line
+" Status bar/line: full path in statusline
 set statusline+=%F
+" set statusline=%F
 
 set breakindent
 " let &showbreak=' '
