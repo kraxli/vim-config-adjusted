@@ -21,12 +21,6 @@ else
       let  $PATH=$PATH.';'
 endif
 
-autocmd BufRead,BufNewFile *.jl :set filetype=julia
-autocmd BufRead,BufNewFile *.jl :set syntax=julia
-" autocmd BufRead,BufNewFile *.py :set filetype=python.python3
-" autocmd FileType python :set filetype=python.python3
-au BufNewFile,BufRead *.nim set filetype=nim
-
 " path to source file
 " let g:scr_path=fnamemodify(expand('<sfile>:p'), ':h:h:h').'/scr'
 let g:scr_path=fnamemodify(expand('<sfile>:p'), ':h').'/scr'
@@ -86,5 +80,27 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 " set guicursor=
 
 let g:go_version_warning = 0
+
+" {{{ Filetypes
+
+autocmd! BufNewFile,BufRead .md set filetype=vimwiki
+autocmd! BufRead,BufNewFile *.jl :set filetype=julia
+autocmd! BufRead,BufNewFile *.jl :set syntax=julia
+" autocmd BufRead,BufNewFile *.py :set filetype=python.python3
+" autocmd FileType python :set filetype=python.python3
+au! BufNewFile,BufRead *.nim set filetype=nim
+
+
+" " }}} Filteypes
+
+" {{{ keep folds on save
+" https://stackoverflow.com/questions/37552913/vim-how-to-keep-folds-on-save
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
+" }}}
+
 
 " vim: set foldmethod=marker

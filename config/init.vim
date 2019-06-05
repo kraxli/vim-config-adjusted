@@ -79,4 +79,9 @@ let g:loaded_zip = 1
 let g:loaded_zipPlugin = 1
 " }}}
 
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
