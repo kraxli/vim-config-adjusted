@@ -5,7 +5,7 @@
 " Non-standard {{{
 " ------------
 
-nnoremap <silent><Leader>ee :e ~/.config/nvim/config/init.vim<CR>
+nnoremap <silent><Leader>ee :e ~/.config/nvim/init.vim<CR>
 nnoremap <silent><Leader>ss :source ~/.config/nvim/config/init.vim<CR>
 nnoremap <silent><Leader>uu :source ~/.config/nvim/config/init.vim<CR>
 
