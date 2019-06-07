@@ -97,8 +97,8 @@ au! BufNewFile,BufRead *.nim set filetype=nim
 " https://stackoverflow.com/questions/37552913/vim-how-to-keep-folds-on-save
 augroup remember_folds
   autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent! loadview
+  autocmd BufWinLeave *.* mkview
+  autocmd BufWinEnter *.* silent! loadview
 augroup END
 " }}}
 

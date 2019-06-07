@@ -32,7 +32,7 @@ set undofile
 " let color_scheme2 = 'gruvbox'
 
 " Status bar/line: full path in statusline
-set statusline+=%F
+" set statusline+=%F
 " set statusline=%F
 
 set breakindent
