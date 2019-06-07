@@ -30,6 +30,8 @@
 # see config/theme.vim for speedup config/init.vim
 - repo: kraxli/vim-code-dark
 - repo: kraxli/papercolor-theme
+- repo: w0ng/vim-hybrid
+- repo: sjl/badwolf
 
 - repo: tpope/vim-repeat
   on_map: .
@@ -60,6 +62,7 @@
 
 - repo: Shougo/unite.vim
   on_source: [vimfiler.vim, fzf.vim]
+  hook_add: let g:vimfiler_force_overwrite_statusline = 0
 
 - {repo: skywind3000/asyncrun.vim, on_cmd: AsyncRun}
 
