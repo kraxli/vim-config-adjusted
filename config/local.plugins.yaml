@@ -508,8 +508,14 @@
 #     let g:markdown_enable_folding = 1
 
 # TODO usage and better integration
-# - repo: lervag/vimtex
-#   on_ft: [tex, latex]
+- repo: lervag/vimtex
+  on_ft: [tex, latex]
+  hook_add: |
+    let g:tex_flavor='latex'
+    let g:vimtex_view_method='zathura'
+    let g:vimtex_quickfix_mode=0
+    set conceallevel=1
+    let g:tex_conceal='abdmg'
 
 # - repo: msprev/unite-bibtex
 #   depends: Shougo/unite.vim
