@@ -186,7 +186,7 @@ augroup END
 "}}}
 
 " -----------------------------------------------------------------------------
-" Status line
+" {{{ Status line
 " -----------------------------------------------------------------------------
 
 " " Heavily inspired by: https://github.com/junegunn/dotfiles/blob/master/vimrc
@@ -203,7 +203,6 @@ augroup END
 " endfunction
 "
 " let &l:statusline = s:statusline_expr()
-
 " }}}
 
 
