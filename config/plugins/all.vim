@@ -6,32 +6,32 @@ if dein#tap('denite.nvim')
 	nnoremap <silent><LocalLeader>tw :<C-u>Denite task<cr>
 	nnoremap <silent><LocalLeader>df :<C-u>Denite file/rec<CR>
 	nnoremap <silent><LocalLeader>db :<C-u>Denite buffer file/old -default-action=switch<CR>
-	nnoremap <silent><LocalLeader>r :<C-u>Denite -resume -refresh -mode=normal<CR>
+	nnoremap <silent><LocalLeader>r :<C-u>Denite -resume -refresh -no-start-filter<CR>
 	nnoremap <silent><LocalLeader>d :<C-u>Denite directory_rec -default-action=cd<CR>
 	nnoremap <silent><LocalLeader>v :<C-u>Denite neoyank -buffer-name=register<CR>
 	xnoremap <silent><LocalLeader>v :<C-u>Denite neoyank -buffer-name=register -default-action=replace<CR>
 	nnoremap <silent><LocalLeader>l :<C-u>Denite location_list -buffer-name=list<CR>
 	nnoremap <silent><LocalLeader>q :<C-u>Denite quickfix -buffer-name=list<CR>
 	nnoremap <silent><LocalLeader>n :<C-u>Denite dein<CR>
-	nnoremap <silent><LocalLeader>dg :<C-u>Denite grep -buffer-name=search -no-empty -mode=normal<CR>
-	nnoremap <silent><LocalLeader>j :<C-u>Denite jump change file/point -mode=normal<CR>
+	nnoremap <silent><LocalLeader>dg :<C-u>Denite grep -buffer-name=search<CR>
+	nnoremap <silent><LocalLeader>j :<C-u>Denite jump change file/point -buffer-name=jump<CR>
 	nnoremap <silent><LocalLeader>u :<C-u>Denite junkfile:new junkfile<CR>
 	nnoremap <silent><LocalLeader>o :<C-u>Denite outline<CR>
 	nnoremap <silent><LocalLeader>s :<C-u>Denite session -buffer-name=list<CR>
 	nnoremap <silent><LocalLeader>t :<C-u>Denite -buffer-name=tag tag:include<CR>
-	nnoremap <silent><LocalLeader>p :<C-u>Denite jump -buffer-name=jump -mode=normal<CR>
+	nnoremap <silent><LocalLeader>p :<C-u>Denite jump -buffer-name=jump<CR>
 	nnoremap <silent><LocalLeader>h :<C-u>Denite help<CR>
 	nnoremap <silent><LocalLeader>m :<C-u>Denite file/rec -buffer-name=memo -path=~/docs/books<CR>
 	" nnoremap <silent><LocalLeader>m :<C-u>Denite mpc -buffer-name=mpc<CR>
-	nnoremap <silent><LocalLeader>z :<C-u>Denite z -buffer-name=jump<CR>
-	nnoremap <silent><LocalLeader>/ :<C-u>Denite line -buffer-name=search -auto-highlight<CR>
-	nnoremap <silent><LocalLeader>* :<C-u>DeniteCursorWord line -buffer-name=search -auto-highlight -mode=normal<CR>
+	nnoremap <silent><LocalLeader>z :<C-u>Denite z<CR>
+	nnoremap <silent><LocalLeader>/ :<C-u>Denite line -start-filter<CR>
+	nnoremap <silent><LocalLeader>* :<C-u>DeniteCursorWord line<CR>
 	nnoremap <silent><LocalLeader>; :<C-u>Denite command command_history<CR>
 
 	" chemzqm/denite-git
-	" nnoremap <silent> <Leader>gl :<C-u>Denite gitlog:all<CR>
-	" nnoremap <silent> <Leader>gs :<C-u>Denite gitstatus<CR>
-	nnoremap <silent> <Leader>gbr :<C-u>Denite gitbranch<CR>
+	" nnoremap <silent> <Leader>gl :<C-u>Denite gitlog:all -buffer-name=git<CR>
+	" nnoremap <silent> <Leader>gs :<C-u>Denite gitstatus -buffer-name=git<CR>
+	nnoremap <silent> <Leader>gbr :<C-u>Denite gitbranch -buffer-name=git<CR>
 
 	" Open Denite with word under cursor or selection
 	nnoremap <silent> <Leader>gt :DeniteCursorWord tag:include -buffer-name=tag -immediately<CR>
@@ -102,8 +102,10 @@ if dein#tap('tagbar')
 endif
 
 if dein#tap('defx.nvim')
-	nnoremap <silent> <Leader>f
+	nnoremap <silent> <LocalLeader>e
 		\ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()`<CR>
+	nnoremap <silent> <LocalLeader>a
+		\ :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
 endif
 
 if dein#tap('nerdtree')
@@ -116,10 +118,10 @@ if dein#tap('nerdtree')
 	let g:NERDTreeMapCloseChildren = 'T'
 	let g:NERDTreeMapToggleHidden = '.'
 
-	nnoremap <silent> <LocalLeader>e :<C-u>let NERDTreeWinPos=0 \| NERDTreeToggle<CR>
-	nnoremap <silent> <LocalLeader>a :<C-u>let NERDTreeWinPos=0 \| NERDTreeFind<CR>
-	nnoremap <silent> <LocalLeader>E :<C-u>let NERDTreeWinPos=1 \| NERDTreeToggle<CR>
-	nnoremap <silent> <LocalLeader>A :<C-u>let NERDTreeWinPos=1 \| NERDTreeFind<CR>
+	nnoremap <silent> <Leader>e :<C-u>let NERDTreeWinPos=0 \| NERDTreeToggle<CR>
+	" nnoremap <silent> <LocalLeader>a :<C-u>let NERDTreeWinPos=0 \| NERDTreeFind<CR>
+	" nnoremap <silent> <LocalLeader>E :<C-u>let NERDTreeWinPos=1 \| NERDTreeToggle<CR>
+	" nnoremap <silent> <LocalLeader>A :<C-u>let NERDTreeWinPos=1 \| NERDTreeFind<CR>
 endif
 
 if dein#tap('vimfiler.vim')
