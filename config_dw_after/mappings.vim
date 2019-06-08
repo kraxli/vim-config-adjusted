@@ -209,8 +209,13 @@ inoremap <silent> <Bar>   <Bar><Esc>:call dway#table#align()<CR>a
 " Lower / Upper Case, Inital Upper Case And Toggle Case:
 vnoremap ~ y:call setreg('', dway#misc#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
+" quick spell correction:
+" It basically jumps to the previous spelling mistake [s, then picks the first suggestion 1z=,
+" and then jumps back `]a. The <c-g>u in the middle make it possible to undo the spelling correction quickly.
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins specific mappings
+" {{{ Plugins specific mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " toggle tagbar
@@ -320,12 +325,12 @@ endif "dwc_key_maps
 
 " send to terminal
 " vmap
-" nmap 
+" nmap
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " command line mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+" }}} plugin specific
 " }}} key mappings
 
 au MyAutoCmd Filetype markdown map <leader>ob :silent execute("call dway#markdown#OpenInBrowser('%')")<cr>
