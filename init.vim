@@ -57,7 +57,7 @@ execute 'source '."~/Dropbox/ActiveHome/.settings/quickfiles.vim"
 
 " " set background=light
 " " colorscheme PaperColor
-colorscheme badwolf " codedark  papercolo
+colorscheme PaperColor "  codedark  PaperColor badwolf
 " {{{ keep folds on save
 " https://stackoverflow.com/questions/37552913/vim-how-to-keep-folds-on-save
 augroup remember_folds
