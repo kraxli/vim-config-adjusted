@@ -804,6 +804,13 @@ Key   | Mode | Action
 `<leader>`+`W` | Normal | Wiki
 `<leader>`+`K` | Normal | Thesaurus
 
+### FZF
+
+Key   | Mode | Action
+----- |:----:| ------------------
+`<localleader>`+`k` | Normal | search for key maps
+`<localleader>`+`j` | Normal | jumps
+
 ## Credits & Contribution
 
 Big thanks to the dark knight [Shougo].
