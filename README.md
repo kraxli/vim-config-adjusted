@@ -810,6 +810,7 @@ Key   | Mode | Action
 ----- |:----:| ------------------
 `<localleader>`+`k` | Normal | search for key maps
 `<localleader>`+`j` | Normal | jumps
+`<localleader>`+`c` | Normal | command (history)
 
 ## Credits & Contribution
 
