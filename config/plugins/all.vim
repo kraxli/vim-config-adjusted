@@ -296,8 +296,8 @@ if dein#tap('vim-choosewin')
 endif
 
 if dein#tap('jedi-vim')
-	let g:jedi#completions_command = '<c-space>'
-	let g:jedi#documentation_command = 'K'
+	" let g:jedi#completions_command = '<c-space>'
+	let g:jedi#documentation_command = 'K' " jK
 	" let g:jedi#goto_command = '<C-]>'
 	let g:jedi#goto_command = 'gd'
 	let g:jedi#goto_assignments_command = '<leader>g'
@@ -578,17 +578,186 @@ endif
 
 " endif
 
-if dein#tap('LanguageClient-neovim')
-	noremap <c-m> :call LanguageClient_contextMenu()<CR>
-	" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-	" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-	" nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<cr>
-	nnoremap <silent> <leader>lr :call LanguageClient_textDocument_rename()<cr>
-	nnoremap <leader>ld :call LanguageClient_textDocument_definition()<cr>
-	nnoremap  <leader>lh :call LanguageClient_textDocument_hover()<cr>
+if dein#tap('neoclide/coc.nvim')
+	" Better display for messages
+	set cmdheight=2
+	" Smaller updatetime for CursorHold & CursorHoldI
+	set updatetime=300
+	" don't give |ins-completion-menu| messages.
+	set shortmess+=c
+	" always show signcolumns
+	set signcolumn=yes
 
-	nnoremap gb <c-o>
-endif
+	" Use `lp` and `ln` for navigate diagnostics
+	nmap <silent> <leader>lp <Plug>(coc-diagnostic-prev)
+	nmap <silent> <leader>ln <Plug>(coc-diagnostic-next)
+
+	" Remap keys for gotos
+	nmap <silent> <leader>ld <Plug>(coc-definition)
+	nmap <silent> <leader>lt <Plug>(coc-type-definition)
+	nmap <silent> <leader>li <Plug>(coc-implementation)
+	nmap <silent> <leader>lf <Plug>(coc-references)
+	imap <silent><expr> <c-space> coc#refresh()
+
+	" Remap for rename current word
+	nmap <leader>lr <Plug>(coc-rename)
+
+	" Use K for show documentation in preview window
+	nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+	function! s:show_documentation()
+		if &filetype == 'vim'
+			execute 'h '.expand('<cword>')
+		else
+			call CocAction('doHover')
+		endif
+	endfunction
+
+	" Highlight symbol under cursor on CursorHold
+	autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+imap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
+nmap <silent> cK :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add diagnostic info for https://github.com/itchyny/lightline.vim
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status'
+      \ },
+      \ }
+
+
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+end
+
+" if dein#tap('LanguageClient-neovim')
+" 	noremap <c-m> :call LanguageClient_contextMenu()<CR>
+" 	" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" 	" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" 	" nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<cr>
+" 	nnoremap <silent> <leader>lr :call LanguageClient_textDocument_rename()<cr>
+" 	nnoremap <leader>ld :call LanguageClient_textDocument_definition()<cr>
+" 	nnoremap  <leader>lh :call LanguageClient_textDocument_hover()<cr>
+"
+" 	nnoremap gb <c-o>
+" endif
 
 if dein#tap('ale')
 	nmap <F8> <Plug>(ale_fix)
@@ -631,11 +800,11 @@ if dein#tap('ncm2')
 	inoremap <expr> <c-k> pumvisible() ? "\<C-p>" : "\<c-k>"
 	inoremap <expr> <down> pumvisible() ? "\<C-n>" : "\<down>"
 	inoremap <expr> <up> pumvisible() ? "\<C-p>" : "\<up>"
-	inoremap <expr><c-space> pumvisible() ? "\<c-x><c-o>" : "\<c-x><c-o>"
+	" inoremap <expr><c-space> pumvisible() ? "\<c-x><c-o>" : "\<c-x><c-o>"
 
 	au User Ncm2Plugin call ncm2#register_source({
 		\ 'name' : 'css',
-		\ 'priority': 9,
+		\ 'priority': 0,
 		\ 'subscope_enable': 1,
 		\ 'scope': ['css','scss'],
 		\ 'mark': 'css',
