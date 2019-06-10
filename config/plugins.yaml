@@ -4,7 +4,7 @@
 # Startup
 # -------
 - repo: Shougo/dein.vim
-  rev: tags/1.5
+  rev: master     # tags/1.5
 
 # - repo: rafi/awesome-vim-colorschemes
 - repo: rafi/vim-badge
@@ -221,9 +221,9 @@
   depends: open-browser.vim
   on_cmd: [ OpenGithubFile, OpenGithubIssue, OpenGithubProject ]
 
-- { repo: tyru/caw.vim, on_map: { nx: <Plug> }}
-
+# - { repo: tyru/caw.vim, on_map: { nx: <Plug> }}
 # - { repo: tpope/vim-commentary, on_map: <Plug>Commentary }
+- { repo: tpope/vim-commentary}
 
 - repo: Shougo/vinarise.vim
   on_cmd: Vinarise
@@ -499,7 +499,7 @@
 # Denite
 # ------
 - repo: Shougo/denite.nvim
-  rev: tags/1.0
+  rev: master     # tags/1.0
   on_cmd: Denite
   trusted: 1
   hook_source: source $VIMPATH/config/plugins/denite.vim

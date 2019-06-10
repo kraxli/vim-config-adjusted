@@ -85,6 +85,13 @@ if dein#tap('fzf.vim')
 	xmap <localleader>k <plug>(fzf-maps-x)
 	omap <localleader>k <plug>(fzf-maps-o)
 
+	augroup fzfQuickfixWindow
+		autocmd! fzfQuickfixWindow
+		au FileType fzf nmap <buffer> <silent> q :q<cr> " <buffer> for buffer local
+		au FileType fzf nmap <buffer> <silent> jj <esc> " <buffer> for buffer local
+		" au BufLeave fzf unmap q
+	augroup end
+
 	" nnoremap <silent> <Leader>gc :<C-u>Denite gitbranch<CR>
 endif
 
@@ -413,31 +420,31 @@ if dein#tap('dsf.vim')
 	nmap csf <Plug>DsfChange
 endif
 
-if dein#tap('caw.vim')
-	function! InitCaw() abort
-		if ! &l:modifiable
-			silent! nunmap <buffer> <Leader>V
-			silent! xunmap <buffer> <Leader>V
-			silent! nunmap <buffer> <Leader>v
-			silent! xunmap <buffer> <Leader>v
-			silent! nunmap <buffer> gc
-			silent! xunmap <buffer> gc
-			silent! nunmap <buffer> gcc
-			silent! xunmap <buffer> gcc
-		else
-			xmap <buffer> <Leader>V <Plug>(caw:wrap:toggle)
-			nmap <buffer> <Leader>V <Plug>(caw:wrap:toggle)
-			xmap <buffer> <Leader>v <Plug>(caw:hatpos:toggle)
-			nmap <buffer> <Leader>v <Plug>(caw:hatpos:toggle)
-			nmap <buffer> gc <Plug>(caw:prefix)
-			xmap <buffer> gc <Plug>(caw:prefix)
-			nmap <buffer> gcc <Plug>(caw:hatpos:toggle)
-			xmap <buffer> gcc <Plug>(caw:hatpos:toggle)
-		endif
-	endfunction
-	autocmd MyAutoCmd FileType * call InitCaw()
-	call InitCaw()
-endif
+" if dein#tap('caw.vim')
+" 	function! InitCaw() abort
+" 		if ! &l:modifiable
+" 			silent! nunmap <buffer> <Leader>V
+" 			silent! xunmap <buffer> <Leader>V
+" 			silent! nunmap <buffer> <Leader>v
+" 			silent! xunmap <buffer> <Leader>v
+" 			silent! nunmap <buffer> gc
+" 			silent! xunmap <buffer> gc
+" 			silent! nunmap <buffer> gcc
+" 			silent! xunmap <buffer> gcc
+" 		else
+" 			xmap <buffer> <Leader>V <Plug>(caw:wrap:toggle)
+" 			nmap <buffer> <Leader>V <Plug>(caw:wrap:toggle)
+" 			xmap <buffer> <Leader>v <Plug>(caw:hatpos:toggle)
+" 			nmap <buffer> <Leader>v <Plug>(caw:hatpos:toggle)
+" 			nmap <buffer> gc <Plug>(caw:prefix)
+" 			xmap <buffer> gc <Plug>(caw:prefix)
+" 			nmap <buffer> gcc <Plug>(caw:hatpos:toggle)
+" 			xmap <buffer> gcc <Plug>(caw:hatpos:toggle)
+" 		endif
+" 	endfunction
+" 	autocmd MyAutoCmd FileType * call InitCaw()
+" 	call InitCaw()
+" endif
 
 if dein#tap('vim-easymotion')
 	" letter e would be free!
