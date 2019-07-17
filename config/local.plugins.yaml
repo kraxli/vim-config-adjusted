@@ -470,6 +470,9 @@
 # - repo: tbabej/taskwiki
 #   on_ft: [vimwiki]
 
+- repo: soywod/kronos.vim
+  on_cmd: [Kronos]
+
 - repo: blindFS/vim-taskwarrior
   on_cmd: [TW, TWAdd, TWSync]
 
