@@ -9,7 +9,7 @@ let b:did_ftplugin = 1
 let s:save_cpo = &cpoptions
 set cpoptions&vim
 
-let b:undo_ftplugin = 'setl fo< com< ofu<'
+let b:undo_ftplugin = 'setl fo< com< rnu< nu< bl<'
 
 setlocal winminheight=1 winheight=3
 setlocal wrap

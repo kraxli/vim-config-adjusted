@@ -86,7 +86,7 @@ set viewdir=$VARPATH/view/
 set nospell spellfile=$VIMPATH/spell/en.utf-8.add
 
 " History saving
-set history=2000
+set history=1000
 if has('nvim')
 	"  ShaDa/viminfo:
 	"   ' - Maximum number of previously edited files marks
@@ -119,7 +119,8 @@ set shiftround      " Round indent to multiple of 'shiftwidth'
 " ------
 set timeout ttimeout
 set timeoutlen=750  " Time out on mappings
-set updatetime=1000 " Idle time to write swap and trigger CursorHold
+set updatetime=400 " Idle time to write swap and trigger CursorHold
+" set updatetime=1000 " Idle time to write swap and trigger CursorHold
 
 " Time out on key codes
 set ttimeoutlen=10
@@ -214,6 +215,10 @@ endif
 
 if exists('&pumblend')
 	set pumblend=20
+endif
+
+if exists('&winblend')
+	set winblend=20
 endif
 
 " }}}

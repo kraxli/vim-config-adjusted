@@ -123,11 +123,10 @@
 
 - repo: tpope/vim-rhubarb
   on_cmd: [Gbrowse]
-  on_map: {n:[<leader>gb], v:[<leader>gb]}
   hook_add: |
     vnoremap <Leader>gb :Gbrowse<CR>
     nnoremap <Leader>gb :.Gbrowse<CR>
-
+  on_map: [n:{<leader>gb}, v:{<leader>gb}]
 
 # http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
 # Vim sugar for the UNIX shell commands that need it the most.
