@@ -643,4 +643,18 @@ if dein#tap('ncm2-ultisnips')
 	inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 endif
 
+if dein#tap('kronos')
+	nmap <cr>   <plug>(kronos-toggle)
+	nmap K      <plug>(kronos-info)
+	nmap gc     <plug>(kronos-context)
+	nmap gh     <plug>(kronos-hide-done)
+	nmap gw     <plug>(kronos-worktime)
+	nmap <c-n>  <plug>(kronos-next-cell)
+	nmap <c-p>  <plug>(kronos-prev-cell)
+	nmap dic    <plug>(kronos-delete-in-cell)
+	nmap cic    <plug>(kronos-change-in-cell)
+	nmap vic    <plug>(kronos-visual-in-cell)
+endif
+
+
 " vim: set ts=2 sw=2 tw=80 noet :
